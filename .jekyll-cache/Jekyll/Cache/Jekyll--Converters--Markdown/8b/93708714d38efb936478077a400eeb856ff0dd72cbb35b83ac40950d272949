@@ -1,0 +1,24 @@
+I"F<p>Thank you for visit my Blog</p>
+
+<p>First Post in my blog</p>
+
+<p><code class="language-plaintext highlighter-rouge">posts</code> is are posted whenever I want</p>
+
+<p>The post is for the record, but I’ll leave an additional explanation for someone who’s worried about the same problem</p>
+
+<p>Every post is meant to be a scrap</p>
+
+<p>Regardless of whether it is non-profit or profitable, anyone is actively encouraged to scrap unauthorized copying of the article.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"hello world !"</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">word</span> <span class="o">=</span> <span class="s">'hello world'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</code></pre></div></div>
+:ET

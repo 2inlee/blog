@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-24T01:11:57+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">HTML에 대해서</title><link href="http://localhost:4000/web/2022/05/24/HTML5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" rel="alternate" type="text/html" title="HTML에 대해서" /><published>2022-05-24T00:00:00+09:00</published><updated>2022-05-24T00:00:00+09:00</updated><id>http://localhost:4000/web/2022/05/24/HTML5%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C</id><content type="html" xml:base="http://localhost:4000/web/2022/05/24/HTML5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html"><![CDATA[<h2 id="1html-이-뭔데">1.HTML 이 뭔데?</h2>
+
+<p>HTML (HyperText Markup Language)은 웹페이지를 기술하기 위한 마크업 언어이다. <br />
+조금 더 자세히 말하면 웹페이지의 내용(content)과 구조(structure)을 담당하는 언어로써 HTML 태그를 통해 정보를 구조화하는 것이다.</p>
+
+<p>좀 더 직관적으로 말하자면, 처음 웹개발을 시작하는 이들이라면 HTML CSS Javascript를 우선적으로 공부하게 되는데,</p>
+<ul>
+  <li>HTML은 웹페이지의 내용과 구조를 담당하고,</li>
+  <li>CSS는 웹페이지의 디자인과 스타일을 담당하고,</li>
+  <li>Javascript는 웹페이지에서의 동작(행동)들을 프로그래밍 하는 언어라고 생각하면 당장 공부를 시작하는데 지장은 없을 것이다.</li>
+</ul>
+
+<hr />
+
+<h2 id="2html-그래서-어떻게-시작하는데">2.HTML, 그래서 어떻게 시작하는데?</h2>
+
+<h4 id="visualstudiocodevscode-에서--를-치고-엔터를-눌러라">VisualStudioCode(VScode) 에서 <code class="language-plaintext highlighter-rouge">!</code> 를 치고 <code class="language-plaintext highlighter-rouge">엔터</code>를 눌러라.</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Document<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>놀랍게도 우리는 <code class="language-plaintext highlighter-rouge">!</code> 와 <code class="language-plaintext highlighter-rouge">엔터</code> 를 누른것 만으로도 벌써 웹페이지를 만들었다. <br />
+모든 html 내용은 <code class="language-plaintext highlighter-rouge">&lt;html&gt; 과 &lt;/html&gt;</code> 사이에 들어가는데,<br />
+<code class="language-plaintext highlighter-rouge">&lt;head&gt; ~ &lt;/head&gt;</code> 사이에는, 브라우저(사용자)에선 보여지지 않지만 메타데이터의 설정등이 위치하고
+<code class="language-plaintext highlighter-rouge">&lt;body&gt; ~ &lt;/body&gt;</code> 사이에는, 웹브라우저에 출력되는 모든요소들이 들어가게 된다.</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="html" /><summary type="html"><![CDATA[1.HTML 이 뭔데?]]></summary></entry><entry><title type="html">An exhibit of Markdown</title><link href="http://localhost:4000/markdown/2022/05/06/test-markdown.html" rel="alternate" type="text/html" title="An exhibit of Markdown" /><published>2022-05-06T00:00:00+09:00</published><updated>2022-05-06T00:00:00+09:00</updated><id>http://localhost:4000/markdown/2022/05/06/test-markdown</id><content type="html" xml:base="http://localhost:4000/markdown/2022/05/06/test-markdown.html"><![CDATA[<p>This note demonstrates some of what <a href="https://daringfireball.net/projects/markdown/">Markdown</a> is capable of doing.</p>
+
+<h2 id="an-exhibit-of-markdown">An exhibit of Markdown</h2>
+
+<p><em>Note: Feel free to play with this page. Unlike regular notes, this doesn’t automatically save itself.</em></p>
+
+<h2 id="basic-formatting">Basic formatting</h2>
+
+<p>Paragraphs can be written like so. A paragraph is the basic block of Markdown. A paragraph is what text will turn into when there is no reason it should become anything else.</p>
+
+<p>Paragraphs must be separated by a blank line. Basic formatting of <em>italics</em> and <strong>bold</strong> is supported. This <em>can be <strong>nested</strong> like</em> so.</p>
+
+<h2 id="lists">Lists</h2>
+
+<h3 id="ordered-list">Ordered list</h3>
+
+<ol>
+  <li>Item 1</li>
+  <li>A second item</li>
+  <li>Number 3</li>
+  <li>Ⅳ</li>
+</ol>
+
+<p><em>Note: the fourth item uses the Unicode character for <a href="https://www.fileformat.info/info/unicode/char/2163/index.htm">Roman numeral four</a>.</em></p>
+
+<h3 id="unordered-list">Unordered list</h3>
+
+<ul>
+  <li>An item</li>
+  <li>Another item</li>
+  <li>Yet another item</li>
+  <li>And there’s more…</li>
+</ul>
+
+<h2 id="paragraph-modifiers">Paragraph modifiers</h2>
+
+<h3 id="code-block">Code block</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Code blocks are very useful for developers and other people who look at code or other things that are written in plain text. As you can see, it uses a fixed-width font.
+</code></pre></div></div>
+
+<p>You can also make <code class="language-plaintext highlighter-rouge">inline code</code> to add code into other things.</p>
+
+<h3 id="quote">Quote</h3>
+
+<blockquote>
+  <p>Here is a quote. What this is should be self explanatory. Quotes are automatically indented when they are used.</p>
+</blockquote>
+
+<h2 id="headings">Headings</h2>
+
+<p>There are six levels of headings. They correspond with the six levels of HTML headings. You’ve probably noticed them already in the page. Each level down uses one more hash character.</p>
+
+<h3 id="headings-can-also-contain-formatting">Headings <em>can</em> also contain <strong>formatting</strong></h3>
+
+<h3 id="they-can-even-contain-inline-code">They can even contain <code class="language-plaintext highlighter-rouge">inline code</code></h3>
+
+<p>Of course, demonstrating what headings look like messes up the structure of the page.</p>
+
+<p>I don’t recommend using more than three or four levels of headings here, because, when you’re smallest heading isn’t too small, and you’re largest heading isn’t too big, and you want each size up to look noticeably larger and more important, there there are only so many sizes that you can use.</p>
+
+<h2 id="urls">URLs</h2>
+
+<p>URLs can be made in a handful of ways:</p>
+
+<ul>
+  <li>A named link to <a href="https://www.markitdown.net/">MarkItDown</a>. The easiest way to do these is to select what you want to make a link and hit <code class="language-plaintext highlighter-rouge">Ctrl+L</code>.</li>
+  <li>Another named link to <a href="https://www.markitdown.net/">MarkItDown</a></li>
+  <li>Sometimes you just want a URL like <a href="https://www.markitdown.net/">https://www.markitdown.net/</a>.</li>
+</ul>
+
+<h2 id="horizontal-rule">Horizontal rule</h2>
+
+<p>A horizontal rule is a line that goes across the middle of the page.</p>
+
+<hr />
+
+<p>It’s sometimes handy for breaking things up.</p>
+
+<h2 id="images">Images</h2>
+
+<p>Markdown can also contain images. I’ll need to add something here sometime.</p>
+
+<h2 id="finally">Finally</h2>
+
+<p>There’s actually a lot more to Markdown than this. See the official <a href="https://daringfireball.net/projects/markdown/basics">introduction</a> and <a href="https://daringfireball.net/projects/markdown/syntax">syntax</a> for more information. However, be aware that this is not using the official implementation, and this might work subtly differently in some of the little things.</p>]]></content><author><name>AlphateamInho</name></author><category term="markdown" /><category term="example" /><category term="markdown" /><summary type="html"><![CDATA[This note demonstrates some of what Markdown is capable of doing.]]></summary></entry><entry><title type="html">Welcome to InoBlog</title><link href="http://localhost:4000/jekyll/2022/05/05/Children's-Day-FirstPost.html" rel="alternate" type="text/html" title="Welcome to InoBlog" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/jekyll/2022/05/05/Children's%20Day%20-%20FirstPost</id><content type="html" xml:base="http://localhost:4000/jekyll/2022/05/05/Children's-Day-FirstPost.html"><![CDATA[<p>Thank you for visit my Blog</p>
+
+<p>First Post in my blog</p>
+
+<p><code class="language-plaintext highlighter-rouge">posts</code> is are posted whenever I want</p>
+
+<p>The post is for the record, but I’ll leave an additional explanation for someone who’s worried about the same problem</p>
+
+<p>Every post is meant to be a scrap</p>
+
+<p>Regardless of whether it is non-profit or profitable, anyone is actively encouraged to scrap unauthorized copying of the article.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"hello world !"</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">word</span> <span class="o">=</span> <span class="s">'hello world'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</code></pre></div></div>]]></content><author><name>Ino</name></author><category term="jekyll" /><category term="blog" /><summary type="html"><![CDATA[Thank you for visit my Blog]]></summary></entry></feed>

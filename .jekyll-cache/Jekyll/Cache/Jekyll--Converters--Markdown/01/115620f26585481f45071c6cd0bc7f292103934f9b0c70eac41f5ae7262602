@@ -1,0 +1,28 @@
+I"�<p>HTML (HyperText Markup Language)은 웹페이지를 기술하기 위한 마크업 언어이다.
+조금 더 자세히 말하면 웹페이지의 내용(content)과 구조(structure)을 담당하는 언어로써 HTML 태그를 통해 정보를 구조화하는 것이다.</p>
+
+<p>좀 더 직관적으로 말하자면, 처음 웹개발을 시작하는 이들이라면 HTML CSS Javascript를 우선적으로 공부하게 되는데,
+HTML은 웹페이지의 내용과 구조를 담당하고, <br />
+CSS는 웹페이지의 디자인과 스타일을 담당하고,<br />
+Javascript는 웹페이지에서의 동작(행동)들을 프로그래밍 하는 언어이다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">posts</code> is are posted whenever I want</p>
+
+<p>The post is for the record, but I’ll leave an additional explanation for someone who’s worried about the same problem</p>
+
+<p>Every post is meant to be a scrap</p>
+
+<p>Regardless of whether it is non-profit or profitable, anyone is actively encouraged to scrap unauthorized copying of the article.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"hello world !"</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">word</span> <span class="o">=</span> <span class="s">'hello world'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</code></pre></div></div>
+:ET
