@@ -1,4 +1,6 @@
 futrue: true
+# git에 push해도 실제페이지에선 반영되지 않던문제를 google검색 해서 찾아봤더니,
+# 이렇게 해결했다는 사람이 있어서 이거 바꾸고 다시 push 해봤더니 고쳐졌다 !
 
 # Welcome to Jekyll!
 #

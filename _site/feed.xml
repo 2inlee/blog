@@ -1,4 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://github.com/AlphateamInho//feed.xml" rel="self" type="application/atom+xml" /><link href="https://github.com/AlphateamInho//" rel="alternate" type="text/html" /><updated>2022-05-24T14:19:01+09:00</updated><id>https://github.com/AlphateamInho//feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">HTML에 대해서</title><link href="https://github.com/AlphateamInho//web/2022/05/24/HTML5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" rel="alternate" type="text/html" title="HTML에 대해서" /><published>2022-05-24T00:00:00+09:00</published><updated>2022-05-24T00:00:00+09:00</updated><id>https://github.com/AlphateamInho//web/2022/05/24/HTML5%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C</id><content type="html" xml:base="https://github.com/AlphateamInho//web/2022/05/24/HTML5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html"><![CDATA[<h2 id="1html-이-뭔데">1.HTML 이 뭔데?</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-24T19:31:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">CSS에 대해서</title><link href="http://localhost:4000/web/2022/05/24/CSS%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" rel="alternate" type="text/html" title="CSS에 대해서" /><published>2022-05-24T00:00:00+09:00</published><updated>2022-05-24T00:00:00+09:00</updated><id>http://localhost:4000/web/2022/05/24/CSS%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C</id><content type="html" xml:base="http://localhost:4000/web/2022/05/24/CSS%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html"><![CDATA[<h2 id="css가-뭔데">CSS가 뭔데?</h2>
+<p>CSS(Cascading Style Sheets)는 HTML이나 XML과 같은 구조화 된 문서(Document)를 화면, 종이 등에 어떻게 렌더링할 것인지를 정의하기 위한 언어이다. 즉, CSS는 HTML의 각 요소(Element)의 style(design, layout etc)을 정의하여 화면(Screen) 등에 어떻게 렌더링하면 되는지 브라우저에게 설명하기 위한 언어이다.</p>
+
+<blockquote>
+  <p><del>그냥 웹페이지에서 HTML 로 만들어둔 웹 구조 위에 스타일을 입히는 작업이다.</del></p>
+</blockquote>
+
+<p>프론트엔드 개발자를 희망하면서, CSS는 배우기를 꺼려하는 초보개발자들이 종종 보인다.<br />
+CSS는 HTML이라는 구조에 단순히 색을 입히고, 폰트색만을 조절하는 것이 전부가 아니라, Javascript만으로는 구현하기 힘든 애니메이션이나 효과등을 넣을때 효과적으로 사용할 수 있기 때문에, Javascript나 파생라이브러리 (Vue.js,React.vs,Angular.js)를 배우기전에 초급자이상은 넘고 가는 것을 추천하다.</p>
+
+<hr />
+
+<h2 id="bootstrap">BootStrap</h2>
+<p>CSS를 기피하는 개발자들을 위해서 빠르고 간편한 반응형 웹디자인을 위해 Bootstrap 에서는 Open-source<br />
+라이브러리를 제공하는데,<br />
+HTML, CSS, JavaScript로 만들어진 typography, 입력 양식(forms), 버튼, 테이블, 탭, 내비게이션, 모달, 이미지 캐러셀(image carousel) 등을 제공하며 추가적으로 JavaScript plugin들을 제공한다<br />
+처음 CSS 공부하는 개발자라면 Bootstrap은 지양하고 CSS를 어느정도 이상 공부하고 
+Bootstrap을 사용하는것을 추천한다.
+그래도, 당장 빠르게 결과물을 내야 한다면 사용법 정도는 알고서 바로 적용하자.</p>
+<blockquote>
+  <p>Bootstrap 홈페이지링크<br />
+https://getbootstrap.com/</p>
+</blockquote>
+
+<hr />
+
+<h3 id="bootstrap의-장점">BootStrap의 장점</h3>
+
+<p>Easy to use <br />
+HTML과 CSS에 대한 기본 지식이 있다면 쉽게 사용할 수 있다.</p>
+
+<p>Responsive features  <br />
+스마트폰, 테블릿, 데스크탑에 적합한 responsive CSS를 제공한다.</p>
+
+<p>Mobile-first approach  <br />
+Bootstrap 3부터 mobile-first style을 기본으로 지원한다.</p>
+
+<p>Browser compatibility  <br />
+대부분의 브라우저(Chrome, Firefox, Internet Explorer, Safari, Opera)를 지원한다.</p>
+
+<p>Framework</p>
+
+<p>웹사이트 디자인에는 정형화된 코드가 자주 사용되는데 이를 별도로 저장해 두었다가 필요할 때마다 복사하여 사용하곤 한다.(Snippet 이라고한다) 그러나 스니핏이 개발팀 내 공유되어 관리되지 못하고 개인별로 사용하다보면 전체 코드는 일관된 스타일을 가지지 못하여 품질면이나 유지보수면에서도 문제가 발생하곤 한다.</p>
+
+<p>따라서 검증된 Framework나 Library를 사용하는 것이 개인이 개발관리 하는것 보다 팀프로젝트나 유지보수측면에서 더 유리하다.</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="css" /><summary type="html"><![CDATA[CSS가 뭔데? CSS(Cascading Style Sheets)는 HTML이나 XML과 같은 구조화 된 문서(Document)를 화면, 종이 등에 어떻게 렌더링할 것인지를 정의하기 위한 언어이다. 즉, CSS는 HTML의 각 요소(Element)의 style(design, layout etc)을 정의하여 화면(Screen) 등에 어떻게 렌더링하면 되는지 브라우저에게 설명하기 위한 언어이다.]]></summary></entry><entry><title type="html">HTML에 대해서</title><link href="http://localhost:4000/web/2022/05/24/HTML5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" rel="alternate" type="text/html" title="HTML에 대해서" /><published>2022-05-24T00:00:00+09:00</published><updated>2022-05-24T00:00:00+09:00</updated><id>http://localhost:4000/web/2022/05/24/HTML5%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C</id><content type="html" xml:base="http://localhost:4000/web/2022/05/24/HTML5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html"><![CDATA[<h2 id="1html-이-뭔데">1.HTML 이 뭔데?</h2>
 
 <p>HTML (HyperText Markup Language)은 웹페이지를 기술하기 위한 마크업 언어이다. <br />
 조금 더 자세히 말하면 웹페이지의 내용(content)과 구조(structure)을 담당하는 언어로써 HTML 태그를 통해 정보를 구조화하는 것이다.</p>
@@ -63,6 +107,7 @@ HTML document는 요소(Element)들의 집합으로 이루어진다.</p>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
+
 <hr />
 <p><img src="https://user-images.githubusercontent.com/95608811/169938038-2d49f93a-cca9-4f61-843c-44c977ad9f92.png" width="600px" /></p>
 
@@ -81,7 +126,76 @@ HTML에서는 열심히 엔터키로 줄바꿈 하려고 해도 안된다.
 줄바꿈이 필요하면 <code class="language-plaintext highlighter-rouge">&lt;br&gt;</code>를 사용하자 !</p>
 
 <p>그럼 단순히 h태그는 p태그보다 size만 큰 글씨인가 ?<br />
-다음 포스팅에서는 반드시 특정태그를 이용해서 HTML을 작성해야하는 이유를 간략히 포스팅하겠다.</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="html" /><summary type="html"><![CDATA[1.HTML 이 뭔데?]]></summary></entry><entry><title type="html">An exhibit of Markdown</title><link href="https://github.com/AlphateamInho//markdown/2022/05/06/test-markdown.html" rel="alternate" type="text/html" title="An exhibit of Markdown" /><published>2022-05-06T00:00:00+09:00</published><updated>2022-05-06T00:00:00+09:00</updated><id>https://github.com/AlphateamInho//markdown/2022/05/06/test-markdown</id><content type="html" xml:base="https://github.com/AlphateamInho//markdown/2022/05/06/test-markdown.html"><![CDATA[<p>This note demonstrates some of what <a href="https://daringfireball.net/projects/markdown/">Markdown</a> is capable of doing.</p>
+다음 포스팅에서는 반드시 특정태그를 이용해서 HTML을 작성해야하는 이유를 간략히 포스팅하겠다.</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="html" /><summary type="html"><![CDATA[1.HTML 이 뭔데?]]></summary></entry><entry><title type="html">시맨틱 웹(Semantic Web)</title><link href="http://localhost:4000/web/2022/05/24/%EC%8B%9C%EB%A7%A8%ED%8B%B1%EC%9A%94%EC%86%8C%EC%99%80-%EC%9B%B9.html" rel="alternate" type="text/html" title="시맨틱 웹(Semantic Web)" /><published>2022-05-24T00:00:00+09:00</published><updated>2022-05-24T00:00:00+09:00</updated><id>http://localhost:4000/web/2022/05/24/%EC%8B%9C%EB%A7%A8%ED%8B%B1%EC%9A%94%EC%86%8C%EC%99%80%20%EC%9B%B9</id><content type="html" xml:base="http://localhost:4000/web/2022/05/24/%EC%8B%9C%EB%A7%A8%ED%8B%B1%EC%9A%94%EC%86%8C%EC%99%80-%EC%9B%B9.html"><![CDATA[<h2 id="시맨틱-웹이-뭔데">시맨틱 웹이 뭔데?</h2>
+<blockquote>
+  <p><em>시멘틱 웹에 관한부분은 PoiemaWeb (웹프로그래밍튜토리얼) 사이트 참조</em></p>
+</blockquote>
+
+<p>2022년 퍼블리싱 되고 있는 웹사이트의 갯수는 약20억개, 인터넷사용자수는 53만명이다.</p>
+<blockquote>
+  <p><em>출처 : https://www.internetlivestats.com/</em></p>
+</blockquote>
+
+<p>대부분의 인터넷 사용자는 원하는 정보를 취득하기 위해 Google이나 Naver와 같은 검색사이트를 이용한다. <br />
+웹사이트는 검색엔진에 의한 노출이 매우 중요하다. <br />
+당연한 것이 검색엔진에 노출되지 않는 웹사이트에는 접속하는 이도 없기 때문이다. <br />
+검색엔진은 이 시대의 가장 강력한 권력 중의 하나라고 말할 수도 있겠다.</p>
+
+<p>SEO(검색엔진 최적화: Search Engine Optimization)같은 마케팅 도구를 사용하여 검색엔진이 본인의 웹사이트를 검색하기 알맞은 구조로 웹사이트를 조정하기도 하는데, 이것은 기본적으로 검색엔진이 웹사이트 정보를 어떻게 수집하는지 아는 것으로 부터 시작된다.</p>
+
+<p>검색엔진은 로봇(Robot)이라는 프로그램을 이용해 매일 전세계의 웹사이트 정보를 수집한다.(이것을 크롤링이라 하며 검색엔진의 크롤러가 이를 수행한다.) <br />
+그리고 검색 사이트 이용자가 검색할 만한 키워드를 미리 예상하여 검색 키워드에 대응하는 인덱스(색인)을 만들어 둔다.(이것을 인덱싱이라 하며 검색엔진의 인덱서가 이를 수행한다.)</p>
+
+<hr />
+
+<p>인덱스를 생성할 때 사용되는 정보는 검색 로봇이 수집한 정보인데 결국 웹사이트의 HTML 코드이다. <br />
+즉, 검색 엔진은 HTML 코드 만으로 그 의미를 인지하여야 하는데 이때 시맨틱 요소(Semantic element)를 해석하게 된다.</p>
+<blockquote>
+  <p><em>여담으로, python에서 Beautiful Soup 라이브러리를 이용하면 직접 웹크롤링/스크래핑을 할 수 있다.</em></p>
+</blockquote>
+
+<p>HTML으로 작성된 문서는 컴퓨터가 해석할 수 있는 메타데이터와 사람이 사용하는 자연어 문장이 뒤섞여 있다. <br />
+아래 코드를 보면 1행과 2행은 브라우저에서 동일한 외형을 갖는다. 이는 h1 태그의 디폴트 스타일이 1행과 같기 때문이다.</p>
+<blockquote>
+  <p>b태그는 bold의 약자로 boid체(두꺼운글씨체)이다.</p>
+</blockquote>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;font</span> <span class="na">size=</span><span class="s">"6"</span><span class="nt">&gt;&lt;b&gt;</span>Hello<span class="nt">&lt;/b&gt;&lt;/font&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Hello<span class="nt">&lt;/h1&gt;</span>
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/169962379-1c21cd6f-9b7f-4eee-a887-a5c82a6455ba.png" width="600px" /></p>
+
+<p>그러나 1행의 요소는 의미론적으로 어떤 의미도 가지고 있지 않다.<br />
+즉, 의도가 명확하지 않다. 
+개발자가 의도한 요소의 의미를 명확하게 나타내지 않고 다만 폰트 크기와 볼드체를 지정하는 메타데이터만을 브라우저에게 알리고 있다.<br />
+그러나 2행의 요소는 header(제목) 중 가장 상위 레벨이라는 의미를 내포하고 있어서 개발자가 의도한 요소의 의미가 명확히 드러나고 있다. 
+이것은 코드의 가독성을 높이고 유지보수를 쉽게한다.</p>
+
+<p><strong>검색엔진은 대체로 h1 요소 내의 콘텐츠를 웹문서의 중요한 제목으로 인식하고 인덱스에 포함시킬 확률이 높다.또한 사람도 h1 요소 내의 콘텐츠가 제목임을 인식할 수 있다.</strong></p>
+
+<p>시맨틱 요소로 구성되어 있는 웹페이지는 검색엔진에 보다 의미론적으로 문서 정보를 전달할 수 있고 검색엔진 또한 시맨틱 요소를 이용하여 보다 효과적인 크롤링과 인덱싱이 가능해졌다. 
+즉, 시맨틱 태그란 브라우저, 검색엔진, 개발자 모두에게 콘텐츠의 의미를 명확히 설명하는 역할을 한다.<br />
+시맨틱 태그에 의해 컴퓨터가 HTML 요소의 의미를 보다 명확히 해석하고 그 데이터를 활용할 수 있는 시맨틱 웹이 실현될 수 있다.</p>
+
+<p>시맨틱 웹이란 웹에 존재하는 수많은 웹페이지들에 메타데이터(Metadata)를 부여하여,<br />
+기존의 잡다한 데이터 집합이었던 웹페이지를 ‘의미’와 ‘관련성’을 가지는 거대한 데이터베이스로 구축하고자 하는 발상이다.</p>
+
+<p>HTML 요소는 non-semantic 요소, semantic 요소로 구분할 수 있다.</p>
+
+<blockquote>
+  <p>non-semantic 요소</p>
+</blockquote>
+
+<p>div, span 등이 있으며 이들 태그는 content에 대하여 어떤 설명도 하지 않는다.</p>
+
+<blockquote>
+  <p>semantic 요소</p>
+</blockquote>
+
+<p>form, table, img 등이 있으며 이들 태그는 content의 의미를 명확히 설명한다,</p>
+
+<p>간략히하자면, 웹페이지가 검색노출이 잘되게끔 하고싶다면,단순히 디자인적인 부분만을 고려하여 태그를 사용하는게 아닌 중요한 내용과 그렇지 않은 내용들을 semantic 요소를 고려하여 태그를 작성하면 된다.</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="html" /><summary type="html"><![CDATA[시맨틱 웹이 뭔데? 시멘틱 웹에 관한부분은 PoiemaWeb (웹프로그래밍튜토리얼) 사이트 참조]]></summary></entry><entry><title type="html">An exhibit of Markdown</title><link href="http://localhost:4000/markdown/2022/05/06/test-markdown.html" rel="alternate" type="text/html" title="An exhibit of Markdown" /><published>2022-05-06T00:00:00+09:00</published><updated>2022-05-06T00:00:00+09:00</updated><id>http://localhost:4000/markdown/2022/05/06/test-markdown</id><content type="html" xml:base="http://localhost:4000/markdown/2022/05/06/test-markdown.html"><![CDATA[<p>This note demonstrates some of what <a href="https://daringfireball.net/projects/markdown/">Markdown</a> is capable of doing.</p>
 
 <h2 id="an-exhibit-of-markdown">An exhibit of Markdown</h2>
 
@@ -166,7 +280,7 @@ HTML에서는 열심히 엔터키로 줄바꿈 하려고 해도 안된다.
 
 <h2 id="finally">Finally</h2>
 
-<p>There’s actually a lot more to Markdown than this. See the official <a href="https://daringfireball.net/projects/markdown/basics">introduction</a> and <a href="https://daringfireball.net/projects/markdown/syntax">syntax</a> for more information. However, be aware that this is not using the official implementation, and this might work subtly differently in some of the little things.</p>]]></content><author><name>AlphateamInho</name></author><category term="markdown" /><category term="example" /><category term="markdown" /><summary type="html"><![CDATA[This note demonstrates some of what Markdown is capable of doing.]]></summary></entry><entry><title type="html">Welcome to InoBlog</title><link href="https://github.com/AlphateamInho//jekyll/2022/05/05/Children's-Day-FirstPost.html" rel="alternate" type="text/html" title="Welcome to InoBlog" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>https://github.com/AlphateamInho//jekyll/2022/05/05/Children's%20Day%20-%20FirstPost</id><content type="html" xml:base="https://github.com/AlphateamInho//jekyll/2022/05/05/Children's-Day-FirstPost.html"><![CDATA[<p>Thank you for visit my Blog</p>
+<p>There’s actually a lot more to Markdown than this. See the official <a href="https://daringfireball.net/projects/markdown/basics">introduction</a> and <a href="https://daringfireball.net/projects/markdown/syntax">syntax</a> for more information. However, be aware that this is not using the official implementation, and this might work subtly differently in some of the little things.</p>]]></content><author><name>AlphateamInho</name></author><category term="markdown" /><category term="example" /><category term="markdown" /><summary type="html"><![CDATA[This note demonstrates some of what Markdown is capable of doing.]]></summary></entry><entry><title type="html">Welcome to InoBlog</title><link href="http://localhost:4000/jekyll/2022/05/05/Children's-Day-FirstPost.html" rel="alternate" type="text/html" title="Welcome to InoBlog" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/jekyll/2022/05/05/Children's%20Day%20-%20FirstPost</id><content type="html" xml:base="http://localhost:4000/jekyll/2022/05/05/Children's-Day-FirstPost.html"><![CDATA[<p>Thank you for visit my Blog</p>
 
 <p>First Post in my blog</p>
 

@@ -1,0 +1,35 @@
+I"�<h2 id="시맨틱-웹이-뭔데">시맨틱 웹이 뭔데?</h2>
+<blockquote>
+  <p><em>시멘틱 웹에 관한부분은 PoiemaWeb (웹프로그래밍튜토리얼) 사이트 참조</em></p>
+</blockquote>
+
+<p>2022년 퍼블리싱 되고 있는 웹사이트의 갯수는 약20억개, 인터넷사용자수는 53만명이다.</p>
+<blockquote>
+  <p><em>출처 : https://www.internetlivestats.com/</em></p>
+</blockquote>
+
+<p>대부분의 인터넷 사용자는 원하는 정보를 취득하기 위해 Google이나 Naver와 같은 검색사이트를 이용한다. <br />
+웹사이트는 검색엔진에 의한 노출이 매우 중요하다. <br />
+당연한 것이 검색엔진에 노출되지 않는 웹사이트에는 접속하는 이도 없기 때문이다. <br />
+검색엔진은 이 시대의 가장 강력한 권력 중의 하나라고 말할 수도 있겠다.</p>
+
+<p>SEO(검색엔진 최적화: Search Engine Optimization)같은 마케팅 도구를 사용하여 검색엔진이 본인의 웹사이트를 검색하기 알맞은 구조로 웹사이트를 조정하기도 하는데, 이것은 기본적으로 검색엔진이 웹사이트 정보를 어떻게 수집하는지 아는 것으로 부터 시작된다.</p>
+
+<p>검색엔진은 로봇(Robot)이라는 프로그램을 이용해 매일 전세계의 웹사이트 정보를 수집한다.(이것을 크롤링이라 하며 검색엔진의 크롤러가 이를 수행한다.) <br />
+그리고 검색 사이트 이용자가 검색할 만한 키워드를 미리 예상하여 검색 키워드에 대응하는 인덱스(색인)을 만들어 둔다.(이것을 인덱싱이라 하며 검색엔진의 인덱서가 이를 수행한다.)</p>
+
+<p>인덱스를 생성할 때 사용되는 정보는 검색 로봇이 수집한 정보인데 결국 웹사이트의 HTML 코드이다. <br />
+즉, 검색 엔진은 HTML 코드 만으로 그 의미를 인지하여야 하는데 이때 시맨틱 요소(Semantic element)를 해석하게 된다.</p>
+<blockquote>
+  <p><em>여담으로, python에서 Beautiful Soup 라이브러리를 이용하면 직접 웹크롤링/스크래핑을 할 수 있다.</em></p>
+</blockquote>
+
+<p>HTML으로 작성된 문서는 컴퓨터가 해석할 수 있는 메타데이터와 사람이 사용하는 자연어 문장이 뒤섞여 있다. <br />
+아래 코드를 보면 1행과 2행은 브라우저에서 동일한 외형을 갖는다. 이는 h1 태그의 디폴트 스타일이 1행과 같기 때문이다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;font</span> <span class="na">size=</span><span class="s">"6"</span><span class="nt">&gt;&lt;b&gt;</span>Hello<span class="nt">&lt;/b&gt;&lt;/font&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Hello<span class="nt">&lt;/h1&gt;</span>
+</code></pre></div></div>
+
+<p>&lt;img src=”https://user-images.githubusercontent.com/95608811/169962379-1c21cd6f-9b7f-4eee-a887-a5c82a6455ba.png”width=”600px&gt;</p>
+:ET
