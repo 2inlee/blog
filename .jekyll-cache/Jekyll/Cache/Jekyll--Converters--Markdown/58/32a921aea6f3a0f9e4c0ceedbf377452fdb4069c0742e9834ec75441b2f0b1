@@ -1,4 +1,4 @@
-I"�<h2 id="1html-이-뭔데">1.HTML 이 뭔데?</h2>
+I"�<h2 id="1html-이-뭔데">1.HTML 이 뭔데?</h2>
 
 <p>HTML (HyperText Markup Language)은 웹페이지를 기술하기 위한 마크업 언어이다. <br />
 조금 더 자세히 말하면 웹페이지의 내용(content)과 구조(structure)을 담당하는 언어로써 HTML 태그를 통해 정보를 구조화하는 것이다.</p>
@@ -63,9 +63,10 @@ HTML document는 요소(Element)들의 집합으로 이루어진다.</p>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
-
+<hr />
 <p><img src="https://user-images.githubusercontent.com/95608811/169938038-2d49f93a-cca9-4f61-843c-44c977ad9f92.png" width="600px" /></p>
 
+<hr />
 <p>html 요소는 웹페이지를 구성하는 모든 요소들을 포함한다.   위 예제를 보면 html 요소는 body 요소를 포함하며 body 요소는 h1, p 요소를 포함한다. 이 중첩 관계(부자 관계)로 웹페이지의 구조(structure)를 표현한다.</p>
 
 <p>이런 중첩 관계를 가독성 좋게 표시하기 위해 중첩 관계마다 들여쓰기(indent)를 한다.</p>
@@ -76,6 +77,9 @@ HTML document는 요소(Element)들의 집합으로 이루어진다.</p>
 <code class="language-plaintext highlighter-rouge">&lt;u&gt; ~ &lt;/u&gt;</code> : 밑줄 (underline) <br />
 <code class="language-plaintext highlighter-rouge">&lt;h1&gt; ~ &lt;/h1&gt;</code> : 제목이랄까? h1~h6까지 있고, 1 부터 순차적으로 작아진다.<br />
 <code class="language-plaintext highlighter-rouge">&lt;br&gt;</code> : 줄바꿈 태그, 엔터와 같은느낌인데, 닫힘태그가 필요없음 단순히 시각적인 기능.<br />
-HTML에서는 열심히 엔터키로 줄바꿈 하려고 해도 안된다.
-줄바꿈이 필요하면 <code class="language-plaintext highlighter-rouge">&lt;br&gt;</code>르</p>
+HTML에서는 열심히 엔터키로 줄바꿈 하려고 해도 안된다. 
+줄바꿈이 필요하면 <code class="language-plaintext highlighter-rouge">&lt;br&gt;</code>를 사용하자 !</p>
+
+<p>그럼 단순히 h태그는 p태그보다 size만 큰 글씨인가 ?<br />
+다음 포스팅에서는 반드시 특정태그를 이용해서 HTML을 작성해야하는 이유를 간략히 포스팅하겠다.</p>
 :ET
