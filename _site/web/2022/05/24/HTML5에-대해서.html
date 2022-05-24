@@ -650,8 +650,8 @@ function googleTranslateElementInit() {
   </style>
 <section class="page-banner">
     <div class="page-banner-img">
-<div style="background-image: url(https://bit.ly/3xTmdUP)"></div>
-        <img class="img-placeholder" src="https://bit.ly/3xTmdUP">
+<div style="background-image: url(https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png)"></div>
+        <img class="img-placeholder" src="https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png">
 </div>
     <div class="wrapper">
       <div class="page-banner-inner">
@@ -697,7 +697,7 @@ function googleTranslateElementInit() {
 
 
 
-    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
   </p>
 <div class="post-tags">
 <a class="post-tag" href="/tags.html#web">#web</a><a class="post-tag" href="/tags.html#html">#html</a>
@@ -911,6 +911,10 @@ function googleTranslateElementInit() {
 
 <h4 id="visualstudiocodevscode-에서--를-치고-엔터를-눌러라">VisualStudioCode(VScode) 에서 <code class="language-plaintext highlighter-rouge">!</code> 를 치고 <code class="language-plaintext highlighter-rouge">엔터</code>를 눌러라.</h4>
 
+<blockquote>
+  <p><em>Vscode는 웹개발에 필요한 거의 모든 Extension(확장자)를 지원하므로 설치하는 것을 권장한다.</em></p>
+</blockquote>
+
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
@@ -930,6 +934,48 @@ function googleTranslateElementInit() {
 <code class="language-plaintext highlighter-rouge">&lt;head&gt; ~ &lt;/head&gt;</code> 사이에는, 브라우저(사용자)에선 보여지지 않지만 메타데이터의 설정등이 위치하고
 <code class="language-plaintext highlighter-rouge">&lt;body&gt; ~ &lt;/body&gt;</code> 사이에는, 웹브라우저에 출력되는 모든요소들이 들어가게 된다.</p>
 
+<hr>
+
+<h2 id="3html-기본문법">3.HTML 기본문법</h2>
+
+<p>HTML 요소는 시작 태그(start tag)와 종료 태그(end tag) 그리고 태그 사이에 위치한 content로 구성된다.
+HTML document는 요소(Element)들의 집합으로 이루어진다.</p>
+
+<p>태그는 대문자와 소문자를 구분하진 않지만, W3C에서 HTML4의 태그를 소문자로 권장하기에 HTML5에서도 태그를 소문자로 <br>
+쓰는 것이 일반적이다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Document<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>안녕하세요<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;p&gt;</span>HTML포스팅 입니다.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/169938038-2d49f93a-cca9-4f61-843c-44c977ad9f92.png" width="600px"></p>
+
+<p>html 요소는 웹페이지를 구성하는 모든 요소들을 포함한다.   위 예제를 보면 html 요소는 body 요소를 포함하며 body 요소는 h1, p 요소를 포함한다. 이 중첩 관계(부자 관계)로 웹페이지의 구조(structure)를 표현한다.</p>
+
+<p>이런 중첩 관계를 가독성 좋게 표시하기 위해 중첩 관계마다 들여쓰기(indent)를 한다.</p>
+
+<p>간단한 기본 태그 몇가지만 더 언급하고</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;strong&gt; ~ &lt;/strong&gt;</code>: 글씨 굵게 <br>
+<code class="language-plaintext highlighter-rouge">&lt;u&gt; ~ &lt;/u&gt;</code> : 밑줄 (underline) <br>
+<code class="language-plaintext highlighter-rouge">&lt;h1&gt; ~ &lt;/h1&gt;</code> : 제목이랄까? h1~h6까지 있고, 1 부터 순차적으로 작아진다.<br>
+<code class="language-plaintext highlighter-rouge">&lt;br&gt;</code> : 줄바꿈 태그, 엔터와 같은느낌인데, 닫힘태그가 필요없음 단순히 시각적인 기능.<br>
+HTML에서는 열심히 엔터키로 줄바꿈 하려고 해도 안된다. 
+줄바꿈이 필요하면 <code class="language-plaintext highlighter-rouge">&lt;br&gt;</code>를 사용하자 !</p>
+
+<p>그럼 단순히 h태그는 p태그보다 size만 큰 글씨인가 ?<br>
+다음 포스팅에서는 반드시 특정태그를 이용해서 HTML을 작성해야하는 이유를 간략히 포스팅하겠다.</p>
 
 
     </div>
@@ -942,8 +988,8 @@ function googleTranslateElementInit() {
       <div>Related Articles</div>
       <ul>
         <li><a class="post-link" href="/jekyll/2022/05/05/Children's-Day-FirstPost.html" title="">Welcome to InoBlog</a></li>
-<li><a class="post-link" href="/markdown/2022/05/06/test-markdown.html" title="">An exhibit of Markdown</a></li>
 <li><a class="post-link" href="/web/2022/05/24/HTML5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" title="">HTML에 대해서</a></li>
+<li><a class="post-link" href="/markdown/2022/05/06/test-markdown.html" title="">An exhibit of Markdown</a></li>
 </ul>
     </div>
 <div class="post-comments"></div></section>

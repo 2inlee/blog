@@ -33,4 +33,8 @@
 <url>
 <loc>http://localhost:4000/tags.html</loc>
 </url>
+<url>
+<loc>http://localhost:4000/test.html</loc>
+<lastmod>2022-05-24T11:43:14+09:00</lastmod>
+</url>
 </urlset>

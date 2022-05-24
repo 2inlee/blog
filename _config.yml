@@ -66,7 +66,7 @@ yat:
 # content_width: "920px"
 
 # Google analytics
-# google_analytics: [Tracking ID]
+google_analytics: [Tracking ID]
 
 # If you want to generate website sitemap, you can set true
 # sitemap: false
@@ -154,11 +154,11 @@ yat:
 #   - about.md
 
 # Page default value
-# defaults:
-#   home:
-#     heading: "Your awesome heading"
-#     subheading: "Your awesome subheading"
-#     banner: "Your image url"
+defaults:
+  home:
+    heading: "시를 좋아하는 프로그래머"
+    subheading: "#Web #HTML #CSS $Javascript #Vue #React #C #Java #DB"
+    banner: "https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png"
 
 # Banner default settings
 # These banner settings are for global banner default, but you can also

@@ -5,11 +5,12 @@ subtitle: A novice developer.
 author: Ino
 categories: jekyll
 banner:
-  video: https://vjs.zencdn.net/v/oceans.mp4
+  # video: https://vjs.zencdn.net/v/oceans.mp4
   loop: true
   volume: 0.8
   start_at: 8.5
-  # image: https://bit.ly/3xTmdUP
+  image: "https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png"
+  # bundle exec jekyll serve
   opacity: 0.618
   background: "#000"
   height: "100vh"
