@@ -1,4 +1,160 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-28T17:09:23+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">프로그래밍이란?</title><link href="http://localhost:4000/web/2022/05/28/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" rel="alternate" type="text/html" title="프로그래밍이란?" /><published>2022-05-28T00:00:00+09:00</published><updated>2022-05-28T00:00:00+09:00</updated><id>http://localhost:4000/web/2022/05/28/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C</id><content type="html" xml:base="http://localhost:4000/web/2022/05/28/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html"><![CDATA[<h2 id="1본격적으로-js자바스크립트를-설명하기전에-프로그래밍이란-">1.본격적으로 JS(자바스크립트)를 설명하기전에, 프로그래밍이란 ?</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-07T21:49:11+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">깃과 깃허브</title><link href="http://localhost:4000/git/2022/05/31/Git%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" rel="alternate" type="text/html" title="깃과 깃허브" /><published>2022-05-31T00:00:00+09:00</published><updated>2022-05-31T00:00:00+09:00</updated><id>http://localhost:4000/git/2022/05/31/Git%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C</id><content type="html" xml:base="http://localhost:4000/git/2022/05/31/Git%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html"><![CDATA[<h2 id="깃--버전관리시스템">깃 : 버전관리시스템</h2>
+<blockquote>
+  <p>VCS: version control system</p>
+</blockquote>
+
+<h2 id="깃허브">깃허브</h2>
+<ul>
+  <li>버전관리 깃의 원격 저장소 웹 호스팅 서비스</li>
+  <li>소프트웨어 개발 활용 소셜 코딩 플랫폼</li>
+  <li>전 세계 개발자를 위한 프로젝트 수행 협업 서비스</li>
+  <li>프로젝트 개발 및 운영 서비스</li>
+</ul>
+
+<h2 id="깃허브를-쓰는-이유">깃허브를 쓰는 이유</h2>
+<ul>
+  <li>규모에 상관없이 모든 회사와 조직에서 원하는 공개 및 비공개 프로젝트에 필요한 중요 DevOps 기능을 제공하기 때문</li>
+  <li>계획 수립 기능, 버그 수정, 변경 사항 관련 협업 등을 진행할 때 GitHub를 사용하면 전 세계 소프트웨어 개발자와 함께 작업 가능</li>
+  <li>그리고 더 나은 제품을 만들 가능성 향상</li>
+</ul>
+
+<ol>
+  <li>
+    <p>Git은 프로젝트의 시간과 차원을 자유롭게 넘나들수 있도록 해준다.</p>
+  </li>
+  <li>
+    <p>Git은 여러 사람들이 프로젝트에서 협업할 수 있도록 도와준다.</p>
+  </li>
+</ol>
+
+<h2 id="깃허브의-주요기능">깃허브의 주요기능</h2>
+<ul>
+  <li>분기(branch)</li>
+  <li>등록(Push)</li>
+  <li>내려받기(Pull)</li>
+</ul>
+
+<h2 id="git-설치">git 설치</h2>
+<blockquote>
+  <p>mac기준으로 설명하겠다.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>맥은 기본적으로 git이 설치되어 있다. 터미널에서 버전 확인 
+<code class="language-plaintext highlighter-rouge">$git --version</code></p>
+  </li>
+  <li>
+    <p>https://git-scm.com/ 에서 최신 버전 확인</p>
+  </li>
+</ul>
+
+<h4 id="homebrew-설치">Homebrew 설치</h4>
+<p>&lt; https://brew.sh/ &gt;</p>
+
+<blockquote>
+  <p>M1 또는 M2칩과 같은 SoC맥의 경우 Homebrew 가 동작하지 않는다면 아래르 추가로 실행해야 한다.</p>
+  <blockquote>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">whomai</code> 명렁어로 <code class="language-plaintext highlighter-rouge">사용자명</code> 확인</li>
+    </ul>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' &gt;&gt; /Users/사용자명/.zprofile</code></li>
+      <li><code class="language-plaintext highlighter-rouge">eval "$(/opt/homebrew/bin/brew shellenv)"</code></li>
+    </ul>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li>아래 명령어로 Git설치</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">$ brew install git</code></p>
+<blockquote>
+  <ul>
+    <li>터미널 재실행 후 <code class="language-plaintext highlighter-rouge">git --version </code>으로 확인</li>
+  </ul>
+</blockquote>
+
+<h2 id="git-최초-설정">Git 최초 설정</h2>
+<p>Git 전역으로 사용자 이름과 이메일 주소를 설정</p>
+<blockquote>
+  <p>github 계정과는 상관없음</p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">$git config --global user.name "(본인 이름)"</code><br />
+<code class="language-plaintext highlighter-rouge">$git config --global user.email "(본인 이메일)"</code></p>
+
+<p>아래 명령어들로 전역설정이 잘 되었는지 확인 <br />
+<code class="language-plaintext highlighter-rouge">$git config --global user.name</code><br />
+<code class="language-plaintext highlighter-rouge">$git config --global user.email</code></p>
+
+<p>기본 브랜치명 변경<br />
+기존 : <code class="language-plaintext highlighter-rouge">master</code> <br />
+변경후 : <code class="language-plaintext highlighter-rouge">main</code>     <br />
+<code class="language-plaintext highlighter-rouge">$ git config --global init.defaultBranch main</code></p>
+
+<h2 id="프로젝트-생성--git-관리-시작">프로젝트 생성 &amp; Git 관리 시작</h2>
+
+<p>vscode 내에서 git을 사용할 폴더 내부에서</p>
+<blockquote>
+  <p>현재 어느 폴더에 있는지 모르겠으면 터미널창에 <code class="language-plaintext highlighter-rouge">$ pwd</code> 로 원하는 폴더가 잘 선택되어있는지 확인한다</p>
+</blockquote>
+
+<p>폴더에 숨김모드로 .git 폴더가 생성되었는 지 확인한다.</p>
+<ul>
+  <li>이 폴더를 지우면 Git 관리 내역이 삭제된다.
+    <blockquote>
+      <p>맥에서 숨김파일 보기 : <code class="language-plaintext highlighter-rouge">command</code> + <code class="language-plaintext highlighter-rouge">shift</code> + <code class="language-plaintext highlighter-rouge">.</code></p>
+    </blockquote>
+  </li>
+</ul>
+
+<p>여기까지 잘 따라왔다면, 기본적인 Git 설정은 끝났다고 볼 수 있다.</p>]]></content><author><name>Ino</name></author><category term="git" /><category term="git" /><summary type="html"><![CDATA[깃 : 버전관리시스템 VCS: version control system]]></summary></entry><entry><title type="html">서버에 대해서</title><link href="http://localhost:4000/web/2022/05/30/Server%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" rel="alternate" type="text/html" title="서버에 대해서" /><published>2022-05-30T00:00:00+09:00</published><updated>2022-05-30T00:00:00+09:00</updated><id>http://localhost:4000/web/2022/05/30/Server%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C</id><content type="html" xml:base="http://localhost:4000/web/2022/05/30/Server%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html"><![CDATA[<h2 id="1서버가-뭔데">1.서버가 뭔데?</h2>
+<p>국밥집 이모다.<br />
+우리가 순댓국집 가서 “이모~ 국밥하나 갖다주세요 “ 하면 이모가 국밥하나 갖다준다.<br />
+서버도 똑같다.<br />
+국밥집이모나 서버나 우리가 요청한걸 갖다주는 것 뿐이다. 
+즉, 서버는 요청을 받으면 요청한 내용을 보내주는 프로그램인데,
+HTTP요청에는 크게 4가지가 있는데, 읽기 쓰기 수정 삭제이다.</p>
+<hr />
+
+<h2 id="2읽기-get">2.읽기 (GET)</h2>
+<p>특정 페이지를 get하면, 특정페이지를 서버에서 보내주는 형식이다.
+우리가 네이버에서 네이버웹툰,네이버메일등에 들어가는 버튼을 누르면 지정사이트로 이동하는 것들이 모두 GET요청 하는 것이다.</p>
+
+<h2 id="3쓰기-post">3.쓰기 (POST)</h2>
+<p>댓글을 작성하거나, 글을 쓸 때 우리가 게시하는 것들을 받아들이는 것을 post요청이라고 한다.</p>
+
+<h2 id="4수정-put">4.수정 (PUT)</h2>
+<p>뭔가를 수정할 때</p>
+<h2 id="5삭제-delete">5.삭제 (DELETE)</h2>
+<p>뭔가를 삭제할 때</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="javascript" /><summary type="html"><![CDATA[1.서버가 뭔데? 국밥집 이모다. 우리가 순댓국집 가서 “이모~ 국밥하나 갖다주세요 “ 하면 이모가 국밥하나 갖다준다. 서버도 똑같다. 국밥집이모나 서버나 우리가 요청한걸 갖다주는 것 뿐이다. 즉, 서버는 요청을 받으면 요청한 내용을 보내주는 프로그램인데, HTTP요청에는 크게 4가지가 있는데, 읽기 쓰기 수정 삭제이다.]]></summary></entry><entry><title type="html">자바스크립트에 대해서</title><link href="http://localhost:4000/web/2022/05/29/Javascrpt%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" rel="alternate" type="text/html" title="자바스크립트에 대해서" /><published>2022-05-29T00:00:00+09:00</published><updated>2022-05-29T00:00:00+09:00</updated><id>http://localhost:4000/web/2022/05/29/Javascrpt%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C</id><content type="html" xml:base="http://localhost:4000/web/2022/05/29/Javascrpt%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html"><![CDATA[<h2 id="1자바스크립트의-특징">1.자바스크립트의 특징</h2>
+<p>자바스크립트는 HTML, CSS와 함께 웹을 구성하는 요소 중 하나로 웹 브라우저에서 동작하는 유일한 프로그래밍 언어이다.
+(Vue,React,Angular 등도 javascript기반으로 만들어진 프레임워크이다.)</p>
+<blockquote>
+  <p>~python기반의 pyscript도 javascript 기반이다.~
+자바스크립트는 기존의 프로그래밍 언어에서 많은 영향을 받았다.
+기본 문법은 C, Java와 유사하고 Self에서는 프로토타입 기반 상속을, Scheme에서는 일급 함수의 개념을 차용했다.
+~ 그래서 매우 근본이 없다.. 필요해서 막 만들었다는게 학계의 정설이다 ~  <br />
+자바스크립트는 개발자가 별도의 컴파일 작업을 수행하지 않는 인터프리터 언어(Interpreter language)이다.</p>
+</blockquote>
+
+<blockquote>
+  <p>그리고 여러 논란이 있지만(?) 자바스크립트는 프토로타입 기반의 객체지향 언어이다.</p>
+</blockquote>
+
+<h2 id="2자바스크립트의-실행환경">2.자바스크립트의 실행환경</h2>
+<p>모든 브라우저는 자바스크립트를 해석하고 실행할 수 있는 자바스크립트 엔진을 내장하고 있다. 브라우저뿐만 아니라 Node.js도 자바스크립트 엔진을 내장하고 있다. 따라서 자바스크립트는 브라우저와 Node.js 환경에서 실행할 수 있다. 기본적으로 브라우저에서 동작하는 코드는 Node.js 환경에서도 동작한다.</p>
+
+<p>그런데 브라우저와 Node.js는 존재 목적이 다르다. 브라우저는 HTML, CSS, 자바스크립트를 실행하여 웹 페이지를 화면에 렌더링하는 것이 주된 목적이지만, Node.js는 서버 개발 환경을 제공하는 것이 주된 목적이다.</p>
+
+<p>예를 들어 브라우저는 HTML 요소를 선택하거나 조작하는 기능들의 집합인 DOM API를 기본적으로 제공한다. 하지만 서버 개발 환경을 제공하는 것이 주 목적인 Node.js는 클라이언트 사이드 Web API인 DOM API를 제공하지 않는다. 서버에서는 HTML 요소를 다룰 일이 없기 때문이다. 반대로 Node.js에서는 파일을 생성하고 수정할 수 있는 File 시스템을 기본 제공하지만 브라우저는 이를 지원하지 않는다.</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="javascript" /><summary type="html"><![CDATA[1.자바스크립트의 특징 자바스크립트는 HTML, CSS와 함께 웹을 구성하는 요소 중 하나로 웹 브라우저에서 동작하는 유일한 프로그래밍 언어이다. (Vue,React,Angular 등도 javascript기반으로 만들어진 프레임워크이다.) ~python기반의 pyscript도 javascript 기반이다.~ 자바스크립트는 기존의 프로그래밍 언어에서 많은 영향을 받았다. 기본 문법은 C, Java와 유사하고 Self에서는 프로토타입 기반 상속을, Scheme에서는 일급 함수의 개념을 차용했다. ~ 그래서 매우 근본이 없다.. 필요해서 막 만들었다는게 학계의 정설이다 ~ 자바스크립트는 개발자가 별도의 컴파일 작업을 수행하지 않는 인터프리터 언어(Interpreter language)이다.]]></summary></entry><entry><title type="html">프로그래밍이란?</title><link href="http://localhost:4000/web/2022/05/28/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" rel="alternate" type="text/html" title="프로그래밍이란?" /><published>2022-05-28T00:00:00+09:00</published><updated>2022-05-28T00:00:00+09:00</updated><id>http://localhost:4000/web/2022/05/28/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C</id><content type="html" xml:base="http://localhost:4000/web/2022/05/28/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html"><![CDATA[<h2 id="1본격적으로-js자바스크립트를-설명하기전에-프로그래밍이란-">1.본격적으로 JS(자바스크립트)를 설명하기전에, 프로그래밍이란 ?</h2>
 <blockquote>
   <p>앞서 설명했던 html과 css와는 다르게 JS(자바스크린트를 편의상 JS라고 하겠다.) 는 프로그래밍언어이기 때문에 프로그래밍에 대해서 간략하게 설명하고 넘어가겠다.</p>
 </blockquote>
