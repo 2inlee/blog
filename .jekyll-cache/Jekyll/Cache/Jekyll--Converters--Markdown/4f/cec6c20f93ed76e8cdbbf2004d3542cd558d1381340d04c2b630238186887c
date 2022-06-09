@@ -1,0 +1,55 @@
+I",<h2 id="vi-편집기">vi 편집기</h2>
+<blockquote>
+  <p>vi 편집기는 일반적으로 모드가 나누어져 있기 때문에, 따로 공부를 하지 않으면 사용할 때 어려움이 있다.</p>
+</blockquote>
+
+<ul>
+  <li>명령모드 : 모드변경,복사,이동등의 작업</li>
+  <li>편집모드 : 문서작성 및 편집</li>
+  <li>
+    <p>Last Line 모드 : 치환, 저장 및 종료 수행</p>
+  </li>
+  <li>명령모드에서 <code class="language-plaintext highlighter-rouge">i</code>,<code class="language-plaintext highlighter-rouge">o</code>,<code class="language-plaintext highlighter-rouge">a</code> 를 입력하면 편집모드로 이동된다
+    <blockquote>
+      <p>i 는 커서의 앞부분 부터, a 는 커서의 다음부분 부터, o를 입력하면 커서의 아래라인부터 입력이 된다</p>
+    </blockquote>
+  </li>
+  <li>명령모드에서 <code class="language-plaintext highlighter-rouge">:</code>를 입력하면 <code class="language-plaintext highlighter-rouge">Last Line 모드</code>로 넘어가게 된다</li>
+  <li><code class="language-plaintext highlighter-rouge">Last Line 모드</code>에서 <code class="language-plaintext highlighter-rouge">:wq</code> 등의 명령어로 모드에서 나올 수 있다
+    <blockquote>
+      <p><code class="language-plaintext highlighter-rouge">:wq</code> 는 저장하고 나가기</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h3 id="command-모드--가장-기본이-되는-모드-복사-붙여넣기-다른-모드로-전환-커서-이동-삭제-등">Command 모드 : 가장 기본이 되는 모드, 복사, 붙여넣기, 다른 모드로 전환, 커서 이동, 삭제 등</h3>
+
+<p>(1) 커서 이동
+<code class="language-plaintext highlighter-rouge">G</code> : 가장 마지막 줄로 이동 <br />
+<code class="language-plaintext highlighter-rouge">gg</code> : 첫번째 줄로 이동 <br />
+<code class="language-plaintext highlighter-rouge">[n]G</code> : n번째 줄로 이동  <br />
+<code class="language-plaintext highlighter-rouge">$</code> : 커서가 위치한 줄의 맨 끝으로 이동   <br />
+<code class="language-plaintext highlighter-rouge">O</code> : 커서가 위치한 줄의 맨 앞으로 이동   <br />
+<code class="language-plaintext highlighter-rouge">w</code> : 커서가 한 단어씩 오른쪽으로 이동  <br />
+<code class="language-plaintext highlighter-rouge">b</code> : 커서가 한 단어씩 왼쪽으로 이동</p>
+
+<p>(2) 삭제
+<code class="language-plaintext highlighter-rouge">x</code> : 한 문자 삭제,또는 Edit모드에서 백스페이스나 Delete키로 삭제 <br />
+<code class="language-plaintext highlighter-rouge">dd</code> : 커서가 위치한 한 줄을 삭제 <br />
+<code class="language-plaintext highlighter-rouge">d[커서이동]</code> : 커서가 이동하는 만큼 삭제</p>
+
+<p>(3) : 수정
+<code class="language-plaintext highlighter-rouge">r</code> : 커서가 위치한 부분의 문자 하나를 입력하는 문자로 대체 <br />
+<code class="language-plaintext highlighter-rouge">u</code> : Ctrl + z 처럼 작업 취소</p>
+
+<p>(4) : 복사 및 붙여넣기  <br />
+<code class="language-plaintext highlighter-rouge">yy</code> : 커서가 위치한 한 줄을 복사 <br />
+<code class="language-plaintext highlighter-rouge">y[커서이동]</code> : 커서 이동하는 만큼 복사</p>
+
+<p><code class="language-plaintext highlighter-rouge">p</code> : 커서 밑이나 커서 다음에 붙여넣기</p>
+
+<h3 id="edit-모드">Edit 모드</h3>
+<ul>
+  <li>실질적으로 문서를 편집하는 모드, 내용을 입력, 내용을 수정, 내용을</li>
+</ul>
+:ET

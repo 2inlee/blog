@@ -1,4 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-09T21:24:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">리눅스 기본구조와 명령어</title><link href="http://localhost:4000/system/2022/06/07/%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EB%B3%B8%ED%99%98%EA%B2%BD.html" rel="alternate" type="text/html" title="리눅스 기본구조와 명령어" /><published>2022-06-07T00:00:00+09:00</published><updated>2022-06-07T00:00:00+09:00</updated><id>http://localhost:4000/system/2022/06/07/%08%EB%A6%AC%EB%88%85%EC%8A%A4%20%EA%B8%B0%EB%B3%B8%ED%99%98%EA%B2%BD</id><content type="html" xml:base="http://localhost:4000/system/2022/06/07/%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EB%B3%B8%ED%99%98%EA%B2%BD.html"><![CDATA[<h2 id="리눅스-기본-환경">리눅스 기본 환경</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-09T22:11:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">문서편집기 vi</title><link href="http://localhost:4000/system/2022/06/09/%EB%AC%B8%EC%84%9C%ED%8E%B8%EC%A7%91%EA%B8%B0vi.html" rel="alternate" type="text/html" title="문서편집기 vi" /><published>2022-06-09T00:00:00+09:00</published><updated>2022-06-09T00:00:00+09:00</updated><id>http://localhost:4000/system/2022/06/09/%EB%AC%B8%EC%84%9C%ED%8E%B8%EC%A7%91%EA%B8%B0vi</id><content type="html" xml:base="http://localhost:4000/system/2022/06/09/%EB%AC%B8%EC%84%9C%ED%8E%B8%EC%A7%91%EA%B8%B0vi.html"><![CDATA[<h2 id="vi-편집기">vi 편집기</h2>
+<blockquote>
+  <p>vi 편집기는 일반적으로 모드가 나누어져 있기 때문에, 따로 공부를 하지 않으면 사용할 때 어려움이 있다.</p>
+</blockquote>
+
+<ul>
+  <li>명령모드 : 모드변경,복사,이동등의 작업</li>
+  <li>편집모드 : 문서작성 및 편집</li>
+  <li>
+    <p>Last Line 모드 : 치환, 저장 및 종료 수행</p>
+  </li>
+  <li>명령모드에서 <code class="language-plaintext highlighter-rouge">i</code>,<code class="language-plaintext highlighter-rouge">o</code>,<code class="language-plaintext highlighter-rouge">a</code> 를 입력하면 편집모드로 이동된다
+    <blockquote>
+      <p>i 는 커서의 앞부분 부터, a 는 커서의 다음부분 부터, o를 입력하면 커서의 아래라인부터 입력이 된다</p>
+    </blockquote>
+  </li>
+  <li>명령모드에서 <code class="language-plaintext highlighter-rouge">:</code>를 입력하면 <code class="language-plaintext highlighter-rouge">Last Line 모드</code>로 넘어가게 된다</li>
+  <li><code class="language-plaintext highlighter-rouge">Last Line 모드</code>에서 <code class="language-plaintext highlighter-rouge">:wq</code> 등의 명령어로 모드에서 나올 수 있다
+    <blockquote>
+      <p><code class="language-plaintext highlighter-rouge">:wq</code> 는 저장하고 나가기</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h3 id="command-모드--가장-기본이-되는-모드-복사-붙여넣기-다른-모드로-전환-커서-이동-삭제-등">Command 모드 : 가장 기본이 되는 모드, 복사, 붙여넣기, 다른 모드로 전환, 커서 이동, 삭제 등</h3>
+
+<p>(1) 커서 이동
+<code class="language-plaintext highlighter-rouge">G</code> : 가장 마지막 줄로 이동 <br />
+<code class="language-plaintext highlighter-rouge">gg</code> : 첫번째 줄로 이동 <br />
+<code class="language-plaintext highlighter-rouge">[n]G</code> : n번째 줄로 이동  <br />
+<code class="language-plaintext highlighter-rouge">$</code> : 커서가 위치한 줄의 맨 끝으로 이동   <br />
+<code class="language-plaintext highlighter-rouge">O</code> : 커서가 위치한 줄의 맨 앞으로 이동   <br />
+<code class="language-plaintext highlighter-rouge">w</code> : 커서가 한 단어씩 오른쪽으로 이동  <br />
+<code class="language-plaintext highlighter-rouge">b</code> : 커서가 한 단어씩 왼쪽으로 이동</p>
+
+<p>(2) 삭제
+<code class="language-plaintext highlighter-rouge">x</code> : 한 문자 삭제,또는 Edit모드에서 백스페이스나 Delete키로 삭제 <br />
+<code class="language-plaintext highlighter-rouge">dd</code> : 커서가 위치한 한 줄을 삭제 <br />
+<code class="language-plaintext highlighter-rouge">d[커서이동]</code> : 커서가 이동하는 만큼 삭제</p>
+
+<p>(3) : 수정
+<code class="language-plaintext highlighter-rouge">r</code> : 커서가 위치한 부분의 문자 하나를 입력하는 문자로 대체 <br />
+<code class="language-plaintext highlighter-rouge">u</code> : Ctrl + z 처럼 작업 취소</p>
+
+<p>(4) : 복사 및 붙여넣기  <br />
+<code class="language-plaintext highlighter-rouge">yy</code> : 커서가 위치한 한 줄을 복사 <br />
+<code class="language-plaintext highlighter-rouge">y[커서이동]</code> : 커서 이동하는 만큼 복사</p>
+
+<p><code class="language-plaintext highlighter-rouge">p</code> : 커서 밑이나 커서 다음에 붙여넣기</p>
+
+<h3 id="edit-모드">Edit 모드</h3>
+<ul>
+  <li>실질적으로 문서를 편집하는 모드, 내용을 입력, 내용을 수정, 내용을 삭제  <br />
+입력하고 싶은 내용을 입력하거나 백스페이스로 삭제</li>
+</ul>
+
+<h3 id="last-line-모드">Last Line 모드</h3>
+<ul>
+  <li>파일을 저장하거나, 종료하거나 저장하지 않고 그냥 종료, 검색,바꾸기 등</li>
+</ul>
+
+<p>(1) : 편집기 상태 변경  <br />
+<code class="language-plaintext highlighter-rouge">:set nu</code> : 라인 넘버 표시  <br />
+<code class="language-plaintext highlighter-rouge">:set nonu</code> : 라인 넘버 표시 안함   <br />
+<code class="language-plaintext highlighter-rouge">:set ic</code> : 검색할 때 대소문자 무시   <br />
+<code class="language-plaintext highlighter-rouge">:set noic</code> : 검색할 때 대소문자 구분</p>
+
+<p>(2) : 검색 및 변환  <br />
+<code class="language-plaintext highlighter-rouge">/[내용]</code> : 검색,<code class="language-plaintext highlighter-rouge">n</code> 다음검색,<code class="language-plaintext highlighter-rouge">N</code> 이전검색  <br />
+<code class="language-plaintext highlighter-rouge">:%s/[찾을 내용]/[바꿀 내용]/g</code></p>
+
+<p>(3) : 저장 및 종료  <br />
+<code class="language-plaintext highlighter-rouge">:w</code> : 저장
+<code class="language-plaintext highlighter-rouge">:q</code> : 종료 <br />
+<code class="language-plaintext highlighter-rouge">:wq</code> : 저장 및 종료  <br />
+<code class="language-plaintext highlighter-rouge">:w!</code> : 강제로 저장   <br />
+<code class="language-plaintext highlighter-rouge">:q!</code> : 강제로 종료   <br />
+<code class="language-plaintext highlighter-rouge">:wq!</code> : 저장 및 강제 종료</p>]]></content><author><name>Ino</name></author><category term="System" /><category term="vi" /><category term="vim" /><summary type="html"><![CDATA[vi 편집기 vi 편집기는 일반적으로 모드가 나누어져 있기 때문에, 따로 공부를 하지 않으면 사용할 때 어려움이 있다.]]></summary></entry><entry><title type="html">리눅스 기본구조와 명령어</title><link href="http://localhost:4000/system/2022/06/07/%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EB%B3%B8%ED%99%98%EA%B2%BD.html" rel="alternate" type="text/html" title="리눅스 기본구조와 명령어" /><published>2022-06-07T00:00:00+09:00</published><updated>2022-06-07T00:00:00+09:00</updated><id>http://localhost:4000/system/2022/06/07/%08%EB%A6%AC%EB%88%85%EC%8A%A4%20%EA%B8%B0%EB%B3%B8%ED%99%98%EA%B2%BD</id><content type="html" xml:base="http://localhost:4000/system/2022/06/07/%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EB%B3%B8%ED%99%98%EA%B2%BD.html"><![CDATA[<h2 id="리눅스-기본-환경">리눅스 기본 환경</h2>
 <blockquote>
   <p>명령줄 인터페이스</p>
 </blockquote>
@@ -66,6 +143,35 @@ ex) ls -al, ifconfig -a, netstat -anp</p>
 <code class="language-plaintext highlighter-rouge">cd /</code> 은 최상위 디렉토리로 이동해달라는건데, 그냥 <code class="language-plaintext highlighter-rouge">/</code>로 시작하면 절대경로가 되는데, 절대경로상 <code class="language-plaintext highlighter-rouge">/</code>는 가장 최상위 디렉토리라 그런것이다.</p>
     </blockquote>
   </li>
+</ul>
+
+<h2 id="파일-관련-명령어">파일 관련 명령어</h2>
+<ul>
+  <li>touch : 내용에 아무것도 없는 빈 파일을 생성</li>
+  <li>
+    <p>rm : 파일을 제거하는 명령어</p>
+  </li>
+  <li>
+    <p>mv : 파일 이름 변경</p>
+  </li>
+  <li>
+    <p>cp : 파일 복사</p>
+  </li>
+  <li>cat,head,tail,more  : 파일 내용 확인
+    <blockquote>
+      <p>전체적으로 디렉토리 명령어랑 겹치는 내용이 많다.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>touch [생성할 파일이름] : 생성할 파일이름 으로 비어있는 파일이 생성된다.</p>
+  </li>
+  <li>
+    <p>rm, mv, cp 는 디렉토리 명령어랑 동일하게 사용한다.</p>
+  </li>
+  <li>
+    <p>head는 옵션을 넣으면 위에서부터, tail은 아래서부터 보고 싶은 라인 수만큼 보여준다.</p>
+  </li>
+  <li>more 은 파일의 내용을 화면에 맞춰서 확인, space는 한 페이지씩 확인, enter는 한 줄 더 확인</li>
 </ul>]]></content><author><name>Ino</name></author><category term="System" /><category term="linux" /><summary type="html"><![CDATA[리눅스 기본 환경 명령줄 인터페이스]]></summary></entry><entry><title type="html">깃과 깃허브</title><link href="http://localhost:4000/git/2022/05/31/Git%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" rel="alternate" type="text/html" title="깃과 깃허브" /><published>2022-05-31T00:00:00+09:00</published><updated>2022-05-31T00:00:00+09:00</updated><id>http://localhost:4000/git/2022/05/31/Git%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C</id><content type="html" xml:base="http://localhost:4000/git/2022/05/31/Git%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html"><![CDATA[<h2 id="깃--버전관리시스템">깃 : 버전관리시스템</h2>
 <blockquote>
   <p>VCS: version control system</p>
@@ -533,26 +639,4 @@ HTML에서는 열심히 엔터키로 줄바꿈 하려고 해도 안된다.
 
 <h2 id="finally">Finally</h2>
 
-<p>There’s actually a lot more to Markdown than this. See the official <a href="https://daringfireball.net/projects/markdown/basics">introduction</a> and <a href="https://daringfireball.net/projects/markdown/syntax">syntax</a> for more information. However, be aware that this is not using the official implementation, and this might work subtly differently in some of the little things.</p>]]></content><author><name>AlphateamInho</name></author><category term="markdown" /><category term="example" /><category term="markdown" /><summary type="html"><![CDATA[This note demonstrates some of what Markdown is capable of doing.]]></summary></entry><entry><title type="html">Welcome to InoBlog</title><link href="http://localhost:4000/jekyll/2022/05/05/Children's-Day-FirstPost.html" rel="alternate" type="text/html" title="Welcome to InoBlog" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/jekyll/2022/05/05/Children's%20Day%20-%20FirstPost</id><content type="html" xml:base="http://localhost:4000/jekyll/2022/05/05/Children's-Day-FirstPost.html"><![CDATA[<p>Thank you for visit my Blog</p>
-
-<p>First Post in my blog</p>
-
-<p><code class="language-plaintext highlighter-rouge">posts</code> is are posted whenever I want</p>
-
-<p>The post is for the record, but I’ll leave an additional explanation for someone who’s worried about the same problem</p>
-
-<p>Every post is meant to be a scrap</p>
-
-<p>Regardless of whether it is non-profit or profitable, anyone is actively encouraged to scrap unauthorized copying of the article.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">printf</span><span class="p">(</span><span class="s">"hello world !"</span><span class="p">);</span>
-  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">word</span> <span class="o">=</span> <span class="s">'hello world'</span>
-<span class="k">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-</code></pre></div></div>]]></content><author><name>Ino</name></author><category term="jekyll" /><category term="blog" /><summary type="html"><![CDATA[Thank you for visit my Blog]]></summary></entry></feed>
+<p>There’s actually a lot more to Markdown than this. See the official <a href="https://daringfireball.net/projects/markdown/basics">introduction</a> and <a href="https://daringfireball.net/projects/markdown/syntax">syntax</a> for more information. However, be aware that this is not using the official implementation, and this might work subtly differently in some of the little things.</p>]]></content><author><name>AlphateamInho</name></author><category term="markdown" /><category term="example" /><category term="markdown" /><summary type="html"><![CDATA[This note demonstrates some of what Markdown is capable of doing.]]></summary></entry></feed>
