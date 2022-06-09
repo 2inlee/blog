@@ -7,21 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Tags | 시를 좋아하는 프로그래머</title>
+<title>리눅스 기본구조와 명령어 | 시를 좋아하는 프로그래머</title>
 <meta name="generator" content="Jekyll v4.2.2">
-<meta property="og:title" content="Tags">
-<meta name="author" content="AlphateamInho">
+<meta property="og:title" content="리눅스 기본구조와 명령어">
+<meta name="author" content="Ino">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
-<meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
-<link rel="canonical" href="http://localhost:4000/tags.html">
-<meta property="og:url" content="http://localhost:4000/tags.html">
+<meta name="description" content="리눅스 기본 환경 명령줄 인터페이스">
+<meta property="og:description" content="리눅스 기본 환경 명령줄 인터페이스">
+<link rel="canonical" href="http://localhost:4000/system/2022/06/07/%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EB%B3%B8%ED%99%98%EA%B2%BD.html">
+<meta property="og:url" content="http://localhost:4000/system/2022/06/07/%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EB%B3%B8%ED%99%98%EA%B2%BD.html">
 <meta property="og:site_name" content="시를 좋아하는 프로그래머">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-06-07T00:00:00+09:00">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Tags">
+<meta property="twitter:title" content="리눅스 기본구조와 명령어">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"AlphateamInho"},"description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"Tags","url":"http://localhost:4000/tags.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ino"},"dateModified":"2022-06-07T00:00:00+09:00","datePublished":"2022-06-07T00:00:00+09:00","description":"리눅스 기본 환경 명령줄 인터페이스","headline":"리눅스 기본구조와 명령어","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/system/2022/06/07/%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EB%B3%B8%ED%99%98%EA%B2%BD.html"},"url":"http://localhost:4000/system/2022/06/07/%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EB%B3%B8%ED%99%98%EA%B2%BD.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="shortcut icon" href="favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -244,7 +245,17 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
-<header class="site-header " role="banner">
+
+
+
+
+
+
+
+
+
+
+<header class="site-header site-header-transparent" role="banner">
 
   <div class="wrapper">
     <div class="site-header-inner">
@@ -428,7 +439,7 @@ function googleTranslateElementInit() {
     var documentElement = document.documentElement;
 
     function storeScrollData() {
-      var y = getScrollPos().y;var scrollStatus = "";
+      var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
 
       if (y <= 0) {
         scrollStatus = "top";
@@ -595,7 +606,103 @@ function googleTranslateElementInit() {
 
 
 
-<script>
+
+
+
+
+
+
+
+
+
+
+<style>
+    html .page-banner {
+      background: #000;
+    }
+  </style>
+<style>html .page-banner {
+      height:  36.8vh;
+      min-height: 38vh;
+    }
+    html[data-scroll-status="top"] .page-banner {
+      height: 100vh;
+    }
+  </style>
+<style>
+    html .page-banner .page-banner-img > *:first-child {
+      opacity: 0.618;
+    }
+
+    html[data-theme="dark"] .page-banner .page-banner-img > *:first-child {
+      opacity: 0.443724;
+    }
+  </style>
+<style>
+    html .page-banner .page-banner-inner > *:first-child > *:nth-child(1) {
+      font-size: 4.25em; font-weight: bold; text-decoration: underline
+    }
+  </style>
+<style>
+    html .page-banner .page-banner-inner > *:first-child > *:nth-child(2) {
+      color: gold
+    }
+  </style>
+<section class="page-banner">
+    <div class="page-banner-img">
+<div style="background-image: url(https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png)"></div>
+        <img class="img-placeholder" src="https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png">
+</div>
+    <div class="wrapper">
+      <div class="page-banner-inner">
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">리눅스 기본구조와 명령어</h1>
+  <h2 class="post-subtitle">리눅스 명령어</h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2022-06-07T00:00:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Jun 07, 2022
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
+  </p>
+<div class="post-tags"><a class="post-tag" href="/tags.html#linux">#linux</a></div></header>
+</div>
+    </div>
+  </section><script>
   function hashLocate(hashValue) {
     hashValue = hashValue.replace(/^.*#h-/, '');
     hashValue = decodeURIComponent(hashValue);
@@ -769,7 +876,8 @@ function googleTranslateElementInit() {
         <div class="framework">
   <section class="main">
 
-     
+     <div class="post">
+  <section>
 
 
 
@@ -779,333 +887,103 @@ function googleTranslateElementInit() {
 
 
 
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="리눅스-기본-환경">리눅스 기본 환경</h2>
+<blockquote>
+  <p>명령줄 인터페이스</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>텍스트 터미널을 통해 사용자의 컴퓨터가 상호 작용하는 방식을 뜻한다.</p>
+  </li>
+  <li>
+    <p>즉, 작업 명령은 사용자가 컴퓨터 키보드 등을 통해 문자열의 형태로 입력하며 컴퓨터로부터의 출력 역시 문자열의 형태로 주어진다.</p>
+  </li>
+  <li>
+    <p>명령어 구조 <br>
+<code class="language-plaintext highlighter-rouge">명령어</code> : 시스템에서 특정 작업을 하기 위해 실행파일, 프로그램  <br>
+<code class="language-plaintext highlighter-rouge">옵션</code> : 명령어를 어떻게 실행할 것인지 지정
+일반적으로 대시(-) 문자 뒤에 옵션을 지정
+<code class="language-plaintext highlighter-rouge">아규먼트(Argument)</code> :명령어에 의해서 영향을 받는 파일 or 디렉토리 등 특정 대상 <br>
+ex) ls -al, ifconfig -a, netstat -anp</p>
+  </li>
+</ul>
+
+<h2 id="디렉토리-관련-명령어">디렉토리 관련 명령어</h2>
+<h3 id="먼저-디렉토리는-그냥-폴더이다">먼저 디렉토리는 그냥 폴더이다.</h3>
+<ul>
+  <li>pwd : 현재 작업 디렉토리 확인</li>
+  <li>cd : 작업 디렉토리 변경 (change directory)</li>
+  <li>ls : 디렉토리 내용 확인</li>
+  <li>mkdir : 디렉토리 생성 (make directory)</li>
+  <li>rmdir : 디렉토리 제거 (remove directory)</li>
+  <li>mv : 디렉토리 이름 변경</li>
+  <li>mv : 디렉토리 이동</li>
+  <li>cp : 디렉토리 복사</li>
+</ul>
+
+<blockquote>
+  <p>mv는 옵션에 따라 기능이 달라진다.</p>
+</blockquote>
+
+<ul>
+  <li>ls [확인 할 디렉토리] : 디렉토리 내용 확인</li>
+  <li>일반적으로 ls 명령어는 -al 옵션과 같이 사용한다</li>
+  <li>
+    <p>-a는 숨겨진 파일까지 모두 표시, -l은 좀 더 자세한 결과를 출력한다.</p>
+  </li>
+  <li>
+    <p>mkdir [생성할 디렉토리 이름] : 지정한 이름으로 된 디렉토리를 생성 <br>
+하위 구조도 함께 만들려면 -p옵션을 함께 사용</p>
+  </li>
+  <li>
+    <p>rmdir [삭제할 디렉토리 이름] : 디렉토리를 삭제할 때 사용하는 명령어 내부에 특정 파일이나 디렉토리가 있으면 안에 파일을 삭제하고 삭제</p>
+  </li>
+  <li>
+    <p>rm -r [삭제할 디렉토리 이름] : 파일을 삭제하는 rm명령어에 -r 옵션을 이용하여 디렉토리를 삭제할 수 있다.</p>
+  </li>
+  <li>cd [이동할 경로] : 작업 디렉토리를 다른 곳으로 변경할 때 사용</li>
+</ul>
+
+<h2 id="절대-경로--상대-경로">절대 경로 &amp; 상대 경로</h2>
+<ul>
+  <li>명령어를 사용할 때 경로를 입력하는 방식은 2가지가 있다.</li>
+  <li>절대 경로 : 최상위 디렉토리인 /에서부터 특정 파일 또는 디렉토리의 경로를 모두 입력</li>
+  <li>상대 경로 : 현재 작업 디렉토리를 기준으로 특정 파일 또는 디렉토리의 경로를 입력 <code class="language-plaintext highlighter-rouge">.</code>은 현재 디렉토리를 의미하고 <code class="language-plaintext highlighter-rouge">..</code>은 상위 디렉토리를 의미한다.
+    <blockquote>
+      <p>그래서 <code class="language-plaintext highlighter-rouge">cd ..</code> 이라는 명령어는 상위 폴더로 디렉토리를 이동해달라는 의미가 되는 것이다.  <br>
+<code class="language-plaintext highlighter-rouge">cd /</code> 은 최상위 디렉토리로 이동해달라는건데, 그냥 <code class="language-plaintext highlighter-rouge">/</code>로 시작하면 절대경로가 되는데, 절대경로상 <code class="language-plaintext highlighter-rouge">/</code>는 가장 최상위 디렉토리라 그런것이다.</p>
+    </blockquote>
+  </li>
+</ul>
 
 
+    </div>
 
-
-
-
-
-
-  
-  <div class="page-segments">
-  <ul class="page-segments-list">
-    
-    <h2 id="blog" class="segment-name">blog</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">May 05, 2022</span>
-<span>
-  <a class="post-link" href="/jekyll/2022/05/05/Children's-Day-FirstPost.html">
-    Welcome to InoBlog
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="css" class="segment-name">css</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">May 25, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/25/CSS%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    CSS에 대해서
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="example" class="segment-name">example</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">May 06, 2022</span>
-<span>
-  <a class="post-link" href="/markdown/2022/05/06/test-markdown.html">
-    An exhibit of Markdown
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="git" class="segment-name">git</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">May 31, 2022</span>
-<span>
-  <a class="post-link" href="/git/2022/05/31/Git%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    깃과 깃허브
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="html" class="segment-name">html</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">May 26, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/26/%EC%8B%9C%EB%A7%A8%ED%8B%B1%EC%9A%94%EC%86%8C%EC%99%80-%EC%9B%B9.html">
-    시맨틱 웹(Semantic Web)
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">May 24, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/24/HTML5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    HTML에 대해서
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="javascript" class="segment-name">javascript</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">May 30, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/30/Server%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    서버에 대해서
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">May 29, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/29/Javascrpt%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    자바스크립트에 대해서
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">May 28, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/28/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    프로그래밍이란?
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="linux" class="segment-name">linux</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">Jun 07, 2022</span>
-<span>
-  <a class="post-link" href="/system/2022/06/07/%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EB%B3%B8%ED%99%98%EA%B2%BD.html">
-    리눅스 기본구조와 명령어
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="markdown" class="segment-name">markdown</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">May 06, 2022</span>
-<span>
-  <a class="post-link" href="/markdown/2022/05/06/test-markdown.html">
-    An exhibit of Markdown
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="web" class="segment-name">web</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">May 30, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/30/Server%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    서버에 대해서
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">May 29, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/29/Javascrpt%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    자바스크립트에 대해서
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">May 28, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/28/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    프로그래밍이란?
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">May 26, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/26/%EC%8B%9C%EB%A7%A8%ED%8B%B1%EC%9A%94%EC%86%8C%EC%99%80-%EC%9B%B9.html">
-    시맨틱 웹(Semantic Web)
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">May 25, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/25/CSS%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    CSS에 대해서
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">May 24, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/24/HTML5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    HTML에 대해서
-  </a>
-</span>
- </li>
-        
-      
-    
-  </ul>
+</article>
+<div class="post-nav">
+<a class="previous" href="/git/2022/05/31/Git%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" title="깃과 깃허브">깃과 깃허브</a><span></span>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/system/2022/06/07/%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EB%B3%B8%ED%99%98%EA%B2%BD.html" title="">리눅스 기본구조와 명령어</a></li>
+<li><a class="post-link" href="/web/2022/05/25/CSS%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" title="">CSS에 대해서</a></li>
+<li><a class="post-link" href="/web/2022/05/30/Server%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" title="">서버에 대해서</a></li>
+<li><a class="post-link" href="/markdown/2022/05/06/test-markdown.html" title="">An exhibit of Markdown</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
 </div>
 
 
   </section>
   <section class="sidebar" style="margin-left: 15px;">
-    <!-- Get sidebar items -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="common-list">
-  <ul>
-    <li>
-      <a href="/index.html">
-        All<span>10</span>
-      </a>
-    </li>
-
-    
-      <li>
-        <a href="/tags.html#h-blog">
-          blog <span>1</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-css">
-          css <span>1</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-example">
-          example <span>1</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-git">
-          git <span>1</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-html">
-          html <span>2</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-javascript">
-          javascript <span>3</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-linux">
-          linux <span>1</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-markdown">
-          markdown <span>1</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-web">
-          web <span>6</span>
-        </a>
-      </li>
-    
-  </ul>
-</div>
-</section>
+    <!-- Get sidebar items --></section>
 </div>
 
       </div>
