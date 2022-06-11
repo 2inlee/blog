@@ -1,4 +1,117 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-09T22:11:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">문서편집기 vi</title><link href="http://localhost:4000/system/2022/06/09/%EB%AC%B8%EC%84%9C%ED%8E%B8%EC%A7%91%EA%B8%B0vi.html" rel="alternate" type="text/html" title="문서편집기 vi" /><published>2022-06-09T00:00:00+09:00</published><updated>2022-06-09T00:00:00+09:00</updated><id>http://localhost:4000/system/2022/06/09/%EB%AC%B8%EC%84%9C%ED%8E%B8%EC%A7%91%EA%B8%B0vi</id><content type="html" xml:base="http://localhost:4000/system/2022/06/09/%EB%AC%B8%EC%84%9C%ED%8E%B8%EC%A7%91%EA%B8%B0vi.html"><![CDATA[<h2 id="vi-편집기">vi 편집기</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-12T00:23:47+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">DB 정규화</title><link href="http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html" rel="alternate" type="text/html" title="DB 정규화" /><published>2022-06-11T00:00:00+09:00</published><updated>2022-06-11T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94</id><content type="html" xml:base="http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html"><![CDATA[<h2 id="정규화-">정규화 ?</h2>
+
+<ul>
+  <li>
+    <p>DB시스템을 만지다보면 엄청나게 많은 테이블들이 얽혀있어 하나의 데이터를 수정했을때 여러문제가 생길 수 있는데,
+정규화를 통해서 정해진 규칙대로 테이블을 쪼개게 되면, 문제점들을 사전에 해소할 수 있음.</p>
+  </li>
+  <li>
+    <p>가장 대표적인 문제점들로는 삭제이상(delete), 삽입이상(insert), 수정이상(update)</p>
+  </li>
+  <li>삭제이상은 지정된 테이블에서 데이터를 삭제하려고 하는데, 연결된 다른테이블에서도 데이터가 삭제되는 것이다.</li>
+  <li>삽입이상은 지정된 테이블에 데이터를 삽입하려고 하는데, 연결된 다른테이블에서도 데이터가 삽입되는 것이다.</li>
+  <li>수정이상은 원하는 데이터를 모두 수정하지 못하고, 일부 데이터만 수정되는 것이다.</li>
+</ul>
+
+<p>이러한 문제점들을 해소하기 위해서 테이블을 쪼개는 것이다.</p>
+
+<h2 id="제1정규화">제1정규화</h2>
+
+<ol>
+  <li>어떤 Relation에 속한 모든 Domain이 원자값만으로 되어 있다.</li>
+  <li>모든 attribute에 반복되는 그룹이 나타나지 않는다</li>
+  <li>기본키를 사용하여 관련 데이터의 각 집합을 고유하게 식별할 수 있어야한다.</li>
+</ol>
+
+<blockquote>
+  <p>릴레이션 = 테이블 = 앤티티 = 개체   <br />
+행 = row = 레코드 = 투플  <br />
+열 = 컬럼 = 필드 = 속성 = 어트리뷰트  <br />
+원자값 (atomic value) : 더 이상 쪼갤 수 없는 값</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>1번은 그냥 한개의 릴레이션에 여러개의 값이 들어가면 안된다는 것이다.  <br />
+ex ) 취미 : 등산, 골프  » 이러면 안된다는 것이다.</p>
+  </li>
+  <li>
+    <p>2번은 위와같이 한개의 Relation에 여러개의 값이 들어가는 것을 막기위해 같은 그룹을 여러 개 만드는것이다.
+ex ) 취미1 : 등산, 취미2 : 골프 » 이러면 1번을 안하려고 억지로 릴레이션을 분리하는것이니깐 정규화 하는 의미가 없다.</p>
+  </li>
+  <li>
+    <p>3번은 1번,2번 case를 막기위해 <br />
+내취미 : 등산, 내취미 : 골프  <br />
+이런식으로 같은 릴레이션을 만들어 관련 데이터를 고유하게 식별하지 못하게 하면 안된다는 것이다.</p>
+  </li>
+  <li>사실 그냥 반복그룹을 제거하되 그괴정에서 의미가 없는 방식으로 제거하지 말라는 것이다.</li>
+  <li>왜 정규화 하는지를 생각하면 제1정규화는 <code class="language-plaintext highlighter-rouge">반복그룹제거</code> 하나로 방식을 통일할 수 있다.</li>
+</ul>
+
+<h2 id="제2정규화">제2정규화</h2>
+
+<ul>
+  <li>제2 정규화를 수행 했을 경우 테이블의 모든 컬럼이 완전 함수적 종속을 만족한다.
+    <blockquote>
+      <p>부분 함수적 종속을 모두 제거했다는 뜻이다.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<blockquote>
+  <p>함수적 종속 : x값에 따라 y값이 결정될 때 x-&gt;y로 표현하는데, 이를 y는 x에 대해 수적 종속이라고 한다. <br />
+예를들어 학번을 알면 이름을 알 수 있는데, 이 경우엔 학번이 x가 되고 이름이 y가 된다.  <br />
+x를 결정자라고 하고, y를 종속자라고 한다. <br />
+즉 다시말해서, x가 바뀌었을 경우 y가 바뀌어야만 한다는 것이다.</p>
+</blockquote>
+
+<blockquote>
+  <p>함수적 종속에서 x의 값이 여러 요소일 경우, 즉 {x1,x2} -&gt; y 일 경우, x1과 x2가 y의 값을 결정할 때 이를 완전 함수적 종속이라고 하고, x1,x2 중 하나만 y의 값을 결정할 때 이를 부분 함수적 종속이라고 한다.</p>
+</blockquote>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173193344-e11fe49c-6039-43c6-804a-605df896c729.png" width="600px" /></p>
+
+<p>위에서 model과 manufacture을 알면 model full name 필드를 아예 유지하지 않거나 참조하지 않아도 결정되기 때문에 {model,manufactor} -&gt; model full name 이라고 할 수 있다. 하지만, {model, manufactor} -&gt; manufactor country 에서 model과 manufacturer country는 아무런 연관 관계가 없기 때문에, manufacturer country는 manufacturer와만 종속관계에 있게 되고 이를 부분 함수 종속이라고 하게 되는 것이다.  아래의 그림을 보면 쉽게 이해할 수 있다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173193358-c3119a2b-09ed-4103-97ec-d524f01144ff.png" width="600px" /></p>
+
+<p>위에서 부분 함수 종속을 제거 하게 되면, 아래와 같은 그림이 된다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173193379-dcafdf0f-6840-4e8a-8c58-ed4ca6d7fb87.png" width="600px" /></p>
+
+<p>따라서, 부분 함수 종속을 제거한 이후의 테이블은 아래와 같고, 이는 제 2정규형을 만족한 테이블이다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173193384-176d99b9-7694-4be3-b8c4-1572b50641b3.png" width="600px" /></p>
+
+<ul>
+  <li>왜 정규화 하는지를 생각하면 제2정규화는 <code class="language-plaintext highlighter-rouge">부분함수적종속성제거</code> 하나로 방식을 통일할 수 있다.</li>
+</ul>
+
+<h2 id="제3정규화">제3정규화</h2>
+
+<ul>
+  <li>테이블(Relation)이 제 3정규형을 만족한다는 것은 아래 두 가지 조건을 만족하는 것을 의미한다.
+    <ol>
+      <li>Relation이 제 2정규화 되었다.(The relation is in second normal form)</li>
+    </ol>
+  </li>
+</ul>
+
+<ol>
+  <li>기본 키(primary key)가 아닌 속성(Attribute)들은 기본 키에만 의존해야 한다.</li>
+</ol>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173193429-150e49b7-397e-486b-8e8e-9113c7d266e1.png" width="600px" /></p>
+
+<p>위 테이블에서 {Tournament, Year}가 후보키가 된다. 하지만 Winner Date of Birth은 기본키가 아닌 속성인 Winner를 거쳐 {Tournament, Year}에 의존하고 있는 것을 알 수 있는데, 이는 3NF를 위반한 것이 된다. 따라서 테이블을 아래와 같이 둘로 나누어 주자</p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173193437-2e3d5c51-f6cf-4a07-97cd-c4e688a04eba.png" width="600px" /></p>
+
+<p>위 테이블은 3정규화를 만족한 상태이다.</p>
+
+<ul>
+  <li>왜 정규화 하는지를 생각하면 제3정규화는 <code class="language-plaintext highlighter-rouge">이행적종속성</code> 하나로 방식을 통일할 수 있다.</li>
+</ul>]]></content><author><name>Ino</name></author><category term="DB" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[정규화 ?]]></summary></entry><entry><title type="html">문서편집기 vi</title><link href="http://localhost:4000/system/2022/06/09/%EB%AC%B8%EC%84%9C%ED%8E%B8%EC%A7%91%EA%B8%B0vi.html" rel="alternate" type="text/html" title="문서편집기 vi" /><published>2022-06-09T00:00:00+09:00</published><updated>2022-06-09T00:00:00+09:00</updated><id>http://localhost:4000/system/2022/06/09/%EB%AC%B8%EC%84%9C%ED%8E%B8%EC%A7%91%EA%B8%B0vi</id><content type="html" xml:base="http://localhost:4000/system/2022/06/09/%EB%AC%B8%EC%84%9C%ED%8E%B8%EC%A7%91%EA%B8%B0vi.html"><![CDATA[<h2 id="vi-편집기">vi 편집기</h2>
 <blockquote>
   <p>vi 편집기는 일반적으로 모드가 나누어져 있기 때문에, 따로 공부를 하지 않으면 사용할 때 어려움이 있다.</p>
 </blockquote>
@@ -91,7 +204,7 @@
     <p>명령어 구조 <br />
 <code class="language-plaintext highlighter-rouge">명령어</code> : 시스템에서 특정 작업을 하기 위해 실행파일, 프로그램  <br />
 <code class="language-plaintext highlighter-rouge">옵션</code> : 명령어를 어떻게 실행할 것인지 지정
-일반적으로 대시(-) 문자 뒤에 옵션을 지정
+일반적으로 대시(-) 문자 뒤에 옵션을 지정  <br />
 <code class="language-plaintext highlighter-rouge">아규먼트(Argument)</code> :명령어에 의해서 영향을 받는 파일 or 디렉토리 등 특정 대상 <br />
 ex) ls -al, ifconfig -a, netstat -anp</p>
   </li>
@@ -554,89 +667,4 @@ HTML에서는 열심히 엔터키로 줄바꿈 하려고 해도 안된다.
 줄바꿈이 필요하면 <code class="language-plaintext highlighter-rouge">&lt;br&gt;</code>를 사용하자 !</p>
 
 <p>그럼 단순히 h태그는 p태그보다 size만 큰 글씨인가 ?<br />
-다음 포스팅에서는 반드시 특정태그를 이용해서 HTML을 작성해야하는 이유를 간략히 포스팅하겠다.</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="html" /><summary type="html"><![CDATA[1.HTML 이 뭔데?]]></summary></entry><entry><title type="html">An exhibit of Markdown</title><link href="http://localhost:4000/markdown/2022/05/06/test-markdown.html" rel="alternate" type="text/html" title="An exhibit of Markdown" /><published>2022-05-06T00:00:00+09:00</published><updated>2022-05-06T00:00:00+09:00</updated><id>http://localhost:4000/markdown/2022/05/06/test-markdown</id><content type="html" xml:base="http://localhost:4000/markdown/2022/05/06/test-markdown.html"><![CDATA[<p>This note demonstrates some of what <a href="https://daringfireball.net/projects/markdown/">Markdown</a> is capable of doing.</p>
-
-<h2 id="an-exhibit-of-markdown">An exhibit of Markdown</h2>
-
-<p><em>Note: Feel free to play with this page. Unlike regular notes, this doesn’t automatically save itself.</em></p>
-
-<h2 id="basic-formatting">Basic formatting</h2>
-
-<p>Paragraphs can be written like so. A paragraph is the basic block of Markdown. A paragraph is what text will turn into when there is no reason it should become anything else.</p>
-
-<p>Paragraphs must be separated by a blank line. Basic formatting of <em>italics</em> and <strong>bold</strong> is supported. This <em>can be <strong>nested</strong> like</em> so.</p>
-
-<h2 id="lists">Lists</h2>
-
-<h3 id="ordered-list">Ordered list</h3>
-
-<ol>
-  <li>Item 1</li>
-  <li>A second item</li>
-  <li>Number 3</li>
-  <li>Ⅳ</li>
-</ol>
-
-<p><em>Note: the fourth item uses the Unicode character for <a href="https://www.fileformat.info/info/unicode/char/2163/index.htm">Roman numeral four</a>.</em></p>
-
-<h3 id="unordered-list">Unordered list</h3>
-
-<ul>
-  <li>An item</li>
-  <li>Another item</li>
-  <li>Yet another item</li>
-  <li>And there’s more…</li>
-</ul>
-
-<h2 id="paragraph-modifiers">Paragraph modifiers</h2>
-
-<h3 id="code-block">Code block</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Code blocks are very useful for developers and other people who look at code or other things that are written in plain text. As you can see, it uses a fixed-width font.
-</code></pre></div></div>
-
-<p>You can also make <code class="language-plaintext highlighter-rouge">inline code</code> to add code into other things.</p>
-
-<h3 id="quote">Quote</h3>
-
-<blockquote>
-  <p>Here is a quote. What this is should be self explanatory. Quotes are automatically indented when they are used.</p>
-</blockquote>
-
-<h2 id="headings">Headings</h2>
-
-<p>There are six levels of headings. They correspond with the six levels of HTML headings. You’ve probably noticed them already in the page. Each level down uses one more hash character.</p>
-
-<h3 id="headings-can-also-contain-formatting">Headings <em>can</em> also contain <strong>formatting</strong></h3>
-
-<h3 id="they-can-even-contain-inline-code">They can even contain <code class="language-plaintext highlighter-rouge">inline code</code></h3>
-
-<p>Of course, demonstrating what headings look like messes up the structure of the page.</p>
-
-<p>I don’t recommend using more than three or four levels of headings here, because, when you’re smallest heading isn’t too small, and you’re largest heading isn’t too big, and you want each size up to look noticeably larger and more important, there there are only so many sizes that you can use.</p>
-
-<h2 id="urls">URLs</h2>
-
-<p>URLs can be made in a handful of ways:</p>
-
-<ul>
-  <li>A named link to <a href="https://www.markitdown.net/">MarkItDown</a>. The easiest way to do these is to select what you want to make a link and hit <code class="language-plaintext highlighter-rouge">Ctrl+L</code>.</li>
-  <li>Another named link to <a href="https://www.markitdown.net/">MarkItDown</a></li>
-  <li>Sometimes you just want a URL like <a href="https://www.markitdown.net/">https://www.markitdown.net/</a>.</li>
-</ul>
-
-<h2 id="horizontal-rule">Horizontal rule</h2>
-
-<p>A horizontal rule is a line that goes across the middle of the page.</p>
-
-<hr />
-
-<p>It’s sometimes handy for breaking things up.</p>
-
-<h2 id="images">Images</h2>
-
-<p>Markdown can also contain images. I’ll need to add something here sometime.</p>
-
-<h2 id="finally">Finally</h2>
-
-<p>There’s actually a lot more to Markdown than this. See the official <a href="https://daringfireball.net/projects/markdown/basics">introduction</a> and <a href="https://daringfireball.net/projects/markdown/syntax">syntax</a> for more information. However, be aware that this is not using the official implementation, and this might work subtly differently in some of the little things.</p>]]></content><author><name>AlphateamInho</name></author><category term="markdown" /><category term="example" /><category term="markdown" /><summary type="html"><![CDATA[This note demonstrates some of what Markdown is capable of doing.]]></summary></entry></feed>
+다음 포스팅에서는 반드시 특정태그를 이용해서 HTML을 작성해야하는 이유를 간략히 포스팅하겠다.</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="html" /><summary type="html"><![CDATA[1.HTML 이 뭔데?]]></summary></entry></feed>
