@@ -1,0 +1,61 @@
+I"�	<h2 id="스택의-정의">스택의 정의</h2>
+<ul>
+  <li>한쪽 끝(top)에서 삽입과 삭제가 일어나는 선형리스트
+LIFO(Last In First Out) 구조</li>
+  <li>선형리스트의 긑부분에서만 자료의 입력과 출력이 가능하도록 제한된 자료구조</li>
+  <li>마지막 삽입 (Last-In)한 원소는 맨 위에 쌓여 있다가 가장먼저 삭제(First-Out) 된다.
+    <blockquote>
+      <p>후입선출 구조 (LIFO)</p>
+    </blockquote>
+  </li>
+  <li>스택을 운영하기 위하여 끝 부분(top)에 대한 정보가 필요함.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173239877-8cfb6ccb-55de-4376-804e-a2efea200fe4.png" width="800px" /></p>
+
+<blockquote>
+  <p>위 그림처럼 끝 부분(top) 에서만 삽입과 삭제가 일어남.</p>
+</blockquote>
+
+<h2 id="스택의-연산">스택의 연산</h2>
+<ul>
+  <li>현재 스택의 상태를 나타내는 변수 top, 데이터를 담을 배열 stack이 필요하다.</li>
+</ul>
+
+<p>(1) 삽입  <br />
+스택이 full한지 check   <br />
+top++, stack[top] = data  <br />
+(2) 삭제
+스택이 empty인지 check  <br />
+데이터 꺼내 사용, top–</p>
+
+<h2 id="수식의-표기법">수식의 표기법</h2>
+<p>연산자의 위치에 따라 수식의 표기법을 구분할 수 있다.</p>
+
+<ul>
+  <li>
+    <p>전위표기법 : 연산자가 피연산자 앞에 오는 표기법</p>
+  </li>
+  <li>
+    <p>중위표기법 : 일상 사용하는 방법</p>
+  </li>
+  <li>
+    <p>후위표기법 : 연산자가 피연산자 뒤에 오는 표기법, 괄호를 사용하지 않아서 컴파일러에서 사용하는 표기법이다.</p>
+  </li>
+</ul>
+
+<h3 id="중위표기식을-후위표기식으로-변환하는-알고리즘">중위표기식을 후위표기식으로 변환하는 알고리즘</h3>
+
+<p>각 연산자, 피연산자를 하나씩 읽으면서 스택에 저장과 출력이란 2가지 동작을 조합하여 수행함</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">피연산자</code> : 항상 출력</li>
+  <li><code class="language-plaintext highlighter-rouge">연산자</code> : 아래 과정을 스택에 저장될 때까지 반복</li>
+</ul>
+
+<p>if((새 연산자의 우선순위 &gt; 스택의 top연산자의 우선순위) or (스택이 비었음)) <br />
+-&gt;  스택에 저장   <br />
+else (top의 연산자를 pop하여 출력)
+이후 식을 다 읽었으면 스택에 있는 모든 연산자를 pop 하여 출력</p>
+
+:ET

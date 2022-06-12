@@ -7,21 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Tags | 시를 좋아하는 프로그래머</title>
+<title>Stack(스택)for C | 시를 좋아하는 프로그래머</title>
 <meta name="generator" content="Jekyll v4.2.2">
-<meta property="og:title" content="Tags">
-<meta name="author" content="AlphateamInho">
+<meta property="og:title" content="Stack(스택)for C">
+<meta name="author" content="Ino">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
-<meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
-<link rel="canonical" href="http://localhost:4000/tags.html">
-<meta property="og:url" content="http://localhost:4000/tags.html">
+<meta name="description" content="스택의 정의 한쪽 끝(top)에서 삽입과 삭제가 일어나는 선형리스트 LIFO(Last In First Out) 구조 선형리스트의 긑부분에서만 자료의 입력과 출력이 가능하도록 제한된 자료구조 마지막 삽입 (Last-In)한 원소는 맨 위에 쌓여 있다가 가장먼저 삭제(First-Out) 된다. 후입선출 구조 (LIFO) 스택을 운영하기 위하여 끝 부분(top)에 대한 정보가 필요함.">
+<meta property="og:description" content="스택의 정의 한쪽 끝(top)에서 삽입과 삭제가 일어나는 선형리스트 LIFO(Last In First Out) 구조 선형리스트의 긑부분에서만 자료의 입력과 출력이 가능하도록 제한된 자료구조 마지막 삽입 (Last-In)한 원소는 맨 위에 쌓여 있다가 가장먼저 삭제(First-Out) 된다. 후입선출 구조 (LIFO) 스택을 운영하기 위하여 끝 부분(top)에 대한 정보가 필요함.">
+<link rel="canonical" href="http://localhost:4000/algorithm/2022/06/13/StackForC.html">
+<meta property="og:url" content="http://localhost:4000/algorithm/2022/06/13/StackForC.html">
 <meta property="og:site_name" content="시를 좋아하는 프로그래머">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-06-13T00:00:00+09:00">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Tags">
+<meta property="twitter:title" content="Stack(스택)for C">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"AlphateamInho"},"description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"Tags","url":"http://localhost:4000/tags.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ino"},"dateModified":"2022-06-13T00:00:00+09:00","datePublished":"2022-06-13T00:00:00+09:00","description":"스택의 정의 한쪽 끝(top)에서 삽입과 삭제가 일어나는 선형리스트 LIFO(Last In First Out) 구조 선형리스트의 긑부분에서만 자료의 입력과 출력이 가능하도록 제한된 자료구조 마지막 삽입 (Last-In)한 원소는 맨 위에 쌓여 있다가 가장먼저 삭제(First-Out) 된다. 후입선출 구조 (LIFO) 스택을 운영하기 위하여 끝 부분(top)에 대한 정보가 필요함.","headline":"Stack(스택)for C","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/algorithm/2022/06/13/StackForC.html"},"url":"http://localhost:4000/algorithm/2022/06/13/StackForC.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="shortcut icon" href="favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -244,7 +245,17 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
-<header class="site-header " role="banner">
+
+
+
+
+
+
+
+
+
+
+<header class="site-header site-header-transparent" role="banner">
 
   <div class="wrapper">
     <div class="site-header-inner">
@@ -428,7 +439,7 @@ function googleTranslateElementInit() {
     var documentElement = document.documentElement;
 
     function storeScrollData() {
-      var y = getScrollPos().y;var scrollStatus = "";
+      var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
 
       if (y <= 0) {
         scrollStatus = "top";
@@ -595,7 +606,105 @@ function googleTranslateElementInit() {
 
 
 
-<script>
+
+
+
+
+
+
+
+
+
+
+<style>
+    html .page-banner {
+      background: #000;
+    }
+  </style>
+<style>html .page-banner {
+      height:  36.8vh;
+      min-height: 38vh;
+    }
+    html[data-scroll-status="top"] .page-banner {
+      height: 100vh;
+    }
+  </style>
+<style>
+    html .page-banner .page-banner-img > *:first-child {
+      opacity: 0.618;
+    }
+
+    html[data-theme="dark"] .page-banner .page-banner-img > *:first-child {
+      opacity: 0.443724;
+    }
+  </style>
+<style>
+    html .page-banner .page-banner-inner > *:first-child > *:nth-child(1) {
+      font-size: 4.25em; font-weight: bold; text-decoration: underline
+    }
+  </style>
+<style>
+    html .page-banner .page-banner-inner > *:first-child > *:nth-child(2) {
+      color: gold
+    }
+  </style>
+<section class="page-banner">
+    <div class="page-banner-img">
+<div style="background-image: url(https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png)"></div>
+        <img class="img-placeholder" src="https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png">
+</div>
+    <div class="wrapper">
+      <div class="page-banner-inner">
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">Stack(스택)for C</h1>
+  <h2 class="post-subtitle">알고리즘,C언어,스택</h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2022-06-13T00:00:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Jun 13, 2022
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+  </p>
+<div class="post-tags">
+<a class="post-tag" href="/tags.html#C">#C</a><a class="post-tag" href="/tags.html#algorithm">#algorithm</a>
+</div></header>
+</div>
+    </div>
+  </section><script>
   function hashLocate(hashValue) {
     hashValue = hashValue.replace(/^.*#h-/, '');
     hashValue = decodeURIComponent(hashValue);
@@ -769,7 +878,8 @@ function googleTranslateElementInit() {
         <div class="framework">
   <section class="main">
 
-     
+     <div class="post">
+  <section>
 
 
 
@@ -779,525 +889,96 @@ function googleTranslateElementInit() {
 
 
 
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="스택의-정의">스택의 정의</h2>
+<ul>
+  <li>한쪽 끝(top)에서 삽입과 삭제가 일어나는 선형리스트
+LIFO(Last In First Out) 구조</li>
+  <li>선형리스트의 긑부분에서만 자료의 입력과 출력이 가능하도록 제한된 자료구조</li>
+  <li>마지막 삽입 (Last-In)한 원소는 맨 위에 쌓여 있다가 가장먼저 삭제(First-Out) 된다.
+    <blockquote>
+      <p>후입선출 구조 (LIFO)</p>
+    </blockquote>
+  </li>
+  <li>스택을 운영하기 위하여 끝 부분(top)에 대한 정보가 필요함.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173239877-8cfb6ccb-55de-4376-804e-a2efea200fe4.png" width="800px"></p>
+
+<blockquote>
+  <p>위 그림처럼 끝 부분(top) 에서만 삽입과 삭제가 일어남.</p>
+</blockquote>
+
+<h2 id="스택의-연산">스택의 연산</h2>
+<ul>
+  <li>현재 스택의 상태를 나타내는 변수 top, 데이터를 담을 배열 stack이 필요하다.</li>
+</ul>
+
+<p>(1) 삽입  <br>
+스택이 full한지 check   <br>
+top++, stack[top] = data  <br>
+(2) 삭제
+스택이 empty인지 check  <br>
+데이터 꺼내 사용, top–</p>
+
+<h2 id="수식의-표기법">수식의 표기법</h2>
+<p>연산자의 위치에 따라 수식의 표기법을 구분할 수 있다.</p>
+
+<ul>
+  <li>
+    <p>전위표기법 : 연산자가 피연산자 앞에 오는 표기법</p>
+  </li>
+  <li>
+    <p>중위표기법 : 일상 사용하는 방법</p>
+  </li>
+  <li>
+    <p>후위표기법 : 연산자가 피연산자 뒤에 오는 표기법, 괄호를 사용하지 않아서 컴파일러에서 사용하는 표기법이다.</p>
+  </li>
+</ul>
+
+<h3 id="중위표기식을-후위표기식으로-변환하는-알고리즘">중위표기식을 후위표기식으로 변환하는 알고리즘</h3>
+
+<p>각 연산자, 피연산자를 하나씩 읽으면서 스택에 저장과 출력이란 2가지 동작을 조합하여 수행함</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">피연산자</code> : 항상 출력</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">연산자</code> : 아래 과정을 스택에 저장될 때까지 반복</li>
+</ul>
+
+<p>if((새 연산자의 우선순위 &gt; 스택의 top연산자의 우선순위) or (스택이 비었음)) <br>
+-&gt;  스택에 저장   <br>
+else (top의 연산자를 pop하여 출력)
+이후 식을 다 읽었으면 스택에 있는 모든 연산자를 pop 하여 출력</p>
 
 
 
+    </div>
 
-
-
-
-
-  
-  <div class="page-segments">
-  <ul class="page-segments-list">
-    
-    <h2 id="C" class="segment-name">C</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">Jun 13, 2022</span>
-<span>
-  <a class="post-link" href="/algorithm/2022/06/13/StackForC.html">
-    Stack(스택)for C
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Jun 12, 2022</span>
-<span>
-  <a class="post-link" href="/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html">
-    MagicSquare(마방진)for C
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="DB" class="segment-name">DB</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">Jun 12, 2022</span>
-<span>
-  <a class="post-link" href="/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html">
-    SQL문제
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Jun 12, 2022</span>
-<span>
-  <a class="post-link" href="/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95.html">
-    SQL기본문법
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Jun 11, 2022</span>
-<span>
-  <a class="post-link" href="/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html">
-    DB 정규화
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="SQL" class="segment-name">SQL</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">Jun 12, 2022</span>
-<span>
-  <a class="post-link" href="/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html">
-    SQL문제
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Jun 12, 2022</span>
-<span>
-  <a class="post-link" href="/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95.html">
-    SQL기본문법
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Jun 11, 2022</span>
-<span>
-  <a class="post-link" href="/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html">
-    DB 정규화
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="algorithm" class="segment-name">algorithm</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">Jun 13, 2022</span>
-<span>
-  <a class="post-link" href="/algorithm/2022/06/13/StackForC.html">
-    Stack(스택)for C
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Jun 12, 2022</span>
-<span>
-  <a class="post-link" href="/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html">
-    MagicSquare(마방진)for C
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="blog" class="segment-name">blog</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">May 05, 2022</span>
-<span>
-  <a class="post-link" href="/jekyll/2022/05/05/Children's-Day-FirstPost.html">
-    Welcome to InoBlog
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="css" class="segment-name">css</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">May 25, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/25/CSS%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    CSS에 대해서
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="example" class="segment-name">example</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">May 06, 2022</span>
-<span>
-  <a class="post-link" href="/markdown/2022/05/06/test-markdown.html">
-    An exhibit of Markdown
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="git" class="segment-name">git</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">May 31, 2022</span>
-<span>
-  <a class="post-link" href="/git/2022/05/31/Git%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    깃과 깃허브
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="html" class="segment-name">html</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">May 26, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/26/%EC%8B%9C%EB%A7%A8%ED%8B%B1%EC%9A%94%EC%86%8C%EC%99%80-%EC%9B%B9.html">
-    시맨틱 웹(Semantic Web)
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">May 24, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/24/HTML5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    HTML에 대해서
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="javascript" class="segment-name">javascript</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">May 30, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/30/Server%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    서버에 대해서
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">May 29, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/29/Javascrpt%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    자바스크립트에 대해서
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">May 28, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/28/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    프로그래밍이란?
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="linux" class="segment-name">linux</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">Jun 07, 2022</span>
-<span>
-  <a class="post-link" href="/system/2022/06/07/%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EB%B3%B8%ED%99%98%EA%B2%BD.html">
-    리눅스 기본구조와 명령어
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="markdown" class="segment-name">markdown</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">May 06, 2022</span>
-<span>
-  <a class="post-link" href="/markdown/2022/05/06/test-markdown.html">
-    An exhibit of Markdown
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="vi" class="segment-name">vi</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">Jun 09, 2022</span>
-<span>
-  <a class="post-link" href="/system/2022/06/09/%EB%AC%B8%EC%84%9C%ED%8E%B8%EC%A7%91%EA%B8%B0vi.html">
-    문서편집기 vi
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="vim" class="segment-name">vim</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">Jun 09, 2022</span>
-<span>
-  <a class="post-link" href="/system/2022/06/09/%EB%AC%B8%EC%84%9C%ED%8E%B8%EC%A7%91%EA%B8%B0vi.html">
-    문서편집기 vi
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="web" class="segment-name">web</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">May 30, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/30/Server%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    서버에 대해서
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">May 29, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/29/Javascrpt%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    자바스크립트에 대해서
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">May 28, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/28/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    프로그래밍이란?
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">May 26, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/26/%EC%8B%9C%EB%A7%A8%ED%8B%B1%EC%9A%94%EC%86%8C%EC%99%80-%EC%9B%B9.html">
-    시맨틱 웹(Semantic Web)
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">May 25, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/25/CSS%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    CSS에 대해서
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">May 24, 2022</span>
-<span>
-  <a class="post-link" href="/web/2022/05/24/HTML5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-    HTML에 대해서
-  </a>
-</span>
- </li>
-        
-      
-    
-  </ul>
+</article>
+<div class="post-nav">
+<a class="previous" href="/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html" title="MagicSquare(마방진)for C">MagicSquare(마방진)for C</a><span></span>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/system/2022/06/09/%EB%AC%B8%EC%84%9C%ED%8E%B8%EC%A7%91%EA%B8%B0vi.html" title="">문서편집기 vi</a></li>
+<li><a class="post-link" href="/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95.html" title="">SQL기본문법</a></li>
+<li><a class="post-link" href="/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html" title="">SQL문제</a></li>
+<li><a class="post-link" href="/web/2022/05/28/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" title="">프로그래밍이란?</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
 </div>
 
 
   </section>
   <section class="sidebar" style="margin-left: 15px;">
-    <!-- Get sidebar items -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="common-list">
-  <ul>
-    <li>
-      <a href="/index.html">
-        All<span>16</span>
-      </a>
-    </li>
-
-    
-      <li>
-        <a href="/tags.html#h-C">
-          C <span>2</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-DB">
-          DB <span>3</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-SQL">
-          SQL <span>3</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-algorithm">
-          algorithm <span>2</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-blog">
-          blog <span>1</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-css">
-          css <span>1</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-example">
-          example <span>1</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-git">
-          git <span>1</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-html">
-          html <span>2</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-javascript">
-          javascript <span>3</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-linux">
-          linux <span>1</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-markdown">
-          markdown <span>1</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-vi">
-          vi <span>1</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-vim">
-          vim <span>1</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/tags.html#h-web">
-          web <span>6</span>
-        </a>
-      </li>
-    
-  </ul>
-</div>
-</section>
+    <!-- Get sidebar items --></section>
 </div>
 
       </div>
