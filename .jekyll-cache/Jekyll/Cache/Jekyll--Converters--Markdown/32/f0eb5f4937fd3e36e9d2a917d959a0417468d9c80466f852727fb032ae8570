@@ -1,8 +1,0 @@
-I"�<h2 id="sql-문법-순서">SQL 문법 순서</h2>
-<p>SELECT(마지막)  무엇을 불러올건지
-FROM (1) 어디서
-WHERE (2) 조건문
-GROUP(3) 그룹별
-HAVING(4) 가져온것 중에서 조건문
-ORDER BY(5) 정렬</p>
-:ET

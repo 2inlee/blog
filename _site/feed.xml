@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-12T17:45:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">SQL기본문법</title><link href="http://localhost:4000/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95.html" rel="alternate" type="text/html" title="SQL기본문법" /><published>2022-06-12T00:00:00+09:00</published><updated>2022-06-12T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95</id><content type="html" xml:base="http://localhost:4000/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95.html"><![CDATA[<h2 id="select-기능">SELECT 기능</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-12T19:16:48+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">SQL기본문법</title><link href="http://localhost:4000/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95.html" rel="alternate" type="text/html" title="SQL기본문법" /><published>2022-06-12T00:00:00+09:00</published><updated>2022-06-12T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95</id><content type="html" xml:base="http://localhost:4000/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95.html"><![CDATA[<h2 id="select-기능">SELECT 기능</h2>
 
 <ul>
   <li>내가 원하는 정보 가져오기</li>
@@ -102,7 +102,65 @@ IN (...)	괄호 안의 값들 가운데 있음
 NOT IN (...)	괄호 안의 값들 가운데 없음
 LIKE '... % ...'	0~N개 문자를 가진 패턴
 LIKE '... _ ...'	_ 갯수만큼의 문자를 가진 패턴
-</code></pre>]]></content><author><name>Ino</name></author><category term="DB" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[SELECT 기능]]></summary></entry><entry><title type="html">SQL문제</title><link href="http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html" rel="alternate" type="text/html" title="SQL문제" /><published>2022-06-12T00:00:00+09:00</published><updated>2022-06-12T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C</id><content type="html" xml:base="http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html"><![CDATA[<h2 id="sql-문법-순서">SQL 문법 순서</h2>
+</code></pre>
+
+<h3 id="트랜잭션">트랜잭션</h3>
+
+<ul>
+  <li>트랜잭션 필요성</li>
+</ul>
+
+<ol>
+  <li>
+    <p>트랜잭션은 ‘거래’라는 뜻으로, 은행에서 입금과 출금을 하는 그 거래를 뜻한다.</p>
+  </li>
+  <li>
+    <p>A 은행에서 출금하여 B은행으로 송금한다고 가정하자.</p>
+  </li>
+  <li>
+    <p>송금한느 중에 알 수 없는 오류가 발생하여 A은행 계좌에서 돈이 빠져 나갔는데 B은행 계좌에 입금되지 않았다.</p>
+  </li>
+  <li>
+    <p>이때, 우리는 A은행 계좌의 출금을 취소하거나, 출금된 금액만큼 B은행 계좌로 다시 송금하면 된다.</p>
+  </li>
+  <li>
+    <p>하지만 이 방법은 번거롭고 더 심한 오류를 발생시킬수 있다.</p>
+  </li>
+  <li>
+    <p>그래서 생각해낸 해결책이, 거래가 성공적으로 모두 끝난 후에야 이를 완전한 거래로 승인하고, 거래 도중 뭔가 오류가 발생했을 때는 이 거래를 아예 처음부터 없었던 거래로 되돌리는 것이다.</p>
+  </li>
+  <li>
+    <p>이렇게 거래의 안전성을 확보하는 방법이 트랜잭션이다.</p>
+  </li>
+  <li>
+    <p>데이터베이스에선 테이블에서 데이터를 읽어 온 후 다른 테이블에 데이터를 입력하거나 갱신, 삭제하는데 처리 도중 오류가 발생하면 모든 작업을 원상태로 되돌린다.</p>
+  </li>
+  <li>
+    <p>데이터베이스에선 처리 과정이 모두 성공했을 때만 최종적으로 데이터베이스에 반영한다.</p>
+  </li>
+</ol>
+
+<ul>
+  <li>트랜잭션 4가지 특성 (ACID)</li>
+</ul>
+
+<p>1) 원자성 Atomicity - 트랜잭션에서 정의된 연산들은 모두 성공적으로 실행되던지 아니면 전혀 실행되지 않은 상태로 남아 있어야한다. (all or nothing)  <br />
+2) 일관성 Consistency - 트랜잭션이 실행되기 전의 데이터베이스 내용이 잘못 되어 있지 않다면 트랜잭션이 실행된 이후에도 데이터베이스의 내용에 잘못이 있으면 안된다. <br />
+3) 고립성 Isolation - 트랜잭션이 실행되는 도중에 다른 트랜잭션의 영향을 받아 잘못된 결과를 만들어서는 안된다. <br />
+4) 지속성 Durability - 트랜잭션이 성공적으로 수행되면 그 트랜잭션의 갱신한 데이터베이스의 내용은 영구적으로 저장된다.</p>]]></content><author><name>Ino</name></author><category term="DB" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[SELECT 기능]]></summary></entry><entry><title type="html">MagicSquare(마방진)forC</title><link href="http://localhost:4000/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html" rel="alternate" type="text/html" title="MagicSquare(마방진)forC" /><published>2022-06-12T00:00:00+09:00</published><updated>2022-06-12T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/06/12/%08%EB%A7%88%EB%B0%A9%EC%A7%84forC</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html"><![CDATA[<h2 id="마방진">마방진</h2>
+
+<p>우선 마방진에 대한 개념은 가로,세로,대각선의 합이 같아지도록 정사각형 모양으로 배열한 행렬이다.</p>
+
+<h4 id="마방진-만드는-규칙">마방진 만드는 규칙</h4>
+<p>1) 첫번째 행의 중앙에 1을 배열한다.   <br />
+2) 왼쪽 대각선으로 올라가면서 빈자리에 1씩 큰 수를 배열한다.  <br />
+이때 행렬의 밖으로 벗어나면 그 방향의 반대편에서 계속한다.  <br />
+3) 만약 이동해서 채워야하는 자리에 이미 숫자가 배열되어 있다면, 정해진 위치 바로 아래에 숫자를 배열한다.</p>
+<blockquote>
+  <p>5x5 마방진 예시</p>
+</blockquote>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173228247-33159117-d629-4c6b-8d1f-d9178874049c.png" width="800px" /></p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[마방진]]></summary></entry><entry><title type="html">SQL문제</title><link href="http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html" rel="alternate" type="text/html" title="SQL문제" /><published>2022-06-12T00:00:00+09:00</published><updated>2022-06-12T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C</id><content type="html" xml:base="http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html"><![CDATA[<h2 id="sql-문법-순서">SQL 문법 순서</h2>
 
 <p>SELECT(마지막)  무엇을 불러올건지 <br />
 FROM (1) 어디서 <br />
@@ -709,73 +767,4 @@ HTTP요청에는 크게 4가지가 있는데, 읽기 쓰기 수정 삭제이다.
 그리고 문제 해결 능력은 어느 선에서 성장을 멈추고 말 것이다.  <br />
 동작 원리의 이해는 코드의 동작을 예측할 수 있게 돕는다.
 또한 에러를 발생시키는 코드를 만나면 에러가 발생하는 원인을 이해해야 디버깅이 가능하다.
-이를 위해 코드의 동작을 예측할 수 있는 능력은 필수 불가결적 요소이다.</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="javascript" /><summary type="html"><![CDATA[1.본격적으로 JS(자바스크립트)를 설명하기전에, 프로그래밍이란 ? 앞서 설명했던 html과 css와는 다르게 JS(자바스크린트를 편의상 JS라고 하겠다.) 는 프로그래밍언어이기 때문에 프로그래밍에 대해서 간략하게 설명하고 넘어가겠다.]]></summary></entry><entry><title type="html">시맨틱 웹(Semantic Web)</title><link href="http://localhost:4000/web/2022/05/26/%EC%8B%9C%EB%A7%A8%ED%8B%B1%EC%9A%94%EC%86%8C%EC%99%80-%EC%9B%B9.html" rel="alternate" type="text/html" title="시맨틱 웹(Semantic Web)" /><published>2022-05-26T00:00:00+09:00</published><updated>2022-05-26T00:00:00+09:00</updated><id>http://localhost:4000/web/2022/05/26/%EC%8B%9C%EB%A7%A8%ED%8B%B1%EC%9A%94%EC%86%8C%EC%99%80%20%EC%9B%B9</id><content type="html" xml:base="http://localhost:4000/web/2022/05/26/%EC%8B%9C%EB%A7%A8%ED%8B%B1%EC%9A%94%EC%86%8C%EC%99%80-%EC%9B%B9.html"><![CDATA[<h2 id="시맨틱-웹이-뭔데">시맨틱 웹이 뭔데?</h2>
-<blockquote>
-  <p><em>시멘틱 웹에 관한부분은 PoiemaWeb (웹프로그래밍튜토리얼) 사이트 참조</em></p>
-</blockquote>
-
-<p>2022년 퍼블리싱 되고 있는 웹사이트의 갯수는 약20억개, 인터넷사용자수는 53만명이다.</p>
-<blockquote>
-  <p><em>출처 : https://www.internetlivestats.com/</em></p>
-</blockquote>
-
-<p>대부분의 인터넷 사용자는 원하는 정보를 취득하기 위해 Google이나 Naver와 같은 검색사이트를 이용한다. <br />
-웹사이트는 검색엔진에 의한 노출이 매우 중요하다. <br />
-당연한 것이 검색엔진에 노출되지 않는 웹사이트에는 접속하는 이도 없기 때문이다. <br />
-검색엔진은 이 시대의 가장 강력한 권력 중의 하나라고 말할 수도 있겠다.</p>
-
-<p>SEO(검색엔진 최적화: Search Engine Optimization)같은 마케팅 도구를 사용하여 검색엔진이 본인의 웹사이트를 검색하기 알맞은 구조로 웹사이트를 조정하기도 하는데, 이것은 기본적으로 검색엔진이 웹사이트 정보를 어떻게 수집하는지 아는 것으로 부터 시작된다.</p>
-
-<p>검색엔진은 로봇(Robot)이라는 프로그램을 이용해 매일 전세계의 웹사이트 정보를 수집한다.(이것을 크롤링이라 하며 검색엔진의 크롤러가 이를 수행한다.) <br />
-그리고 검색 사이트 이용자가 검색할 만한 키워드를 미리 예상하여 검색 키워드에 대응하는 인덱스(색인)을 만들어 둔다.(이것을 인덱싱이라 하며 검색엔진의 인덱서가 이를 수행한다.)</p>
-
-<hr />
-
-<p>인덱스를 생성할 때 사용되는 정보는 검색 로봇이 수집한 정보인데 결국 웹사이트의 HTML 코드이다. <br />
-즉, 검색 엔진은 HTML 코드 만으로 그 의미를 인지하여야 하는데 이때 시맨틱 요소(Semantic element)를 해석하게 된다.</p>
-<blockquote>
-  <p><em>여담으로, python에서 Beautiful Soup 라이브러리를 이용하면 직접 웹크롤링/스크래핑을 할 수 있다.</em></p>
-</blockquote>
-
-<p>HTML으로 작성된 문서는 컴퓨터가 해석할 수 있는 메타데이터와 사람이 사용하는 자연어 문장이 뒤섞여 있다. <br />
-아래 코드를 보면 1행과 2행은 브라우저에서 동일한 외형을 갖는다. 이는 h1 태그의 디폴트 스타일이 1행과 같기 때문이다.</p>
-<blockquote>
-  <p>b태그는 bold의 약자로 boid체(두꺼운글씨체)이다.</p>
-</blockquote>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;font</span> <span class="na">size=</span><span class="s">"6"</span><span class="nt">&gt;&lt;b&gt;</span>Hello<span class="nt">&lt;/b&gt;&lt;/font&gt;</span>
-<span class="nt">&lt;h1&gt;</span>Hello<span class="nt">&lt;/h1&gt;</span>
-</code></pre></div></div>
-
-<p><img src="https://user-images.githubusercontent.com/95608811/169962379-1c21cd6f-9b7f-4eee-a887-a5c82a6455ba.png" width="600px" /></p>
-
-<p>그러나 1행의 요소는 의미론적으로 어떤 의미도 가지고 있지 않다.<br />
-즉, 의도가 명확하지 않다. 
-개발자가 의도한 요소의 의미를 명확하게 나타내지 않고 다만 폰트 크기와 볼드체를 지정하는 메타데이터만을 브라우저에게 알리고 있다.<br />
-그러나 2행의 요소는 header(제목) 중 가장 상위 레벨이라는 의미를 내포하고 있어서 개발자가 의도한 요소의 의미가 명확히 드러나고 있다. 
-이것은 코드의 가독성을 높이고 유지보수를 쉽게한다.</p>
-
-<p><strong>검색엔진은 대체로 h1 요소 내의 콘텐츠를 웹문서의 중요한 제목으로 인식하고 인덱스에 포함시킬 확률이 높다.또한 사람도 h1 요소 내의 콘텐츠가 제목임을 인식할 수 있다.</strong></p>
-
-<p>시맨틱 요소로 구성되어 있는 웹페이지는 검색엔진에 보다 의미론적으로 문서 정보를 전달할 수 있고 검색엔진 또한 시맨틱 요소를 이용하여 보다 효과적인 크롤링과 인덱싱이 가능해졌다. 
-즉, 시맨틱 태그란 브라우저, 검색엔진, 개발자 모두에게 콘텐츠의 의미를 명확히 설명하는 역할을 한다.<br />
-시맨틱 태그에 의해 컴퓨터가 HTML 요소의 의미를 보다 명확히 해석하고 그 데이터를 활용할 수 있는 시맨틱 웹이 실현될 수 있다.</p>
-
-<p>시맨틱 웹이란 웹에 존재하는 수많은 웹페이지들에 메타데이터(Metadata)를 부여하여,<br />
-기존의 잡다한 데이터 집합이었던 웹페이지를 ‘의미’와 ‘관련성’을 가지는 거대한 데이터베이스로 구축하고자 하는 발상이다.</p>
-
-<p>HTML 요소는 non-semantic 요소, semantic 요소로 구분할 수 있다.</p>
-
-<blockquote>
-  <p>non-semantic 요소</p>
-</blockquote>
-
-<p>div, span 등이 있으며 이들 태그는 content에 대하여 어떤 설명도 하지 않는다.</p>
-
-<blockquote>
-  <p>semantic 요소</p>
-</blockquote>
-
-<p>form, table, img 등이 있으며 이들 태그는 content의 의미를 명확히 설명한다,</p>
-
-<p>간략히하자면, 웹페이지가 검색노출이 잘되게끔 하고싶다면,단순히 디자인적인 부분만을 고려하여 태그를 사용하는게 아닌 중요한 내용과 그렇지 않은 내용들을 semantic 요소를 고려하여 태그를 작성하면 된다 !</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="html" /><summary type="html"><![CDATA[시맨틱 웹이 뭔데? 시멘틱 웹에 관한부분은 PoiemaWeb (웹프로그래밍튜토리얼) 사이트 참조]]></summary></entry></feed>
+이를 위해 코드의 동작을 예측할 수 있는 능력은 필수 불가결적 요소이다.</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="javascript" /><summary type="html"><![CDATA[1.본격적으로 JS(자바스크립트)를 설명하기전에, 프로그래밍이란 ? 앞서 설명했던 html과 css와는 다르게 JS(자바스크린트를 편의상 JS라고 하겠다.) 는 프로그래밍언어이기 때문에 프로그래밍에 대해서 간략하게 설명하고 넘어가겠다.]]></summary></entry></feed>

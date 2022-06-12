@@ -657,7 +657,7 @@ function googleTranslateElementInit() {
       <div class="page-banner-inner">
 <header class="post-header">
   <h1 class="post-title p-name" itemprop="name headline">SQL기본문법</h1>
-  <h2 class="post-subtitle">SQL</h2>
+  <h2 class="post-subtitle">트랜잭션</h2>
 
   <p class="post-meta">
     <time class="dt-published" datetime="2022-06-12T00:00:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Jun 12, 2022
@@ -697,7 +697,7 @@ function googleTranslateElementInit() {
 
 
 
-    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
   </p>
 <div class="post-tags">
 <a class="post-tag" href="/tags.html#DB">#DB</a><a class="post-tag" href="/tags.html#SQL">#SQL</a>
@@ -999,21 +999,65 @@ LIKE '... % ...'	0~N개 문자를 가진 패턴
 LIKE '... _ ...'	_ 갯수만큼의 문자를 가진 패턴
 </code></pre>
 
+<h3 id="트랜잭션">트랜잭션</h3>
+
+<ul>
+  <li>트랜잭션 필요성</li>
+</ul>
+
+<ol>
+  <li>
+    <p>트랜잭션은 ‘거래’라는 뜻으로, 은행에서 입금과 출금을 하는 그 거래를 뜻한다.</p>
+  </li>
+  <li>
+    <p>A 은행에서 출금하여 B은행으로 송금한다고 가정하자.</p>
+  </li>
+  <li>
+    <p>송금한느 중에 알 수 없는 오류가 발생하여 A은행 계좌에서 돈이 빠져 나갔는데 B은행 계좌에 입금되지 않았다.</p>
+  </li>
+  <li>
+    <p>이때, 우리는 A은행 계좌의 출금을 취소하거나, 출금된 금액만큼 B은행 계좌로 다시 송금하면 된다.</p>
+  </li>
+  <li>
+    <p>하지만 이 방법은 번거롭고 더 심한 오류를 발생시킬수 있다.</p>
+  </li>
+  <li>
+    <p>그래서 생각해낸 해결책이, 거래가 성공적으로 모두 끝난 후에야 이를 완전한 거래로 승인하고, 거래 도중 뭔가 오류가 발생했을 때는 이 거래를 아예 처음부터 없었던 거래로 되돌리는 것이다.</p>
+  </li>
+  <li>
+    <p>이렇게 거래의 안전성을 확보하는 방법이 트랜잭션이다.</p>
+  </li>
+  <li>
+    <p>데이터베이스에선 테이블에서 데이터를 읽어 온 후 다른 테이블에 데이터를 입력하거나 갱신, 삭제하는데 처리 도중 오류가 발생하면 모든 작업을 원상태로 되돌린다.</p>
+  </li>
+  <li>
+    <p>데이터베이스에선 처리 과정이 모두 성공했을 때만 최종적으로 데이터베이스에 반영한다.</p>
+  </li>
+</ol>
+
+<ul>
+  <li>트랜잭션 4가지 특성 (ACID)</li>
+</ul>
+
+<p>1) 원자성 Atomicity - 트랜잭션에서 정의된 연산들은 모두 성공적으로 실행되던지 아니면 전혀 실행되지 않은 상태로 남아 있어야한다. (all or nothing)  <br>
+2) 일관성 Consistency - 트랜잭션이 실행되기 전의 데이터베이스 내용이 잘못 되어 있지 않다면 트랜잭션이 실행된 이후에도 데이터베이스의 내용에 잘못이 있으면 안된다. <br>
+3) 고립성 Isolation - 트랜잭션이 실행되는 도중에 다른 트랜잭션의 영향을 받아 잘못된 결과를 만들어서는 안된다. <br>
+4) 지속성 Durability - 트랜잭션이 성공적으로 수행되면 그 트랜잭션의 갱신한 데이터베이스의 내용은 영구적으로 저장된다.</p>
 
 
     </div>
 
 </article>
 <div class="post-nav">
-<a class="previous" href="/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html" title="DB 정규화">DB 정규화</a><a class="next" href="/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html" title="SQL문제">SQL문제</a>
+<a class="previous" href="/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html" title="MagicSquare(마방진)forC">MagicSquare(마방진)forC</a><a class="next" href="/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html" title="SQL문제">SQL문제</a>
 </div>
 <div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html" title="SQL문제">DB 정규화</a></li>
-<li><a class="post-link" href="/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html" title="SQL문제">SQL문제</a></li>
-<li><a class="post-link" href="/web/2022/05/25/CSS%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" title="SQL문제">CSS에 대해서</a></li>
-<li><a class="post-link" href="/web/2022/05/29/Javascrpt%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" title="SQL문제">자바스크립트에 대해서</a></li>
+        <li><a class="post-link" href="/web/2022/05/29/Javascrpt%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" title="SQL문제">자바스크립트에 대해서</a></li>
+<li><a class="post-link" href="/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html" title="SQL문제">DB 정규화</a></li>
+<li><a class="post-link" href="/web/2022/05/26/%EC%8B%9C%EB%A7%A8%ED%8B%B1%EC%9A%94%EC%86%8C%EC%99%80-%EC%9B%B9.html" title="SQL문제">시맨틱 웹(Semantic Web)</a></li>
+<li><a class="post-link" href="/markdown/2022/05/06/test-markdown.html" title="SQL문제">An exhibit of Markdown</a></li>
 </ul>
     </div>
 <div class="post-comments"></div></section>
