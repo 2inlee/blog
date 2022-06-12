@@ -1,0 +1,70 @@
+I"�<hr />
+<p>layout: post
+title: SQL문제
+subtitle: SQL
+author: Ino
+categories: DB
+banner:
+  # video: https://vjs.zencdn.net/v/oceans.mp4
+  image: “https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png”
+  opacity: 0.618
+  background: “#000”
+  height: “100vh”
+  min_height: “38vh”
+  heading_style: “font-size: 4.25em; font-weight: bold; text-decoration: underline”
+  subheading_style: “color: gold”
+tags: [DB,SQL]
+sidebar: []
+—   ㅜ</p>
+
+<h2 id="sql-문법-ㅅ">SQL 문법 ㅅ</h2>
+<h2 id="sql-문제">SQL 문제</h2>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173223493-4b33e677-66ff-4ae8-9cd1-cf306f69909f.png" width="600px" /></p>
+
+<p>1) 급여가 400 이상인 사원 이름과 그 사원이 속한 부서이름을 검색하라</p>
+<pre><code class="language-SQL">SELECT  ename, dname
+
+FROM    dept, emp
+
+WHERE   dept.deptid = emp.deptid
+
+AND   salary &gt;= 400;
+</code></pre>
+<p>​</p>
+
+<p>2) ‘영업부’ 와’구매부’ 사원의 급여 합계를 검색하라</p>
+
+<pre><code class="language-SQL">SELECT  SUM(salary)
+
+FROM    dept, emp
+
+WHERE   dept.deptid = emp.deptid
+
+AND   dname IN ('영업부','구매부');
+</code></pre>
+
+<p>​</p>
+
+<p>3) 가장 급여를 많이 받는 사원과 가장 적게 받는 사원의 급여액 차이는 얼마인지 검색하라</p>
+
+<pre><code class="language-SQL">SELECT  MAX(salary) - MIN(salary)
+
+FROM    emp;
+</code></pre>
+<p>​</p>
+
+<p>4) ‘영업’ 사원 중 급여가 380 이상인 사원 이름, 담당업무, 급여액을 검색하라</p>
+
+<pre><code class="language-SQL">SELECT  ename, job, salary
+
+FROM    dept, emp
+
+WHERE   dept.deptid = emp.deptid
+
+AND   dname = '영업부'
+
+AND   salary &gt;= 380;
+</code></pre>
+
+:ET

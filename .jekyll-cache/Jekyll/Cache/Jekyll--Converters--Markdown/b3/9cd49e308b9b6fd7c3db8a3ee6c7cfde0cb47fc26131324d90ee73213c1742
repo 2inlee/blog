@@ -1,0 +1,19 @@
+I"�<hr />
+<p>layout: post
+title: SQL문제
+subtitle: SQL
+author: Ino
+categories: DB
+banner:
+  # video: https://vjs.zencdn.net/v/oceans.mp4
+  image: “https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png”
+  opacity: 0.618
+  background: “#000”
+  height: “100vh”
+  min_height: “38vh”
+  heading_style: “font-size: 4.25em; font-weight: bold; text-decoration: underline”
+  subheading_style: “color: gold”
+tags: [DB,SQL]
+sidebar: []
+—   ㅜ</p>
+:ET
