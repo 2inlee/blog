@@ -1,4 +1,112 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-12T00:23:47+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">DB 정규화</title><link href="http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html" rel="alternate" type="text/html" title="DB 정규화" /><published>2022-06-11T00:00:00+09:00</published><updated>2022-06-11T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94</id><content type="html" xml:base="http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html"><![CDATA[<h2 id="정규화-">정규화 ?</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-12T17:05:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">SQL기본문법</title><link href="http://localhost:4000/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95.html" rel="alternate" type="text/html" title="SQL기본문법" /><published>2022-06-12T00:00:00+09:00</published><updated>2022-06-12T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95</id><content type="html" xml:base="http://localhost:4000/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95.html"><![CDATA[<h2 id="select-기능">SELECT 기능</h2>
+
+<ul>
+  <li>내가 원하는 정보 가져오기</li>
+</ul>
+
+<p>1) 테이블 전체 정보 보기</p>
+<pre><code class="language-SQL">SELECT * FROM Customers;
+</code></pre>
+
+<blockquote>
+  <p>*(asterisk)는 테이블의 모든 컬럼을 뜻한다.</p>
+</blockquote>
+
+<hr />
+
+<p>2) 원하는 컬럼만 보기</p>
+<pre><code class="language-SQL">SELECT CustomerName FROM Customers;
+</code></pre>
+<pre><code class="language-SQL">SELECT CustomerName, ContactName, Country
+FROM Customers;
+</code></pre>
+
+<hr />
+
+<p>3) 원하는 조건의 row(행)만 걸러서 보기</p>
+
+<ul>
+  <li>WHERE 구문 뒤에 조건을 붙여 원하는 데이터만 가져올 수 있습니다.</li>
+</ul>
+
+<pre><code class="language-SQL">SELECT * FROM Orders
+WHERE EmployeeID = 3;
+</code></pre>
+
+<pre><code class="language-SQL">SELECT * FROM OrderDetails
+WHERE Quantity &lt; 5;
+</code></pre>
+
+<hr />
+
+<p>4) 원하는 순서로 데이터 가져오기</p>
+
+<ul>
+  <li>ORDER BY 구문을 사용해서 특정 컬럼을 기준으로 데이터를 정렬할 수 있습니다.</li>
+</ul>
+
+<pre><code class="language-SQL">구문	 기준	  기본    
+ASC	오름차순  [x]
+DESC	내림차순 []
+</code></pre>
+
+<pre><code class="language-SQL">SELECT * FROM Customers
+ORDER BY ContactName;
+</code></pre>
+
+<pre><code class="language-SQL">SELECT * FROM OrderDetails
+ORDER BY ProductID ASC, Quantity DESC;
+</code></pre>
+<hr />
+
+<h2 id="sql-기본연산자">SQL 기본연산자</h2>
+
+<pre><code class="language-SQL">연산자	의미
+AND, &amp;&amp;	양쪽이 모두 TRUE일 때만 TRUE
+OR, ||	한쪽은 TRUE면 TRUE
+</code></pre>
+
+<pre><code class="language-SQL">SELECT * FROM Orders
+WHERE
+  CustomerId = 15 AND EmployeeId = 4;
+</code></pre>
+
+<pre><code class="language-OPERATOR">연산자	의미
+=	양쪽 값이 같음
+!=, &lt;&gt;	양쪽 값이 다름
+&gt;, &lt;	(왼쪽, 오른쪽) 값이 더 큼
+&gt;=, &lt;=	(왼쪽, 오른쪽) 값이 같거나 더 큼
+</code></pre>
+
+<pre><code class="language-BETWEEN">연산자	의미
+BETWEEN {MIN} AND {MAX}	두 값 사이에 있음
+NOT BETWEEN {MIN} AND {MAX}	두 값 사이가 아닌 곳에 있음
+</code></pre>
+
+<h3 id="총정리">총정리</h3>
+
+<pre><code class="language-GRAMMER">연산자	의미
++, -, *, /	각각 더하기, 빼기, 곱하기, 나누기
+%, MOD	나머지
+IS	양쪽이 모두 TRUE 또는 FALSE
+IS NOT	한쪽은 TRUE, 한쪽은 FALSE
+AND, &amp;&amp;	양쪽이 모두 TRUE일 때만 TRUE
+OR, ||	한쪽은 TRUE면 TRUE
+=	양쪽 값이 같음
+!=, &lt;&gt;	양쪽 값이 다름
+&gt;, &lt;	(왼쪽, 오른쪽) 값이 더 큼
+&gt;=, &lt;=	(왼쪽, 오른쪽) 값이 같거나 더 큼
+BETWEEN {MIN} AND {MAX}	두 값 사이에 있음
+NOT BETWEEN {MIN} AND {MAX}	두 값 사이가 아닌 곳에 있음
+IN (...)	괄호 안의 값들 가운데 있음
+NOT IN (...)	괄호 안의 값들 가운데 없음
+LIKE '... % ...'	0~N개 문자를 가진 패턴
+LIKE '... _ ...'	_ 갯수만큼의 문자를 가진 패턴
+</code></pre>]]></content><author><name>Ino</name></author><category term="DB" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[SELECT 기능]]></summary></entry><entry><title type="html">SQL문제</title><link href="http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html" rel="alternate" type="text/html" title="SQL문제" /><published>2022-06-12T00:00:00+09:00</published><updated>2022-06-12T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C</id><content type="html" xml:base="http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html"><![CDATA[<h2 id="sql-문제">SQL 문제</h2>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173223493-4b33e677-66ff-4ae8-9cd1-cf306f69909f.png" width="600px" /></p>
+
+<p>```SQL</p>]]></content><author><name>Ino</name></author><category term="DB" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[SQL 문제]]></summary></entry><entry><title type="html">DB 정규화</title><link href="http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html" rel="alternate" type="text/html" title="DB 정규화" /><published>2022-06-11T00:00:00+09:00</published><updated>2022-06-11T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94</id><content type="html" xml:base="http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html"><![CDATA[<h2 id="정규화-">정규화 ?</h2>
 
 <ul>
   <li>
@@ -539,132 +647,4 @@ HTTP요청에는 크게 4가지가 있는데, 읽기 쓰기 수정 삭제이다.
 
 <p>form, table, img 등이 있으며 이들 태그는 content의 의미를 명확히 설명한다,</p>
 
-<p>간략히하자면, 웹페이지가 검색노출이 잘되게끔 하고싶다면,단순히 디자인적인 부분만을 고려하여 태그를 사용하는게 아닌 중요한 내용과 그렇지 않은 내용들을 semantic 요소를 고려하여 태그를 작성하면 된다 !</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="html" /><summary type="html"><![CDATA[시맨틱 웹이 뭔데? 시멘틱 웹에 관한부분은 PoiemaWeb (웹프로그래밍튜토리얼) 사이트 참조]]></summary></entry><entry><title type="html">CSS에 대해서</title><link href="http://localhost:4000/web/2022/05/25/CSS%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" rel="alternate" type="text/html" title="CSS에 대해서" /><published>2022-05-25T00:00:00+09:00</published><updated>2022-05-25T00:00:00+09:00</updated><id>http://localhost:4000/web/2022/05/25/CSS%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C</id><content type="html" xml:base="http://localhost:4000/web/2022/05/25/CSS%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html"><![CDATA[<h2 id="css가-뭔데">CSS가 뭔데?</h2>
-<p>CSS(Cascading Style Sheets)는 HTML이나 XML과 같은 구조화 된 문서(Document)를 화면, 종이 등에 어떻게 렌더링할 것인지를 정의하기 위한 언어이다. 즉, CSS는 HTML의 각 요소(Element)의 style(design, layout etc)을 정의하여 화면(Screen) 등에 어떻게 렌더링하면 되는지 브라우저에게 설명하기 위한 언어이다.</p>
-
-<blockquote>
-  <p><del>그냥 웹페이지에서 HTML 로 만들어둔 웹 구조 위에 스타일을 입히는 작업이다.</del></p>
-</blockquote>
-
-<p>프론트엔드 개발자를 희망하면서, CSS는 배우기를 꺼려하는 초보개발자들이 종종 보인다.<br />
-CSS는 HTML이라는 구조에 단순히 색을 입히고, 폰트색만을 조절하는 것이 전부가 아니라, Javascript만으로는 구현하기 힘든 애니메이션이나 효과등을 넣을때 효과적으로 사용할 수 있기 때문에, Javascript나 파생라이브러리 (Vue.js,React.vs,Angular.js)를 배우기전에 초급자이상은 넘고 가는 것을 추천하다.</p>
-
-<hr />
-
-<h2 id="bootstrap">BootStrap</h2>
-<p>CSS를 기피하는 개발자들을 위해서 빠르고 간편한 반응형 웹디자인을 위해 Bootstrap 에서는 Open-source<br />
-라이브러리를 제공하는데,<br />
-HTML, CSS, JavaScript로 만들어진 typography, 입력 양식(forms), 버튼, 테이블, 탭, 내비게이션, 모달, 이미지 캐러셀(image carousel) 등을 제공하며 추가적으로 JavaScript plugin들을 제공한다<br />
-처음 CSS 공부하는 개발자라면 Bootstrap은 지양하고 CSS를 어느정도 이상 공부하고 
-Bootstrap을 사용하는것을 추천한다.
-그래도, 당장 빠르게 결과물을 내야 한다면 사용법 정도는 알고서 바로 적용하자.</p>
-<blockquote>
-  <p>Bootstrap 홈페이지링크<br />
-https://getbootstrap.com/</p>
-</blockquote>
-
-<hr />
-
-<h3 id="bootstrap의-장점">BootStrap의 장점</h3>
-
-<p>Easy to use <br />
-HTML과 CSS에 대한 기본 지식이 있다면 쉽게 사용할 수 있다.</p>
-
-<p>Responsive features  <br />
-스마트폰, 테블릿, 데스크탑에 적합한 responsive CSS를 제공한다.</p>
-
-<p>Mobile-first approach  <br />
-Bootstrap 3부터 mobile-first style을 기본으로 지원한다.</p>
-
-<p>Browser compatibility  <br />
-대부분의 브라우저(Chrome, Firefox, Internet Explorer, Safari, Opera)를 지원한다.</p>
-
-<p>Framework</p>
-
-<p>웹사이트 디자인에는 정형화된 코드가 자주 사용되는데 이를 별도로 저장해 두었다가 필요할 때마다 복사하여 사용하곤 한다.(Snippet 이라고한다) 그러나 스니핏이 개발팀 내 공유되어 관리되지 못하고 개인별로 사용하다보면 전체 코드는 일관된 스타일을 가지지 못하여 품질면이나 유지보수면에서도 문제가 발생하곤 한다.</p>
-
-<p>따라서 검증된 Framework나 Library를 사용하는 것이 개인이 개발관리 하는것 보다 팀프로젝트나 유지보수측면에서 더 유리하다.</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="css" /><summary type="html"><![CDATA[CSS가 뭔데? CSS(Cascading Style Sheets)는 HTML이나 XML과 같은 구조화 된 문서(Document)를 화면, 종이 등에 어떻게 렌더링할 것인지를 정의하기 위한 언어이다. 즉, CSS는 HTML의 각 요소(Element)의 style(design, layout etc)을 정의하여 화면(Screen) 등에 어떻게 렌더링하면 되는지 브라우저에게 설명하기 위한 언어이다.]]></summary></entry><entry><title type="html">HTML에 대해서</title><link href="http://localhost:4000/web/2022/05/24/HTML5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" rel="alternate" type="text/html" title="HTML에 대해서" /><published>2022-05-24T00:00:00+09:00</published><updated>2022-05-24T00:00:00+09:00</updated><id>http://localhost:4000/web/2022/05/24/HTML5%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C</id><content type="html" xml:base="http://localhost:4000/web/2022/05/24/HTML5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html"><![CDATA[<h2 id="1html-이-뭔데">1.HTML 이 뭔데?</h2>
-
-<p>HTML (HyperText Markup Language)은 웹페이지를 기술하기 위한 마크업 언어이다. <br />
-조금 더 자세히 말하면 웹페이지의 내용(content)과 구조(structure)을 담당하는 언어로써 HTML 태그를 통해 정보를 구조화하는 것이다.</p>
-
-<p>좀 더 직관적으로 말하자면, 처음 웹개발을 시작하는 이들이라면 HTML CSS Javascript를 우선적으로 공부하게 되는데,</p>
-<ul>
-  <li>HTML은 웹페이지의 내용과 구조를 담당하고,</li>
-  <li>CSS는 웹페이지의 디자인과 스타일을 담당하고,</li>
-  <li>Javascript는 웹페이지에서의 동작(행동)들을 프로그래밍 하는 언어라고 생각하면 당장 공부를 시작하는데 지장은 없을 것이다.</li>
-</ul>
-
-<hr />
-
-<h2 id="2html-그래서-어떻게-시작하는데">2.HTML, 그래서 어떻게 시작하는데?</h2>
-
-<h4 id="visualstudiocodevscode-에서--를-치고-엔터를-눌러라">VisualStudioCode(VScode) 에서 <code class="language-plaintext highlighter-rouge">!</code> 를 치고 <code class="language-plaintext highlighter-rouge">엔터</code>를 눌러라.</h4>
-
-<blockquote>
-  <p><em>Vscode는 웹개발에 필요한 거의 모든 Extension(확장자)를 지원하므로 설치하는 것을 권장한다.</em></p>
-</blockquote>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;title&gt;</span>Document<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-  
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
-
-<p>놀랍게도 우리는 <code class="language-plaintext highlighter-rouge">!</code> 와 <code class="language-plaintext highlighter-rouge">엔터</code> 를 누른것 만으로도 벌써 웹페이지를 만들었다. <br />
-모든 html 내용은 <code class="language-plaintext highlighter-rouge">&lt;html&gt; 과 &lt;/html&gt;</code> 사이에 들어가는데,<br />
-<code class="language-plaintext highlighter-rouge">&lt;head&gt; ~ &lt;/head&gt;</code> 사이에는, 브라우저(사용자)에선 보여지지 않지만 메타데이터의 설정등이 위치하고
-<code class="language-plaintext highlighter-rouge">&lt;body&gt; ~ &lt;/body&gt;</code> 사이에는, 웹브라우저에 출력되는 모든요소들이 들어가게 된다.</p>
-
-<hr />
-
-<h2 id="3html-기본문법">3.HTML 기본문법</h2>
-
-<p>HTML 요소는 시작 태그(start tag)와 종료 태그(end tag) 그리고 태그 사이에 위치한 content로 구성된다.
-HTML document는 요소(Element)들의 집합으로 이루어진다.</p>
-
-<p>태그는 대문자와 소문자를 구분하진 않지만, W3C에서 HTML4의 태그를 소문자로 권장하기에 HTML5에서도 태그를 소문자로 <br />
-쓰는 것이 일반적이다.</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;title&gt;</span>Document<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;h1&gt;</span>안녕하세요<span class="nt">&lt;/h1&gt;</span>
-  <span class="nt">&lt;p&gt;</span>HTML포스팅 입니다.<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
-
-<hr />
-<p><img src="https://user-images.githubusercontent.com/95608811/169938038-2d49f93a-cca9-4f61-843c-44c977ad9f92.png" width="600px" /></p>
-
-<hr />
-<p>html 요소는 웹페이지를 구성하는 모든 요소들을 포함한다.   위 예제를 보면 html 요소는 body 요소를 포함하며 body 요소는 h1, p 요소를 포함한다. 이 중첩 관계(부자 관계)로 웹페이지의 구조(structure)를 표현한다.</p>
-
-<p>이런 중첩 관계를 가독성 좋게 표시하기 위해 중첩 관계마다 들여쓰기(indent)를 한다.</p>
-
-<p>간단한 기본 태그 몇가지만 더 언급하고</p>
-
-<p><code class="language-plaintext highlighter-rouge">&lt;strong&gt; ~ &lt;/strong&gt;</code>: 글씨 굵게 <br />
-<code class="language-plaintext highlighter-rouge">&lt;u&gt; ~ &lt;/u&gt;</code> : 밑줄 (underline) <br />
-<code class="language-plaintext highlighter-rouge">&lt;h1&gt; ~ &lt;/h1&gt;</code> : 제목이랄까? h1~h6까지 있고, 1 부터 순차적으로 작아진다.<br />
-<code class="language-plaintext highlighter-rouge">&lt;br&gt;</code> : 줄바꿈 태그, 엔터와 같은느낌인데, 닫힘태그가 필요없음 단순히 시각적인 기능.<br />
-HTML에서는 열심히 엔터키로 줄바꿈 하려고 해도 안된다. 
-줄바꿈이 필요하면 <code class="language-plaintext highlighter-rouge">&lt;br&gt;</code>를 사용하자 !</p>
-
-<p>그럼 단순히 h태그는 p태그보다 size만 큰 글씨인가 ?<br />
-다음 포스팅에서는 반드시 특정태그를 이용해서 HTML을 작성해야하는 이유를 간략히 포스팅하겠다.</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="html" /><summary type="html"><![CDATA[1.HTML 이 뭔데?]]></summary></entry></feed>
+<p>간략히하자면, 웹페이지가 검색노출이 잘되게끔 하고싶다면,단순히 디자인적인 부분만을 고려하여 태그를 사용하는게 아닌 중요한 내용과 그렇지 않은 내용들을 semantic 요소를 고려하여 태그를 작성하면 된다 !</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="html" /><summary type="html"><![CDATA[시맨틱 웹이 뭔데? 시멘틱 웹에 관한부분은 PoiemaWeb (웹프로그래밍튜토리얼) 사이트 참조]]></summary></entry></feed>
