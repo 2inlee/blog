@@ -1,0 +1,42 @@
+I"<h2 id="마방진">마방진</h2>
+
+<p>우선 마방진에 대한 개념은 가로,세로,대각선의 합이 같아지도록 정사각형 모양으로 배열한 행렬이다.</p>
+
+<h4 id="마방진-만드는-규칙">마방진 만드는 규칙</h4>
+<p>1) 첫번째 행의 중앙에 1을 배열한다.   <br />
+2) 왼쪽 대각선으로 올라가면서 빈자리에 1씩 큰 수를 배열한다.  <br />
+이때 행렬의 밖으로 벗어나면 그 방향의 반대편에서 계속한다.  <br />
+3) 만약 이동해서 채워야하는 자리에 이미 숫자가 배열되어 있다면, 정해진 위치 바로 아래에 숫자를 배열한다.</p>
+<blockquote>
+  <p>5x5 마방진 예시</p>
+</blockquote>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173228247-33159117-d629-4c6b-8d1f-d9178874049c.png" width="800px" /></p>
+
+<h4 id="규칙을-프로그램으로-짜기">규칙을 프로그램으로 짜기</h4>
+
+<ul>
+  <li>입력 : 0으로 초기화된 n * n의 2차원 배열 <code class="language-plaintext highlighter-rouge">table[n][n]</code></li>
+  <li>출력 : n * n의 magic square</li>
+</ul>
+
+<p>행을 움직이는 변수 i, 열을 움직이는 변수 j</p>
+
+<p>1) Rule : 첫 번째 행의 중앙에 1을 놓는다.</p>
+<pre><code class="language-C">int i = 0, int j = (n-1)/2 ,
+table[i][j] = 1;
+</code></pre>
+
+<p>2) Rule : 왼쪽 대각선 방향으로 올라가면서 빈자리에 1씩 큰 수를 놓는다. 이때 행렬의 밖으로 벗어나면 그 방향의 반대편에서 계속한다.</p>
+
+<p>3) Rule : 만약 이동한</p>
+<pre><code class="language-C">for int count=2,count&lt;(n*n),count++{
+  row = i - 1, col = j - 1
+  if (row &lt; 0) row = n-1;
+  if (col &lt; 0) col = n-1;
+  if (table[row][col] != 0) i++;
+  else i = row,j=col;
+  table[i][j] = count;
+}
+</code></pre>
+:ET

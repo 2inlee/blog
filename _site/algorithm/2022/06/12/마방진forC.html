@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>MagicSquare(마방진)forC | 시를 좋아하는 프로그래머</title>
+<title>MagicSquare(마방진)for C | 시를 좋아하는 프로그래머</title>
 <meta name="generator" content="Jekyll v4.2.2">
-<meta property="og:title" content="MagicSquare(마방진)forC">
+<meta property="og:title" content="MagicSquare(마방진)for C">
 <meta name="author" content="Ino">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="마방진">
@@ -20,9 +20,9 @@
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2022-06-12T00:00:00+09:00">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="MagicSquare(마방진)forC">
+<meta property="twitter:title" content="MagicSquare(마방진)for C">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ino"},"dateModified":"2022-06-12T00:00:00+09:00","datePublished":"2022-06-12T00:00:00+09:00","description":"마방진","headline":"MagicSquare(마방진)forC","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html"},"url":"http://localhost:4000/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ino"},"dateModified":"2022-06-12T00:00:00+09:00","datePublished":"2022-06-12T00:00:00+09:00","description":"마방진","headline":"MagicSquare(마방진)for C","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html"},"url":"http://localhost:4000/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="shortcut icon" href="favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -656,7 +656,7 @@ function googleTranslateElementInit() {
     <div class="wrapper">
       <div class="page-banner-inner">
 <header class="post-header">
-  <h1 class="post-title p-name" itemprop="name headline">MagicSquare(마방진)forC</h1>
+  <h1 class="post-title p-name" itemprop="name headline">MagicSquare(마방진)for C</h1>
   <h2 class="post-subtitle">알고리즘,C언어,마방진</h2>
 
   <p class="post-meta">
@@ -908,21 +908,49 @@ function googleTranslateElementInit() {
 
 <p><img src="https://user-images.githubusercontent.com/95608811/173228247-33159117-d629-4c6b-8d1f-d9178874049c.png" width="800px"></p>
 
+<h4 id="규칙을-프로그램으로-짜기">규칙을 프로그램으로 짜기</h4>
+
+<ul>
+  <li>입력 : 0으로 초기화된 n * n의 2차원 배열 <code class="language-plaintext highlighter-rouge">table[n][n]</code>
+</li>
+  <li>출력 : n * n의 magic square</li>
+</ul>
+
+<p>행을 움직이는 변수 i, 열을 움직이는 변수 j</p>
+
+<p>1) Rule : 첫 번째 행의 중앙에 1을 놓는다.</p>
+<pre><code class="language-C">int i = 0, int j = (n-1)/2 ,
+table[i][j] = 1;
+</code></pre>
+
+<p>2) Rule : 왼쪽 대각선 방향으로 올라가면서 빈자리에 1씩 큰 수를 놓는다. 이때 행렬의 밖으로 벗어나면 그 방향의 반대편에서 계속한다.</p>
+
+<p>3) Rule : 만약 이동하려는 자리에 숫자가 이미 채워져 있으면 지금 위치의 바로 아래에 숫자를 놓는다.</p>
+
+<pre><code class="language-C">for int count=2,count&lt;(n*n),count++{
+  row = i - 1, col = j - 1
+  if (row &lt; 0) row = n-1;
+  if (col &lt; 0) col = n-1;
+  if (table[row][col] != 0) i++;
+  else i = row,j=col;
+  table[i][j] = count;
+}
+</code></pre>
 
 
     </div>
 
 </article>
 <div class="post-nav">
-<a class="previous" href="/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html" title="DB 정규화">DB 정규화</a><a class="next" href="/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95.html" title="SQL기본문법">SQL기본문법</a>
+<a class="previous" href="/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html" title="SQL문제">SQL문제</a><span></span>
 </div>
 <div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/web/2022/05/30/Server%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" title="SQL기본문법">서버에 대해서</a></li>
-<li><a class="post-link" href="/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html" title="SQL기본문법">SQL문제</a></li>
-<li><a class="post-link" href="/web/2022/05/26/%EC%8B%9C%EB%A7%A8%ED%8B%B1%EC%9A%94%EC%86%8C%EC%99%80-%EC%9B%B9.html" title="SQL기본문법">시맨틱 웹(Semantic Web)</a></li>
-<li><a class="post-link" href="/git/2022/05/31/Git%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" title="SQL기본문법">깃과 깃허브</a></li>
+        <li><a class="post-link" href="/jekyll/2022/05/05/Children's-Day-FirstPost.html" title="">Welcome to InoBlog</a></li>
+<li><a class="post-link" href="/web/2022/05/28/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" title="">프로그래밍이란?</a></li>
+<li><a class="post-link" href="/web/2022/05/24/HTML5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" title="">HTML에 대해서</a></li>
+<li><a class="post-link" href="/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html" title="">DB 정규화</a></li>
 </ul>
     </div>
 <div class="post-comments"></div></section>
