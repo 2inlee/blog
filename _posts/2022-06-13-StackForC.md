@@ -80,3 +80,51 @@ else (top의 연산자를 pop하여 출력)
 
 중위표기식에서는 연산자의 우선순위 때문에 왼쪽에서 오른쪽으로 연산이 진해되지 않고 괄호를 가지고 있기때문에 컴파일러는 중위표기식에서 후위표기식으로 변경해서 사용한다.     
 
+### 수식 표기방식의 변경 (괄호가 없을때)
+<img src="https://user-images.githubusercontent.com/95608811/173298178-0753d0e0-11d0-4d25-b262-c6176579aeae.png" width="800px">
+
+### 수식 표기방식의 변경 (괄호가 있을때)
+<img src="https://user-images.githubusercontent.com/95608811/173298522-0f500c74-173a-4841-918a-e8ca325940f7.png" width="800px">
+
+* 괄호가 있을때는 오른쪽 괄호는 왼쪽 괄호가 나올 때까지 스택 안의 모든 연산자를 출력하면 된다.    
+
+#### 수식 표기방식의 변경 (괄호가 있을때) 예제
+<img src="https://user-images.githubusercontent.com/95608811/173299850-7dc29a00-5e6f-465c-85f2-2a59582d6f96.png" width="800px">
+
+<img src="https://user-images.githubusercontent.com/95608811/173299961-b8be8565-5436-4de2-bcb2-540d5b6cf285.png" width="800px">
+
+<img src="https://user-images.githubusercontent.com/95608811/173300070-c3f78bf4-b45d-4f50-a169-54193525f704.png" width="800px">
+
+## 후위표기식의 계산 함수
+
+
+```C
+int cal(void){
+  char symbol;
+  int op1,op2,n = 0;
+  int top=-1;
+  symbol = pexpr[n++];
+  
+  while(symbol != '\0'){
+    if(is_operator(symbol)){
+      op2 = delete_stack();
+      op1 = delete_stack();
+      switch(symbol){
+        case '+':add_stack(op1+op2);
+          break;
+        case '-':add_stack(op1-op2);
+          break;
+        case '*':add_stack(op1*op2);
+          break;
+        case '/':add_stack(op1/op2);
+          break;
+      }
+    }
+    else
+      add_stack(symbol-'0');
+    symbol = pexpr[n++];
+  }
+return delete_stack();
+}
+```
+

@@ -1,4 +1,112 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-13T00:38:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">Stack(스택)for C</title><link href="http://localhost:4000/algorithm/2022/06/13/StackForC.html" rel="alternate" type="text/html" title="Stack(스택)for C" /><published>2022-06-13T00:00:00+09:00</published><updated>2022-06-13T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/06/13/StackForC</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/06/13/StackForC.html"><![CDATA[<h2 id="스택의-정의">스택의 정의</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-14T17:05:54+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">구조체 for C</title><link href="http://localhost:4000/algorithm/2022/06/13/%EA%B5%AC%EC%A1%B0%EC%B2%B4forC.html" rel="alternate" type="text/html" title="구조체 for C" /><published>2022-06-13T00:00:00+09:00</published><updated>2022-06-13T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/06/13/%EA%B5%AC%EC%A1%B0%EC%B2%B4forC</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/06/13/%EA%B5%AC%EC%A1%B0%EC%B2%B4forC.html"><![CDATA[<h2 id="구조체를-이용한-파일처리">구조체를 이용한 파일처리</h2>
+<p>프로그래밍에 필요한 데이터가 파일로 제공되는 경우 각 파일에는 필요한 필드로 구성된
+레코드를 저장하는 경우가 많다. 이렇게 저장된 파일의 데이터를 프로그램에서 사용하려면
+구조체를 활용해야한다.</p>
+<ul>
+  <li>구조체는 서로 형이 다를 수 있는 여러 변수들의 모임을 하나의 이름으로 가지고 있는 자
+료구조이다. <br />
+구조체는 그 목적에 따라 필요한 구성요소를 정하여 다음과 같이 선언할 수 있다.
+    <pre><code class="language-C">struct employee { char name[20]; long id; int depend; float salary;
+};
+struct employee e1;
+</code></pre>
+  </li>
+</ul>
+
+<pre><code class="language-C">strcpy(e1.name, “HongGilDong");
+e1.id = 20071357;
+e1.depend = 3;
+e1.salary = 345.716;
+</code></pre>
+
+<p>이와 같은 선언에 의하여 struct employee라는 데이터 형이 생기게 되는 것이다. <br />
+이때 아래와 같이 선언된 변수 e1은 각각 name, id, depend, salary 4개의 변수에 값을 가질 수 있
+다.</p>
+
+<h2 id="typedef정의문으로-활용하기">typedef(정의문)으로 활용하기</h2>
+<pre><code class="language-C">typedef struct { char name[20]; int age; float salary;
+} human_being;
+</code></pre>
+
+<p>이런식으로 정의문으로 구조체를 선언하고, 구조체 별칭으로 human_being 으로 만들면,</p>
+
+<p>이후</p>
+
+<pre><code class="language-C">human_being person1, person2;
+stycpy(person1.name, "Rhee Hyun-Sook");
+peson1.age = 34;
+person1.salary = 1575.100;
+</code></pre>
+
+<p>이런식으로, 구조체를 활용해 구조체 별칭 human_being 으로 person1, person2 변수를 만들 수 있다.</p>
+
+<blockquote>
+  <p>~ 객체지향언어를 공부한 독자라면, 일종의 객체라고 생각해도 이해하는 데는 무방하다.   ~</p>
+</blockquote>
+
+<h2 id="구조체를-이용한-파일처리의-예시">구조체를 이용한 파일처리의 예시</h2>
+
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#define MAX_CNUM 50
+
+typedef struct course { 
+  char courseid[10];
+  char tname[20];
+  unsigned snum; 
+  unsigned roomnum;
+} cinform;
+main(int argc, char *argv[])
+{
+  int i=0, dnum;
+  char sprof[20];
+  unsigned sroomnum;
+  cinform cdb[MAX_CNUM];
+  FILE *coursedb;
+  if ((coursedb = fopen(argv[1], "r")) == NULL) {
+printf("데이터 파일을 열 수 없습니다 \n");
+exit(1); 
+}
+while (fscanf(coursedb, "%s %s %u %u", cdb[i].courseid,
+  cdb[i].tname, &amp;(cdb[i].snum), &amp;(cdb[i].roomnum)) != EOF)
+  i++; 
+  dnum = i;
+  printf("수강인원이 40명 이상인 강좌 코드 번호를 출력하시오.\n");
+  for (i=0; i &lt; dnum; i++) 
+    if (cdb[i].snum &gt;= 40) 
+      printf("%s\n", cdb[i].courseid);
+    printf("검색하고자 하는 교수이름 입력 : ");
+    scanf("%s", sprof);
+    printf("%s 교수가 강의하는 강좌코드와 강의실 번호를 출력하시오.\n",sprof); 
+    for (i=0; i &lt; dnum; i++)
+      if (!strcmp(cdb[i].tname, sprof))
+      printf("%s\t%u\n", cdb[i].courseid, cdb[i].roomnum);
+    printf("검색하고자 하는 강의실 번호 입력 : ");
+    scanf("%u", &amp;sroomnum);
+    printf("%u 강의실에서 수업하는 강좌코드와 담당교수를 출력하시오.\n", sroomnum);
+    for (i=0; i &lt; dnum; i++)
+      if (cdb[i].roomnum == sroomnum) 
+        printf("%s\t%s\n", cdb[i].courseid, cdb[i].tname);
+}
+</code></pre>
+
+<p>위와 같이 구조체를 이용해 여러 학생들의 정보를 FILE 로 가져와서 정보를 검색,수정,삭제할 수 있다.</p>
+
+<h2 id="자기참조-구조체를-이용한-연결리스트의-구현">자기참조 구조체를 이용한 연결리스트의 구현</h2>
+
+<p>여러 데이터를 저장할 때 주로 사용하는 배열은 연속된 메모리를 차지하게 되고 최대크기
+를 컴파일 시간에 미리 확보하고 있어야 하는 단점이 있다.</p>
+
+<p>연결리스트를 구성하는 하나의 정보 단위를 노드라고 하는 데 각 노드는 저장하려는 데이터
+와 다음 노드를 가리키는 포인터 정보를 포함하게 된다.</p>
+
+<p>이를 위하여 구조체의 정의 안에 자신과 같은 구조체로의 포인터 정보
+를 포함하는 자기참조 구조체로 표현해야 한다. 자기참조 구조체 형태의 연결리스트의 노드 구조의 간단한 예를 다음과 같이 표현할 수 있다.</p>
+
+<p>```
+struct one_node { char data[5]; struct one_node *next;
+};</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[구조체를 이용한 파일처리 프로그래밍에 필요한 데이터가 파일로 제공되는 경우 각 파일에는 필요한 필드로 구성된 레코드를 저장하는 경우가 많다. 이렇게 저장된 파일의 데이터를 프로그램에서 사용하려면 구조체를 활용해야한다. 구조체는 서로 형이 다를 수 있는 여러 변수들의 모임을 하나의 이름으로 가지고 있는 자 료구조이다. 구조체는 그 목적에 따라 필요한 구성요소를 정하여 다음과 같이 선언할 수 있다. struct employee { char name[20]; long id; int depend; float salary; }; struct employee e1;]]></summary></entry><entry><title type="html">Stack(스택)for C</title><link href="http://localhost:4000/algorithm/2022/06/13/StackForC.html" rel="alternate" type="text/html" title="Stack(스택)for C" /><published>2022-06-13T00:00:00+09:00</published><updated>2022-06-13T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/06/13/StackForC</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/06/13/StackForC.html"><![CDATA[<h2 id="스택의-정의">스택의 정의</h2>
 <ul>
   <li>한쪽 끝(top)에서 삽입과 삭제가 일어나는 선형리스트
 LIFO(Last In First Out) 구조</li>
@@ -56,7 +164,77 @@ top++, stack[top] = data  <br />
 <p>if((새 연산자의 우선순위 &gt; 스택의 top연산자의 우선순위) or (스택이 비었음)) <br />
 -&gt;  스택에 저장   <br />
 else (top의 연산자를 pop하여 출력)
-이후 식을 다 읽었으면 스택에 있는 모든 연산자를 pop 하여 출력</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[스택의 정의 한쪽 끝(top)에서 삽입과 삭제가 일어나는 선형리스트 LIFO(Last In First Out) 구조 선형리스트의 긑부분에서만 자료의 입력과 출력이 가능하도록 제한된 자료구조 마지막 삽입 (Last-In)한 원소는 맨 위에 쌓여 있다가 가장먼저 삭제(First-Out) 된다. 후입선출 구조 (LIFO) 스택을 운영하기 위하여 끝 부분(top)에 대한 정보가 필요함.]]></summary></entry><entry><title type="html">SQL문제</title><link href="http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html" rel="alternate" type="text/html" title="SQL문제" /><published>2022-06-12T00:00:00+09:00</published><updated>2022-06-12T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C</id><content type="html" xml:base="http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html"><![CDATA[<h2 id="sql-문법-순서">SQL 문법 순서</h2>
+이후 식을 다 읽었으면 스택에 있는 모든 연산자를 pop 하여 출력</p>
+
+<p>즉, 정리하자면</p>
+<ol>
+  <li>피연산자를 만나면 그대로 출력한다</li>
+  <li>스택이 비어있을 때 만나는 연산자는 무조건 스택에 add한다</li>
+  <li>지금 처리하려는 연산자가 스택의 top의 연산자 보다 우선순위가 높으면 스택에 add한다. 아니면 스택의 연산자를 delete하여 출력한다.  <br />
+표기식을 끝까지 다 읽으면 스택의 연산자를 delete하여 출력한다.</li>
+</ol>
+
+<p>괄호 규칙 추가</p>
+
+<ol>
+  <li>왼쪽 괄호는 스택에 들어올 때는 무조건 add 되도록하고, 일단 스택에 들어오면 우선순위가 가장 낮아져서 다음 들어오려는 연산자를 add한다.</li>
+  <li>오른쪽 괄호는 왼쪽 괄호가 나올 때까지 스택 안의 모든 연산자를 출력한다.</li>
+</ol>
+
+<h3 id="후위표기식의-장점">후위표기식의 장점</h3>
+<ul>
+  <li>괄호가 없으므로 고려할 사항이 적음</li>
+</ul>
+
+<p>중위표기식에서는 연산자의 우선순위 때문에 왼쪽에서 오른쪽으로 연산이 진해되지 않고 괄호를 가지고 있기때문에 컴파일러는 중위표기식에서 후위표기식으로 변경해서 사용한다.</p>
+
+<h3 id="수식-표기방식의-변경-괄호가-없을때">수식 표기방식의 변경 (괄호가 없을때)</h3>
+<p><img src="https://user-images.githubusercontent.com/95608811/173298178-0753d0e0-11d0-4d25-b262-c6176579aeae.png" width="800px" /></p>
+
+<h3 id="수식-표기방식의-변경-괄호가-있을때">수식 표기방식의 변경 (괄호가 있을때)</h3>
+<p><img src="https://user-images.githubusercontent.com/95608811/173298522-0f500c74-173a-4841-918a-e8ca325940f7.png" width="800px" /></p>
+
+<ul>
+  <li>괄호가 있을때는 오른쪽 괄호는 왼쪽 괄호가 나올 때까지 스택 안의 모든 연산자를 출력하면 된다.</li>
+</ul>
+
+<h4 id="수식-표기방식의-변경-괄호가-있을때-예제">수식 표기방식의 변경 (괄호가 있을때) 예제</h4>
+<p><img src="https://user-images.githubusercontent.com/95608811/173299850-7dc29a00-5e6f-465c-85f2-2a59582d6f96.png" width="800px" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173299961-b8be8565-5436-4de2-bcb2-540d5b6cf285.png" width="800px" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173300070-c3f78bf4-b45d-4f50-a169-54193525f704.png" width="800px" /></p>
+
+<h2 id="후위표기식의-계산-함수">후위표기식의 계산 함수</h2>
+
+<pre><code class="language-C">int cal(void){
+  char symbol;
+  int op1,op2,n = 0;
+  int top=-1;
+  symbol = pexpr[n++];
+  
+  while(symbol != '\0'){
+    if(is_operator(symbol)){
+      op2 = delete_stack();
+      op1 = delete_stack();
+      switch(symbol){
+        case '+':add_stack(op1+op2);
+          break;
+        case '-':add_stack(op1-op2);
+          break;
+        case '*':add_stack(op1*op2);
+          break;
+        case '/':add_stack(op1/op2);
+          break;
+      }
+    }
+    else
+      add_stack(symbol-'0');
+    symbol = pexpr[n++];
+  }
+return delete_stack();
+}
+</code></pre>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[스택의 정의 한쪽 끝(top)에서 삽입과 삭제가 일어나는 선형리스트 LIFO(Last In First Out) 구조 선형리스트의 긑부분에서만 자료의 입력과 출력이 가능하도록 제한된 자료구조 마지막 삽입 (Last-In)한 원소는 맨 위에 쌓여 있다가 가장먼저 삭제(First-Out) 된다. 후입선출 구조 (LIFO) 스택을 운영하기 위하여 끝 부분(top)에 대한 정보가 필요함.]]></summary></entry><entry><title type="html">SQL문제</title><link href="http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html" rel="alternate" type="text/html" title="SQL문제" /><published>2022-06-12T00:00:00+09:00</published><updated>2022-06-12T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C</id><content type="html" xml:base="http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html"><![CDATA[<h2 id="sql-문법-순서">SQL 문법 순서</h2>
 
 <p>SELECT(마지막)  무엇을 불러올건지 <br />
 FROM (1) 어디서 <br />
@@ -373,15 +551,88 @@ table[i][j] = 1;
 
 <p>3) Rule : 만약 이동하려는 자리에 숫자가 이미 채워져 있으면 지금 위치의 바로 아래에 숫자를 놓는다.</p>
 
-<pre><code class="language-C">for int count=2,count&lt;(n*n),count++{
-  row = i - 1, col = j - 1
-  if (row &lt; 0) row = n-1;
-  if (col &lt; 0) col = n-1;
-  if (table[row][col] != 0) i++;
-  else i = row,j=col;
-  table[i][j] = count;
+<pre><code class="language-C">#define MAX_SIZE 15   
+
+//마방진의 최대 사이즈를 15로 설정
+void make_msquare(int table[][MAX_SIZE], int n);
+// 마방진 구현하는 함수
+void display(int table[][MAX_SIZE], int n);
+// 구현한 마방진을 print 해서 보여주는 함수
+
+int main() {
+	int n, r, c, sum = 0;
+	int table[MAX_SIZE][MAX_SIZE];
+
+	printf("Enter a number: ");
+	scanf("%d", &amp;n);
+
+	if ((n &lt; 1) || n &gt; MAX_SIZE) {
+		printf("Error! size is out of range \n");
+		exit(0);
+	}
+	for (r = 0; r &lt; n; r++) {
+		for (c = 0; c &lt; n; c++) {
+			table[r][c] = 0;
+		}
+	}
+  // 마방진의 배열을 전부 0으로 초기화시켜줌
+	make_msquare(table,n);
+	display(table, n);
+
 }
-</code></pre>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[마방진]]></summary></entry><entry><title type="html">DB 정규화</title><link href="http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html" rel="alternate" type="text/html" title="DB 정규화" /><published>2022-06-11T00:00:00+09:00</published><updated>2022-06-11T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94</id><content type="html" xml:base="http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html"><![CDATA[<h2 id="정규화-">정규화 ?</h2>
+
+void make_msquare(int table[][MAX_SIZE], int n) {
+	int digit = 0;
+	int row, r, c, col;
+
+	r = 0; c = (n - 1) / 2;
+  // 행의 첫번째줄, 열의 중간부터 마방진을 시작한다.
+	table[r][c] = 1;
+
+	for (digit = 2; digit &lt;= n * n; digit++) {
+		row = r - 1;
+		col = c - 1;
+    // 왼쪽 대각선 위로 올라가면서 수를 채울거라,
+    행과 열을 하나씩 빼준다.
+
+		if (row &lt; 0) {
+			row = n - 1;
+		}
+    // 행이 0보다 작으면 즉, 가장 위에 열에서 더이상 올라갈 데가 없으면 n-1번째 (가장 아래)에서 다시 시작한다
+		if (col &lt; 0) {
+			col = n - 1;
+		}
+    // 열이 0보다 작으면 즉, 가장 왼쪽에서 더 왼쪽으로 갈 데가 없으면 n-1번째 (가장 오른쪽)에서 다시 시작한다
+		if (table[row][col]) r++;
+		else {
+			r = row;
+			c = col;
+		}
+		table[r][c] = digit;
+    // 반복되는 횟수에 따라서 그 해당 테이블의 배열에 값을 넣어준다.
+	}
+}
+
+void display(int table[][MAX_SIZE], int n) {
+	int r, c;
+	int sum = 0;
+
+	for (r = 0; r &lt; n; r++) {
+		for (c = 0; c &lt; n; c++)
+			printf("%5d", table[r][c]);
+		printf("\n");
+	}
+	for (c = 0; c &lt; n; c++) {
+		sum += table[0][c];
+	}
+  // 한 열의 number을 카운팅해서 한 열/헹/대각선의 Sum을 구함
+	printf("Row/Col/Diagonal Sum = %d \n ", sum);
+}
+</code></pre>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173526315-b66b2a84-0cad-4b1d-95eb-1ff8eadfb649.png" width="800px" /></p>
+
+<p>실제 위 코드를 동작시키면 이와 같이 출력된다.</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[마방진]]></summary></entry><entry><title type="html">DB 정규화</title><link href="http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html" rel="alternate" type="text/html" title="DB 정규화" /><published>2022-06-11T00:00:00+09:00</published><updated>2022-06-11T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94</id><content type="html" xml:base="http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html"><![CDATA[<h2 id="정규화-">정규화 ?</h2>
 
 <ul>
   <li>
@@ -799,24 +1050,4 @@ HTTP요청에는 크게 4가지가 있는데, 읽기 쓰기 수정 삭제이다.
 <h2 id="4수정-put">4.수정 (PUT)</h2>
 <p>뭔가를 수정할 때</p>
 <h2 id="5삭제-delete">5.삭제 (DELETE)</h2>
-<p>뭔가를 삭제할 때</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="javascript" /><summary type="html"><![CDATA[1.서버가 뭔데? 국밥집 이모다. 우리가 순댓국집 가서 “이모~ 국밥하나 갖다주세요 “ 하면 이모가 국밥하나 갖다준다. 서버도 똑같다. 국밥집이모나 서버나 우리가 요청한걸 갖다주는 것 뿐이다. 즉, 서버는 요청을 받으면 요청한 내용을 보내주는 프로그램인데, HTTP요청에는 크게 4가지가 있는데, 읽기 쓰기 수정 삭제이다.]]></summary></entry><entry><title type="html">자바스크립트에 대해서</title><link href="http://localhost:4000/web/2022/05/29/Javascrpt%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" rel="alternate" type="text/html" title="자바스크립트에 대해서" /><published>2022-05-29T00:00:00+09:00</published><updated>2022-05-29T00:00:00+09:00</updated><id>http://localhost:4000/web/2022/05/29/Javascrpt%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C</id><content type="html" xml:base="http://localhost:4000/web/2022/05/29/Javascrpt%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html"><![CDATA[<h2 id="1자바스크립트의-특징">1.자바스크립트의 특징</h2>
-<p>자바스크립트는 HTML, CSS와 함께 웹을 구성하는 요소 중 하나로 웹 브라우저에서 동작하는 유일한 프로그래밍 언어이다.
-(Vue,React,Angular 등도 javascript기반으로 만들어진 프레임워크이다.)</p>
-<blockquote>
-  <p>~python기반의 pyscript도 javascript 기반이다.~
-자바스크립트는 기존의 프로그래밍 언어에서 많은 영향을 받았다.
-기본 문법은 C, Java와 유사하고 Self에서는 프로토타입 기반 상속을, Scheme에서는 일급 함수의 개념을 차용했다.
-~ 그래서 매우 근본이 없다.. 필요해서 막 만들었다는게 학계의 정설이다 ~  <br />
-자바스크립트는 개발자가 별도의 컴파일 작업을 수행하지 않는 인터프리터 언어(Interpreter language)이다.</p>
-</blockquote>
-
-<blockquote>
-  <p>그리고 여러 논란이 있지만(?) 자바스크립트는 프토로타입 기반의 객체지향 언어이다.</p>
-</blockquote>
-
-<h2 id="2자바스크립트의-실행환경">2.자바스크립트의 실행환경</h2>
-<p>모든 브라우저는 자바스크립트를 해석하고 실행할 수 있는 자바스크립트 엔진을 내장하고 있다. 브라우저뿐만 아니라 Node.js도 자바스크립트 엔진을 내장하고 있다. 따라서 자바스크립트는 브라우저와 Node.js 환경에서 실행할 수 있다. 기본적으로 브라우저에서 동작하는 코드는 Node.js 환경에서도 동작한다.</p>
-
-<p>그런데 브라우저와 Node.js는 존재 목적이 다르다. 브라우저는 HTML, CSS, 자바스크립트를 실행하여 웹 페이지를 화면에 렌더링하는 것이 주된 목적이지만, Node.js는 서버 개발 환경을 제공하는 것이 주된 목적이다.</p>
-
-<p>예를 들어 브라우저는 HTML 요소를 선택하거나 조작하는 기능들의 집합인 DOM API를 기본적으로 제공한다. 하지만 서버 개발 환경을 제공하는 것이 주 목적인 Node.js는 클라이언트 사이드 Web API인 DOM API를 제공하지 않는다. 서버에서는 HTML 요소를 다룰 일이 없기 때문이다. 반대로 Node.js에서는 파일을 생성하고 수정할 수 있는 File 시스템을 기본 제공하지만 브라우저는 이를 지원하지 않는다.</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="javascript" /><summary type="html"><![CDATA[1.자바스크립트의 특징 자바스크립트는 HTML, CSS와 함께 웹을 구성하는 요소 중 하나로 웹 브라우저에서 동작하는 유일한 프로그래밍 언어이다. (Vue,React,Angular 등도 javascript기반으로 만들어진 프레임워크이다.) ~python기반의 pyscript도 javascript 기반이다.~ 자바스크립트는 기존의 프로그래밍 언어에서 많은 영향을 받았다. 기본 문법은 C, Java와 유사하고 Self에서는 프로토타입 기반 상속을, Scheme에서는 일급 함수의 개념을 차용했다. ~ 그래서 매우 근본이 없다.. 필요해서 막 만들었다는게 학계의 정설이다 ~ 자바스크립트는 개발자가 별도의 컴파일 작업을 수행하지 않는 인터프리터 언어(Interpreter language)이다.]]></summary></entry></feed>
+<p>뭔가를 삭제할 때</p>]]></content><author><name>Ino</name></author><category term="web" /><category term="web" /><category term="javascript" /><summary type="html"><![CDATA[1.서버가 뭔데? 국밥집 이모다. 우리가 순댓국집 가서 “이모~ 국밥하나 갖다주세요 “ 하면 이모가 국밥하나 갖다준다. 서버도 똑같다. 국밥집이모나 서버나 우리가 요청한걸 갖다주는 것 뿐이다. 즉, 서버는 요청을 받으면 요청한 내용을 보내주는 프로그램인데, HTTP요청에는 크게 4가지가 있는데, 읽기 쓰기 수정 삭제이다.]]></summary></entry></feed>

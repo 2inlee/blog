@@ -697,7 +697,7 @@ function googleTranslateElementInit() {
 
 
 
-    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
   </p>
 <div class="post-tags">
 <a class="post-tag" href="/tags.html#C">#C</a><a class="post-tag" href="/tags.html#algorithm">#algorithm</a>
@@ -955,21 +955,91 @@ top++, stack[top] = data  <br>
 else (top의 연산자를 pop하여 출력)
 이후 식을 다 읽었으면 스택에 있는 모든 연산자를 pop 하여 출력</p>
 
+<p>즉, 정리하자면</p>
+<ol>
+  <li>피연산자를 만나면 그대로 출력한다</li>
+  <li>스택이 비어있을 때 만나는 연산자는 무조건 스택에 add한다</li>
+  <li>지금 처리하려는 연산자가 스택의 top의 연산자 보다 우선순위가 높으면 스택에 add한다. 아니면 스택의 연산자를 delete하여 출력한다.  <br>
+표기식을 끝까지 다 읽으면 스택의 연산자를 delete하여 출력한다.</li>
+</ol>
+
+<p>괄호 규칙 추가</p>
+
+<ol>
+  <li>왼쪽 괄호는 스택에 들어올 때는 무조건 add 되도록하고, 일단 스택에 들어오면 우선순위가 가장 낮아져서 다음 들어오려는 연산자를 add한다.</li>
+  <li>오른쪽 괄호는 왼쪽 괄호가 나올 때까지 스택 안의 모든 연산자를 출력한다.</li>
+</ol>
+
+<h3 id="후위표기식의-장점">후위표기식의 장점</h3>
+<ul>
+  <li>괄호가 없으므로 고려할 사항이 적음</li>
+</ul>
+
+<p>중위표기식에서는 연산자의 우선순위 때문에 왼쪽에서 오른쪽으로 연산이 진해되지 않고 괄호를 가지고 있기때문에 컴파일러는 중위표기식에서 후위표기식으로 변경해서 사용한다.</p>
+
+<h3 id="수식-표기방식의-변경-괄호가-없을때">수식 표기방식의 변경 (괄호가 없을때)</h3>
+<p><img src="https://user-images.githubusercontent.com/95608811/173298178-0753d0e0-11d0-4d25-b262-c6176579aeae.png" width="800px"></p>
+
+<h3 id="수식-표기방식의-변경-괄호가-있을때">수식 표기방식의 변경 (괄호가 있을때)</h3>
+<p><img src="https://user-images.githubusercontent.com/95608811/173298522-0f500c74-173a-4841-918a-e8ca325940f7.png" width="800px"></p>
+
+<ul>
+  <li>괄호가 있을때는 오른쪽 괄호는 왼쪽 괄호가 나올 때까지 스택 안의 모든 연산자를 출력하면 된다.</li>
+</ul>
+
+<h4 id="수식-표기방식의-변경-괄호가-있을때-예제">수식 표기방식의 변경 (괄호가 있을때) 예제</h4>
+<p><img src="https://user-images.githubusercontent.com/95608811/173299850-7dc29a00-5e6f-465c-85f2-2a59582d6f96.png" width="800px"></p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173299961-b8be8565-5436-4de2-bcb2-540d5b6cf285.png" width="800px"></p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/173300070-c3f78bf4-b45d-4f50-a169-54193525f704.png" width="800px"></p>
+
+<h2 id="후위표기식의-계산-함수">후위표기식의 계산 함수</h2>
+
+<pre><code class="language-C">int cal(void){
+  char symbol;
+  int op1,op2,n = 0;
+  int top=-1;
+  symbol = pexpr[n++];
+  
+  while(symbol != '\0'){
+    if(is_operator(symbol)){
+      op2 = delete_stack();
+      op1 = delete_stack();
+      switch(symbol){
+        case '+':add_stack(op1+op2);
+          break;
+        case '-':add_stack(op1-op2);
+          break;
+        case '*':add_stack(op1*op2);
+          break;
+        case '/':add_stack(op1/op2);
+          break;
+      }
+    }
+    else
+      add_stack(symbol-'0');
+    symbol = pexpr[n++];
+  }
+return delete_stack();
+}
+</code></pre>
+
 
 
     </div>
 
 </article>
 <div class="post-nav">
-<a class="previous" href="/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html" title="MagicSquare(마방진)for C">MagicSquare(마방진)for C</a><span></span>
+<a class="previous" href="/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html" title="MagicSquare(마방진)for C">MagicSquare(마방진)for C</a><a class="next" href="/algorithm/2022/06/13/%EA%B5%AC%EC%A1%B0%EC%B2%B4forC.html" title="구조체 for C">구조체 for C</a>
 </div>
 <div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/system/2022/06/09/%EB%AC%B8%EC%84%9C%ED%8E%B8%EC%A7%91%EA%B8%B0vi.html" title="">문서편집기 vi</a></li>
-<li><a class="post-link" href="/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95.html" title="">SQL기본문법</a></li>
-<li><a class="post-link" href="/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html" title="">SQL문제</a></li>
-<li><a class="post-link" href="/web/2022/05/28/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" title="">프로그래밍이란?</a></li>
+        <li><a class="post-link" href="/algorithm/2022/06/13/StackForC.html" title="구조체 for C">Stack(스택)for C</a></li>
+<li><a class="post-link" href="/jekyll/2022/05/05/Children's-Day-FirstPost.html" title="구조체 for C">Welcome to InoBlog</a></li>
+<li><a class="post-link" href="/system/2022/06/07/%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EB%B3%B8%ED%99%98%EA%B2%BD.html" title="구조체 for C">리눅스 기본구조와 명령어</a></li>
+<li><a class="post-link" href="/system/2022/06/09/%EB%AC%B8%EC%84%9C%ED%8E%B8%EC%A7%91%EA%B8%B0vi.html" title="구조체 for C">문서편집기 vi</a></li>
 </ul>
     </div>
 <div class="post-comments"></div></section>
