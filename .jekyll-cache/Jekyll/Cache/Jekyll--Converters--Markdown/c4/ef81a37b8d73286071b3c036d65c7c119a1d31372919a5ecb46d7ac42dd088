@@ -1,0 +1,5 @@
+I"�<p><code class="language-plaintext highlighter-rouge">set-ExecutionPolicy -ExecutionPolicy Unrestricted</code> : 권한오류  <br />
+<code class="language-plaintext highlighter-rouge">npm install -g @vue/cli</code> : vue를 전역에 설치
+<code class="language-plaintext highlighter-rouge">vue create project01</code> : vue 디렉토리 생성
+<code class="language-plaintext highlighter-rouge">vue add router</code> : router 추가 / 처음 vue 만들때 router 옵션 체크</p>
+:ET
