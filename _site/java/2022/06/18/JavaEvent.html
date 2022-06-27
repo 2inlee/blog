@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Java GUI and EventListener | 시를 좋아하는 프로그래머</title>
+<meta name="generator" content="Jekyll v4.2.2">
+<meta property="og:title" content="Java GUI and EventListener">
+<meta name="author" content="Ino">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="`` 먼저 모든 import문은 eclipse 자동생성으로 만드는걸 default로 한다. 즉, 코드에 import문은 넣지 않으므로 자동생성 해서 쓰길 권장한다.">
+<meta property="og:description" content="`` 먼저 모든 import문은 eclipse 자동생성으로 만드는걸 default로 한다. 즉, 코드에 import문은 넣지 않으므로 자동생성 해서 쓰길 권장한다.">
+<link rel="canonical" href="http://localhost:4000/java/2022/06/18/JavaEvent.html">
+<meta property="og:url" content="http://localhost:4000/java/2022/06/18/JavaEvent.html">
+<meta property="og:site_name" content="시를 좋아하는 프로그래머">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-06-18T00:00:00+09:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Java GUI and EventListener">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ino"},"dateModified":"2022-06-18T00:00:00+09:00","datePublished":"2022-06-18T00:00:00+09:00","description":"`` 먼저 모든 import문은 eclipse 자동생성으로 만드는걸 default로 한다. 즉, 코드에 import문은 넣지 않으므로 자동생성 해서 쓰길 권장한다.","headline":"Java GUI and EventListener","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/java/2022/06/18/JavaEvent.html"},"url":"http://localhost:4000/java/2022/06/18/JavaEvent.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="시를 좋아하는 프로그래머">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header site-header-transparent" role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
+  <img class="site-favicon" title="시를 좋아하는 프로그래머" src="favicon.ico" onerror="this.style.display='none'">
+  시를 좋아하는 프로그래머
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/about.html">ABOUT</a><a class="page-link" href="/archives.html">ARCHIVES</a><a class="page-link" href="/categories.html">CATEGORIES</a><a class="page-link" href="/">HOME</a><a class="page-link" href="/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    html .page-banner {
+      background: #000;
+    }
+  </style>
+<style>html .page-banner {
+      height:  36.8vh;
+      min-height: 38vh;
+    }
+    html[data-scroll-status="top"] .page-banner {
+      height: 100vh;
+    }
+  </style>
+<style>
+    html .page-banner .page-banner-img > *:first-child {
+      opacity: 0.618;
+    }
+
+    html[data-theme="dark"] .page-banner .page-banner-img > *:first-child {
+      opacity: 0.443724;
+    }
+  </style>
+<style>
+    html .page-banner .page-banner-inner > *:first-child > *:nth-child(1) {
+      font-size: 4.25em; font-weight: bold; text-decoration: underline
+    }
+  </style>
+<style>
+    html .page-banner .page-banner-inner > *:first-child > *:nth-child(2) {
+      color: gold
+    }
+  </style>
+<section class="page-banner">
+    <div class="page-banner-img">
+<div style="background-image: url(https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png)"></div>
+        <img class="img-placeholder" src="https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png">
+</div>
+    <div class="wrapper">
+      <div class="page-banner-inner">
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">Java GUI and EventListener</h1>
+  <h2 class="post-subtitle">feat.Input Output</h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2022-06-18T00:00:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Jun 18, 2022
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 17 mins</span>
+  </p>
+<div class="post-tags">
+<a class="post-tag" href="/tags.html#java">#java</a><a class="post-tag" href="/tags.html#gui">#gui</a>
+</div></header>
+</div>
+    </div>
+  </section><script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p>``</p>
+<blockquote>
+  <p>먼저 모든 import문은 eclipse 자동생성으로 만드는걸 default로 한다.
+즉, 코드에 import문은 넣지 않으므로 자동생성 해서 쓰길 권장한다.</p>
+</blockquote>
+
+<h3 id="입출력-스트림">입출력 스트림</h3>
+<ul>
+  <li>파일 객체 생성
+    <div class="language-java highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nc">File</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="s">"c:\\windows\\system.ini"</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">*</span> <span class="n">파일의</span> <span class="n">경로명</span>   
+<span class="nc">String</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span> 	<span class="c1">// "system.ini"</span>
+<span class="nc">String</span> <span class="n">path</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="na">getPath</span><span class="o">();</span> 			<span class="c1">// "c:\\windows\\system.ini"</span>
+<span class="nc">String</span> <span class="n">parent</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="na">getParent</span><span class="o">();</span> 	<span class="c1">// "c:\\windows"</span>
+</code></pre></div></div>
+
+<h2 id="gui-라이브러리">GUI 라이브러리</h2>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/174436039-2b5a9a5c-844e-4b13-941d-0476009b3fa7.png" width="800px"></p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/174436141-cb7d575f-f761-4ca6-aff1-2d65656a1801.png" width="800px"></p>
+
+<h4 id="gui-swing-으로-스윙프레임-만들기">GUI Swing 으로 스윙프레임 만들기</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ContentPaneEx</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="nf">ContentPaneEx</span><span class="o">()</span> <span class="o">{</span>
+<span class="n">setTitle</span><span class="o">(</span><span class="s">"ContentPane과 JFrame"</span><span class="o">);</span>
+<span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+<span class="nc">Container</span> <span class="n">contentPane</span> <span class="o">=</span> <span class="n">getContentPane</span><span class="o">();</span>
+<span class="n">contentPane</span><span class="o">.</span><span class="na">setBackground</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">ORANGE</span><span class="o">);</span>
+<span class="n">contentPane</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
+<span class="n">contentPane</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"OK"</span><span class="o">));</span>
+<span class="n">contentPane</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Cancel"</span><span class="o">));</span>
+<span class="n">contentPane</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Ignore"</span><span class="o">));</span>
+<span class="n">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">150</span><span class="o">);</span>
+<span class="n">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="k">new</span> <span class="nf">ContentPaneEx</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p><img src="https://user-images.githubusercontent.com/95608811/174436227-dbfc5823-32f4-478b-860e-ea8f9a15c8bd.png" width="400px"></p>
+
+<h4 id="스윙응용프로그램의-종료">스윙응용프로그램의 종료</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+</code></pre></div></div>
+<p>를 써야하는 이유</p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/174436263-cc4f0662-4685-4103-b804-fa4aebd3d709.png" width="800px"></p>
+
+<h4 id="배치관리자의-대표유형-4가지">배치관리자의 대표유형 4가지</h4>
+<ul>
+  <li>FlowLayout : 칸이 없는 그냥 공간속에 들어온 순서대로 밀어넣는 느낌</li>
+  <li>BorderLayout : Top,Bottom,Left,Right,Center 다섯 부분으로 쪼개서 배열하는 방식</li>
+  <li>GridLayout : 지정된 행,렬의 갯수만큼 배열하는 방식</li>
+  <li>CardLayout : 겹겹이 카드 쌓는 느낌의 방식</li>
+</ul>
+
+<h4 id="라디오버튼-생성">라디오버튼 생성</h4>
+<p><img src="https://user-images.githubusercontent.com/95608811/174437313-d7d2116b-7020-4501-a91e-7e25625a05aa.png" width="800px"></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RadioButtonEx</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="nf">RadioButtonEx</span><span class="o">()</span> <span class="o">{</span>
+<span class="n">setTitle</span><span class="o">(</span><span class="s">"라디오버튼 만들기 예제"</span><span class="o">);</span>
+<span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+<span class="nc">Container</span> <span class="n">c</span> <span class="o">=</span> <span class="n">getContentPane</span><span class="o">();</span>
+<span class="n">c</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
+<span class="nc">ImageIcon</span> <span class="n">cherryIcon</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ImageIcon</span><span class="o">(</span><span class="s">"images/cherry.j pg"</span> <span class="o">);</span>
+<span class="nc">ImageIcon</span> <span class="n">selectedCherryIcon</span> <span class="o">=</span>
+<span class="k">new</span> <span class="nf">ImageIcon</span><span class="o">(</span><span class="s">"images/selectedCherry.jpg"</span><span class="o">);</span>
+<span class="nc">ButtonGroup</span> <span class="n">g</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ButtonGroup</span><span class="o">();</span>
+<span class="nc">JRadioButton</span> <span class="n">apple</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JRadioButton</span><span class="o">(</span><span class="s">"사과"</span><span class="o">);</span>
+<span class="nc">JRadioButton</span> <span class="n">pear</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JRadioButton</span><span class="o">(</span><span class="s">"배"</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+<span class="nc">JRadioButton</span> <span class="n">cherry</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JRadioButton</span><span class="o">(</span><span class="s">"체리"</span><span class="o">,</span> <span class="n">cherryIcon</span><span class="o">);</span>
+<span class="n">cherry</span><span class="o">.</span><span class="na">setBorderPainted</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">cherry</span><span class="o">.</span><span class="na">setSelectedIcon</span><span class="o">(</span><span class="n">selectedCherryIcon</span><span class="o">);</span>
+<span class="n">g</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">apple</span><span class="o">);</span>
+<span class="n">g</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pear</span><span class="o">);</span>
+<span class="n">g</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cherry</span><span class="o">);</span>
+<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">apple</span><span class="o">);</span>
+<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pear</span><span class="o">);</span>
+<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cherry</span><span class="o">);</span>
+<span class="n">setSize</span><span class="o">(</span><span class="mi">250</span><span class="o">,</span><span class="mi">150</span><span class="o">);</span>
+<span class="n">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="k">new</span> <span class="nf">RadioButtonEx</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="간단한-텍스트필드-만들기">간단한 텍스트필드 만들기</h4>
+
+<ul>
+  <li>텍스트필드란?</li>
+  <li>한 줄 짜리 텍스트(문자열) 입력 창을 구현한 컴포넌트</li>
+  <li>텍스트 입력 도중 <code class="language-plaintext highlighter-rouge">Enter</code>키가 입력되면 Action 이벤트 발생</li>
+  <li>입력 가능한 문자 개수와 입력 창의 크기는 서로 다름</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TextFieldEx</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="nf">TextFieldEx</span><span class="o">()</span> <span class="o">{</span>
+<span class="n">setTitle</span><span class="o">(</span><span class="s">"텍스트필드 만들기 예제"</span><span class="o">);</span>
+<span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+<span class="nc">Container</span> <span class="n">c</span> <span class="o">=</span> <span class="n">getContentPane</span><span class="o">();</span>
+<span class="n">c</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
+<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"이름 "</span><span class="o">));</span>
+<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JTextField</span><span class="o">(</span><span class="mi">20</span><span class="o">));</span>
+<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"학과 "</span><span class="o">));</span>
+<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JTextField</span><span class="o">(</span><span class="s">"컴퓨터공학과 "</span><span class="o">,</span> <span class="mi">20</span><span class="o">));</span>
+<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"주소 "</span><span class="o">));</span>
+<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JTextField</span><span class="o">(</span><span class="s">"서울시 ..."</span><span class="o">,</span> <span class="mi">20</span><span class="o">));</span>
+<span class="n">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span><span class="mi">150</span><span class="o">);</span>
+<span class="n">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="k">new</span> <span class="nf">TextFieldEx</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="jtextarea-컴포넌트-생성">JTextArea 컴포넌트 생성</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span> <span class="kn">import</span> <span class="nn">java.awt.event.*</span><span class="o">;</span> <span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TextAreaEx</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+<span class="kd">private</span> <span class="nc">JTextField</span> <span class="n">tf</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextField</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+<span class="kd">private</span> <span class="nc">JTextArea</span> <span class="n">ta</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextArea</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="mi">20</span><span class="o">);</span>
+<span class="kd">public</span> <span class="nf">TextAreaEx</span><span class="o">()</span> <span class="o">{</span>
+<span class="n">setTitle</span><span class="o">(</span><span class="s">"텍스트영역 만들기 예제"</span><span class="o">);</span>
+<span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+<span class="nc">Container</span> <span class="n">c</span> <span class="o">=</span> <span class="n">getContentPane</span><span class="o">();</span>
+<span class="n">c</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
+<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"입력 후 &lt;Enter&gt; 키를 입력하세요"</span><span class="o">));</span>
+<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tf</span><span class="o">);</span>
+<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JScrollPane</span><span class="o">(</span><span class="n">ta</span><span class="o">));</span>
+<span class="n">tf</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="nc">JTextField</span> <span class="n">t</span> <span class="o">=</span> <span class="o">(</span><span class="nc">JTextField</span><span class="o">)</span><span class="n">e</span><span class="o">.</span><span class="na">getSource</span><span class="o">();</span>
+<span class="n">ta</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">t</span><span class="o">.</span><span class="na">getText</span><span class="o">()</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+<span class="n">t</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">});</span>
+<span class="n">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span><span class="mi">300</span><span class="o">);</span>
+<span class="n">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="k">new</span> <span class="nf">TextAreaEx</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="리스트-만들기">리스트 만들기</h4>
+
+<ul>
+  <li>리스트 컴포넌트란?</li>
+  <li>여러 개의 아이템을 리스트 형식으로 보여주고 선택하는 컴포넌트</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">JComboBox&lt;E&gt;</code>와 기본적으로 같은 기능</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">JScrollPane에 JList&lt;E&gt;</code>를 삽입하여 스크롤 가능</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListEx</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+<span class="kd">private</span> <span class="nc">String</span> <span class="o">[]</span> <span class="n">fruits</span><span class="o">=</span> <span class="o">{</span><span class="s">"apple"</span><span class="o">,</span> <span class="s">"banana"</span><span class="o">,</span> <span class="s">"kiwi"</span><span class="o">,</span> <span class="s">"mango"</span><span class="o">,</span> <span class="s">"pear"</span><span class="o">,</span>
+<span class="s">"peach"</span><span class="o">,</span> <span class="s">"berry"</span><span class="o">,</span> <span class="s">"strawberry"</span><span class="o">,</span> <span class="s">"blackberry"</span><span class="o">};</span>
+<span class="kd">private</span> <span class="nc">ImageIcon</span> <span class="o">[]</span> <span class="n">images</span> <span class="o">=</span> <span class="o">{</span>
+<span class="k">new</span> <span class="nf">ImageIcon</span><span class="o">(</span><span class="s">"images/icon1.png"</span><span class="o">),</span>
+<span class="k">new</span> <span class="nf">ImageIcon</span><span class="o">(</span><span class="s">"images/icon2.png"</span><span class="o">),</span>
+<span class="k">new</span> <span class="nf">ImageIcon</span><span class="o">(</span><span class="s">"images/icon3.png"</span><span class="o">),</span>
+<span class="k">new</span> <span class="nf">ImageIcon</span><span class="o">(</span><span class="s">"images/icon4.png"</span><span class="o">)</span> <span class="o">};</span>
+<span class="kd">public</span> <span class="nf">ListEx</span><span class="o">()</span> <span class="o">{</span>
+<span class="n">setTitle</span><span class="o">(</span><span class="s">"리스트 만들기 예제"</span><span class="o">);</span>
+<span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+<span class="nc">Container</span> <span class="n">c</span> <span class="o">=</span> <span class="n">getContentPane</span><span class="o">();</span>
+<span class="n">c</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
+<span class="nc">JList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">strList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="n">fruits</span><span class="o">);</span>
+<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">strList</span><span class="o">);</span>
+<span class="nc">JList</span><span class="o">&lt;</span><span class="nc">ImageIcon</span><span class="o">&gt;</span> <span class="n">imageList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JList</span><span class="o">&lt;</span><span class="nc">ImageIcon</span><span class="o">&gt;();</span>
+<span class="n">imageList</span><span class="o">.</span><span class="na">setListData</span><span class="o">(</span><span class="n">images</span><span class="o">);</span>
+<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">imageList</span><span class="o">);</span>
+<span class="nc">JList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">scrollList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="n">fruits</span><span class="o">);</span>
+<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JScrollPane</span><span class="o">(</span><span class="n">scrollList</span><span class="o">));</span>
+<span class="n">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span><span class="mi">300</span><span class="o">);</span>
+<span class="n">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="k">new</span> <span class="nf">ListEx</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h4 id="jslider-컴포넌트">JSlider 컴포넌트</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SliderEx</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="nf">SliderEx</span><span class="o">()</span> <span class="o">{</span>
+<span class="n">setTitle</span><span class="o">(</span><span class="s">"슬라이더 만들기 예제"</span><span class="o">);</span>
+<span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+<span class="nc">Container</span> <span class="n">c</span> <span class="o">=</span> <span class="n">getContentPane</span><span class="o">();</span>
+<span class="n">c</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
+<span class="nc">JSlider</span> <span class="n">slider</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSlider</span><span class="o">(</span><span class="nc">JSlider</span><span class="o">.</span><span class="na">HORIZONTAL</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
+<span class="n">slider</span><span class="o">.</span><span class="na">setPaintLabels</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">slider</span><span class="o">.</span><span class="na">setPaintTicks</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">slider</span><span class="o">.</span><span class="na">setPaintTrack</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">slider</span><span class="o">.</span><span class="na">setMajorTickSpacing</span><span class="o">(</span><span class="mi">50</span><span class="o">);</span>
+<span class="n">slider</span><span class="o">.</span><span class="na">setMinorTickSpacing</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">slider</span><span class="o">);</span>
+<span class="n">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span><span class="mi">100</span><span class="o">);</span>
+<span class="n">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="k">new</span> <span class="nf">SliderEx</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">java.awt.Container</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.FlowLayout</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionListener</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedWriter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileWriter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JButton</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JComboBox</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JFrame</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JLabel</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JTextField</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainProg</span> <span class="kd">extends</span> <span class="nc">JFrame</span><span class="o">{</span>
+   <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">stList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;();</span> <span class="c1">// ArrayList stList 생성</span>
+   <span class="nc">JButton</span> <span class="n">btnIns</span><span class="o">,</span> <span class="n">btnOut</span><span class="o">,</span> <span class="n">btnBat</span><span class="o">,</span> <span class="n">btnDis</span><span class="o">;</span> <span class="c1">// JButton 4개 객체 생성</span>
+   <span class="nc">JTextField</span> <span class="n">tf_id</span><span class="o">,</span> <span class="n">tf_name</span><span class="o">;</span> <span class="c1">// JTextField id 랑 name 객체 생성</span>
+   <span class="nc">JComboBox</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">cb_hk</span><span class="o">;</span> <span class="c1">// JComboBox 생성</span>
+   <span class="kd">public</span> <span class="nf">MainProg</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">createGUI</span><span class="o">();</span> <span class="c1">// GUI 만드는 함수호출</span>
+      <span class="n">btnDis</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span> <span class="c1">// btnDis의 이벤트 리스너 </span>
+      <span class="nd">@Override</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">try</span> <span class="o">{</span> <span class="c1">// try-catch 구문, 시도했을 때 잘되면 try 구문 실행, 에러발생시 catch구문 실행</span>
+        	 <span class="nc">FileWriter</span> <span class="n">fo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileWriter</span><span class="o">(</span><span class="s">"test.txt"</span><span class="o">);</span> <span class="c1">// FileWriter 을 실행한는 fo 객체 생성</span>
+        	 <span class="k">for</span><span class="o">(</span><span class="nc">Student</span> <span class="nl">stu:</span><span class="n">stList</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//Student의 stu:stList 의 갯수만큼 반복실행</span>
+        		 <span class="n">fo</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">stu</span><span class="o">.</span><span class="na">getStudentId</span><span class="o">()+</span><span class="s">" "</span><span class="o">+</span><span class="n">stu</span><span class="o">.</span><span class="na">getStudentName</span><span class="o">()+</span><span class="s">" "</span><span class="o">+</span><span class="n">stu</span><span class="o">.</span><span class="na">getMajor</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span> <span class="c1">// fo 객체에 있는 파일 wirte, stu에 있는 di,name,major 작성</span>
+        	 <span class="o">}</span>
+        	 <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"파일생성이 완료되었습니다."</span><span class="o">);</span>
+			 <span class="n">fo</span><span class="o">.</span><span class="na">close</span><span class="o">();</span> <span class="c1">// 한번 쓴 파일은 다시 close 해주어야함</span>
+		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e1</span><span class="o">)</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"파일생성오류입니다."</span><span class="o">);</span> <span class="c1">// 그냥 잘 생성 안되면, println 구문실행</span>
+			<span class="n">e1</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span>
+         
+      	<span class="o">}</span>
+      <span class="o">});</span>
+      
+      <span class="n">btnIns</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span> <span class="c1">//btnIns 액션 만들기</span>
+         
+         <span class="nd">@Override</span>
+         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">tf_id</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
+            <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">tf_name</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span>
+            <span class="nc">String</span> <span class="n">hk</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)(</span><span class="n">cb_hk</span><span class="o">.</span><span class="na">getSelectedItem</span><span class="o">());</span>
+            <span class="n">stList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">name</span><span class="o">,</span> <span class="n">hk</span><span class="o">));</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"입력됨"</span><span class="o">+</span><span class="s">" "</span><span class="o">+</span><span class="n">id</span><span class="o">+</span><span class="s">" "</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s">" "</span><span class="o">+</span><span class="n">hk</span><span class="o">);</span>
+         <span class="o">}</span>
+      <span class="o">});</span>
+
+      
+      <span class="n">btnOut</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
+         
+         <span class="nd">@Override</span>
+         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"----------------------------------------------------"</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"|   학번   |      이름      |       학과       |"</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"----------------------------------------------------"</span><span class="o">);</span>
+            <span class="k">for</span><span class="o">(</span><span class="nc">Student</span> <span class="n">stu</span> <span class="o">:</span> <span class="n">stList</span><span class="o">)</span> <span class="o">{</span>
+               <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stu</span><span class="o">.</span><span class="na">getStudentId</span><span class="o">()+</span><span class="s">"            "</span><span class="o">+</span><span class="n">stu</span><span class="o">.</span><span class="na">getStudentName</span><span class="o">()+</span><span class="s">"          "</span><span class="o">+</span><span class="n">stu</span><span class="o">.</span><span class="na">getMajor</span><span class="o">());</span>
+            <span class="o">}</span>
+            
+         <span class="o">}</span>
+      <span class="o">});</span>
+      <span class="n">btnBat</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
+		
+		<span class="nd">@Override</span>
+		<span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">try</span> <span class="o">{</span> <span class="c1">//Scanner 객체 scan에 FileReader 해서 txt 파일입력</span>
+				<span class="nc">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="k">new</span> <span class="nc">FileReader</span><span class="o">(</span><span class="s">"C:\\Users\\studentInfo.txt"</span><span class="o">));</span> <span class="c1">// scan 해올 경로 작성</span>
+				<span class="k">while</span><span class="o">(</span><span class="n">scan</span><span class="o">.</span><span class="na">hasNextLine</span><span class="o">()==</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+					<span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+					<span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+					<span class="kt">int</span> <span class="n">hkCode</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+					<span class="nc">String</span> <span class="n">hk</span><span class="o">=</span><span class="s">""</span><span class="o">;</span>
+					<span class="k">if</span> <span class="o">(</span><span class="n">hkCode</span> <span class="o">==</span> <span class="nc">Define</span><span class="o">.</span><span class="na">SW</span><span class="o">){</span>
+          <span class="c1">// Define 클래스에서 각 Major를 static final 상수로 선언 (final로 선언된 상수는 바꿀 수 없음 )</span>
+          <span class="c1">// public class Define {</span>
+          <span class="c1">// public static final int SW = 1001;</span>
+          <span class="c1">// public static final int INFO = 1002;</span>
+          <span class="c1">// public static final int TONGSIN = 2001;</span>
+          <span class="c1">// public static final int KY = 4001;</span>
+          <span class="c1">// public static final int AI = 1003;</span>
+          <span class="c1">// }</span>
+
+					<span class="n">hk</span> <span class="o">=</span> <span class="s">"컴퓨터소프트웨어공학과"</span><span class="o">;</span>
+					<span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">hkCode</span> <span class="o">==</span><span class="nc">Define</span><span class="o">.</span><span class="na">INFO</span><span class="o">)</span> <span class="o">{</span>
+						<span class="n">hk</span> <span class="o">=</span> <span class="s">"컴퓨터정보과"</span><span class="o">;</span>
+					<span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">hkCode</span> <span class="o">==</span><span class="nc">Define</span><span class="o">.</span><span class="na">TONGSIN</span><span class="o">)</span> <span class="o">{</span>
+						<span class="n">hk</span> <span class="o">=</span> <span class="s">"정보통신과"</span><span class="o">;</span>
+					<span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">hkCode</span> <span class="o">==</span><span class="nc">Define</span><span class="o">.</span><span class="na">KY</span><span class="o">)</span> <span class="o">{</span>
+						<span class="n">hk</span> <span class="o">=</span> <span class="s">"경영학과"</span><span class="o">;</span>
+					<span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">hkCode</span><span class="o">==</span><span class="nc">Define</span><span class="o">.</span><span class="na">AI</span><span class="o">)</span> <span class="o">{</span>
+						<span class="n">hk</span> <span class="o">=</span> <span class="s">"인공지능과"</span><span class="o">;</span>
+					<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+						<span class="n">hk</span> <span class="o">=</span> <span class="s">"전공학과오류입니다"</span><span class="o">;</span>
+					<span class="o">}</span>
+					<span class="n">stList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="n">id</span><span class="o">,</span><span class="n">name</span><span class="o">,</span><span class="n">hk</span><span class="o">));</span>
+				<span class="o">}</span>
+				<span class="n">scan</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"일괄입력했습니다"</span><span class="o">);</span>
+			<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileNotFoundException</span> <span class="n">e1</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">e1</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"파일입력에러"</span><span class="o">);</span>
+			<span class="o">}</span>
+			
+		<span class="o">}</span>
+	<span class="o">});</span>
+   <span class="o">}</span>
+   <span class="kd">private</span> <span class="kt">void</span> <span class="nf">createGUI</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="s">"Project"</span><span class="o">);</span> <span class="c1">// Title 이름 설정</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+      <span class="nc">Container</span> <span class="n">con</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getContentPane</span><span class="o">();</span> <span class="c1">// Container 객체 con 을 getContentPane으로 생성</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
+
+      <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"학번"</span><span class="o">))</span>
+      <span class="n">tf_id</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextField</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tf_id</span><span class="o">);</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"이름"</span><span class="o">));</span>
+      <span class="n">tf_name</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextField</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tf_name</span><span class="o">);</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"학과"</span><span class="o">));</span>
+      <span class="nc">String</span><span class="o">[]</span> <span class="n">hkdatas</span> <span class="o">=</span> <span class="o">{</span><span class="s">"컴퓨터소프트웨어공학과"</span><span class="o">,</span> <span class="s">"컴퓨터정보과"</span><span class="o">,</span> <span class="s">"전기전자정보통신과"</span><span class="o">,</span> <span class="s">"디자인과"</span><span class="o">,</span> <span class="s">"경영학과"</span><span class="o">,</span> <span class="s">"이스포츠인공지능학과"</span>   <span class="o">};</span>
+      <span class="n">cb_hk</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JComboBox</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="n">hkdatas</span><span class="o">);</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cb_hk</span><span class="o">);</span>
+      <span class="n">btnBat</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"일괄입력"</span><span class="o">);</span>
+      <span class="n">btnIns</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"입력"</span><span class="o">);</span>
+      <span class="n">btnDis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"파일출력"</span><span class="o">);</span>
+      <span class="n">btnOut</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"보고서출력"</span><span class="o">);</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">btnBat</span><span class="o">);</span> <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">btnIns</span><span class="o">);</span> <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">btnDis</span><span class="o">);</span> <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">btnOut</span><span class="o">);</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">270</span><span class="o">,</span><span class="mi">500</span><span class="o">);</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+   <span class="o">}</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">new</span> <span class="nf">MainProg</span><span class="o">();</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/web/2022/06/16/VueTodo.html" title="TodoList for Vue.js">TodoList for Vue.js</a><a class="next" href="/ai/2022/06/27/AI_1.html" title="병렬처리와 수학적 행렬">병렬처리와 수학적 행렬</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95.html" title="병렬처리와 수학적 행렬">SQL기본문법</a></li>
+<li><a class="post-link" href="/java/2022/06/18/JavaEvent.html" title="병렬처리와 수학적 행렬">Java GUI and EventListener</a></li>
+<li><a class="post-link" href="/ai/2022/06/27/AI_1.html" title="병렬처리와 수학적 행렬">병렬처리와 수학적 행렬</a></li>
+<li><a class="post-link" href="/web/2022/05/26/%EC%8B%9C%EB%A7%A8%ED%8B%B1%EC%9A%94%EC%86%8C%EC%99%80-%EC%9B%B9.html" title="병렬처리와 수학적 행렬">시맨틱 웹(Semantic Web)</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --></section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Copyright 2022. AlphateamInho All pictures can be copied without permission.  2022-2022 AlphateamInho</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
