@@ -1,7 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-27T17:43:58+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">병렬처리와 수학적 행렬</title><link href="http://localhost:4000/ai/2022/06/27/AI_1.html" rel="alternate" type="text/html" title="병렬처리와 수학적 행렬" /><published>2022-06-27T00:00:00+09:00</published><updated>2022-06-27T00:00:00+09:00</updated><id>http://localhost:4000/ai/2022/06/27/AI_1</id><content type="html" xml:base="http://localhost:4000/ai/2022/06/27/AI_1.html"><![CDATA[<p>파이썬은 다수의 개발자들이 공동으로 개발하는 오픈소스 프로젝트가 많고 라이브러리들이 매우 빈번하게 업데이트가 되기 때문에 라이브러리들 간의 의존성이 매우 복잡하여 기존에 완성되어 잘 돌아가는 코드가 오류를 발생시킬 수 있다.  <br />
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-13T19:34:34+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">파일 및 디렉토리 검색 - grep/find</title><link href="http://localhost:4000/linux/2022/07/13/grep.html" rel="alternate" type="text/html" title="파일 및 디렉토리 검색 - grep/find" /><published>2022-07-13T00:00:00+09:00</published><updated>2022-07-13T00:00:00+09:00</updated><id>http://localhost:4000/linux/2022/07/13/grep</id><content type="html" xml:base="http://localhost:4000/linux/2022/07/13/grep.html"><![CDATA[<p>``</p>
+<h2 id="파일-내용에서-검색-grep">파일 내용에서 검색 grep</h2>
+<ul>
+  <li>파일 내용에서 특정 내용만 찾을때 사용</li>
+  <li>grep [옵션] [패턴] [파일이름]</li>
+  <li>[옵션] : 좀 더 디테일한 조건으로 찾을 때 사용</li>
+  <li>[패턴] : 찾고 싶은 내용을 입력, 일치하는 내용을 출력. 정규표현식 사용 가능</li>
+  <li>[파일 이름] : grep 명령어로 특정 내용을 검색할 파일을 지정한다.     <br />
+<code class="language-plaintext highlighter-rouge">ex ) grep -i root/ect/id</code></li>
+</ul>
+
+<h3 id="옵션">옵션</h3>
+
+<p><code class="language-plaintext highlighter-rouge">-i</code> : 대소문자 무시 (word와 WoRD 를 구분하지 않는다.)  <br />
+<code class="language-plaintext highlighter-rouge">-n</code> : 줄 번호 표시 (line 넘버를 표시한다.) <br />
+<code class="language-plaintext highlighter-rouge">-v</code> : 패턴을 제외한 내용만 출력  <br />
+<code class="language-plaintext highlighter-rouge">-w</code> : 단어 단위로 검색 (ro 를 검색하면 root 는 찾지않는다.)  <br />
+<code class="language-plaintext highlighter-rouge">-c</code> : 매칭되는 줄 수 표시  <br />
+<code class="language-plaintext highlighter-rouge">-ㅣ</code> : 매칭되는 패턴이 있는 파일 이름 출력</p>
+
+<h3 id="패턴">패턴</h3>
+<p>정규표현식 : 어떤 문자를 표현할 때 다양한 특수문자를 이용해 표현하는 방식     <br />
+<code class="language-plaintext highlighter-rouge">^</code> : 줄의 시작을 지정 (해당 패턴이 줄의 시작인 경우 캡쳐) <code class="language-plaintext highlighter-rouge">ex)^root</code> <br />
+<code class="language-plaintext highlighter-rouge">$</code> : 줄의 마지막 지정  <code class="language-plaintext highlighter-rouge">ex)root$</code>  <br />
+<code class="language-plaintext highlighter-rouge">.</code> : 한 문자 대치 <code class="language-plaintext highlighter-rouge">ex)r..t</code>  <br />
+<code class="language-plaintext highlighter-rouge">*</code> : 여러 문제 대치 <code class="language-plaintext highlighter-rouge">ex)r*</code>  <br />
+<code class="language-plaintext highlighter-rouge">[]</code> : 패턴 중 한 문자 일치 <code class="language-plaintext highlighter-rouge">ex)[rR]oot</code> <br />
+<code class="language-plaintext highlighter-rouge">[^]</code> : 패턴 중 제외할 문자 지정 <code class="language-plaintext highlighter-rouge">ex)[^T]oot :: T를 제외한 oot 부분 출력</code></p>
+
+<h3 id="특수문자들을-단순한-문자로만-인식-fgrep">특수문자들을 단순한 문자로만 인식 fgrep</h3>
+<p><code class="language-plaintext highlighter-rouge">fgrep [옵션] [패턴] [파일이름]</code>  <br />
+만약 문서에 특수문자가 포함된 경우 여러 특수문자들은 정규표현식으로 인식되기 때문에   <br />
+해당 정규표현식의 기능으로 검색이 될 수 있다.   <br />
+이런 경우 fgrep은 여러 특수문자들(*,$,. 등)을 단순한 문자로 인식해서
+문서 내에서 해당 특수문자를 찾을 때 사용할 수 있다.</p>
+
+<h2 id="디렉토리-내에서-검색-명령어-find">디렉토리 내에서 검색 명령어 find</h2>
+<p><code class="language-plaintext highlighter-rouge">find [경로] [조건] [아규먼트] [행동]</code>  <br />
+<code class="language-plaintext highlighter-rouge">[경로]</code> : 어디를 기준으로 검색할 것인지 입력한다.  하위 디렉토리까지 검색  <br />
+<code class="language-plaintext highlighter-rouge">[조건]</code> : 어떤 조건으로 검색할 것인지 입력한다.  <br />
+<code class="language-plaintext highlighter-rouge">[아규먼트]</code> : 조건에 맞는 값을 입력해준다.   <br />
+<code class="language-plaintext highlighter-rouge">[행동]</code> : 검색 결과를 어떻게 처리할 것인지 입력한다.   <br />
+<code class="language-plaintext highlighter-rouge">ex) find /-name file -exec rm -rf {}￦;</code> <br />
+만약 행동은 빈칸으로 처리한다면 print 가 default로 입력된다.</p>
+
+<h3 id="조건">조건</h3>
+<p><code class="language-plaintext highlighter-rouge">name</code> : 이름으로 검색
+<code class="language-plaintext highlighter-rouge">type</code> : 파일의 타입으로 검색, 디렉토리는 d,파일은 f  <br />
+<code class="language-plaintext highlighter-rouge">perm</code> : 권한으로 검색  <br />
+<code class="language-plaintext highlighter-rouge">user</code> : 소유자로 검색  <br />
+<code class="language-plaintext highlighter-rouge">size</code> : 파일 크기로 검색, +는 이상, -는 이하, 단위는 512바이트   <br />
+c 바이트, k 키로바이트, M 메가바이트, G 기가바이트    <br />
+<code class="language-plaintext highlighter-rouge">atime</code> : 파일의 마지막 접근 시간으로 검색  <br />
+<code class="language-plaintext highlighter-rouge">mtime</code> : 파일의 마지막 수정 시간으로 검색</p>
+
+<h3 id="행동">행동</h3>
+<p><code class="language-plaintext highlighter-rouge">ls</code> : 자세한 결과 출력 <br />
+<code class="language-plaintext highlighter-rouge">exec [명령어] {} ￦;</code> : 검색한 파일을 특정 명령어로 실행  <br />
+<code class="language-plaintext highlighter-rouge">ex ) -exec rm -rf {} ￦;</code> 제거하기</p>]]></content><author><name>Ino</name></author><category term="linux" /><category term="linux" /><summary type="html"><![CDATA[`` 파일 내용에서 검색 grep 파일 내용에서 특정 내용만 찾을때 사용 grep [옵션] [패턴] [파일이름] [옵션] : 좀 더 디테일한 조건으로 찾을 때 사용 [패턴] : 찾고 싶은 내용을 입력, 일치하는 내용을 출력. 정규표현식 사용 가능 [파일 이름] : grep 명령어로 특정 내용을 검색할 파일을 지정한다. ex ) grep -i root/ect/id]]></summary></entry><entry><title type="html">신경망</title><link href="http://localhost:4000/ai/2022/06/28/%EC%8B%A0%EA%B2%BD%EB%A7%9D.html" rel="alternate" type="text/html" title="신경망" /><published>2022-06-28T00:00:00+09:00</published><updated>2022-06-28T00:00:00+09:00</updated><id>http://localhost:4000/ai/2022/06/28/%EC%8B%A0%EA%B2%BD%EB%A7%9D</id><content type="html" xml:base="http://localhost:4000/ai/2022/06/28/%EC%8B%A0%EA%B2%BD%EB%A7%9D.html"><![CDATA[<h3 id="퍼셉트론">퍼셉트론</h3>
+<p>오늘날 인공신경망에서 이용하는 구조는 퍼셉트론이라는 선형 분류기이다.
+이는 입력과 가중치들의 곱을 모두 더한 뒤 활성화 함수를 적용해서 그 값이 0보다 크면 1, 0보다 작으면 -1을 출력하는 구조이다.</p>
+
+<ima src="https://user-images.githubusercontent.com/95608811/176060497-7cb6bb9e-1493-4ac0-8209-48fb38ade3da.png" width="800px">
+
+- 그래서 입력을 넣고 입력에 대한 결과를 출력하였을때 원하는 값이 나오도록 가중치를 조절한다.
+학습이라는게 결국 그 가중치값을 가장 많은 입력에 대해 가장 근접한 가중치를 찾는 과정이라고 볼 수 있다.
+</ima>]]></content><author><name>Ino</name></author><category term="ai" /><category term="ai" /><summary type="html"><![CDATA[퍼셉트론 오늘날 인공신경망에서 이용하는 구조는 퍼셉트론이라는 선형 분류기이다. 이는 입력과 가중치들의 곱을 모두 더한 뒤 활성화 함수를 적용해서 그 값이 0보다 크면 1, 0보다 작으면 -1을 출력하는 구조이다.]]></summary></entry><entry><title type="html">병렬처리와 수학적 행렬</title><link href="http://localhost:4000/ai/2022/06/27/AI_1.html" rel="alternate" type="text/html" title="병렬처리와 수학적 행렬" /><published>2022-06-27T00:00:00+09:00</published><updated>2022-06-27T00:00:00+09:00</updated><id>http://localhost:4000/ai/2022/06/27/AI_1</id><content type="html" xml:base="http://localhost:4000/ai/2022/06/27/AI_1.html"><![CDATA[<p>파이썬은 다수의 개발자들이 공동으로 개발하는 오픈소스 프로젝트가 많고 라이브러리들이 매우 빈번하게 업데이트가 되기 때문에 라이브러리들 간의 의존성이 매우 복잡하여 기존에 완성되어 잘 돌아가는 코드가 오류를 발생시킬 수 있다.  <br />
 이 때문에 아나콘다를 이용하여 라이브러리 버전들을 유지하며 개발할 수 있도록 가상환경을 구성하는것이 좋다.</p>
 
-<h3 id="data-생성">Data 생성</h3>
+<h2 id="data-생성">Data 생성</h2>
 
 <h4 id="1차원">1차원</h4>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">,(</span><span class="n">c</span><span class="p">,))</span>
@@ -62,7 +128,7 @@
 
 <ul>
   <li>정리하자면 ,(콤마) 기준으로 왼쪽은 행 오른쪽은 열을 슬라이싱한다.
-그냥 파이썬 슬라이싱과 기본원리는 동일하나 행,열을 지원한다는 차이다.</li>
+그냥 파이썬 슬라이싱과 기본원리는 동일하나 행,열을 지원한다는 점에서 차별성이 있다.</li>
 </ul>]]></content><author><name>Ino</name></author><category term="ai" /><category term="ai" /><summary type="html"><![CDATA[파이썬은 다수의 개발자들이 공동으로 개발하는 오픈소스 프로젝트가 많고 라이브러리들이 매우 빈번하게 업데이트가 되기 때문에 라이브러리들 간의 의존성이 매우 복잡하여 기존에 완성되어 잘 돌아가는 코드가 오류를 발생시킬 수 있다. 이 때문에 아나콘다를 이용하여 라이브러리 버전들을 유지하며 개발할 수 있도록 가상환경을 구성하는것이 좋다.]]></summary></entry><entry><title type="html">Java GUI and EventListener</title><link href="http://localhost:4000/java/2022/06/18/JavaEvent.html" rel="alternate" type="text/html" title="Java GUI and EventListener" /><published>2022-06-18T00:00:00+09:00</published><updated>2022-06-18T00:00:00+09:00</updated><id>http://localhost:4000/java/2022/06/18/JavaEvent</id><content type="html" xml:base="http://localhost:4000/java/2022/06/18/JavaEvent.html"><![CDATA[<p>``</p>
 <blockquote>
   <p>먼저 모든 import문은 eclipse 자동생성으로 만드는걸 default로 한다.
@@ -669,7 +735,115 @@
   <li>왼쪽과 오른쪽 서브트리도 또한 이진 탐색 트리이다 (재귀적정의)</li>
 </ol>
 
-<p>``</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[트리검색 탐색을 하기에 가장 적합하고 많이 사용하는 구조가 트리구조이다. 특히 프로그램의 논리는 if 조건문의 참이나 거짓 두 갈래의 선택이 있는 이진구조이므로 이를 반영하여 문제 분석과 설계 단계에서 자연스럽게 이진트리가 자주 사용된다.]]></summary></entry><entry><title type="html">Stack(스택)for C</title><link href="http://localhost:4000/algorithm/2022/06/13/StackForC.html" rel="alternate" type="text/html" title="Stack(스택)for C" /><published>2022-06-13T00:00:00+09:00</published><updated>2022-06-13T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/06/13/StackForC</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/06/13/StackForC.html"><![CDATA[<h2 id="스택의-정의">스택의 정의</h2>
+<p>``</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[트리검색 탐색을 하기에 가장 적합하고 많이 사용하는 구조가 트리구조이다. 특히 프로그램의 논리는 if 조건문의 참이나 거짓 두 갈래의 선택이 있는 이진구조이므로 이를 반영하여 문제 분석과 설계 단계에서 자연스럽게 이진트리가 자주 사용된다.]]></summary></entry><entry><title type="html">구조체 for C</title><link href="http://localhost:4000/algorithm/2022/06/13/%EA%B5%AC%EC%A1%B0%EC%B2%B4forC.html" rel="alternate" type="text/html" title="구조체 for C" /><published>2022-06-13T00:00:00+09:00</published><updated>2022-06-13T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/06/13/%EA%B5%AC%EC%A1%B0%EC%B2%B4forC</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/06/13/%EA%B5%AC%EC%A1%B0%EC%B2%B4forC.html"><![CDATA[<h2 id="구조체를-이용한-파일처리">구조체를 이용한 파일처리</h2>
+<p>프로그래밍에 필요한 데이터가 파일로 제공되는 경우 각 파일에는 필요한 필드로 구성된
+레코드를 저장하는 경우가 많다. 이렇게 저장된 파일의 데이터를 프로그램에서 사용하려면
+구조체를 활용해야한다.</p>
+<ul>
+  <li>구조체는 서로 형이 다를 수 있는 여러 변수들의 모임을 하나의 이름으로 가지고 있는 자
+료구조이다. <br />
+구조체는 그 목적에 따라 필요한 구성요소를 정하여 다음과 같이 선언할 수 있다.
+    <pre><code class="language-C">struct employee { char name[20]; long id; int depend; float salary;
+};
+struct employee e1;
+</code></pre>
+  </li>
+</ul>
+
+<pre><code class="language-C">strcpy(e1.name, “HongGilDong");
+e1.id = 20071357;
+e1.depend = 3;
+e1.salary = 345.716;
+</code></pre>
+
+<p>이와 같은 선언에 의하여 struct employee라는 데이터 형이 생기게 되는 것이다. <br />
+이때 아래와 같이 선언된 변수 e1은 각각 name, id, depend, salary 4개의 변수에 값을 가질 수 있
+다.</p>
+
+<h2 id="typedef정의문으로-활용하기">typedef(정의문)으로 활용하기</h2>
+<pre><code class="language-C">typedef struct { char name[20]; int age; float salary;
+} human_being;
+</code></pre>
+
+<p>이런식으로 정의문으로 구조체를 선언하고, 구조체 별칭으로 human_being 으로 만들면,</p>
+
+<p>이후</p>
+
+<pre><code class="language-C">human_being person1, person2;
+stycpy(person1.name, "Rhee Hyun-Sook");
+peson1.age = 34;
+person1.salary = 1575.100;
+</code></pre>
+
+<p>이런식으로, 구조체를 활용해 구조체 별칭 human_being 으로 person1, person2 변수를 만들 수 있다.</p>
+
+<blockquote>
+  <p>~ 객체지향언어를 공부한 독자라면, 일종의 객체라고 생각해도 이해하는 데는 무방하다.   ~</p>
+</blockquote>
+
+<h2 id="구조체를-이용한-파일처리의-예시">구조체를 이용한 파일처리의 예시</h2>
+
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#define MAX_CNUM 50
+
+typedef struct course { 
+  char courseid[10];
+  char tname[20];
+  unsigned snum; 
+  unsigned roomnum;
+} cinform;
+main(int argc, char *argv[])
+{
+  int i=0, dnum;
+  char sprof[20];
+  unsigned sroomnum;
+  cinform cdb[MAX_CNUM];
+  FILE *coursedb;
+  if ((coursedb = fopen(argv[1], "r")) == NULL) {
+printf("데이터 파일을 열 수 없습니다 \n");
+exit(1); 
+}
+while (fscanf(coursedb, "%s %s %u %u", cdb[i].courseid,
+  cdb[i].tname, &amp;(cdb[i].snum), &amp;(cdb[i].roomnum)) != EOF)
+  i++; 
+  dnum = i;
+  printf("수강인원이 40명 이상인 강좌 코드 번호를 출력하시오.\n");
+  for (i=0; i &lt; dnum; i++) 
+    if (cdb[i].snum &gt;= 40) 
+      printf("%s\n", cdb[i].courseid);
+    printf("검색하고자 하는 교수이름 입력 : ");
+    scanf("%s", sprof);
+    printf("%s 교수가 강의하는 강좌코드와 강의실 번호를 출력하시오.\n",sprof); 
+    for (i=0; i &lt; dnum; i++)
+      if (!strcmp(cdb[i].tname, sprof))
+      printf("%s\t%u\n", cdb[i].courseid, cdb[i].roomnum);
+    printf("검색하고자 하는 강의실 번호 입력 : ");
+    scanf("%u", &amp;sroomnum);
+    printf("%u 강의실에서 수업하는 강좌코드와 담당교수를 출력하시오.\n", sroomnum);
+    for (i=0; i &lt; dnum; i++)
+      if (cdb[i].roomnum == sroomnum) 
+        printf("%s\t%s\n", cdb[i].courseid, cdb[i].tname);
+}
+</code></pre>
+
+<p>위와 같이 구조체를 이용해 여러 학생들의 정보를 FILE 로 가져와서 정보를 검색,수정,삭제할 수 있다.</p>
+
+<h2 id="자기참조-구조체를-이용한-연결리스트의-구현">자기참조 구조체를 이용한 연결리스트의 구현</h2>
+
+<p>여러 데이터를 저장할 때 주로 사용하는 배열은 연속된 메모리를 차지하게 되고 최대크기
+를 컴파일 시간에 미리 확보하고 있어야 하는 단점이 있다.</p>
+
+<p>연결리스트를 구성하는 하나의 정보 단위를 노드라고 하는 데 각 노드는 저장하려는 데이터
+와 다음 노드를 가리키는 포인터 정보를 포함하게 된다.</p>
+
+<p>이를 위하여 구조체의 정의 안에 자신과 같은 구조체로의 포인터 정보
+를 포함하는 자기참조 구조체로 표현해야 한다. 자기참조 구조체 형태의 연결리스트의 노드 구조의 간단한 예를 다음과 같이 표현할 수 있다.</p>
+
+<p>```
+struct one_node { char data[5]; struct one_node *next;
+};</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[구조체를 이용한 파일처리 프로그래밍에 필요한 데이터가 파일로 제공되는 경우 각 파일에는 필요한 필드로 구성된 레코드를 저장하는 경우가 많다. 이렇게 저장된 파일의 데이터를 프로그램에서 사용하려면 구조체를 활용해야한다. 구조체는 서로 형이 다를 수 있는 여러 변수들의 모임을 하나의 이름으로 가지고 있는 자 료구조이다. 구조체는 그 목적에 따라 필요한 구성요소를 정하여 다음과 같이 선언할 수 있다. struct employee { char name[20]; long id; int depend; float salary; }; struct employee e1;]]></summary></entry><entry><title type="html">Stack(스택)for C</title><link href="http://localhost:4000/algorithm/2022/06/13/StackForC.html" rel="alternate" type="text/html" title="Stack(스택)for C" /><published>2022-06-13T00:00:00+09:00</published><updated>2022-06-13T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/06/13/StackForC</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/06/13/StackForC.html"><![CDATA[<h2 id="스택의-정의">스택의 정의</h2>
 <ul>
   <li>한쪽 끝(top)에서 삽입과 삭제가 일어나는 선형리스트
 LIFO(Last In First Out) 구조</li>
@@ -797,364 +971,7 @@ else (top의 연산자를 pop하여 출력)
   }
 return delete_stack();
 }
-</code></pre>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[스택의 정의 한쪽 끝(top)에서 삽입과 삭제가 일어나는 선형리스트 LIFO(Last In First Out) 구조 선형리스트의 긑부분에서만 자료의 입력과 출력이 가능하도록 제한된 자료구조 마지막 삽입 (Last-In)한 원소는 맨 위에 쌓여 있다가 가장먼저 삭제(First-Out) 된다. 후입선출 구조 (LIFO) 스택을 운영하기 위하여 끝 부분(top)에 대한 정보가 필요함.]]></summary></entry><entry><title type="html">구조체 for C</title><link href="http://localhost:4000/algorithm/2022/06/13/%EA%B5%AC%EC%A1%B0%EC%B2%B4forC.html" rel="alternate" type="text/html" title="구조체 for C" /><published>2022-06-13T00:00:00+09:00</published><updated>2022-06-13T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/06/13/%EA%B5%AC%EC%A1%B0%EC%B2%B4forC</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/06/13/%EA%B5%AC%EC%A1%B0%EC%B2%B4forC.html"><![CDATA[<h2 id="구조체를-이용한-파일처리">구조체를 이용한 파일처리</h2>
-<p>프로그래밍에 필요한 데이터가 파일로 제공되는 경우 각 파일에는 필요한 필드로 구성된
-레코드를 저장하는 경우가 많다. 이렇게 저장된 파일의 데이터를 프로그램에서 사용하려면
-구조체를 활용해야한다.</p>
-<ul>
-  <li>구조체는 서로 형이 다를 수 있는 여러 변수들의 모임을 하나의 이름으로 가지고 있는 자
-료구조이다. <br />
-구조체는 그 목적에 따라 필요한 구성요소를 정하여 다음과 같이 선언할 수 있다.
-    <pre><code class="language-C">struct employee { char name[20]; long id; int depend; float salary;
-};
-struct employee e1;
-</code></pre>
-  </li>
-</ul>
-
-<pre><code class="language-C">strcpy(e1.name, “HongGilDong");
-e1.id = 20071357;
-e1.depend = 3;
-e1.salary = 345.716;
-</code></pre>
-
-<p>이와 같은 선언에 의하여 struct employee라는 데이터 형이 생기게 되는 것이다. <br />
-이때 아래와 같이 선언된 변수 e1은 각각 name, id, depend, salary 4개의 변수에 값을 가질 수 있
-다.</p>
-
-<h2 id="typedef정의문으로-활용하기">typedef(정의문)으로 활용하기</h2>
-<pre><code class="language-C">typedef struct { char name[20]; int age; float salary;
-} human_being;
-</code></pre>
-
-<p>이런식으로 정의문으로 구조체를 선언하고, 구조체 별칭으로 human_being 으로 만들면,</p>
-
-<p>이후</p>
-
-<pre><code class="language-C">human_being person1, person2;
-stycpy(person1.name, "Rhee Hyun-Sook");
-peson1.age = 34;
-person1.salary = 1575.100;
-</code></pre>
-
-<p>이런식으로, 구조체를 활용해 구조체 별칭 human_being 으로 person1, person2 변수를 만들 수 있다.</p>
-
-<blockquote>
-  <p>~ 객체지향언어를 공부한 독자라면, 일종의 객체라고 생각해도 이해하는 데는 무방하다.   ~</p>
-</blockquote>
-
-<h2 id="구조체를-이용한-파일처리의-예시">구조체를 이용한 파일처리의 예시</h2>
-
-<pre><code class="language-C">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-#define MAX_CNUM 50
-
-typedef struct course { 
-  char courseid[10];
-  char tname[20];
-  unsigned snum; 
-  unsigned roomnum;
-} cinform;
-main(int argc, char *argv[])
-{
-  int i=0, dnum;
-  char sprof[20];
-  unsigned sroomnum;
-  cinform cdb[MAX_CNUM];
-  FILE *coursedb;
-  if ((coursedb = fopen(argv[1], "r")) == NULL) {
-printf("데이터 파일을 열 수 없습니다 \n");
-exit(1); 
-}
-while (fscanf(coursedb, "%s %s %u %u", cdb[i].courseid,
-  cdb[i].tname, &amp;(cdb[i].snum), &amp;(cdb[i].roomnum)) != EOF)
-  i++; 
-  dnum = i;
-  printf("수강인원이 40명 이상인 강좌 코드 번호를 출력하시오.\n");
-  for (i=0; i &lt; dnum; i++) 
-    if (cdb[i].snum &gt;= 40) 
-      printf("%s\n", cdb[i].courseid);
-    printf("검색하고자 하는 교수이름 입력 : ");
-    scanf("%s", sprof);
-    printf("%s 교수가 강의하는 강좌코드와 강의실 번호를 출력하시오.\n",sprof); 
-    for (i=0; i &lt; dnum; i++)
-      if (!strcmp(cdb[i].tname, sprof))
-      printf("%s\t%u\n", cdb[i].courseid, cdb[i].roomnum);
-    printf("검색하고자 하는 강의실 번호 입력 : ");
-    scanf("%u", &amp;sroomnum);
-    printf("%u 강의실에서 수업하는 강좌코드와 담당교수를 출력하시오.\n", sroomnum);
-    for (i=0; i &lt; dnum; i++)
-      if (cdb[i].roomnum == sroomnum) 
-        printf("%s\t%s\n", cdb[i].courseid, cdb[i].tname);
-}
-</code></pre>
-
-<p>위와 같이 구조체를 이용해 여러 학생들의 정보를 FILE 로 가져와서 정보를 검색,수정,삭제할 수 있다.</p>
-
-<h2 id="자기참조-구조체를-이용한-연결리스트의-구현">자기참조 구조체를 이용한 연결리스트의 구현</h2>
-
-<p>여러 데이터를 저장할 때 주로 사용하는 배열은 연속된 메모리를 차지하게 되고 최대크기
-를 컴파일 시간에 미리 확보하고 있어야 하는 단점이 있다.</p>
-
-<p>연결리스트를 구성하는 하나의 정보 단위를 노드라고 하는 데 각 노드는 저장하려는 데이터
-와 다음 노드를 가리키는 포인터 정보를 포함하게 된다.</p>
-
-<p>이를 위하여 구조체의 정의 안에 자신과 같은 구조체로의 포인터 정보
-를 포함하는 자기참조 구조체로 표현해야 한다. 자기참조 구조체 형태의 연결리스트의 노드 구조의 간단한 예를 다음과 같이 표현할 수 있다.</p>
-
-<p>```
-struct one_node { char data[5]; struct one_node *next;
-};</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[구조체를 이용한 파일처리 프로그래밍에 필요한 데이터가 파일로 제공되는 경우 각 파일에는 필요한 필드로 구성된 레코드를 저장하는 경우가 많다. 이렇게 저장된 파일의 데이터를 프로그램에서 사용하려면 구조체를 활용해야한다. 구조체는 서로 형이 다를 수 있는 여러 변수들의 모임을 하나의 이름으로 가지고 있는 자 료구조이다. 구조체는 그 목적에 따라 필요한 구성요소를 정하여 다음과 같이 선언할 수 있다. struct employee { char name[20]; long id; int depend; float salary; }; struct employee e1;]]></summary></entry><entry><title type="html">MagicSquare(마방진)for C</title><link href="http://localhost:4000/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html" rel="alternate" type="text/html" title="MagicSquare(마방진)for C" /><published>2022-06-12T00:00:00+09:00</published><updated>2022-06-12T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html"><![CDATA[<h2 id="마방진">마방진</h2>
-
-<p>우선 마방진에 대한 개념은 가로,세로,대각선의 합이 같아지도록 정사각형 모양으로 배열한 행렬이다.</p>
-
-<h4 id="마방진-만드는-규칙">마방진 만드는 규칙</h4>
-<p>1) 첫번째 행의 중앙에 1을 배열한다.   <br />
-2) 왼쪽 대각선으로 올라가면서 빈자리에 1씩 큰 수를 배열한다.  <br />
-이때 행렬의 밖으로 벗어나면 그 방향의 반대편에서 계속한다.  <br />
-3) 만약 이동해서 채워야하는 자리에 이미 숫자가 배열되어 있다면, 정해진 위치 바로 아래에 숫자를 배열한다.</p>
-<blockquote>
-  <p>5x5 마방진 예시</p>
-</blockquote>
-
-<p><img src="https://user-images.githubusercontent.com/95608811/173228247-33159117-d629-4c6b-8d1f-d9178874049c.png" width="800px" /></p>
-
-<h4 id="규칙을-프로그램으로-짜기">규칙을 프로그램으로 짜기</h4>
-
-<ul>
-  <li>입력 : 0으로 초기화된 n * n의 2차원 배열 <code class="language-plaintext highlighter-rouge">table[n][n]</code></li>
-  <li>출력 : n * n의 magic square</li>
-</ul>
-
-<p>행을 움직이는 변수 i, 열을 움직이는 변수 j</p>
-
-<p>1) Rule : 첫 번째 행의 중앙에 1을 놓는다.</p>
-<pre><code class="language-C">int i = 0, int j = (n-1)/2 ,
-table[i][j] = 1;
-</code></pre>
-
-<p>2) Rule : 왼쪽 대각선 방향으로 올라가면서 빈자리에 1씩 큰 수를 놓는다. 이때 행렬의 밖으로 벗어나면 그 방향의 반대편에서 계속한다.</p>
-
-<p>3) Rule : 만약 이동하려는 자리에 숫자가 이미 채워져 있으면 지금 위치의 바로 아래에 숫자를 놓는다.</p>
-
-<pre><code class="language-C">#define MAX_SIZE 15   
-
-//마방진의 최대 사이즈를 15로 설정
-void make_msquare(int table[][MAX_SIZE], int n);
-// 마방진 구현하는 함수
-void display(int table[][MAX_SIZE], int n);
-// 구현한 마방진을 print 해서 보여주는 함수
-
-int main() {
-	int n, r, c, sum = 0;
-	int table[MAX_SIZE][MAX_SIZE];
-
-	printf("Enter a number: ");
-	scanf("%d", &amp;n);
-
-	if ((n &lt; 1) || n &gt; MAX_SIZE) {
-		printf("Error! size is out of range \n");
-		exit(0);
-	}
-	for (r = 0; r &lt; n; r++) {
-		for (c = 0; c &lt; n; c++) {
-			table[r][c] = 0;
-		}
-	}
-  // 마방진의 배열을 전부 0으로 초기화시켜줌
-	make_msquare(table,n);
-	display(table, n);
-
-}
-
-void make_msquare(int table[][MAX_SIZE], int n) {
-	int digit = 0;
-	int row, r, c, col;
-
-	r = 0; c = (n - 1) / 2;
-  // 행의 첫번째줄, 열의 중간부터 마방진을 시작한다.
-	table[r][c] = 1;
-
-	for (digit = 2; digit &lt;= n * n; digit++) {
-		row = r - 1;
-		col = c - 1;
-    // 왼쪽 대각선 위로 올라가면서 수를 채울거라,
-    행과 열을 하나씩 빼준다.
-
-		if (row &lt; 0) {
-			row = n - 1;
-		}
-    // 행이 0보다 작으면 즉, 가장 위에 열에서 더이상 올라갈 데가 없으면 n-1번째 (가장 아래)에서 다시 시작한다
-		if (col &lt; 0) {
-			col = n - 1;
-		}
-    // 열이 0보다 작으면 즉, 가장 왼쪽에서 더 왼쪽으로 갈 데가 없으면 n-1번째 (가장 오른쪽)에서 다시 시작한다
-		if (table[row][col]) r++;
-		else {
-			r = row;
-			c = col;
-		}
-		table[r][c] = digit;
-    // 반복되는 횟수에 따라서 그 해당 테이블의 배열에 값을 넣어준다.
-	}
-}
-
-void display(int table[][MAX_SIZE], int n) {
-	int r, c;
-	int sum = 0;
-
-	for (r = 0; r &lt; n; r++) {
-		for (c = 0; c &lt; n; c++)
-			printf("%5d", table[r][c]);
-		printf("\n");
-	}
-	for (c = 0; c &lt; n; c++) {
-		sum += table[0][c];
-	}
-  // 한 열의 number을 카운팅해서 한 열/헹/대각선의 Sum을 구함
-	printf("Row/Col/Diagonal Sum = %d \n ", sum);
-}
-</code></pre>
-
-<p><img src="https://user-images.githubusercontent.com/95608811/173526315-b66b2a84-0cad-4b1d-95eb-1ff8eadfb649.png" width="800px" /></p>
-
-<p>실제 위 코드를 동작시키면 이와 같이 출력된다.</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[마방진]]></summary></entry><entry><title type="html">SQL문제</title><link href="http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html" rel="alternate" type="text/html" title="SQL문제" /><published>2022-06-12T00:00:00+09:00</published><updated>2022-06-12T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C</id><content type="html" xml:base="http://localhost:4000/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html"><![CDATA[<h2 id="sql-문법-순서">SQL 문법 순서</h2>
-
-<p>SELECT(마지막)  무엇을 불러올건지 <br />
-FROM (1) 어디서 <br />
-WHERE (2) 조건문  <br />
-GROUP(3) 그룹별 <br />
-HAVING(4) 가져온것 중에서 조건문  <br />
-ORDER BY(5) 정렬</p>
-
-<p>순서로 작성하면 된다.</p>
-
-<h2 id="sql-문제">SQL 문제</h2>
-
-<p><img src="https://user-images.githubusercontent.com/95608811/173223493-4b33e677-66ff-4ae8-9cd1-cf306f69909f.png" width="600px" /></p>
-
-<p>1) 급여가 400 이상인 사원 이름과 그 사원이 속한 부서이름을 검색하라</p>
-<pre><code class="language-SQL">SELECT  ename, dname
-
-FROM    dept, emp
-
-WHERE   dept.deptid = emp.deptid
-
-AND   salary &gt;= 400;
-</code></pre>
-<p>​</p>
-
-<p>2) ‘영업부’ 와’구매부’ 사원의 급여 합계를 검색하라</p>
-
-<pre><code class="language-SQL">SELECT  SUM(salary)
-
-FROM    dept, emp
-
-WHERE   dept.deptid = emp.deptid
-
-AND   dname IN ('영업부','구매부');
-</code></pre>
-
-<p>​</p>
-
-<p>3) 가장 급여를 많이 받는 사원과 가장 적게 받는 사원의 급여액 차이는 얼마인지 검색하라</p>
-
-<pre><code class="language-SQL">SELECT  MAX(salary) - MIN(salary)
-
-FROM    emp;
-</code></pre>
-<p>​</p>
-
-<p>4) ‘영업’ 사원 중 급여가 380 이상인 사원 이름, 담당업무, 급여액을 검색하라</p>
-
-<pre><code class="language-SQL">SELECT  ename, job, salary
-
-FROM    dept, emp
-
-WHERE   dept.deptid = emp.deptid
-
-AND   dname = '영업부'
-
-AND   salary &gt;= 380;
-</code></pre>
-
-<blockquote>
-  <p>문자열검색 %  (0개이상)
-_ (1개문자열)</p>
-</blockquote>
-
-<p>1) 장르가 코미디 이거나 드라마 인 영화제목, 장르를 검색하라(IN 사용)</p>
-
-<pre><code class="language-SQL">--1번문제
-SELECT 영화제목, 장르
-FROM 영화
-WHERE 장르 IN ('코미디','드라마');
-</code></pre>
-
-<p>2) 장르별 상영시간이 가장 긴 영화를 검색해라</p>
-<pre><code class="language-SQL">--2번문제
-SELECT 장르,MAX(상영시간)
-FROM 영화
-GROUP BY 장르;
-</code></pre>
-<p>3) 영화제목에 아저씨라는 단어가 들어가는 모든정보를 검색해라</p>
-<pre><code class="language-SQL">--3번문제
-SELECT *
-FROM 영화
-WHERE 영화제목 LIKE '%아저씨%';
-
-( %abc%  &gt;&gt; abc 앞뒤에 어떤문자열이 있든 상관없음 abc를 포함하고 있는것을 찾음.)
-(like 는 = 이 아니라, 사전식으로 찾음 그래서 남발하면 속도가 느려짐)
-</code></pre>
-
-<p>4) 배우가 남자인 배우번호,이름을 검색하여 배우이름별로 오름차순 정렬해라</p>
-<pre><code class="language-SQL">--4번문제
-SELECT 배우번호,배우이름
-FROM 배우
-WHERE 성별 = '남'
-ORDER BY 배우이름 ASC;
-
-(order by 배우이름 asc =&gt; 배우이름을 오름차순으로 정렬 des는 내림차순으로 정렬)
-</code></pre>
-
-<p>5) 출연료가 500만원 이상,1000만원 이하인 영화코드,배우번호,출연료를 검색해라</p>
-<pre><code class="language-SQL">--5번문제
-SELECT 영화코드,배우번호,출연료
-FROM 출연
-WHERE 출연료 &gt;= 500 AND 출연료 &lt;= 1000;
-
-WHERE 출연료 BETWEEN 500 AND  1000;
-</code></pre>
-
-<pre><code class="language-SQL">--6번문제
-다음 SQL문법의 실행결과를 작성하고 간략히 설명
-SELECT COUNT(장르),COUNT(DISTRICT 장르)
-FROM 영화;
-</code></pre>
-<blockquote>
-  <p>4,2 / DISTRICT은 결과값 중복제거</p>
-</blockquote>
-
-<p>7) 차태현이 출현한 영화의 출연료를 검색해라</p>
-<pre><code class="language-SQL">--7번문제
-SELECT 출연료
-FROM 배우,출연
-WHERE 배우,배우번호 = 출연.배우번호
-AND 배우이름 = '차태현';
-
-SELECT 출연료
-FROM 배우 INNER JOIN 출연
-ON 배우.배우번호 = 츌연.배우번호
-WEHRE 배우이름 ='차태현';
-</code></pre>
-
-<p>8) 영화 ‘키다리아저씨’를 장르는 스릴러, 관림기준은 15로 수정해라</p>
-<pre><code class="language-SQL">--8번문제
-UPDATE 영화
-SET 장르 ='스릴러',관람기준 = 15
-WHERE 영화제목 = '키다리아저씨';
-</code></pre>]]></content><author><name>Ino</name></author><category term="DB" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[SQL 문법 순서]]></summary></entry><entry><title type="html">SQL기본문법</title><link href="http://localhost:4000/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95.html" rel="alternate" type="text/html" title="SQL기본문법" /><published>2022-06-12T00:00:00+09:00</published><updated>2022-06-12T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95</id><content type="html" xml:base="http://localhost:4000/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95.html"><![CDATA[<h2 id="select-기능">SELECT 기능</h2>
+</code></pre>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[스택의 정의 한쪽 끝(top)에서 삽입과 삭제가 일어나는 선형리스트 LIFO(Last In First Out) 구조 선형리스트의 긑부분에서만 자료의 입력과 출력이 가능하도록 제한된 자료구조 마지막 삽입 (Last-In)한 원소는 맨 위에 쌓여 있다가 가장먼저 삭제(First-Out) 된다. 후입선출 구조 (LIFO) 스택을 운영하기 위하여 끝 부분(top)에 대한 정보가 필요함.]]></summary></entry><entry><title type="html">SQL기본문법</title><link href="http://localhost:4000/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95.html" rel="alternate" type="text/html" title="SQL기본문법" /><published>2022-06-12T00:00:00+09:00</published><updated>2022-06-12T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95</id><content type="html" xml:base="http://localhost:4000/db/2022/06/12/SQL%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95.html"><![CDATA[<h2 id="select-기능">SELECT 기능</h2>
 
 <ul>
   <li>내가 원하는 정보 가져오기</li>
@@ -1303,112 +1120,118 @@ LIKE '... _ ...'	_ 갯수만큼의 문자를 가진 패턴
 <p>1) 원자성 Atomicity - 트랜잭션에서 정의된 연산들은 모두 성공적으로 실행되던지 아니면 전혀 실행되지 않은 상태로 남아 있어야한다. (all or nothing)  <br />
 2) 일관성 Consistency - 트랜잭션이 실행되기 전의 데이터베이스 내용이 잘못 되어 있지 않다면 트랜잭션이 실행된 이후에도 데이터베이스의 내용에 잘못이 있으면 안된다. <br />
 3) 고립성 Isolation - 트랜잭션이 실행되는 도중에 다른 트랜잭션의 영향을 받아 잘못된 결과를 만들어서는 안된다. <br />
-4) 지속성 Durability - 트랜잭션이 성공적으로 수행되면 그 트랜잭션의 갱신한 데이터베이스의 내용은 영구적으로 저장된다.</p>]]></content><author><name>Ino</name></author><category term="DB" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[SELECT 기능]]></summary></entry><entry><title type="html">DB 정규화</title><link href="http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html" rel="alternate" type="text/html" title="DB 정규화" /><published>2022-06-11T00:00:00+09:00</published><updated>2022-06-11T00:00:00+09:00</updated><id>http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94</id><content type="html" xml:base="http://localhost:4000/db/2022/06/11/DB%EC%A0%95%EA%B7%9C%ED%99%94.html"><![CDATA[<h2 id="정규화-">정규화 ?</h2>
+4) 지속성 Durability - 트랜잭션이 성공적으로 수행되면 그 트랜잭션의 갱신한 데이터베이스의 내용은 영구적으로 저장된다.</p>]]></content><author><name>Ino</name></author><category term="DB" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[SELECT 기능]]></summary></entry><entry><title type="html">MagicSquare(마방진)for C</title><link href="http://localhost:4000/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html" rel="alternate" type="text/html" title="MagicSquare(마방진)for C" /><published>2022-06-12T00:00:00+09:00</published><updated>2022-06-12T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html"><![CDATA[<h2 id="마방진">마방진</h2>
 
-<ul>
-  <li>
-    <p>DB시스템을 만지다보면 엄청나게 많은 테이블들이 얽혀있어 하나의 데이터를 수정했을때 여러문제가 생길 수 있는데,
-정규화를 통해서 정해진 규칙대로 테이블을 쪼개게 되면, 문제점들을 사전에 해소할 수 있음.</p>
-  </li>
-  <li>
-    <p>가장 대표적인 문제점들로는 삭제이상(delete), 삽입이상(insert), 수정이상(update)</p>
-  </li>
-  <li>삭제이상은 지정된 테이블에서 데이터를 삭제하려고 하는데, 연결된 다른테이블에서도 데이터가 삭제되는 것이다.</li>
-  <li>삽입이상은 지정된 테이블에 데이터를 삽입하려고 하는데, 연결된 다른테이블에서도 데이터가 삽입되는 것이다.</li>
-  <li>수정이상은 원하는 데이터를 모두 수정하지 못하고, 일부 데이터만 수정되는 것이다.</li>
-</ul>
+<p>우선 마방진에 대한 개념은 가로,세로,대각선의 합이 같아지도록 정사각형 모양으로 배열한 행렬이다.</p>
 
-<p>이러한 문제점들을 해소하기 위해서 테이블을 쪼개는 것이다.</p>
-
-<h2 id="제1정규화">제1정규화</h2>
-
-<ol>
-  <li>어떤 Relation에 속한 모든 Domain이 원자값만으로 되어 있다.</li>
-  <li>모든 attribute에 반복되는 그룹이 나타나지 않는다</li>
-  <li>기본키를 사용하여 관련 데이터의 각 집합을 고유하게 식별할 수 있어야한다.</li>
-</ol>
-
+<h4 id="마방진-만드는-규칙">마방진 만드는 규칙</h4>
+<p>1) 첫번째 행의 중앙에 1을 배열한다.   <br />
+2) 왼쪽 대각선으로 올라가면서 빈자리에 1씩 큰 수를 배열한다.  <br />
+이때 행렬의 밖으로 벗어나면 그 방향의 반대편에서 계속한다.  <br />
+3) 만약 이동해서 채워야하는 자리에 이미 숫자가 배열되어 있다면, 정해진 위치 바로 아래에 숫자를 배열한다.</p>
 <blockquote>
-  <p>릴레이션 = 테이블 = 앤티티 = 개체   <br />
-행 = row = 레코드 = 투플  <br />
-열 = 컬럼 = 필드 = 속성 = 어트리뷰트  <br />
-원자값 (atomic value) : 더 이상 쪼갤 수 없는 값</p>
+  <p>5x5 마방진 예시</p>
 </blockquote>
 
+<p><img src="https://user-images.githubusercontent.com/95608811/173228247-33159117-d629-4c6b-8d1f-d9178874049c.png" width="800px" /></p>
+
+<h4 id="규칙을-프로그램으로-짜기">규칙을 프로그램으로 짜기</h4>
+
 <ul>
-  <li>
-    <p>1번은 그냥 한개의 릴레이션에 여러개의 값이 들어가면 안된다는 것이다.  <br />
-ex ) 취미 : 등산, 골프  » 이러면 안된다는 것이다.</p>
-  </li>
-  <li>
-    <p>2번은 위와같이 한개의 Relation에 여러개의 값이 들어가는 것을 막기위해 같은 그룹을 여러 개 만드는것이다.
-ex ) 취미1 : 등산, 취미2 : 골프 » 이러면 1번을 안하려고 억지로 릴레이션을 분리하는것이니깐 정규화 하는 의미가 없다.</p>
-  </li>
-  <li>
-    <p>3번은 1번,2번 case를 막기위해 <br />
-내취미 : 등산, 내취미 : 골프  <br />
-이런식으로 같은 릴레이션을 만들어 관련 데이터를 고유하게 식별하지 못하게 하면 안된다는 것이다.</p>
-  </li>
-  <li>사실 그냥 반복그룹을 제거하되 그괴정에서 의미가 없는 방식으로 제거하지 말라는 것이다.</li>
-  <li>왜 정규화 하는지를 생각하면 제1정규화는 <code class="language-plaintext highlighter-rouge">반복그룹제거</code> 하나로 방식을 통일할 수 있다.</li>
+  <li>입력 : 0으로 초기화된 n * n의 2차원 배열 <code class="language-plaintext highlighter-rouge">table[n][n]</code></li>
+  <li>출력 : n * n의 magic square</li>
 </ul>
 
-<h2 id="제2정규화">제2정규화</h2>
+<p>행을 움직이는 변수 i, 열을 움직이는 변수 j</p>
 
-<ul>
-  <li>제2 정규화를 수행 했을 경우 테이블의 모든 컬럼이 완전 함수적 종속을 만족한다.
-    <blockquote>
-      <p>부분 함수적 종속을 모두 제거했다는 뜻이다.</p>
-    </blockquote>
-  </li>
-  <li>함수적 종속 : x값에 따라 y값이 결정될 때 x-&gt;y로 표현하는데, 이를 y는 x에 대해 수적 종속이라고 한다. <br />
-예를들어 학번을 알면 이름을 알 수 있는데, 이 경우엔 학번이 x가 되고 이름이 y가 된다.  <br />
-x를 결정자라고 하고, y를 종속자라고 한다. <br />
-즉 다시말해서, x가 바뀌었을 경우 y가 바뀌어야만 한다는 것이다.</li>
-</ul>
+<p>1) Rule : 첫 번째 행의 중앙에 1을 놓는다.</p>
+<pre><code class="language-C">int i = 0, int j = (n-1)/2 ,
+table[i][j] = 1;
+</code></pre>
 
-<p>함수적 종속에서 x의 값이 여러 요소일 경우, 즉 {x1,x2} -&gt; y 일 경우, x1과 x2가 y의 값을 결정할 때 이를 완전 함수적 종속이라고 하고, x1,x2 중 하나만 y의 값을 결정할 때 이를 부분 함수적 종속이라고 한다.</p>
+<p>2) Rule : 왼쪽 대각선 방향으로 올라가면서 빈자리에 1씩 큰 수를 놓는다. 이때 행렬의 밖으로 벗어나면 그 방향의 반대편에서 계속한다.</p>
 
-<p><img src="https://user-images.githubusercontent.com/95608811/173193344-e11fe49c-6039-43c6-804a-605df896c729.png" width="600px" /></p>
+<p>3) Rule : 만약 이동하려는 자리에 숫자가 이미 채워져 있으면 지금 위치의 바로 아래에 숫자를 놓는다.</p>
 
-<p>위에서 model과 manufacture을 알면 model full name 필드를 아예 유지하지 않거나 참조하지 않아도 결정되기 때문에 {model,manufactor} -&gt; model full name 이라고 할 수 있다. 하지만, {model, manufactor} -&gt; manufactor country 에서 model과 manufacturer country는 아무런 연관 관계가 없기 때문에, manufacturer country는 manufacturer와만 종속관계에 있게 되고 이를 부분 함수 종속이라고 하게 되는 것이다.  아래의 그림을 보면 쉽게 이해할 수 있다.</p>
+<pre><code class="language-C">#define MAX_SIZE 15   
 
-<p><img src="https://user-images.githubusercontent.com/95608811/173193358-c3119a2b-09ed-4103-97ec-d524f01144ff.png" width="600px" /></p>
+//마방진의 최대 사이즈를 15로 설정
+void make_msquare(int table[][MAX_SIZE], int n);
+// 마방진 구현하는 함수
+void display(int table[][MAX_SIZE], int n);
+// 구현한 마방진을 print 해서 보여주는 함수
 
-<p>위에서 부분 함수 종속을 제거 하게 되면, 아래와 같은 그림이 된다.</p>
+int main() {
+	int n, r, c, sum = 0;
+	int table[MAX_SIZE][MAX_SIZE];
 
-<p><img src="https://user-images.githubusercontent.com/95608811/173193379-dcafdf0f-6840-4e8a-8c58-ed4ca6d7fb87.png" width="600px" /></p>
+	printf("Enter a number: ");
+	scanf("%d", &amp;n);
 
-<p>따라서, 부분 함수 종속을 제거한 이후의 테이블은 아래와 같고, 이는 제 2정규형을 만족한 테이블이다.</p>
+	if ((n &lt; 1) || n &gt; MAX_SIZE) {
+		printf("Error! size is out of range \n");
+		exit(0);
+	}
+	for (r = 0; r &lt; n; r++) {
+		for (c = 0; c &lt; n; c++) {
+			table[r][c] = 0;
+		}
+	}
+  // 마방진의 배열을 전부 0으로 초기화시켜줌
+	make_msquare(table,n);
+	display(table, n);
 
-<p><img src="https://user-images.githubusercontent.com/95608811/173193384-176d99b9-7694-4be3-b8c4-1572b50641b3.png" width="600px" /></p>
+}
 
-<ul>
-  <li>왜 정규화 하는지를 생각하면 제2정규화는 <code class="language-plaintext highlighter-rouge">부분함수적종속성제거</code> 하나로 방식을 통일할 수 있다.</li>
-</ul>
+void make_msquare(int table[][MAX_SIZE], int n) {
+	int digit = 0;
+	int row, r, c, col;
 
-<h2 id="제3정규화">제3정규화</h2>
+	r = 0; c = (n - 1) / 2;
+  // 행의 첫번째줄, 열의 중간부터 마방진을 시작한다.
+	table[r][c] = 1;
 
-<ul>
-  <li>테이블(Relation)이 제 3정규형을 만족한다는 것은 아래 두 가지 조건을 만족하는 것을 의미한다.
-    <ol>
-      <li>Relation이 제 2정규화 되었다.(The relation is in second normal form)</li>
-    </ol>
-  </li>
-</ul>
+	for (digit = 2; digit &lt;= n * n; digit++) {
+		row = r - 1;
+		col = c - 1;
+    // 왼쪽 대각선 위로 올라가면서 수를 채울거라,
+    행과 열을 하나씩 빼준다.
 
-<ol>
-  <li>기본 키(primary key)가 아닌 속성(Attribute)들은 기본 키에만 의존해야 한다.</li>
-</ol>
+		if (row &lt; 0) {
+			row = n - 1;
+		}
+    // 행이 0보다 작으면 즉, 가장 위에 열에서 더이상 올라갈 데가 없으면 n-1번째 (가장 아래)에서 다시 시작한다
+		if (col &lt; 0) {
+			col = n - 1;
+		}
+    // 열이 0보다 작으면 즉, 가장 왼쪽에서 더 왼쪽으로 갈 데가 없으면 n-1번째 (가장 오른쪽)에서 다시 시작한다
+		if (table[row][col]) r++;
+		else {
+			r = row;
+			c = col;
+		}
+		table[r][c] = digit;
+    // 반복되는 횟수에 따라서 그 해당 테이블의 배열에 값을 넣어준다.
+	}
+}
 
-<p><img src="https://user-images.githubusercontent.com/95608811/173193429-150e49b7-397e-486b-8e8e-9113c7d266e1.png" width="600px" /></p>
+void display(int table[][MAX_SIZE], int n) {
+	int r, c;
+	int sum = 0;
 
-<p>위 테이블에서 {Tournament, Year}가 후보키가 된다. 하지만 Winner Date of Birth은 기본키가 아닌 속성인 Winner를 거쳐 {Tournament, Year}에 의존하고 있는 것을 알 수 있는데, 이는 3NF를 위반한 것이 된다. 따라서 테이블을 아래와 같이 둘로 나누어 주자</p>
+	for (r = 0; r &lt; n; r++) {
+		for (c = 0; c &lt; n; c++)
+			printf("%5d", table[r][c]);
+		printf("\n");
+	}
+	for (c = 0; c &lt; n; c++) {
+		sum += table[0][c];
+	}
+  // 한 열의 number을 카운팅해서 한 열/헹/대각선의 Sum을 구함
+	printf("Row/Col/Diagonal Sum = %d \n ", sum);
+}
+</code></pre>
 
-<p><img src="https://user-images.githubusercontent.com/95608811/173193437-2e3d5c51-f6cf-4a07-97cd-c4e688a04eba.png" width="600px" /></p>
+<p><img src="https://user-images.githubusercontent.com/95608811/173526315-b66b2a84-0cad-4b1d-95eb-1ff8eadfb649.png" width="800px" /></p>
 
-<p>위 테이블은 3정규화를 만족한 상태이다.</p>
-
-<ul>
-  <li>왜 정규화 하는지를 생각하면 제3정규화는 <code class="language-plaintext highlighter-rouge">이행적종속성</code> 하나로 방식을 통일할 수 있다.</li>
-</ul>]]></content><author><name>Ino</name></author><category term="DB" /><category term="DB" /><category term="SQL" /><summary type="html"><![CDATA[정규화 ?]]></summary></entry></feed>
+<p>실제 위 코드를 동작시키면 이와 같이 출력된다.</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[마방진]]></summary></entry></feed>

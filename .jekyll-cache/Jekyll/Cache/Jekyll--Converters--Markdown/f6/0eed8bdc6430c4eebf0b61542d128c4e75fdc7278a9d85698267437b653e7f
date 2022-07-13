@@ -1,0 +1,60 @@
+I"#<p>``</p>
+<h2 id="파일-내용에서-검색-grep">파일 내용에서 검색 grep</h2>
+<ul>
+  <li>파일 내용에서 특정 내용만 찾을때 사용</li>
+  <li>grep [옵션] [패턴] [파일이름]</li>
+  <li>[옵션] : 좀 더 디테일한 조건으로 찾을 때 사용</li>
+  <li>[패턴] : 찾고 싶은 내용을 입력, 일치하는 내용을 출력. 정규표현식 사용 가능</li>
+  <li>[파일 이름] : grep 명령어로 특정 내용을 검색할 파일을 지정한다.     <br />
+<code class="language-plaintext highlighter-rouge">ex ) grep -i root/ect/id</code></li>
+</ul>
+
+<h3 id="옵션">옵션</h3>
+
+<p><code class="language-plaintext highlighter-rouge">-i</code> : 대소문자 무시 (word와 WoRD 를 구분하지 않는다.)  <br />
+<code class="language-plaintext highlighter-rouge">-n</code> : 줄 번호 표시 (line 넘버를 표시한다.) <br />
+<code class="language-plaintext highlighter-rouge">-v</code> : 패턴을 제외한 내용만 출력  <br />
+<code class="language-plaintext highlighter-rouge">-w</code> : 단어 단위로 검색 (ro 를 검색하면 root 는 찾지않는다.)  <br />
+<code class="language-plaintext highlighter-rouge">-c</code> : 매칭되는 줄 수 표시  <br />
+<code class="language-plaintext highlighter-rouge">-ㅣ</code> : 매칭되는 패턴이 있는 파일 이름 출력</p>
+
+<h3 id="패턴">패턴</h3>
+<p>정규표현식 : 어떤 문자를 표현할 때 다양한 특수문자를 이용해 표현하는 방식     <br />
+<code class="language-plaintext highlighter-rouge">^</code> : 줄의 시작을 지정 (해당 패턴이 줄의 시작인 경우 캡쳐) ex)^root <br />
+<code class="language-plaintext highlighter-rouge">$</code> : 줄의 마지막 지정  ex)root$  <br />
+<code class="language-plaintext highlighter-rouge">.</code> : 한 문자 대치 ex)r..t  <br />
+<code class="language-plaintext highlighter-rouge">*</code> : 여러 문제 대치 ex)r*  <br />
+<code class="language-plaintext highlighter-rouge">[]</code> : 패턴 중 한 문자 일치 ex) [rR]oot <br />
+<code class="language-plaintext highlighter-rouge">[^]</code> : 패턴 중 제외할 문자 지정 ex)[^T]oot :: T를 제외한 oot 부분 출력</p>
+
+<h3 id="특수문자들을-단순한-문자로만-인식-fgrep">특수문자들을 단순한 문자로만 인식 fgrep</h3>
+<p><code class="language-plaintext highlighter-rouge">fgrep [옵션] [패턴] [파일이름]</code>  <br />
+만약 문서에 특수문자가 포함된 경우 여러 특수문자들은 정규표현식으로 인식되기 때문에   <br />
+해당 정규표현식의 기능으로 검색이 될 수 있다.   <br />
+이런 경우 fgrep은 여러 특수문자들(*,$,. 등)을 단순한 문자로 인식해서
+문서 내에서 해당 특수문자를 찾을 때 사용할 수 있다.</p>
+
+<h2 id="디렉토리-내에서-검색-명령어-find">디렉토리 내에서 검색 명령어 find</h2>
+<p>find [경로] [조건] [아규먼트] [행동]  <br />
+[경로] : 어디를 기준으로 검색할 것인지 입력한다.  하위 디렉토리까지 검색  <br />
+[조건] : 어떤 조건으로 검색할 것인지 입력한다.  <br />
+[아규먼트] : 조건에 맞는 값을 입력해준다.   <br />
+[행동] : 검색 결과를 어떻게 처리할 것인지 입력한다.   <br />
+ex) find /-name file -exec rm -rf {}￦; <br />
+만약 행동은 빈칸으로 처리한다면 print 가 default로 입력된다.</p>
+
+<h3 id="조건">조건</h3>
+<p>name : 이름으로 검색
+type : 파일의 타입으로 검색, 디렉토리는 d,파일은 f  <br />
+perm : 권한으로 검색  <br />
+user : 소유자로 검색  <br />
+size : 파일 크기로 검색, +는 이상, -는 이하, 단위는 512바이트   <br />
+c 바이트, k 키로바이트, M 메가바이트, G 기가바이트    <br />
+atime : 파일의 마지막 접근 시간으로 검색  <br />
+mtime : 파일의 마지막 수정 시간으로 검색</p>
+
+<h3 id="행동">행동</h3>
+<p>ls : 자세한 결과 출력 <br />
+exec [명령어] {} ￦; : 검색한 파일을 특정 명령어로 실행  <br />
+ex ) -exec rm -rf {} ￦; 제거하기</p>
+:ET

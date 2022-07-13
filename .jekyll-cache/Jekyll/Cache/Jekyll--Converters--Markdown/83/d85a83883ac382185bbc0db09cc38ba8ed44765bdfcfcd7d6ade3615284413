@@ -1,7 +1,7 @@
-I"�<p>파이썬은 다수의 개발자들이 공동으로 개발하는 오픈소스 프로젝트가 많고 라이브러리들이 매우 빈번하게 업데이트가 되기 때문에 라이브러리들 간의 의존성이 매우 복잡하여 기존에 완성되어 잘 돌아가는 코드가 오류를 발생시킬 수 있다.  <br />
+I"�<p>파이썬은 다수의 개발자들이 공동으로 개발하는 오픈소스 프로젝트가 많고 라이브러리들이 매우 빈번하게 업데이트가 되기 때문에 라이브러리들 간의 의존성이 매우 복잡하여 기존에 완성되어 잘 돌아가는 코드가 오류를 발생시킬 수 있다.  <br />
 이 때문에 아나콘다를 이용하여 라이브러리 버전들을 유지하며 개발할 수 있도록 가상환경을 구성하는것이 좋다.</p>
 
-<h3 id="data-생성">Data 생성</h3>
+<h2 id="data-생성">Data 생성</h2>
 
 <h4 id="1차원">1차원</h4>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">,(</span><span class="n">c</span><span class="p">,))</span>
@@ -62,6 +62,6 @@
 
 <ul>
   <li>정리하자면 ,(콤마) 기준으로 왼쪽은 행 오른쪽은 열을 슬라이싱한다.
-그냥 파이썬 슬라이싱과 기본원리는 동일하나 행,열을 지원한다는 차이다.</li>
+그냥 파이썬 슬라이싱과 기본원리는 동일하나 행,열을 지원한다는 점에서 차별성이 있다.</li>
 </ul>
 :ET
