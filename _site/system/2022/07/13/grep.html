@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>파일 및 디렉토리 검색 - grep/find | 시를 좋아하는 프로그래머</title>
+<meta name="generator" content="Jekyll v4.2.2">
+<meta property="og:title" content="파일 및 디렉토리 검색 - grep/find">
+<meta name="author" content="Ino">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="파일 내용에서 검색 grep 파일 내용에서 특정 내용만 찾을때 사용 grep [옵션] [패턴] [파일이름] [옵션] : 좀 더 디테일한 조건으로 찾을 때 사용 [패턴] : 찾고 싶은 내용을 입력, 일치하는 내용을 출력. 정규표현식 사용 가능 [파일 이름] : grep 명령어로 특정 내용을 검색할 파일을 지정한다. ex ) grep -i root/ect/id">
+<meta property="og:description" content="파일 내용에서 검색 grep 파일 내용에서 특정 내용만 찾을때 사용 grep [옵션] [패턴] [파일이름] [옵션] : 좀 더 디테일한 조건으로 찾을 때 사용 [패턴] : 찾고 싶은 내용을 입력, 일치하는 내용을 출력. 정규표현식 사용 가능 [파일 이름] : grep 명령어로 특정 내용을 검색할 파일을 지정한다. ex ) grep -i root/ect/id">
+<link rel="canonical" href="http://localhost:4000/system/2022/07/13/grep.html">
+<meta property="og:url" content="http://localhost:4000/system/2022/07/13/grep.html">
+<meta property="og:site_name" content="시를 좋아하는 프로그래머">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-07-13T00:00:00+09:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="파일 및 디렉토리 검색 - grep/find">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ino"},"dateModified":"2022-07-13T00:00:00+09:00","datePublished":"2022-07-13T00:00:00+09:00","description":"파일 내용에서 검색 grep 파일 내용에서 특정 내용만 찾을때 사용 grep [옵션] [패턴] [파일이름] [옵션] : 좀 더 디테일한 조건으로 찾을 때 사용 [패턴] : 찾고 싶은 내용을 입력, 일치하는 내용을 출력. 정규표현식 사용 가능 [파일 이름] : grep 명령어로 특정 내용을 검색할 파일을 지정한다. ex ) grep -i root/ect/id","headline":"파일 및 디렉토리 검색 - grep/find","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/system/2022/07/13/grep.html"},"url":"http://localhost:4000/system/2022/07/13/grep.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="시를 좋아하는 프로그래머">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header site-header-transparent" role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
+  <img class="site-favicon" title="시를 좋아하는 프로그래머" src="favicon.ico" onerror="this.style.display='none'">
+  시를 좋아하는 프로그래머
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/about.html">ABOUT</a><a class="page-link" href="/archives.html">ARCHIVES</a><a class="page-link" href="/categories.html">CATEGORIES</a><a class="page-link" href="/">HOME</a><a class="page-link" href="/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    html .page-banner {
+      background: #000;
+    }
+  </style>
+<style>html .page-banner {
+      height:  36.8vh;
+      min-height: 38vh;
+    }
+    html[data-scroll-status="top"] .page-banner {
+      height: 100vh;
+    }
+  </style>
+<style>
+    html .page-banner .page-banner-img > *:first-child {
+      opacity: 0.618;
+    }
+
+    html[data-theme="dark"] .page-banner .page-banner-img > *:first-child {
+      opacity: 0.443724;
+    }
+  </style>
+<style>
+    html .page-banner .page-banner-inner > *:first-child > *:nth-child(1) {
+      font-size: 4.25em; font-weight: bold; text-decoration: underline
+    }
+  </style>
+<style>
+    html .page-banner .page-banner-inner > *:first-child > *:nth-child(2) {
+      color: gold
+    }
+  </style>
+<section class="page-banner">
+    <div class="page-banner-img">
+<div style="background-image: url(https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png)"></div>
+        <img class="img-placeholder" src="https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png">
+</div>
+    <div class="wrapper">
+      <div class="page-banner-inner">
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">파일 및 디렉토리 검색 - grep/find</h1>
+  <h2 class="post-subtitle">grep,find</h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2022-07-13T00:00:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Jul 13, 2022
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
+  </p>
+<div class="post-tags"><a class="post-tag" href="/tags.html#linux">#linux</a></div></header>
+</div>
+    </div>
+  </section><script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="파일-내용에서-검색-grep">파일 내용에서 검색 grep</h2>
+<ul>
+  <li>파일 내용에서 특정 내용만 찾을때 사용</li>
+  <li>grep [옵션] [패턴] [파일이름]</li>
+  <li>[옵션] : 좀 더 디테일한 조건으로 찾을 때 사용</li>
+  <li>[패턴] : 찾고 싶은 내용을 입력, 일치하는 내용을 출력. 정규표현식 사용 가능</li>
+  <li>[파일 이름] : grep 명령어로 특정 내용을 검색할 파일을 지정한다.     <br>
+<code class="language-plaintext highlighter-rouge">ex ) grep -i root/ect/id</code>
+</li>
+</ul>
+
+<h3 id="옵션">옵션</h3>
+
+<p><code class="language-plaintext highlighter-rouge">-i</code> : 대소문자 무시 (word와 WoRD 를 구분하지 않는다.)  <br>
+<code class="language-plaintext highlighter-rouge">-n</code> : 줄 번호 표시 (line 넘버를 표시한다.) <br>
+<code class="language-plaintext highlighter-rouge">-v</code> : 패턴을 제외한 내용만 출력  <br>
+<code class="language-plaintext highlighter-rouge">-w</code> : 단어 단위로 검색 (ro 를 검색하면 root 는 찾지않는다.)  <br>
+<code class="language-plaintext highlighter-rouge">-c</code> : 매칭되는 줄 수 표시  <br>
+<code class="language-plaintext highlighter-rouge">-ㅣ</code> : 매칭되는 패턴이 있는 파일 이름 출력</p>
+
+<h3 id="패턴">패턴</h3>
+<p>정규표현식 : 어떤 문자를 표현할 때 다양한 특수문자를 이용해 표현하는 방식     <br>
+<code class="language-plaintext highlighter-rouge">^</code> : 줄의 시작을 지정 (해당 패턴이 줄의 시작인 경우 캡쳐) <code class="language-plaintext highlighter-rouge">ex)^root</code> <br>
+<code class="language-plaintext highlighter-rouge">$</code> : 줄의 마지막 지정  <code class="language-plaintext highlighter-rouge">ex)root$</code>  <br>
+<code class="language-plaintext highlighter-rouge">.</code> : 한 문자 대치 <code class="language-plaintext highlighter-rouge">ex)r..t</code>  <br>
+<code class="language-plaintext highlighter-rouge">*</code> : 여러 문제 대치 <code class="language-plaintext highlighter-rouge">ex)r*</code>  <br>
+<code class="language-plaintext highlighter-rouge">[]</code> : 패턴 중 한 문자 일치 <code class="language-plaintext highlighter-rouge">ex)[rR]oot</code> <br>
+<code class="language-plaintext highlighter-rouge">[^]</code> : 패턴 중 제외할 문자 지정 <code class="language-plaintext highlighter-rouge">ex)[^T]oot :: T를 제외한 oot 부분 출력</code></p>
+
+<h3 id="특수문자들을-단순한-문자로만-인식-fgrep">특수문자들을 단순한 문자로만 인식 fgrep</h3>
+<p><code class="language-plaintext highlighter-rouge">fgrep [옵션] [패턴] [파일이름]</code>  <br>
+만약 문서에 특수문자가 포함된 경우 여러 특수문자들은 정규표현식으로 인식되기 때문에   <br>
+해당 정규표현식의 기능으로 검색이 될 수 있다.   <br>
+이런 경우 fgrep은 여러 특수문자들(*,$,. 등)을 단순한 문자로 인식해서
+문서 내에서 해당 특수문자를 찾을 때 사용할 수 있다.</p>
+
+<h2 id="디렉토리-내에서-검색-명령어-find">디렉토리 내에서 검색 명령어 find</h2>
+<p><code class="language-plaintext highlighter-rouge">find [경로] [조건] [아규먼트] [행동]</code>  <br>
+<code class="language-plaintext highlighter-rouge">[경로]</code> : 어디를 기준으로 검색할 것인지 입력한다.  하위 디렉토리까지 검색  <br>
+<code class="language-plaintext highlighter-rouge">[조건]</code> : 어떤 조건으로 검색할 것인지 입력한다.  <br>
+<code class="language-plaintext highlighter-rouge">[아규먼트]</code> : 조건에 맞는 값을 입력해준다.   <br>
+<code class="language-plaintext highlighter-rouge">[행동]</code> : 검색 결과를 어떻게 처리할 것인지 입력한다.   <br>
+<code class="language-plaintext highlighter-rouge">ex) find /-name file -exec rm -rf {}￦;</code> <br>
+만약 행동은 빈칸으로 처리한다면 print 가 default로 입력된다.</p>
+
+<h3 id="조건">조건</h3>
+<p><code class="language-plaintext highlighter-rouge">name</code> : 이름으로 검색
+<code class="language-plaintext highlighter-rouge">type</code> : 파일의 타입으로 검색, 디렉토리는 d,파일은 f  <br>
+<code class="language-plaintext highlighter-rouge">perm</code> : 권한으로 검색  <br>
+<code class="language-plaintext highlighter-rouge">user</code> : 소유자로 검색  <br>
+<code class="language-plaintext highlighter-rouge">size</code> : 파일 크기로 검색, +는 이상, -는 이하, 단위는 512바이트   <br>
+c 바이트, k 키로바이트, M 메가바이트, G 기가바이트    <br>
+<code class="language-plaintext highlighter-rouge">atime</code> : 파일의 마지막 접근 시간으로 검색  <br>
+<code class="language-plaintext highlighter-rouge">mtime</code> : 파일의 마지막 수정 시간으로 검색</p>
+
+<h3 id="행동">행동</h3>
+<p><code class="language-plaintext highlighter-rouge">ls</code> : 자세한 결과 출력 <br>
+<code class="language-plaintext highlighter-rouge">exec [명령어] {} ￦;</code> : 검색한 파일을 특정 명령어로 실행  <br>
+<code class="language-plaintext highlighter-rouge">ex ) -exec rm -rf {} ￦;</code> 제거하기</p>
+
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/ai/2022/06/28/%EC%8B%A0%EA%B2%BD%EB%A7%9D.html" title="신경망">신경망</a><a class="next" href="/system/2022/07/13/hardlink.html" title="하드링크와 심볼릭 링크">하드링크와 심볼릭 링크</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/git/2022/05/31/Git%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" title="하드링크와 심볼릭 링크">깃과 깃허브</a></li>
+<li><a class="post-link" href="/web/2022/05/30/Server%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" title="하드링크와 심볼릭 링크">서버에 대해서</a></li>
+<li><a class="post-link" href="/algorithm/2022/06/13/StackForC.html" title="하드링크와 심볼릭 링크">Stack(스택)for C</a></li>
+<li><a class="post-link" href="/jekyll/2022/05/05/Children's-Day-FirstPost.html" title="하드링크와 심볼릭 링크">Welcome to InoBlog</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --></section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Copyright 2022. AlphateamInho All pictures can be copied without permission.  2022-2022 AlphateamInho</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

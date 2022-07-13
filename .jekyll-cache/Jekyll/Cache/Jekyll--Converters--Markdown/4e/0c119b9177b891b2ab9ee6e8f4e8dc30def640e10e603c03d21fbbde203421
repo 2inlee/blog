@@ -1,0 +1,27 @@
+I"�<h2 id="권한이란">권한이란?</h2>
+<p>리눅스의 모든 파일과 디렉토리는 권한(permission)을 가지고 있다.       <br />
+리눅스의 파일시스템 상에 권한에 대한 정보를 저장하는 부분이 있다.       <br />
+퍼미션들은 시스템 상에 존재하는 파일들에 대한 읽기,쓰기,실행에 대한 접근 여부를 결정한다.       <br />
+ls -l 명령어로 확인 가능 (첫번째 필드, -rwxr-wr–)      <br />
+이러한 퍼미션은 다중 사용자 환경을 제공하는 리눅스 환경에서는 가장 기초적인 접근 통제 방법</p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/178721039-e1d58298-5f8b-4631-9855-2d9f8a9ab85e.png" width="800px" /></p>
+
+<h3 id="권한-설정-방법">권한 설정 방법</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">chmod [권한] [파일 또는 디렉토리 이름]</code></li>
+  <li><code class="language-plaintext highlighter-rouge">[권한]</code> : 권한을 입력할 때는 심볼릭 모드와 옥텟(8진수) 모드 2가지 방식을 이용하여 입력 가능하다.</li>
+  <li><code class="language-plaintext highlighter-rouge">[파일 또는 디렉토리 이름]</code> : 파일, 디렉토리를 지정할 때는 절대 경로 또는 상대 경로 모두 가능하다.</li>
+</ul>
+
+<h4 id="간단한-문자로-설정하는-심볼릭-모드">간단한 문자로 설정하는 심볼릭 모드</h4>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/178722799-93b80ea6-da07-454b-8348-6bc80a13dce4.png" width="800px" /></p>
+
+<h4 id="07까지의-숫자를-이용하는-옷텟-모드">0~7까지의 숫자를 이용하는 옷텟 모드</h4>
+<p><img src="https://user-images.githubusercontent.com/95608811/178723045-a3e07723-7860-4028-aec4-bf861bea8b42.png" width="800px" /></p>
+
+<blockquote>
+  <p>읽기 쓰기 실행 순서로 각각 4,2,1 이고, 읽기와 쓰기만 있으면 4+2</p>
+</blockquote>
+:ET
