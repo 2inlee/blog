@@ -1,4 +1,100 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-13T20:33:48+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">권한의 이해와 설정</title><link href="http://localhost:4000/system/2022/07/13/permission.html" rel="alternate" type="text/html" title="권한의 이해와 설정" /><published>2022-07-13T00:00:00+09:00</published><updated>2022-07-13T00:00:00+09:00</updated><id>http://localhost:4000/system/2022/07/13/permission</id><content type="html" xml:base="http://localhost:4000/system/2022/07/13/permission.html"><![CDATA[<h2 id="권한이란">권한이란?</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-30T17:06:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">k번째수 for Python (feat.sort() vs sorted())</title><link href="http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%88%98.html" rel="alternate" type="text/html" title="k번째수 for Python (feat.sort() vs sorted())" /><published>2022-07-30T00:00:00+09:00</published><updated>2022-07-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%88%98</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%88%98.html"><![CDATA[<blockquote>
+  <p>문제는 너무 자세하게 기술하지 않음
+출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
+</blockquote>
+
+<h2 id="문제">문제</h2>
+<p>N개의 숫자로 이루어진 숫자열이 주어지면 해당 숫자열중에서 s번째부터 e번째 까지의 수를 오름 차순 정렬했을 때 k번째로 나타나는 숫자를 출력하는 프로그램을 작성하세요.</p>
+
+<h4 id="입력">입력</h4>
+<p>첫 번째 줄에 테스트 케이스 T(1&lt;=T&lt;=10)이 주어집니다.
+각 케이스별
+첫 번째 줄은 자연수 N(5&lt;=N&lt;=500), s, e, k가 차례로 주어진다. 두 번째 줄에 N개의 숫자가 차례로 주어진다.</p>
+
+<h4 id="출력">출력</h4>
+<p>각 케이스별 k번째 수를 아래 출력예제와 같이 출력하세요.</p>
+
+<pre><code class="language-Python">t = int(input())
+for i in range(t): # t의 수만큼 반복한다.
+  n,s,e,k = map(int,input().split())
+  a = list(map(int, input().split())) # 띄어쓰기로 구분된 입력을 리스트형으로 a에 저장한다.
+  b = a[s-1:e] # a의 s번째에서 e까지 슬라이싱 한 부분을 b에 저장한다.
+  b = sorted(b) # b를 sorted 함수를 통해 오름차순 정렬한다.
+  print(b[k-1]) # b의 k번째 리스트를 출력한다.
+</code></pre>
+
+<h4 id="설명">설명</h4>
+<p>첫줄에 test case인 t를 int형으로 입력받는다.  <br />
+두번째줄에 n,s,e,k 를 띄워쓰기로 구분하여 각각 입력받는다.  <br />
+세번째줄에 a를 띄어쓰기로 구분하여 list로 입력받는다. <br />
+b를 a[s-1:e] 슬라이싱해서 a의 s번째부터 e번째까지 슬라이싱하여 넣는다.  <br />
+b를 sorted() 함수를 써서 오름차순 정렬한다.</p>
+
+<h4 id="sort함수와-sorted-함수에-대해-추가설명">sort함수와 sorted 함수에 대해 추가설명</h4>
+<p>sort() 리스트함수는 새로운 정렬된리스트로 바꿔버린다. <br />
+sorted() 내장함수는 리스트를 정렬시킨값을 반환시킨다.</p>
+
+<p>그러므로 리스트 자체를 바꾸고싶은게 아니라면 sorted 함수를 써서 반환된 값을 변수에 담아서 사용하는것이 바람직하다.</p>
+
+<p>또한 sort함수는 리스트에서만 사용가능하지만, sorted 함수는 딕셔너리,튜플,문자열과 같은 형태에서도 범용적으로 사용할 수 있다.</p>
+
+<p>마지막으로 내림차순 정렬할땐 sort와 sorted 모두 파라미터로 reverse 매개변수를 받는데,   <br />
+b = sorted(a,reverse=True)  <br />
+a.sort(reverse=True)</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">k번째약수 for Python</title><link href="http://localhost:4000/algorithm/2022/07/30/Algo%EC%95%BD%EC%88%98.html" rel="alternate" type="text/html" title="k번째약수 for Python" /><published>2022-07-30T00:00:00+09:00</published><updated>2022-07-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/07/30/Algo%EC%95%BD%EC%88%98</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/07/30/Algo%EC%95%BD%EC%88%98.html"><![CDATA[<blockquote>
+  <p>문제는 너무 자세하게 기술하지 않음
+출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
+</blockquote>
+
+<h2 id="문제">문제</h2>
+<p>두 개의 자연수 N과 K가 주어졌을 때, N의 약수들 중 K번째로 작은 수를 출력하는 프로그램을 작성하시오.</p>
+
+<h4 id="입력">입력</h4>
+<p>첫째 줄에 N과 K가 빈칸을 사이에 두고 주어진다. N은 1 이상 10,000 이하이다. K는 1 이상 N 이하이다.</p>
+
+<h4 id="출력">출력</h4>
+<p>첫째 줄에 N의 약수들 중 K번째로 작은 수를 출력한다. 만일 N의 약수의 개수가 K개보다 적어서 K번째 약수가 존재하지 않을 경우에는 -1을 출력하시오.</p>
+
+<pre><code class="language-Python">N,K = map(int, input().split()) # 이런식의 입력은 그냥 외워서 써야한다.
+# 잘 이해가 안되면, 각 내장함수의 인자를 확인해야 한다.
+# N과 K를 각각 input 한번에 받을건데, split함수를 이용해서 띄워쓰기로 구분해서 넣어주고 int형태로 바꿔준다.
+print("단, N은 1이상 10000이하, K는 1이상 N 이하")
+cnt = 0                # 약수의 개수를 출력할 count(cnt)를 0으로 초기화 해준다.
+for i in range(1,N+1): # i를 1부터 N까지 반복한다.
+  if N % i == 0:       # 만약 N이 i로 나누어 떨어지면, i가 N의 약수이므로
+    cnt+=1             # cnt변수를 1 더한다.
+  if cnt == K:         # 만약 cnt가 K면,
+    print(i)           # i를 출력하고,
+    break              # for문을 break 한다.
+else:                  # 파이썬엔 for-else 문이 있다. for문을 다 돌아았는데
+# 중간에 break 가 안되면, else문을 실행시킨다. 
+# (for문을 다 돌았는데 break 가 안되면, 약수가 존재하지 않는다.)
+  print(-1)
+</code></pre>
+
+<h4 id="설명">설명</h4>
+<p>n과 k를 각각 입력받아서 변수에 저장하고, N을 i로 나눠서 나누어 떨어지면 약수이므로, <br />
+cnt를 하나씩 더해가면서 반복문을 돌린다.  <br />
+그렇게 cnt가 K가 되면 i가 K번째로 작은수 이므로 i를 출력하고 break 한다.</p>
+
+<p>반복문을 N번 돌릴때 까지 break가 발생하지 않고 정상적으로 반복문이 끝나면,  <br />
+for - else문에서 else 구문을 실행한다.</p>
+
+<p>print(-1) 을 출력하고 프로그램이 종료된다.</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">대표값 for Python</title><link href="http://localhost:4000/algorithm/2022/07/30/%EB%8C%80%ED%91%9C%EA%B0%92.html" rel="alternate" type="text/html" title="대표값 for Python" /><published>2022-07-30T00:00:00+09:00</published><updated>2022-07-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/07/30/%EB%8C%80%ED%91%9C%EA%B0%92</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/07/30/%EB%8C%80%ED%91%9C%EA%B0%92.html"><![CDATA[<blockquote>
+  <p>문제는 너무 자세하게 기술하지 않음
+출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
+</blockquote>
+
+<h2 id="문제">문제</h2>
+<p>N명의 학생의 수학점수가 주어집니다. N명의 학생들의 평균(소수 첫째자리 반올림)을 구하고,     N명의 학생 중 평균에 가장 가까운 학생은 몇 번째 학생인지 출력하는 프로그램을 작성하세요.</p>
+
+<h4 id="입력">입력</h4>
+<p>첫줄에 자연수 N(5&lt;=N&lt;=100)이 주어지고, 두 번째 줄에는 각 학생의 수학점수인 N개의 자연 수가 주어집니다.    학생의 번호는 앞에서부터 1로 시작해서 N까지이다.</p>
+
+<h4 id="출력">출력</h4>
+<p>첫줄에 평균과 평균에 가장 가까운 학생의 번호를 출력한다.  <br />
+평균은 소수 첫째 자리에서 반올림합니다.</p>
+
+<p>```Python</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">권한의 이해와 설정</title><link href="http://localhost:4000/system/2022/07/13/permission.html" rel="alternate" type="text/html" title="권한의 이해와 설정" /><published>2022-07-13T00:00:00+09:00</published><updated>2022-07-13T00:00:00+09:00</updated><id>http://localhost:4000/system/2022/07/13/permission</id><content type="html" xml:base="http://localhost:4000/system/2022/07/13/permission.html"><![CDATA[<h2 id="권한이란">권한이란?</h2>
 <p>리눅스의 모든 파일과 디렉토리는 권한(permission)을 가지고 있다.       <br />
 리눅스의 파일시스템 상에 권한에 대한 정보를 저장하는 부분이 있다.       <br />
 퍼미션들은 시스템 상에 존재하는 파일들에 대한 읽기,쓰기,실행에 대한 접근 여부를 결정한다.       <br />
@@ -778,252 +874,4 @@ c 바이트, k 키로바이트, M 메가바이트, G 기가바이트    <br />
 <span class="p">});</span>
 
 <span class="k">export</span> <span class="k">default</span> <span class="nx">router</span><span class="p">;</span>
-</code></pre></div></div>]]></content><author><name>Ino</name></author><category term="web" /><category term="vue" /><category term="web" /><summary type="html"><![CDATA[set-ExecutionPolicy -ExecutionPolicy Unrestricted : 권한오류 npm install -g @vue/cli : vue를 전역에 설치 vue create project01 : vue 디렉토리 생성 vue add router : router 추가 / 처음 vue 만들때 router 옵션 체크]]></summary></entry><entry><title type="html">Search Tree(트리탐색)for C</title><link href="http://localhost:4000/algorithm/2022/06/14/SearchTreeForC.html" rel="alternate" type="text/html" title="Search Tree(트리탐색)for C" /><published>2022-06-14T00:00:00+09:00</published><updated>2022-06-14T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/06/14/SearchTreeForC</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/06/14/SearchTreeForC.html"><![CDATA[<h2 id="트리검색">트리검색</h2>
-<p>탐색을 하기에 가장 적합하고 많이 사용하는 구조가 트리구조이다. 특히 프로그램의 논리는 if 조건문의 참이나 거짓 두 갈래의 선택이 있는 이진구조이므로 이를 반영하여 문제 분석과 설계 단계에서 자연스럽게 이진트리가 자주 사용된다.</p>
-
-<p>이진탐색트리는 공백이 가능한 이진 트리로 공백이 아니면 다음의 성질을 만족한다.</p>
-
-<ol>
-  <li>모든 원소는 key를 갖는다.</li>
-  <li>공백이 아닌 왼쪽 서브트리의 key들은 그의 루트의 key보다 작아야한다.</li>
-  <li>공백이 아닌 오른쪽 서브트리의 key들은 그의 루트의 key보다 커야한다.</li>
-  <li>왼쪽과 오른쪽 서브트리도 또한 이진 탐색 트리이다 (재귀적정의)</li>
-</ol>
-
-<p>``</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[트리검색 탐색을 하기에 가장 적합하고 많이 사용하는 구조가 트리구조이다. 특히 프로그램의 논리는 if 조건문의 참이나 거짓 두 갈래의 선택이 있는 이진구조이므로 이를 반영하여 문제 분석과 설계 단계에서 자연스럽게 이진트리가 자주 사용된다.]]></summary></entry><entry><title type="html">구조체 for C</title><link href="http://localhost:4000/algorithm/2022/06/13/%EA%B5%AC%EC%A1%B0%EC%B2%B4forC.html" rel="alternate" type="text/html" title="구조체 for C" /><published>2022-06-13T00:00:00+09:00</published><updated>2022-06-13T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/06/13/%EA%B5%AC%EC%A1%B0%EC%B2%B4forC</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/06/13/%EA%B5%AC%EC%A1%B0%EC%B2%B4forC.html"><![CDATA[<h2 id="구조체를-이용한-파일처리">구조체를 이용한 파일처리</h2>
-<p>프로그래밍에 필요한 데이터가 파일로 제공되는 경우 각 파일에는 필요한 필드로 구성된
-레코드를 저장하는 경우가 많다. 이렇게 저장된 파일의 데이터를 프로그램에서 사용하려면
-구조체를 활용해야한다.</p>
-<ul>
-  <li>구조체는 서로 형이 다를 수 있는 여러 변수들의 모임을 하나의 이름으로 가지고 있는 자
-료구조이다. <br />
-구조체는 그 목적에 따라 필요한 구성요소를 정하여 다음과 같이 선언할 수 있다.
-    <pre><code class="language-C">struct employee { char name[20]; long id; int depend; float salary;
-};
-struct employee e1;
-</code></pre>
-  </li>
-</ul>
-
-<pre><code class="language-C">strcpy(e1.name, “HongGilDong");
-e1.id = 20071357;
-e1.depend = 3;
-e1.salary = 345.716;
-</code></pre>
-
-<p>이와 같은 선언에 의하여 struct employee라는 데이터 형이 생기게 되는 것이다. <br />
-이때 아래와 같이 선언된 변수 e1은 각각 name, id, depend, salary 4개의 변수에 값을 가질 수 있
-다.</p>
-
-<h2 id="typedef정의문으로-활용하기">typedef(정의문)으로 활용하기</h2>
-<pre><code class="language-C">typedef struct { char name[20]; int age; float salary;
-} human_being;
-</code></pre>
-
-<p>이런식으로 정의문으로 구조체를 선언하고, 구조체 별칭으로 human_being 으로 만들면,</p>
-
-<p>이후</p>
-
-<pre><code class="language-C">human_being person1, person2;
-stycpy(person1.name, "Rhee Hyun-Sook");
-peson1.age = 34;
-person1.salary = 1575.100;
-</code></pre>
-
-<p>이런식으로, 구조체를 활용해 구조체 별칭 human_being 으로 person1, person2 변수를 만들 수 있다.</p>
-
-<blockquote>
-  <p>~ 객체지향언어를 공부한 독자라면, 일종의 객체라고 생각해도 이해하는 데는 무방하다.   ~</p>
-</blockquote>
-
-<h2 id="구조체를-이용한-파일처리의-예시">구조체를 이용한 파일처리의 예시</h2>
-
-<pre><code class="language-C">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-#define MAX_CNUM 50
-
-typedef struct course { 
-  char courseid[10];
-  char tname[20];
-  unsigned snum; 
-  unsigned roomnum;
-} cinform;
-main(int argc, char *argv[])
-{
-  int i=0, dnum;
-  char sprof[20];
-  unsigned sroomnum;
-  cinform cdb[MAX_CNUM];
-  FILE *coursedb;
-  if ((coursedb = fopen(argv[1], "r")) == NULL) {
-printf("데이터 파일을 열 수 없습니다 \n");
-exit(1); 
-}
-while (fscanf(coursedb, "%s %s %u %u", cdb[i].courseid,
-  cdb[i].tname, &amp;(cdb[i].snum), &amp;(cdb[i].roomnum)) != EOF)
-  i++; 
-  dnum = i;
-  printf("수강인원이 40명 이상인 강좌 코드 번호를 출력하시오.\n");
-  for (i=0; i &lt; dnum; i++) 
-    if (cdb[i].snum &gt;= 40) 
-      printf("%s\n", cdb[i].courseid);
-    printf("검색하고자 하는 교수이름 입력 : ");
-    scanf("%s", sprof);
-    printf("%s 교수가 강의하는 강좌코드와 강의실 번호를 출력하시오.\n",sprof); 
-    for (i=0; i &lt; dnum; i++)
-      if (!strcmp(cdb[i].tname, sprof))
-      printf("%s\t%u\n", cdb[i].courseid, cdb[i].roomnum);
-    printf("검색하고자 하는 강의실 번호 입력 : ");
-    scanf("%u", &amp;sroomnum);
-    printf("%u 강의실에서 수업하는 강좌코드와 담당교수를 출력하시오.\n", sroomnum);
-    for (i=0; i &lt; dnum; i++)
-      if (cdb[i].roomnum == sroomnum) 
-        printf("%s\t%s\n", cdb[i].courseid, cdb[i].tname);
-}
-</code></pre>
-
-<p>위와 같이 구조체를 이용해 여러 학생들의 정보를 FILE 로 가져와서 정보를 검색,수정,삭제할 수 있다.</p>
-
-<h2 id="자기참조-구조체를-이용한-연결리스트의-구현">자기참조 구조체를 이용한 연결리스트의 구현</h2>
-
-<p>여러 데이터를 저장할 때 주로 사용하는 배열은 연속된 메모리를 차지하게 되고 최대크기
-를 컴파일 시간에 미리 확보하고 있어야 하는 단점이 있다.</p>
-
-<p>연결리스트를 구성하는 하나의 정보 단위를 노드라고 하는 데 각 노드는 저장하려는 데이터
-와 다음 노드를 가리키는 포인터 정보를 포함하게 된다.</p>
-
-<p>이를 위하여 구조체의 정의 안에 자신과 같은 구조체로의 포인터 정보
-를 포함하는 자기참조 구조체로 표현해야 한다. 자기참조 구조체 형태의 연결리스트의 노드 구조의 간단한 예를 다음과 같이 표현할 수 있다.</p>
-
-<p>```
-struct one_node { char data[5]; struct one_node *next;
-};</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[구조체를 이용한 파일처리 프로그래밍에 필요한 데이터가 파일로 제공되는 경우 각 파일에는 필요한 필드로 구성된 레코드를 저장하는 경우가 많다. 이렇게 저장된 파일의 데이터를 프로그램에서 사용하려면 구조체를 활용해야한다. 구조체는 서로 형이 다를 수 있는 여러 변수들의 모임을 하나의 이름으로 가지고 있는 자 료구조이다. 구조체는 그 목적에 따라 필요한 구성요소를 정하여 다음과 같이 선언할 수 있다. struct employee { char name[20]; long id; int depend; float salary; }; struct employee e1;]]></summary></entry><entry><title type="html">Stack(스택)for C</title><link href="http://localhost:4000/algorithm/2022/06/13/StackForC.html" rel="alternate" type="text/html" title="Stack(스택)for C" /><published>2022-06-13T00:00:00+09:00</published><updated>2022-06-13T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/06/13/StackForC</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/06/13/StackForC.html"><![CDATA[<h2 id="스택의-정의">스택의 정의</h2>
-<ul>
-  <li>한쪽 끝(top)에서 삽입과 삭제가 일어나는 선형리스트
-LIFO(Last In First Out) 구조</li>
-  <li>선형리스트의 긑부분에서만 자료의 입력과 출력이 가능하도록 제한된 자료구조</li>
-  <li>마지막 삽입 (Last-In)한 원소는 맨 위에 쌓여 있다가 가장먼저 삭제(First-Out) 된다.
-    <blockquote>
-      <p>후입선출 구조 (LIFO)</p>
-    </blockquote>
-  </li>
-  <li>스택을 운영하기 위하여 끝 부분(top)에 대한 정보가 필요함.</li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/95608811/173239877-8cfb6ccb-55de-4376-804e-a2efea200fe4.png" width="800px" /></p>
-
-<blockquote>
-  <p>위 그림처럼 끝 부분(top) 에서만 삽입과 삭제가 일어남.</p>
-</blockquote>
-
-<h2 id="스택의-연산">스택의 연산</h2>
-<ul>
-  <li>현재 스택의 상태를 나타내는 변수 top, 데이터를 담을 배열 stack이 필요하다.</li>
-</ul>
-
-<p>(1) 삽입  <br />
-스택이 full한지 check   <br />
-top++, stack[top] = data  <br />
-(2) 삭제
-스택이 empty인지 check  <br />
-데이터 꺼내 사용, top–</p>
-
-<h2 id="수식의-표기법">수식의 표기법</h2>
-<p>연산자의 위치에 따라 수식의 표기법을 구분할 수 있다.</p>
-
-<ul>
-  <li>
-    <p>전위표기법 : 연산자가 피연산자 앞에 오는 표기법</p>
-  </li>
-  <li>
-    <p>중위표기법 : 일상 사용하는 방법</p>
-  </li>
-  <li>
-    <p>후위표기법 : 연산자가 피연산자 뒤에 오는 표기법, 괄호를 사용하지 않아서 컴파일러에서 사용하는 표기법이다.</p>
-  </li>
-</ul>
-
-<h3 id="중위표기식을-후위표기식으로-변환하는-알고리즘">중위표기식을 후위표기식으로 변환하는 알고리즘</h3>
-
-<p>각 연산자, 피연산자를 하나씩 읽으면서 스택에 저장과 출력이란 2가지 동작을 조합하여 수행함</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">피연산자</code> : 항상 출력</li>
-  <li><code class="language-plaintext highlighter-rouge">연산자</code> : 아래 과정을 스택에 저장될 때까지 반복</li>
-</ul>
-
-<p>if((새 연산자의 우선순위 &gt; 스택의 top연산자의 우선순위) or (스택이 비었음)) <br />
--&gt;  스택에 저장   <br />
-else (top의 연산자를 pop하여 출력)
-이후 식을 다 읽었으면 스택에 있는 모든 연산자를 pop 하여 출력</p>
-
-<p>즉, 정리하자면</p>
-<ol>
-  <li>피연산자를 만나면 그대로 출력한다</li>
-  <li>스택이 비어있을 때 만나는 연산자는 무조건 스택에 add한다</li>
-  <li>지금 처리하려는 연산자가 스택의 top의 연산자 보다 우선순위가 높으면 스택에 add한다. 아니면 스택의 연산자를 delete하여 출력한다.  <br />
-표기식을 끝까지 다 읽으면 스택의 연산자를 delete하여 출력한다.</li>
-</ol>
-
-<p>괄호 규칙 추가</p>
-
-<ol>
-  <li>왼쪽 괄호는 스택에 들어올 때는 무조건 add 되도록하고, 일단 스택에 들어오면 우선순위가 가장 낮아져서 다음 들어오려는 연산자를 add한다.</li>
-  <li>오른쪽 괄호는 왼쪽 괄호가 나올 때까지 스택 안의 모든 연산자를 출력한다.</li>
-</ol>
-
-<h3 id="후위표기식의-장점">후위표기식의 장점</h3>
-<ul>
-  <li>괄호가 없으므로 고려할 사항이 적음</li>
-</ul>
-
-<p>중위표기식에서는 연산자의 우선순위 때문에 왼쪽에서 오른쪽으로 연산이 진해되지 않고 괄호를 가지고 있기때문에 컴파일러는 중위표기식에서 후위표기식으로 변경해서 사용한다.</p>
-
-<h3 id="수식-표기방식의-변경-괄호가-없을때">수식 표기방식의 변경 (괄호가 없을때)</h3>
-<p><img src="https://user-images.githubusercontent.com/95608811/173298178-0753d0e0-11d0-4d25-b262-c6176579aeae.png" width="800px" /></p>
-
-<h3 id="수식-표기방식의-변경-괄호가-있을때">수식 표기방식의 변경 (괄호가 있을때)</h3>
-<p><img src="https://user-images.githubusercontent.com/95608811/173298522-0f500c74-173a-4841-918a-e8ca325940f7.png" width="800px" /></p>
-
-<ul>
-  <li>괄호가 있을때는 오른쪽 괄호는 왼쪽 괄호가 나올 때까지 스택 안의 모든 연산자를 출력하면 된다.</li>
-</ul>
-
-<h4 id="수식-표기방식의-변경-괄호가-있을때-예제">수식 표기방식의 변경 (괄호가 있을때) 예제</h4>
-<p><img src="https://user-images.githubusercontent.com/95608811/173299850-7dc29a00-5e6f-465c-85f2-2a59582d6f96.png" width="800px" /></p>
-
-<p><img src="https://user-images.githubusercontent.com/95608811/173299961-b8be8565-5436-4de2-bcb2-540d5b6cf285.png" width="800px" /></p>
-
-<p><img src="https://user-images.githubusercontent.com/95608811/173300070-c3f78bf4-b45d-4f50-a169-54193525f704.png" width="800px" /></p>
-
-<h2 id="후위표기식의-계산-함수">후위표기식의 계산 함수</h2>
-
-<pre><code class="language-C">int cal(void){
-  char symbol;
-  int op1,op2,n = 0;
-  int top=-1;
-  symbol = pexpr[n++];
-  
-  while(symbol != '\0'){
-    if(is_operator(symbol)){
-      op2 = delete_stack();
-      op1 = delete_stack();
-      switch(symbol){
-        case '+':add_stack(op1+op2);
-          break;
-        case '-':add_stack(op1-op2);
-          break;
-        case '*':add_stack(op1*op2);
-          break;
-        case '/':add_stack(op1/op2);
-          break;
-      }
-    }
-    else
-      add_stack(symbol-'0');
-    symbol = pexpr[n++];
-  }
-return delete_stack();
-}
-</code></pre>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="C" /><category term="algorithm" /><summary type="html"><![CDATA[스택의 정의 한쪽 끝(top)에서 삽입과 삭제가 일어나는 선형리스트 LIFO(Last In First Out) 구조 선형리스트의 긑부분에서만 자료의 입력과 출력이 가능하도록 제한된 자료구조 마지막 삽입 (Last-In)한 원소는 맨 위에 쌓여 있다가 가장먼저 삭제(First-Out) 된다. 후입선출 구조 (LIFO) 스택을 운영하기 위하여 끝 부분(top)에 대한 정보가 필요함.]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>Ino</name></author><category term="web" /><category term="vue" /><category term="web" /><summary type="html"><![CDATA[set-ExecutionPolicy -ExecutionPolicy Unrestricted : 권한오류 npm install -g @vue/cli : vue를 전역에 설치 vue create project01 : vue 디렉토리 생성 vue add router : router 추가 / 처음 vue 만들때 router 옵션 체크]]></summary></entry></feed>
