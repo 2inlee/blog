@@ -1,0 +1,35 @@
+I"�<blockquote>
+  <p>문제는 너무 자세하게 기술하지 않음
+출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
+</blockquote>
+
+<h2 id="문제">문제</h2>
+<p>두 개의 정 N면체와 정 M면체의 두 개의 주사위를 던져서 나올 수 있는 눈의 합 중 가장 확 률이 높은 숫자를 출력하는 프로그램을 작성하세요.
+정답이 여러 개일 경우 오름차순으로 출력합니다.</p>
+
+<h4 id="입력">입력</h4>
+<p>첫 번째 줄에는 자연수 N과 M이 주어집니다. N과 M은 4, 6, 8, 12, 20 중의 하나입니다.</p>
+
+<h4 id="출력">출력</h4>
+<p>첫 번째 줄에 답을 출력합니다.</p>
+
+<pre><code class="language-Python">n ,m= map(int,input('n과 m을 입력하시오').split())
+cnt=[0]*(n+m+3)
+max=0
+for i in range(1, n+1):
+  for j in range(1, m+1):
+    cnt[i+j]=cnt[i+j]+1
+
+for i in range(n+m+1):
+  if cnt[i]&gt;max:
+    max=cnt[i]
+
+for i in range(n+m+1):
+  if cnt[i]==max:
+    print(i, end=' ')
+
+</code></pre>
+
+<h4 id="설명">설명</h4>
+<p>n+m+3 의 갯수만큼 cnt의 리스트를 만들어서 0으로 초기화 시켜준다.</p>
+:ET

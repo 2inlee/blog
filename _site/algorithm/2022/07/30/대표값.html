@@ -657,7 +657,7 @@ function googleTranslateElementInit() {
       <div class="page-banner-inner">
 <header class="post-header">
   <h1 class="post-title p-name" itemprop="name headline">대표값 for Python</h1>
-  <h2 class="post-subtitle">알고리즘,Python</h2>
+  <h2 class="post-subtitle">알고리즘,Python,sum,enumerate</h2>
 
   <p class="post-meta">
     <time class="dt-published" datetime="2022-07-30T00:00:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Jul 30, 2022
@@ -908,22 +908,51 @@ function googleTranslateElementInit() {
 <p>첫줄에 평균과 평균에 가장 가까운 학생의 번호를 출력한다.  <br>
 평균은 소수 첫째 자리에서 반올림합니다.</p>
 
-<p>```Python</p>
+<pre><code class="language-Python">n = int(input("n을 입력하시오 : "))
+a = list(map(int, input().split()))
+min = 2147000000 # int 형의 가장 큰 값을 최솟값에 넣어서 이후 진행되는 if 비교문에서 항상 참이되게 설정함
+ave = round(sum(a)/n) # round 는 소수첫째자리에서 반올림함 sum함수는 a리스트에 있는 모든값을 다 더함
+for index,x in enumerate(a): # index값이 0부터 시작하는 index고, x가 a list에 있는 값들이 하나씩 들어간다.
+  tmp = abs(x - ave)
+  if tmp &lt; min:
+    min = tmp
+    score = x
+    res = index+1 # index는 0부터 시작이기때문에 학생이 몇번째인지 알려면 +1을 해주어야함
+  elif tmp == min:
+    if x &gt; score:
+      score = x
+      res =index+1
+
+print(ave, res)
+
+
+</code></pre>
+
+<h4 id="설명">설명</h4>
+<p>n명의 학생의 평균을 구하고, 그 학생이 배열에서 몇 번째에 위치되어있는지만 찾으면 되는 문제다. <br>
+평균을 나타내는 ave변수를 round랑 sum 내장함수를 이용해서
+<code class="language-plaintext highlighter-rouge">sum : 리스트에 있는 원소의 합을 반환해준다.</code>
+<code class="language-plaintext highlighter-rouge">round : round(실수,n) 이런식으로 쓰면 첫번째 인자를 n번째 소수점에서 반올림한다. (음수를 파라미터로 넣으면 소수점이 아닌 정수에서도 해당위치에서 반올림할 수 있다.) 단, 두번째 파라미터값을 안넣으면 디폴트값으로 소숫점 첫째자리에서 반올림한다.</code> <br>
+평균을 구하고, a의 index값과 밸류값을 함께 enumerate를 이용해서 반복문을 돌린다.  <br>
+<code class="language-plaintext highlighter-rouge">enumerate는 "열거하다"라는 뜻이다. 이 함수는 순서가 있는 자료형(리스트, 튜플, 문자열)을 입력으로 받아 인덱스 값을 포함하는 enumerate 객체를 돌려준다.</code>
+tmp에는 각각의 학생들 평균인 x값에서 평균을 뺀 값을 절댓값으로 만들어서 넣는다.  <br>
+tmp가 기존 min 보다 작으면, 해당tmp으로 min을 대체한다. <br>
+그렇게 min을 대체하게 된 성적점수와 index를 각각의 변수에 넣는다.</p>
 
 
     </div>
 
 </article>
 <div class="post-nav">
-<a class="previous" href="/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%88%98.html" title="k번째수 for Python (feat.sort() vs sorted())">k번째수 for Python (feat.sort() vs sorted())...</a><span></span>
+<a class="previous" href="/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%95%BD%EC%88%98.html" title="k번째약수 for Python">k번째약수 for Python</a><a class="next" href="/algorithm/2022/08/07/k%EB%B2%88%EC%A7%B8%ED%81%B0%EC%88%98.html" title="k번째 큰 수 for Python">k번째 큰 수 for Python</a>
 </div>
 <div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/db/2022/06/12/SQL%EB%AC%B8%EC%A0%9C.html" title="">SQL문제</a></li>
-<li><a class="post-link" href="/algorithm/2022/06/13/StackForC.html" title="">Stack(스택)for C</a></li>
-<li><a class="post-link" href="/web/2022/05/24/HTML5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html" title="">HTML에 대해서</a></li>
-<li><a class="post-link" href="/algorithm/2022/06/13/%EA%B5%AC%EC%A1%B0%EC%B2%B4forC.html" title="">구조체 for C</a></li>
+        <li><a class="post-link" href="/algorithm/2022/06/12/%EB%A7%88%EB%B0%A9%EC%A7%84forC.html" title="k번째 큰 수 for Python">MagicSquare(마방진)for C</a></li>
+<li><a class="post-link" href="/system/2022/07/13/grep.html" title="k번째 큰 수 for Python">파일 및 디렉토리 검색 - grep/find</a></li>
+<li><a class="post-link" href="/jekyll/2022/05/05/Children's-Day-FirstPost.html" title="k번째 큰 수 for Python">Welcome to InoBlog</a></li>
+<li><a class="post-link" href="/web/2022/05/26/%EC%8B%9C%EB%A7%A8%ED%8B%B1%EC%9A%94%EC%86%8C%EC%99%80-%EC%9B%B9.html" title="k번째 큰 수 for Python">시맨틱 웹(Semantic Web)</a></li>
 </ul>
     </div>
 <div class="post-comments"></div></section>

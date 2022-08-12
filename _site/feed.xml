@@ -1,4 +1,221 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-30T17:06:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">k번째수 for Python (feat.sort() vs sorted())</title><link href="http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%88%98.html" rel="alternate" type="text/html" title="k번째수 for Python (feat.sort() vs sorted())" /><published>2022-07-30T00:00:00+09:00</published><updated>2022-07-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%88%98</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%88%98.html"><![CDATA[<blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-08-12T16:35:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">C언어 포인터 동적메모리</title><link href="http://localhost:4000/c/2022/08/12/c%EC%96%B8%EC%96%B4%ED%8F%AC%EC%9D%B8%ED%84%B0.html" rel="alternate" type="text/html" title="C언어 포인터 동적메모리" /><published>2022-08-12T00:00:00+09:00</published><updated>2022-08-12T00:00:00+09:00</updated><id>http://localhost:4000/c/2022/08/12/c%EC%96%B8%EC%96%B4%ED%8F%AC%EC%9D%B8%ED%84%B0</id><content type="html" xml:base="http://localhost:4000/c/2022/08/12/c%EC%96%B8%EC%96%B4%ED%8F%AC%EC%9D%B8%ED%84%B0.html"><![CDATA[<h2 id="메모리-영역">메모리 영역</h2>
+
+<ol>
+  <li>
+    <p>코드 영역  <br />
+코드 영역은 이름 처럼 작성한 코드를 저장하는 영역입니다.​</p>
+  </li>
+  <li>
+    <p>데이터 영역  <br />
+데이터 영역은 전역 변수와 정적 변수를 저장하는 영역입니다.  <br />
+전역 변수는 프로그램이 시작되면서 초기화됩니다. <br />
+그러므로 데이터 영역은 프로그램 시작시에 이미 메모리가 확보되어 크기가 변하지 않음을 알 수 있습니다.</p>
+  </li>
+  <li>
+    <p>힙 영역
+힙영역은 동적 메모리를 할당하는 영역입니다. <br />
+C언어로 코드를 작성할 때 직접 메모리를 할당할 때가 있습니다.  <br />
+이 때 메모리를 할당하는 영역이 바로 힙 영역입니다.</p>
+  </li>
+  <li>
+    <p>스택 영역  <br />
+스택 영역은 지역 변수와 매개변수를 저장하는 영역입니다. <br />
+지역 변수와 매개 변수 특성 상 해당 함수의 호출과 실행이 완료되면 사라집니다.  <br />
+그러므로 데이터가 저장되었다가 지워지기를 반복하는 영역임을 알 수 있습니다.</p>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="메모리할당-함수-malloccallocrealloc">메모리할당 함수 (malloc,calloc,realloc)</h2>
+<blockquote>
+  <p>메모리 관련함수는 헤더파일 <code class="language-plaintext highlighter-rouge">&lt;stdlib.h&gt;</code> 또는 <code class="language-plaintext highlighter-rouge">&lt;malloc.h&gt;</code>에 있다.   <br />
+실제값 : *(p + i) == p[i];    <br />
+주소 : p + i == &amp;p[i];</p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">malloc</code> : 동적 메모리 함수</p>
+<ul>
+  <li>메모리를 미리 일정량 만큼 잡아두지 않고, 필요할때마다 동적으로 할당한다.</li>
+  <li>필요할 때마다 동적으로 할당해서 메모리낭비를 줄여준다.</li>
+  <li>형식 : 포인터변수 = (포인터변수의 데이터형 *)malloc(포인터변수의 데이터형 크기 * 필요한크기);</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+  <span class="kt">int</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+  <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">);</span> <span class="c1">// int형은 4바이트니깐, 총 40바이트를 할당한 상태이다.</span>
+  <span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>크기는 바이트형이고, malloc을 이용해 필요한만큼 동적할당을 해준다.</li>
+  <li>사용후 free() 함수를 통해 할당된 공간을 반납해준다.</li>
+</ul>
+
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">calloc</code> 함수</p>
+<ul>
+  <li>요청한 메모리공간을 0으로 초기화하여 할당함.</li>
+  <li>형식 : 포인터변수 = (포인터변수의 데이터형 *)calloc(포인터변수의 데이터형 크기 * 필요한크기);</li>
+  <li>malloc함수로 공간을 할당하면, 가비지값(쓰레기값)들이 들어가는데, calloc()함수를 이용해 할당하면,  <br />
+원하는만큼 공간을 할당후 메모리공간도 0으로 초기화 해준다.</li>
+</ul>
+
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">realloc</code> 함수</p>
+<ul>
+  <li>새로 동적메모리를 할당받고, 이전에 할당받은 메모리값을 복사하는 함수</li>
+  <li>단독으로 사용이 불가능하며 이전에 malloc또는 calloc으로 할당받았던 경험이 있어야함.</li>
+  <li>형식 : 포인터변수 = (포인터변수 *)realloc(기본포인터, 포인터변수의 데이터형 크기 * 필요한크기);</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+  <span class="kt">int</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+  <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+  <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">realloc</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">))</span> <span class="c1">// 이전라인에서의 p의값을 복사해서 넣는다.</span>
+  <span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>]]></content><author><name>Ino</name></author><category term="c" /><category term="C" /><summary type="html"><![CDATA[메모리 영역]]></summary></entry><entry><title type="html">자릿수의합 for Python</title><link href="http://localhost:4000/algorithm/2022/08/07/%EC%9E%90%EB%A6%BF%EC%88%98%EC%9D%98%ED%95%A9.html" rel="alternate" type="text/html" title="자릿수의합 for Python" /><published>2022-08-07T00:00:00+09:00</published><updated>2022-08-07T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/08/07/%EC%9E%90%EB%A6%BF%EC%88%98%EC%9D%98%ED%95%A9</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/08/07/%EC%9E%90%EB%A6%BF%EC%88%98%EC%9D%98%ED%95%A9.html"><![CDATA[<blockquote>
+  <p>문제는 너무 자세하게 기술하지 않음
+출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
+</blockquote>
+
+<h2 id="문제">문제</h2>
+<p>N개의 자연수가 입력되면 각 자연수의 자릿수의 합을 구하고, 그 합이 최대인 자연수를 출력 하는 프로그램을 작성하세요. 각 자연수의 자릿수의 합을 구하는 함수를 def digit_sum(x)를 꼭 작성해서 프로그래밍 하세요.</p>
+
+<h4 id="입력">입력</h4>
+<p>첫 줄에 자연수의 개수 N(3&lt;=N&lt;=100)이 주어지고, 그 다음 줄에 N개의 자연수가 주어진다. 각 자연수의 크기는 10,000,000를 넘지 않는다.</p>
+
+<h4 id="출력">출력</h4>
+<p>자릿수의 합이 최대인 자연수를 출력한다. 자릿수의 합이 같을 경우 입력순으로 먼저인 숫자 를 출력합니다.</p>
+
+<pre><code class="language-Python">n = int(input('n을 입력하시오 : '))
+a = list(map(int,input('n개 만큼 입력').split()))
+max = -2147000000
+
+def digit_sum(x):
+  sum = 0
+  while(x&gt;0):
+    sum += x % 10
+    x = x//10
+  return sum
+
+
+for x in a:
+  total = digit_sum(x)
+  if total &gt; max:
+    max = total
+    res = x
+
+print(res)
+
+</code></pre>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">k번째 큰 수 for Python</title><link href="http://localhost:4000/algorithm/2022/08/07/k%EB%B2%88%EC%A7%B8%ED%81%B0%EC%88%98.html" rel="alternate" type="text/html" title="k번째 큰 수 for Python" /><published>2022-08-07T00:00:00+09:00</published><updated>2022-08-07T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/08/07/k%EB%B2%88%EC%A7%B8%ED%81%B0%EC%88%98</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/08/07/k%EB%B2%88%EC%A7%B8%ED%81%B0%EC%88%98.html"><![CDATA[<blockquote>
+  <p>문제는 너무 자세하게 기술하지 않음
+출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
+</blockquote>
+
+<h2 id="문제">문제</h2>
+<p>현수는 1부터 100사이의 자연수가 적힌 N장의 카드를 가지고 있습니다. 같은 숫자의 카드가 여러장 있을 수 있습니다. 현수는 이 중 3장을 뽑아 각 카드에 적힌 수를 합한 값을 기록하려 고 합니다. 3장을 뽑을 수 있는 모든 경우를 기록합니다. 기록한 값 중 K번째로 큰 수를 출력 하는 프로그램을 작성하세요.
+만약 큰 수부터 만들어진 수가 25 25 23 23 22 20 19……이고 K값이 3이라면 K번째 큰 값 은 22입니다.</p>
+
+<h4 id="입력">입력</h4>
+<p>첫 줄에 자연수 N(3&lt;=N&lt;=100)과 K(1&lt;=K&lt;=50) 입력되고, 그 다음 줄에 N개의 카드값이 입력 된다.</p>
+
+<h4 id="출력">출력</h4>
+<p>첫 줄에 K번째 수를 출력합니다. K번째 수는 반드시 존재합니다.</p>
+
+<pre><code class="language-Python">n,k = map(int,input('n과 k를 입력하시오').split())
+a = list(map(int, input().split()))
+res = set() # 중복을 제거하는 set() 자료구조 list자료구조에서 중복을 제거하는것보다, 처음부터 set 쓰는게 나음
+for i in range(n):
+  for j in range(i+1, n): # i 뒤부터 반복문을 돌려서 서로 다른 수를 뽑게 하기 위해 설정
+    for m in range(j+1, n): # m은 j 뒤부터 반복문을 돌림 -&gt; 서로 다른 수
+      res.add(a[i] + a[j] + a[m]) # list자료형은 append 함수를 쓰지만 set자료형은 add함수를 씀
+res = list(res)
+res.sort(reverse=True) # sort에 파라미터값을 안주면, 오름차순이라 내림차순 정렬하기위헤 reverse 인자를줌
+print(res[k-1])
+</code></pre>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">정다면체 for Python</title><link href="http://localhost:4000/algorithm/2022/08/07/%EC%A0%95%EB%8B%A4%EB%A9%B4%EC%B2%B4.html" rel="alternate" type="text/html" title="정다면체 for Python" /><published>2022-08-07T00:00:00+09:00</published><updated>2022-08-07T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/08/07/%EC%A0%95%EB%8B%A4%EB%A9%B4%EC%B2%B4</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/08/07/%EC%A0%95%EB%8B%A4%EB%A9%B4%EC%B2%B4.html"><![CDATA[<blockquote>
+  <p>문제는 너무 자세하게 기술하지 않음
+출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
+</blockquote>
+
+<h2 id="문제">문제</h2>
+<p>두 개의 정 N면체와 정 M면체의 두 개의 주사위를 던져서 나올 수 있는 눈의 합 중 가장 확 률이 높은 숫자를 출력하는 프로그램을 작성하세요.
+정답이 여러 개일 경우 오름차순으로 출력합니다.</p>
+
+<h4 id="입력">입력</h4>
+<p>첫 번째 줄에는 자연수 N과 M이 주어집니다. N과 M은 4, 6, 8, 12, 20 중의 하나입니다.</p>
+
+<h4 id="출력">출력</h4>
+<p>첫 번째 줄에 답을 출력합니다.</p>
+
+<pre><code class="language-Python">n ,m= map(int,input('n과 m을 입력하시오').split())
+cnt=[0]*(n+m+3)
+max=0
+for i in range(1, n+1):
+  for j in range(1, m+1):
+    cnt[i+j]=cnt[i+j]+1
+
+for i in range(n+m+1):
+  if cnt[i]&gt;max:
+    max=cnt[i]
+
+for i in range(n+m+1):
+  if cnt[i]==max:
+    print(i, end=' ')
+
+</code></pre>
+
+<h4 id="설명">설명</h4>
+<p>n+m+3 의 갯수만큼 cnt의 리스트를 만들어서 0으로 초기화 시켜준다.</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">대표값 for Python</title><link href="http://localhost:4000/algorithm/2022/07/30/%EB%8C%80%ED%91%9C%EA%B0%92.html" rel="alternate" type="text/html" title="대표값 for Python" /><published>2022-07-30T00:00:00+09:00</published><updated>2022-07-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/07/30/%EB%8C%80%ED%91%9C%EA%B0%92</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/07/30/%EB%8C%80%ED%91%9C%EA%B0%92.html"><![CDATA[<blockquote>
+  <p>문제는 너무 자세하게 기술하지 않음
+출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
+</blockquote>
+
+<h2 id="문제">문제</h2>
+<p>N명의 학생의 수학점수가 주어집니다. N명의 학생들의 평균(소수 첫째자리 반올림)을 구하고,     N명의 학생 중 평균에 가장 가까운 학생은 몇 번째 학생인지 출력하는 프로그램을 작성하세요.</p>
+
+<h4 id="입력">입력</h4>
+<p>첫줄에 자연수 N(5&lt;=N&lt;=100)이 주어지고, 두 번째 줄에는 각 학생의 수학점수인 N개의 자연 수가 주어집니다.    학생의 번호는 앞에서부터 1로 시작해서 N까지이다.</p>
+
+<h4 id="출력">출력</h4>
+<p>첫줄에 평균과 평균에 가장 가까운 학생의 번호를 출력한다.  <br />
+평균은 소수 첫째 자리에서 반올림합니다.</p>
+
+<pre><code class="language-Python">n = int(input("n을 입력하시오 : "))
+a = list(map(int, input().split()))
+min = 2147000000 # int 형의 가장 큰 값을 최솟값에 넣어서 이후 진행되는 if 비교문에서 항상 참이되게 설정함
+ave = round(sum(a)/n) # round 는 소수첫째자리에서 반올림함 sum함수는 a리스트에 있는 모든값을 다 더함
+for index,x in enumerate(a): # index값이 0부터 시작하는 index고, x가 a list에 있는 값들이 하나씩 들어간다.
+  tmp = abs(x - ave)
+  if tmp &lt; min:
+    min = tmp
+    score = x
+    res = index+1 # index는 0부터 시작이기때문에 학생이 몇번째인지 알려면 +1을 해주어야함
+  elif tmp == min:
+    if x &gt; score:
+      score = x
+      res =index+1
+
+print(ave, res)
+
+
+</code></pre>
+
+<h4 id="설명">설명</h4>
+<p>n명의 학생의 평균을 구하고, 그 학생이 배열에서 몇 번째에 위치되어있는지만 찾으면 되는 문제다. <br />
+평균을 나타내는 ave변수를 round랑 sum 내장함수를 이용해서
+<code class="language-plaintext highlighter-rouge">sum : 리스트에 있는 원소의 합을 반환해준다.</code>
+<code class="language-plaintext highlighter-rouge">round : round(실수,n) 이런식으로 쓰면 첫번째 인자를 n번째 소수점에서 반올림한다. (음수를 파라미터로 넣으면 소수점이 아닌 정수에서도 해당위치에서 반올림할 수 있다.) 단, 두번째 파라미터값을 안넣으면 디폴트값으로 소숫점 첫째자리에서 반올림한다.</code> <br />
+평균을 구하고, a의 index값과 밸류값을 함께 enumerate를 이용해서 반복문을 돌린다.  <br />
+<code class="language-plaintext highlighter-rouge">enumerate는 "열거하다"라는 뜻이다. 이 함수는 순서가 있는 자료형(리스트, 튜플, 문자열)을 입력으로 받아 인덱스 값을 포함하는 enumerate 객체를 돌려준다.</code>
+tmp에는 각각의 학생들 평균인 x값에서 평균을 뺀 값을 절댓값으로 만들어서 넣는다.  <br />
+tmp가 기존 min 보다 작으면, 해당tmp으로 min을 대체한다. <br />
+그렇게 min을 대체하게 된 성적점수와 index를 각각의 변수에 넣는다.</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">k번째수 for Python (feat.sort() vs sorted())</title><link href="http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%88%98.html" rel="alternate" type="text/html" title="k번째수 for Python (feat.sort() vs sorted())" /><published>2022-07-30T00:00:00+09:00</published><updated>2022-07-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%88%98</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%88%98.html"><![CDATA[<blockquote>
   <p>문제는 너무 자세하게 기술하지 않음
 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
 </blockquote>
@@ -40,7 +257,7 @@ sorted() 내장함수는 리스트를 정렬시킨값을 반환시킨다.</p>
 
 <p>마지막으로 내림차순 정렬할땐 sort와 sorted 모두 파라미터로 reverse 매개변수를 받는데,   <br />
 b = sorted(a,reverse=True)  <br />
-a.sort(reverse=True)</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">k번째약수 for Python</title><link href="http://localhost:4000/algorithm/2022/07/30/Algo%EC%95%BD%EC%88%98.html" rel="alternate" type="text/html" title="k번째약수 for Python" /><published>2022-07-30T00:00:00+09:00</published><updated>2022-07-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/07/30/Algo%EC%95%BD%EC%88%98</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/07/30/Algo%EC%95%BD%EC%88%98.html"><![CDATA[<blockquote>
+a.sort(reverse=True)</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">k번째약수 for Python</title><link href="http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%95%BD%EC%88%98.html" rel="alternate" type="text/html" title="k번째약수 for Python" /><published>2022-07-30T00:00:00+09:00</published><updated>2022-07-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%95%BD%EC%88%98</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%95%BD%EC%88%98.html"><![CDATA[<blockquote>
   <p>문제는 너무 자세하게 기술하지 않음
 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
 </blockquote>
@@ -79,22 +296,7 @@ cnt를 하나씩 더해가면서 반복문을 돌린다.  <br />
 <p>반복문을 N번 돌릴때 까지 break가 발생하지 않고 정상적으로 반복문이 끝나면,  <br />
 for - else문에서 else 구문을 실행한다.</p>
 
-<p>print(-1) 을 출력하고 프로그램이 종료된다.</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">대표값 for Python</title><link href="http://localhost:4000/algorithm/2022/07/30/%EB%8C%80%ED%91%9C%EA%B0%92.html" rel="alternate" type="text/html" title="대표값 for Python" /><published>2022-07-30T00:00:00+09:00</published><updated>2022-07-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/07/30/%EB%8C%80%ED%91%9C%EA%B0%92</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/07/30/%EB%8C%80%ED%91%9C%EA%B0%92.html"><![CDATA[<blockquote>
-  <p>문제는 너무 자세하게 기술하지 않음
-출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
-</blockquote>
-
-<h2 id="문제">문제</h2>
-<p>N명의 학생의 수학점수가 주어집니다. N명의 학생들의 평균(소수 첫째자리 반올림)을 구하고,     N명의 학생 중 평균에 가장 가까운 학생은 몇 번째 학생인지 출력하는 프로그램을 작성하세요.</p>
-
-<h4 id="입력">입력</h4>
-<p>첫줄에 자연수 N(5&lt;=N&lt;=100)이 주어지고, 두 번째 줄에는 각 학생의 수학점수인 N개의 자연 수가 주어집니다.    학생의 번호는 앞에서부터 1로 시작해서 N까지이다.</p>
-
-<h4 id="출력">출력</h4>
-<p>첫줄에 평균과 평균에 가장 가까운 학생의 번호를 출력한다.  <br />
-평균은 소수 첫째 자리에서 반올림합니다.</p>
-
-<p>```Python</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">권한의 이해와 설정</title><link href="http://localhost:4000/system/2022/07/13/permission.html" rel="alternate" type="text/html" title="권한의 이해와 설정" /><published>2022-07-13T00:00:00+09:00</published><updated>2022-07-13T00:00:00+09:00</updated><id>http://localhost:4000/system/2022/07/13/permission</id><content type="html" xml:base="http://localhost:4000/system/2022/07/13/permission.html"><![CDATA[<h2 id="권한이란">권한이란?</h2>
+<p>print(-1) 을 출력하고 프로그램이 종료된다.</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">권한의 이해와 설정</title><link href="http://localhost:4000/system/2022/07/13/permission.html" rel="alternate" type="text/html" title="권한의 이해와 설정" /><published>2022-07-13T00:00:00+09:00</published><updated>2022-07-13T00:00:00+09:00</updated><id>http://localhost:4000/system/2022/07/13/permission</id><content type="html" xml:base="http://localhost:4000/system/2022/07/13/permission.html"><![CDATA[<h2 id="권한이란">권한이란?</h2>
 <p>리눅스의 모든 파일과 디렉토리는 권한(permission)을 가지고 있다.       <br />
 리눅스의 파일시스템 상에 권한에 대한 정보를 저장하는 부분이 있다.       <br />
 퍼미션들은 시스템 상에 존재하는 파일들에 대한 읽기,쓰기,실행에 대한 접근 여부를 결정한다.       <br />
@@ -207,671 +409,4 @@ c 바이트, k 키로바이트, M 메가바이트, G 기가바이트    <br />
   <li><code class="language-plaintext highlighter-rouge">ln [옵션] [원본] [링크]</code></li>
   <li>옵션을 지정하지 않고 링크 파일을 생성하면 하드 링크를 생성할 수 있다.</li>
   <li>옵션으로 -s 를 지정하고 링크 파일을 생성하면 심볼릭 링크를 생성할 수 있다.</li>
-</ul>]]></content><author><name>Ino</name></author><category term="System" /><category term="linux" /><summary type="html"><![CDATA[링크란 무엇인가? 특정 파일 또는 디렉토리에 접근을 쉽게 할 수 있도록 하는 방법 파일 시스템이 물리적인 장치인 하드 디스크 상에 저장되어 있는 특정 파일의 위치를 가리키는 것]]></summary></entry><entry><title type="html">신경망</title><link href="http://localhost:4000/ai/2022/06/28/%EC%8B%A0%EA%B2%BD%EB%A7%9D.html" rel="alternate" type="text/html" title="신경망" /><published>2022-06-28T00:00:00+09:00</published><updated>2022-06-28T00:00:00+09:00</updated><id>http://localhost:4000/ai/2022/06/28/%EC%8B%A0%EA%B2%BD%EB%A7%9D</id><content type="html" xml:base="http://localhost:4000/ai/2022/06/28/%EC%8B%A0%EA%B2%BD%EB%A7%9D.html"><![CDATA[<h3 id="퍼셉트론">퍼셉트론</h3>
-<p>오늘날 인공신경망에서 이용하는 구조는 퍼셉트론이라는 선형 분류기이다.
-이는 입력과 가중치들의 곱을 모두 더한 뒤 활성화 함수를 적용해서 그 값이 0보다 크면 1, 0보다 작으면 -1을 출력하는 구조이다.</p>
-
-<ima src="https://user-images.githubusercontent.com/95608811/176060497-7cb6bb9e-1493-4ac0-8209-48fb38ade3da.png" width="800px">
-
-- 그래서 입력을 넣고 입력에 대한 결과를 출력하였을때 원하는 값이 나오도록 가중치를 조절한다.
-학습이라는게 결국 그 가중치값을 가장 많은 입력에 대해 가장 근접한 가중치를 찾는 과정이라고 볼 수 있다.
-</ima>]]></content><author><name>Ino</name></author><category term="ai" /><category term="ai" /><summary type="html"><![CDATA[퍼셉트론 오늘날 인공신경망에서 이용하는 구조는 퍼셉트론이라는 선형 분류기이다. 이는 입력과 가중치들의 곱을 모두 더한 뒤 활성화 함수를 적용해서 그 값이 0보다 크면 1, 0보다 작으면 -1을 출력하는 구조이다.]]></summary></entry><entry><title type="html">병렬처리와 수학적 행렬</title><link href="http://localhost:4000/ai/2022/06/27/AI_1.html" rel="alternate" type="text/html" title="병렬처리와 수학적 행렬" /><published>2022-06-27T00:00:00+09:00</published><updated>2022-06-27T00:00:00+09:00</updated><id>http://localhost:4000/ai/2022/06/27/AI_1</id><content type="html" xml:base="http://localhost:4000/ai/2022/06/27/AI_1.html"><![CDATA[<p>파이썬은 다수의 개발자들이 공동으로 개발하는 오픈소스 프로젝트가 많고 라이브러리들이 매우 빈번하게 업데이트가 되기 때문에 라이브러리들 간의 의존성이 매우 복잡하여 기존에 완성되어 잘 돌아가는 코드가 오류를 발생시킬 수 있다.  <br />
-이 때문에 아나콘다를 이용하여 라이브러리 버전들을 유지하며 개발할 수 있도록 가상환경을 구성하는것이 좋다.</p>
-
-<h2 id="data-생성">Data 생성</h2>
-
-<h4 id="1차원">1차원</h4>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">,(</span><span class="n">c</span><span class="p">,))</span>
-</code></pre></div></div>
-<ul>
-  <li>s1 ~ s2 사이의 정수 c개 생성</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-</code></pre></div></div>
-<ul>
-  <li>0~1 사이의 숫자 r개 생성</li>
-  <li>단 평균은0, 표준편차는 1인 분포</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-</code></pre></div></div>
-<ul>
-  <li>0~1 사이의 숫자 r개 생성</li>
-  <li>단 균등 분포의 숫자</li>
-</ul>
-
-<h4 id="2차원">2차원</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">,(</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>
-</code></pre></div></div>
-<ul>
-  <li>s1 ~ s2 사이의 정수 (r,c)개 생성</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
-</code></pre></div></div>
-
-<ul>
-  <li>0~1사이 숫자 (r,c)개 생성</li>
-  <li>단 평균은 0, 표준 편차는 1인 분포</li>
-</ul>
-
-<p>np.random.rand(r,c)</p>
-<ul>
-  <li>0~1 사이의 숫자 (r,c) 개 생성</li>
-  <li>단 균등 분포의 숫자</li>
-</ul>
-
-<h3 id="변수-연산행렬-연산">변수 연산(행렬 연산)</h3>
-<ul>
-  <li>사칙 연산 지원 ( 단, shape가 동일해야 함 )</li>
-  <li>행렬 내적 지원
-(3,4) @ (4,5) = (3,5) 내적에서 이웃하는 부분이 일치해 함.</li>
-</ul>
-
-<h3 id="데이터-분리">데이터 분리</h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,(</span><span class="mi">100</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>행분리 data1 = data[:20,:] &gt; 20개 데이터 분리 (20,8)
-열분리 data2 = data[:,-3:] &gt; 100개의 데이터 (100,3)</p>
-
-<ul>
-  <li>정리하자면 ,(콤마) 기준으로 왼쪽은 행 오른쪽은 열을 슬라이싱한다.
-그냥 파이썬 슬라이싱과 기본원리는 동일하나 행,열을 지원한다는 점에서 차별성이 있다.</li>
-</ul>]]></content><author><name>Ino</name></author><category term="ai" /><category term="ai" /><summary type="html"><![CDATA[파이썬은 다수의 개발자들이 공동으로 개발하는 오픈소스 프로젝트가 많고 라이브러리들이 매우 빈번하게 업데이트가 되기 때문에 라이브러리들 간의 의존성이 매우 복잡하여 기존에 완성되어 잘 돌아가는 코드가 오류를 발생시킬 수 있다. 이 때문에 아나콘다를 이용하여 라이브러리 버전들을 유지하며 개발할 수 있도록 가상환경을 구성하는것이 좋다.]]></summary></entry><entry><title type="html">Java GUI and EventListener</title><link href="http://localhost:4000/java/2022/06/18/JavaEvent.html" rel="alternate" type="text/html" title="Java GUI and EventListener" /><published>2022-06-18T00:00:00+09:00</published><updated>2022-06-18T00:00:00+09:00</updated><id>http://localhost:4000/java/2022/06/18/JavaEvent</id><content type="html" xml:base="http://localhost:4000/java/2022/06/18/JavaEvent.html"><![CDATA[<p>``</p>
-<blockquote>
-  <p>먼저 모든 import문은 eclipse 자동생성으로 만드는걸 default로 한다.
-즉, 코드에 import문은 넣지 않으므로 자동생성 해서 쓰길 권장한다.</p>
-</blockquote>
-
-<h3 id="입출력-스트림">입출력 스트림</h3>
-<ul>
-  <li>파일 객체 생성
-    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">File</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="s">"c:\\windows\\system.ini"</span><span class="o">);</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">*</span> <span class="n">파일의</span> <span class="n">경로명</span>   
-<span class="nc">String</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span> 	<span class="c1">// "system.ini"</span>
-<span class="nc">String</span> <span class="n">path</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="na">getPath</span><span class="o">();</span> 			<span class="c1">// "c:\\windows\\system.ini"</span>
-<span class="nc">String</span> <span class="n">parent</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="na">getParent</span><span class="o">();</span> 	<span class="c1">// "c:\\windows"</span>
-</code></pre></div></div>
-
-<h2 id="gui-라이브러리">GUI 라이브러리</h2>
-
-<p><img src="https://user-images.githubusercontent.com/95608811/174436039-2b5a9a5c-844e-4b13-941d-0476009b3fa7.png" width="800px" /></p>
-
-<p><img src="https://user-images.githubusercontent.com/95608811/174436141-cb7d575f-f761-4ca6-aff1-2d65656a1801.png" width="800px" /></p>
-
-<h4 id="gui-swing-으로-스윙프레임-만들기">GUI Swing 으로 스윙프레임 만들기</h4>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ContentPaneEx</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
-<span class="kd">public</span> <span class="nf">ContentPaneEx</span><span class="o">()</span> <span class="o">{</span>
-<span class="n">setTitle</span><span class="o">(</span><span class="s">"ContentPane과 JFrame"</span><span class="o">);</span>
-<span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
-<span class="nc">Container</span> <span class="n">contentPane</span> <span class="o">=</span> <span class="n">getContentPane</span><span class="o">();</span>
-<span class="n">contentPane</span><span class="o">.</span><span class="na">setBackground</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">ORANGE</span><span class="o">);</span>
-<span class="n">contentPane</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
-<span class="n">contentPane</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"OK"</span><span class="o">));</span>
-<span class="n">contentPane</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Cancel"</span><span class="o">));</span>
-<span class="n">contentPane</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Ignore"</span><span class="o">));</span>
-<span class="n">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">150</span><span class="o">);</span>
-<span class="n">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-  <span class="o">}</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-<span class="k">new</span> <span class="nf">ContentPaneEx</span><span class="o">();</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></div></div>
-<p><img src="https://user-images.githubusercontent.com/95608811/174436227-dbfc5823-32f4-478b-860e-ea8f9a15c8bd.png" width="400px" /></p>
-
-<h4 id="스윙응용프로그램의-종료">스윙응용프로그램의 종료</h4>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
-</code></pre></div></div>
-<p>를 써야하는 이유</p>
-
-<p><img src="https://user-images.githubusercontent.com/95608811/174436263-cc4f0662-4685-4103-b804-fa4aebd3d709.png" width="800px" /></p>
-
-<h4 id="배치관리자의-대표유형-4가지">배치관리자의 대표유형 4가지</h4>
-<ul>
-  <li>FlowLayout : 칸이 없는 그냥 공간속에 들어온 순서대로 밀어넣는 느낌</li>
-  <li>BorderLayout : Top,Bottom,Left,Right,Center 다섯 부분으로 쪼개서 배열하는 방식</li>
-  <li>GridLayout : 지정된 행,렬의 갯수만큼 배열하는 방식</li>
-  <li>CardLayout : 겹겹이 카드 쌓는 느낌의 방식</li>
-</ul>
-
-<h4 id="라디오버튼-생성">라디오버튼 생성</h4>
-<p><img src="https://user-images.githubusercontent.com/95608811/174437313-d7d2116b-7020-4501-a91e-7e25625a05aa.png" width="800px" /></p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RadioButtonEx</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
-<span class="kd">public</span> <span class="nf">RadioButtonEx</span><span class="o">()</span> <span class="o">{</span>
-<span class="n">setTitle</span><span class="o">(</span><span class="s">"라디오버튼 만들기 예제"</span><span class="o">);</span>
-<span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
-<span class="nc">Container</span> <span class="n">c</span> <span class="o">=</span> <span class="n">getContentPane</span><span class="o">();</span>
-<span class="n">c</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
-<span class="nc">ImageIcon</span> <span class="n">cherryIcon</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ImageIcon</span><span class="o">(</span><span class="s">"images/cherry.j pg"</span> <span class="o">);</span>
-<span class="nc">ImageIcon</span> <span class="n">selectedCherryIcon</span> <span class="o">=</span>
-<span class="k">new</span> <span class="nf">ImageIcon</span><span class="o">(</span><span class="s">"images/selectedCherry.jpg"</span><span class="o">);</span>
-<span class="nc">ButtonGroup</span> <span class="n">g</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ButtonGroup</span><span class="o">();</span>
-<span class="nc">JRadioButton</span> <span class="n">apple</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JRadioButton</span><span class="o">(</span><span class="s">"사과"</span><span class="o">);</span>
-<span class="nc">JRadioButton</span> <span class="n">pear</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JRadioButton</span><span class="o">(</span><span class="s">"배"</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
-<span class="nc">JRadioButton</span> <span class="n">cherry</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JRadioButton</span><span class="o">(</span><span class="s">"체리"</span><span class="o">,</span> <span class="n">cherryIcon</span><span class="o">);</span>
-<span class="n">cherry</span><span class="o">.</span><span class="na">setBorderPainted</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-<span class="n">cherry</span><span class="o">.</span><span class="na">setSelectedIcon</span><span class="o">(</span><span class="n">selectedCherryIcon</span><span class="o">);</span>
-<span class="n">g</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">apple</span><span class="o">);</span>
-<span class="n">g</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pear</span><span class="o">);</span>
-<span class="n">g</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cherry</span><span class="o">);</span>
-<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">apple</span><span class="o">);</span>
-<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pear</span><span class="o">);</span>
-<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cherry</span><span class="o">);</span>
-<span class="n">setSize</span><span class="o">(</span><span class="mi">250</span><span class="o">,</span><span class="mi">150</span><span class="o">);</span>
-<span class="n">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-  <span class="o">}</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-<span class="k">new</span> <span class="nf">RadioButtonEx</span><span class="o">();</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h4 id="간단한-텍스트필드-만들기">간단한 텍스트필드 만들기</h4>
-
-<ul>
-  <li>텍스트필드란?</li>
-  <li>한 줄 짜리 텍스트(문자열) 입력 창을 구현한 컴포넌트</li>
-  <li>텍스트 입력 도중 <code class="language-plaintext highlighter-rouge">Enter</code>키가 입력되면 Action 이벤트 발생</li>
-  <li>입력 가능한 문자 개수와 입력 창의 크기는 서로 다름</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TextFieldEx</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
-<span class="kd">public</span> <span class="nf">TextFieldEx</span><span class="o">()</span> <span class="o">{</span>
-<span class="n">setTitle</span><span class="o">(</span><span class="s">"텍스트필드 만들기 예제"</span><span class="o">);</span>
-<span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
-<span class="nc">Container</span> <span class="n">c</span> <span class="o">=</span> <span class="n">getContentPane</span><span class="o">();</span>
-<span class="n">c</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
-<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"이름 "</span><span class="o">));</span>
-<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JTextField</span><span class="o">(</span><span class="mi">20</span><span class="o">));</span>
-<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"학과 "</span><span class="o">));</span>
-<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JTextField</span><span class="o">(</span><span class="s">"컴퓨터공학과 "</span><span class="o">,</span> <span class="mi">20</span><span class="o">));</span>
-<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"주소 "</span><span class="o">));</span>
-<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JTextField</span><span class="o">(</span><span class="s">"서울시 ..."</span><span class="o">,</span> <span class="mi">20</span><span class="o">));</span>
-<span class="n">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span><span class="mi">150</span><span class="o">);</span>
-<span class="n">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-  <span class="o">}</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-<span class="k">new</span> <span class="nf">TextFieldEx</span><span class="o">();</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h4 id="jtextarea-컴포넌트-생성">JTextArea 컴포넌트 생성</h4>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span> <span class="kn">import</span> <span class="nn">java.awt.event.*</span><span class="o">;</span> <span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TextAreaEx</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
-<span class="kd">private</span> <span class="nc">JTextField</span> <span class="n">tf</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextField</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
-<span class="kd">private</span> <span class="nc">JTextArea</span> <span class="n">ta</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextArea</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="mi">20</span><span class="o">);</span>
-<span class="kd">public</span> <span class="nf">TextAreaEx</span><span class="o">()</span> <span class="o">{</span>
-<span class="n">setTitle</span><span class="o">(</span><span class="s">"텍스트영역 만들기 예제"</span><span class="o">);</span>
-<span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
-<span class="nc">Container</span> <span class="n">c</span> <span class="o">=</span> <span class="n">getContentPane</span><span class="o">();</span>
-<span class="n">c</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
-<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"입력 후 &lt;Enter&gt; 키를 입력하세요"</span><span class="o">));</span>
-<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tf</span><span class="o">);</span>
-<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JScrollPane</span><span class="o">(</span><span class="n">ta</span><span class="o">));</span>
-<span class="n">tf</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-<span class="nc">JTextField</span> <span class="n">t</span> <span class="o">=</span> <span class="o">(</span><span class="nc">JTextField</span><span class="o">)</span><span class="n">e</span><span class="o">.</span><span class="na">getSource</span><span class="o">();</span>
-<span class="n">ta</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">t</span><span class="o">.</span><span class="na">getText</span><span class="o">()</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
-<span class="n">t</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
-  <span class="o">}</span>
-<span class="o">});</span>
-<span class="n">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span><span class="mi">300</span><span class="o">);</span>
-<span class="n">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-  <span class="o">}</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-<span class="k">new</span> <span class="nf">TextAreaEx</span><span class="o">();</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h4 id="리스트-만들기">리스트 만들기</h4>
-
-<ul>
-  <li>리스트 컴포넌트란?</li>
-  <li>여러 개의 아이템을 리스트 형식으로 보여주고 선택하는 컴포넌트</li>
-  <li><code class="language-plaintext highlighter-rouge">JComboBox&lt;E&gt;</code>와 기본적으로 같은 기능</li>
-  <li><code class="language-plaintext highlighter-rouge">JScrollPane에 JList&lt;E&gt;</code>를 삽입하여 스크롤 가능</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListEx</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
-<span class="kd">private</span> <span class="nc">String</span> <span class="o">[]</span> <span class="n">fruits</span><span class="o">=</span> <span class="o">{</span><span class="s">"apple"</span><span class="o">,</span> <span class="s">"banana"</span><span class="o">,</span> <span class="s">"kiwi"</span><span class="o">,</span> <span class="s">"mango"</span><span class="o">,</span> <span class="s">"pear"</span><span class="o">,</span>
-<span class="s">"peach"</span><span class="o">,</span> <span class="s">"berry"</span><span class="o">,</span> <span class="s">"strawberry"</span><span class="o">,</span> <span class="s">"blackberry"</span><span class="o">};</span>
-<span class="kd">private</span> <span class="nc">ImageIcon</span> <span class="o">[]</span> <span class="n">images</span> <span class="o">=</span> <span class="o">{</span>
-<span class="k">new</span> <span class="nf">ImageIcon</span><span class="o">(</span><span class="s">"images/icon1.png"</span><span class="o">),</span>
-<span class="k">new</span> <span class="nf">ImageIcon</span><span class="o">(</span><span class="s">"images/icon2.png"</span><span class="o">),</span>
-<span class="k">new</span> <span class="nf">ImageIcon</span><span class="o">(</span><span class="s">"images/icon3.png"</span><span class="o">),</span>
-<span class="k">new</span> <span class="nf">ImageIcon</span><span class="o">(</span><span class="s">"images/icon4.png"</span><span class="o">)</span> <span class="o">};</span>
-<span class="kd">public</span> <span class="nf">ListEx</span><span class="o">()</span> <span class="o">{</span>
-<span class="n">setTitle</span><span class="o">(</span><span class="s">"리스트 만들기 예제"</span><span class="o">);</span>
-<span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
-<span class="nc">Container</span> <span class="n">c</span> <span class="o">=</span> <span class="n">getContentPane</span><span class="o">();</span>
-<span class="n">c</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
-<span class="nc">JList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">strList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="n">fruits</span><span class="o">);</span>
-<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">strList</span><span class="o">);</span>
-<span class="nc">JList</span><span class="o">&lt;</span><span class="nc">ImageIcon</span><span class="o">&gt;</span> <span class="n">imageList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JList</span><span class="o">&lt;</span><span class="nc">ImageIcon</span><span class="o">&gt;();</span>
-<span class="n">imageList</span><span class="o">.</span><span class="na">setListData</span><span class="o">(</span><span class="n">images</span><span class="o">);</span>
-<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">imageList</span><span class="o">);</span>
-<span class="nc">JList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">scrollList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="n">fruits</span><span class="o">);</span>
-<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JScrollPane</span><span class="o">(</span><span class="n">scrollList</span><span class="o">));</span>
-<span class="n">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span><span class="mi">300</span><span class="o">);</span>
-<span class="n">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-  <span class="o">}</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-<span class="k">new</span> <span class="nf">ListEx</span><span class="o">();</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></div></div>
-
-<h4 id="jslider-컴포넌트">JSlider 컴포넌트</h4>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SliderEx</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
-<span class="kd">public</span> <span class="nf">SliderEx</span><span class="o">()</span> <span class="o">{</span>
-<span class="n">setTitle</span><span class="o">(</span><span class="s">"슬라이더 만들기 예제"</span><span class="o">);</span>
-<span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
-<span class="nc">Container</span> <span class="n">c</span> <span class="o">=</span> <span class="n">getContentPane</span><span class="o">();</span>
-<span class="n">c</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
-<span class="nc">JSlider</span> <span class="n">slider</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSlider</span><span class="o">(</span><span class="nc">JSlider</span><span class="o">.</span><span class="na">HORIZONTAL</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
-<span class="n">slider</span><span class="o">.</span><span class="na">setPaintLabels</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-<span class="n">slider</span><span class="o">.</span><span class="na">setPaintTicks</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-<span class="n">slider</span><span class="o">.</span><span class="na">setPaintTrack</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-<span class="n">slider</span><span class="o">.</span><span class="na">setMajorTickSpacing</span><span class="o">(</span><span class="mi">50</span><span class="o">);</span>
-<span class="n">slider</span><span class="o">.</span><span class="na">setMinorTickSpacing</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
-<span class="n">c</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">slider</span><span class="o">);</span>
-<span class="n">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span><span class="mi">100</span><span class="o">);</span>
-<span class="n">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-  <span class="o">}</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-<span class="k">new</span> <span class="nf">SliderEx</span><span class="o">();</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">import</span> <span class="nn">java.awt.Container</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.awt.FlowLayout</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.awt.event.ActionEvent</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.awt.event.ActionListener</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.BufferedWriter</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.FileReader</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.FileWriter</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.JButton</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.JComboBox</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.JFrame</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.JLabel</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.JTextField</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainProg</span> <span class="kd">extends</span> <span class="nc">JFrame</span><span class="o">{</span>
-   <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">stList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;();</span> <span class="c1">// ArrayList stList 생성</span>
-   <span class="nc">JButton</span> <span class="n">btnIns</span><span class="o">,</span> <span class="n">btnOut</span><span class="o">,</span> <span class="n">btnBat</span><span class="o">,</span> <span class="n">btnDis</span><span class="o">;</span> <span class="c1">// JButton 4개 객체 생성</span>
-   <span class="nc">JTextField</span> <span class="n">tf_id</span><span class="o">,</span> <span class="n">tf_name</span><span class="o">;</span> <span class="c1">// JTextField id 랑 name 객체 생성</span>
-   <span class="nc">JComboBox</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">cb_hk</span><span class="o">;</span> <span class="c1">// JComboBox 생성</span>
-   <span class="kd">public</span> <span class="nf">MainProg</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">createGUI</span><span class="o">();</span> <span class="c1">// GUI 만드는 함수호출</span>
-      <span class="n">btnDis</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span> <span class="c1">// btnDis의 이벤트 리스너 </span>
-      <span class="nd">@Override</span>
-      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-         <span class="k">try</span> <span class="o">{</span> <span class="c1">// try-catch 구문, 시도했을 때 잘되면 try 구문 실행, 에러발생시 catch구문 실행</span>
-        	 <span class="nc">FileWriter</span> <span class="n">fo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileWriter</span><span class="o">(</span><span class="s">"test.txt"</span><span class="o">);</span> <span class="c1">// FileWriter 을 실행한는 fo 객체 생성</span>
-        	 <span class="k">for</span><span class="o">(</span><span class="nc">Student</span> <span class="nl">stu:</span><span class="n">stList</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//Student의 stu:stList 의 갯수만큼 반복실행</span>
-        		 <span class="n">fo</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">stu</span><span class="o">.</span><span class="na">getStudentId</span><span class="o">()+</span><span class="s">" "</span><span class="o">+</span><span class="n">stu</span><span class="o">.</span><span class="na">getStudentName</span><span class="o">()+</span><span class="s">" "</span><span class="o">+</span><span class="n">stu</span><span class="o">.</span><span class="na">getMajor</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span> <span class="c1">// fo 객체에 있는 파일 wirte, stu에 있는 di,name,major 작성</span>
-        	 <span class="o">}</span>
-        	 <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"파일생성이 완료되었습니다."</span><span class="o">);</span>
-			 <span class="n">fo</span><span class="o">.</span><span class="na">close</span><span class="o">();</span> <span class="c1">// 한번 쓴 파일은 다시 close 해주어야함</span>
-		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e1</span><span class="o">)</span> <span class="o">{</span>
-			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"파일생성오류입니다."</span><span class="o">);</span> <span class="c1">// 그냥 잘 생성 안되면, println 구문실행</span>
-			<span class="n">e1</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-		<span class="o">}</span>
-         
-      	<span class="o">}</span>
-      <span class="o">});</span>
-      
-      <span class="n">btnIns</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span> <span class="c1">//btnIns 액션 만들기</span>
-         
-         <span class="nd">@Override</span>
-         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">tf_id</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
-            <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">tf_name</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span>
-            <span class="nc">String</span> <span class="n">hk</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)(</span><span class="n">cb_hk</span><span class="o">.</span><span class="na">getSelectedItem</span><span class="o">());</span>
-            <span class="n">stList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">name</span><span class="o">,</span> <span class="n">hk</span><span class="o">));</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"입력됨"</span><span class="o">+</span><span class="s">" "</span><span class="o">+</span><span class="n">id</span><span class="o">+</span><span class="s">" "</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s">" "</span><span class="o">+</span><span class="n">hk</span><span class="o">);</span>
-         <span class="o">}</span>
-      <span class="o">});</span>
-
-      
-      <span class="n">btnOut</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
-         
-         <span class="nd">@Override</span>
-         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"----------------------------------------------------"</span><span class="o">);</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"|   학번   |      이름      |       학과       |"</span><span class="o">);</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"----------------------------------------------------"</span><span class="o">);</span>
-            <span class="k">for</span><span class="o">(</span><span class="nc">Student</span> <span class="n">stu</span> <span class="o">:</span> <span class="n">stList</span><span class="o">)</span> <span class="o">{</span>
-               <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stu</span><span class="o">.</span><span class="na">getStudentId</span><span class="o">()+</span><span class="s">"            "</span><span class="o">+</span><span class="n">stu</span><span class="o">.</span><span class="na">getStudentName</span><span class="o">()+</span><span class="s">"          "</span><span class="o">+</span><span class="n">stu</span><span class="o">.</span><span class="na">getMajor</span><span class="o">());</span>
-            <span class="o">}</span>
-            
-         <span class="o">}</span>
-      <span class="o">});</span>
-      <span class="n">btnBat</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
-		
-		<span class="nd">@Override</span>
-		<span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-			<span class="k">try</span> <span class="o">{</span> <span class="c1">//Scanner 객체 scan에 FileReader 해서 txt 파일입력</span>
-				<span class="nc">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="k">new</span> <span class="nc">FileReader</span><span class="o">(</span><span class="s">"C:\\Users\\studentInfo.txt"</span><span class="o">));</span> <span class="c1">// scan 해올 경로 작성</span>
-				<span class="k">while</span><span class="o">(</span><span class="n">scan</span><span class="o">.</span><span class="na">hasNextLine</span><span class="o">()==</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-					<span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-					<span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-					<span class="kt">int</span> <span class="n">hkCode</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-					<span class="nc">String</span> <span class="n">hk</span><span class="o">=</span><span class="s">""</span><span class="o">;</span>
-					<span class="k">if</span> <span class="o">(</span><span class="n">hkCode</span> <span class="o">==</span> <span class="nc">Define</span><span class="o">.</span><span class="na">SW</span><span class="o">){</span>
-          <span class="c1">// Define 클래스에서 각 Major를 static final 상수로 선언 (final로 선언된 상수는 바꿀 수 없음 )</span>
-          <span class="c1">// public class Define {</span>
-          <span class="c1">// public static final int SW = 1001;</span>
-          <span class="c1">// public static final int INFO = 1002;</span>
-          <span class="c1">// public static final int TONGSIN = 2001;</span>
-          <span class="c1">// public static final int KY = 4001;</span>
-          <span class="c1">// public static final int AI = 1003;</span>
-          <span class="c1">// }</span>
-
-					<span class="n">hk</span> <span class="o">=</span> <span class="s">"컴퓨터소프트웨어공학과"</span><span class="o">;</span>
-					<span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">hkCode</span> <span class="o">==</span><span class="nc">Define</span><span class="o">.</span><span class="na">INFO</span><span class="o">)</span> <span class="o">{</span>
-						<span class="n">hk</span> <span class="o">=</span> <span class="s">"컴퓨터정보과"</span><span class="o">;</span>
-					<span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">hkCode</span> <span class="o">==</span><span class="nc">Define</span><span class="o">.</span><span class="na">TONGSIN</span><span class="o">)</span> <span class="o">{</span>
-						<span class="n">hk</span> <span class="o">=</span> <span class="s">"정보통신과"</span><span class="o">;</span>
-					<span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">hkCode</span> <span class="o">==</span><span class="nc">Define</span><span class="o">.</span><span class="na">KY</span><span class="o">)</span> <span class="o">{</span>
-						<span class="n">hk</span> <span class="o">=</span> <span class="s">"경영학과"</span><span class="o">;</span>
-					<span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">hkCode</span><span class="o">==</span><span class="nc">Define</span><span class="o">.</span><span class="na">AI</span><span class="o">)</span> <span class="o">{</span>
-						<span class="n">hk</span> <span class="o">=</span> <span class="s">"인공지능과"</span><span class="o">;</span>
-					<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-						<span class="n">hk</span> <span class="o">=</span> <span class="s">"전공학과오류입니다"</span><span class="o">;</span>
-					<span class="o">}</span>
-					<span class="n">stList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="n">id</span><span class="o">,</span><span class="n">name</span><span class="o">,</span><span class="n">hk</span><span class="o">));</span>
-				<span class="o">}</span>
-				<span class="n">scan</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"일괄입력했습니다"</span><span class="o">);</span>
-			<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileNotFoundException</span> <span class="n">e1</span><span class="o">)</span> <span class="o">{</span>
-				<span class="n">e1</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"파일입력에러"</span><span class="o">);</span>
-			<span class="o">}</span>
-			
-		<span class="o">}</span>
-	<span class="o">});</span>
-   <span class="o">}</span>
-   <span class="kd">private</span> <span class="kt">void</span> <span class="nf">createGUI</span><span class="o">()</span> <span class="o">{</span>
-      <span class="k">this</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="s">"Project"</span><span class="o">);</span> <span class="c1">// Title 이름 설정</span>
-      <span class="k">this</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
-      <span class="nc">Container</span> <span class="n">con</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getContentPane</span><span class="o">();</span> <span class="c1">// Container 객체 con 을 getContentPane으로 생성</span>
-      <span class="n">con</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
-
-      <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"학번"</span><span class="o">))</span>
-      <span class="n">tf_id</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextField</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
-      <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tf_id</span><span class="o">);</span>
-      <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"이름"</span><span class="o">));</span>
-      <span class="n">tf_name</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextField</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
-      <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tf_name</span><span class="o">);</span>
-      <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"학과"</span><span class="o">));</span>
-      <span class="nc">String</span><span class="o">[]</span> <span class="n">hkdatas</span> <span class="o">=</span> <span class="o">{</span><span class="s">"컴퓨터소프트웨어공학과"</span><span class="o">,</span> <span class="s">"컴퓨터정보과"</span><span class="o">,</span> <span class="s">"전기전자정보통신과"</span><span class="o">,</span> <span class="s">"디자인과"</span><span class="o">,</span> <span class="s">"경영학과"</span><span class="o">,</span> <span class="s">"이스포츠인공지능학과"</span>   <span class="o">};</span>
-      <span class="n">cb_hk</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JComboBox</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="n">hkdatas</span><span class="o">);</span>
-      <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cb_hk</span><span class="o">);</span>
-      <span class="n">btnBat</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"일괄입력"</span><span class="o">);</span>
-      <span class="n">btnIns</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"입력"</span><span class="o">);</span>
-      <span class="n">btnDis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"파일출력"</span><span class="o">);</span>
-      <span class="n">btnOut</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"보고서출력"</span><span class="o">);</span>
-      <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">btnBat</span><span class="o">);</span> <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">btnIns</span><span class="o">);</span> <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">btnDis</span><span class="o">);</span> <span class="n">con</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">btnOut</span><span class="o">);</span>
-      <span class="k">this</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">270</span><span class="o">,</span><span class="mi">500</span><span class="o">);</span>
-      <span class="k">this</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-   <span class="o">}</span>
-   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">new</span> <span class="nf">MainProg</span><span class="o">();</span>
-   <span class="o">}</span>
-
-<span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Ino</name></author><category term="java" /><category term="java" /><category term="gui" /><summary type="html"><![CDATA[`` 먼저 모든 import문은 eclipse 자동생성으로 만드는걸 default로 한다. 즉, 코드에 import문은 넣지 않으므로 자동생성 해서 쓰길 권장한다.]]></summary></entry><entry><title type="html">TodoList for Vue.js</title><link href="http://localhost:4000/web/2022/06/16/VueTodo.html" rel="alternate" type="text/html" title="TodoList for Vue.js" /><published>2022-06-16T00:00:00+09:00</published><updated>2022-06-16T00:00:00+09:00</updated><id>http://localhost:4000/web/2022/06/16/VueTodo</id><content type="html" xml:base="http://localhost:4000/web/2022/06/16/VueTodo.html"><![CDATA[<p><code class="language-plaintext highlighter-rouge">set-ExecutionPolicy -ExecutionPolicy Unrestricted</code> : 권한오류    <br />
-<code class="language-plaintext highlighter-rouge">npm install -g @vue/cli</code> : vue를 전역에 설치   <br />
-<code class="language-plaintext highlighter-rouge">vue create project01</code> : vue 디렉토리 생성    <br />
-<code class="language-plaintext highlighter-rouge">vue add router</code> : router 추가 / 처음 vue 만들때 router 옵션 체크</p>
-
-<p><code class="language-plaintext highlighter-rouge">npm run lint</code> : 린트 에러 해결   <br />
-<code class="language-plaintext highlighter-rouge">vue add vuetify</code> : vuetify 설치    <br />
-<code class="language-plaintext highlighter-rouge">npm run serve</code> : 실시간 미리보기</p>
-
-<ul>
-  <li>material designIcon : 아이콘 퍼오기</li>
-</ul>
-<p><a href="https://materialdesignicons.com/">https://materialdesignicons.com/</a></p>
-
-<h2 id="todo-list만들기">Todo-List만들기</h2>
-<h3 id="appvue-코드">App.vue 코드</h3>
-<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;v-app</span> <span class="na">id=</span><span class="s">"inspire"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;v-navigation-drawer</span> <span class="na">v-model=</span><span class="s">"drawer"</span> <span class="na">app</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;v-list-item&gt;</span>
-        <span class="nt">&lt;v-list-item-content&gt;</span>
-          <span class="nt">&lt;v-list-item-title</span> <span class="na">class=</span><span class="s">"text-h6"</span><span class="nt">&gt;</span>ToDo List <span class="nt">&lt;/v-list-item-title&gt;</span>
-          <span class="nt">&lt;v-list-item-subtitle&gt;</span>Vuetify-Todo<span class="nt">&lt;/v-list-item-subtitle&gt;</span>
-        <span class="nt">&lt;/v-list-item-content&gt;</span>
-      <span class="nt">&lt;/v-list-item&gt;</span>
-
-      <span class="nt">&lt;v-divider&gt;&lt;/v-divider&gt;</span>
-
-      <span class="nt">&lt;v-list</span> <span class="na">dense</span> <span class="na">nav</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;v-list-item</span> <span class="na">v-for=</span><span class="s">"a in items"</span> <span class="na">:key=</span><span class="s">"a.title"</span> <span class="na">:to=</span><span class="s">"a.to"</span> <span class="na">link</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;v-list-item-icon&gt;</span>
-            <span class="nt">&lt;v-icon&gt;&lt;/v-icon&gt;</span>
-          <span class="nt">&lt;/v-list-item-icon&gt;</span>
-
-          <span class="nt">&lt;v-list-item-content&gt;</span>
-            <span class="nt">&lt;v-list-item-title&gt;&lt;/v-list-item-title&gt;</span>
-          <span class="nt">&lt;/v-list-item-content&gt;</span>
-        <span class="nt">&lt;/v-list-item&gt;</span>
-      <span class="nt">&lt;/v-list&gt;</span>
-    <span class="nt">&lt;/v-navigation-drawer&gt;</span>
-
-    <span class="nt">&lt;v-app-bar</span> <span class="na">app</span> <span class="na">color=</span><span class="s">"#fcb69f"</span> <span class="na">dark</span> <span class="na">src=</span><span class="s">"playground.jpg"</span> <span class="na">prominent</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;template</span> <span class="na">v-slot:img=</span><span class="s">"</span>{ props }"&gt;
-        <span class="nt">&lt;v-img</span>
-          <span class="na">v-bind=</span><span class="s">"props"</span>
-          <span class="na">gradient=</span><span class="s">"to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"</span>
-        <span class="nt">&gt;&lt;/v-img&gt;</span>
-      <span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
-
-      <span class="nt">&lt;v-app-bar-nav-icon</span> <span class="err">@</span><span class="na">click=</span><span class="s">"drawer = !drawer"</span><span class="nt">&gt;&lt;/v-app-bar-nav-icon&gt;</span>
-
-      <span class="nt">&lt;v-app-bar-title&gt;</span>오늘 할일 하기<span class="nt">&lt;/v-app-bar-title&gt;</span>
-
-      <span class="nt">&lt;v-spacer&gt;&lt;/v-spacer&gt;</span>
-
-      <span class="nt">&lt;v-btn</span> <span class="na">icon</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;v-icon&gt;</span>mdi-magnify<span class="nt">&lt;/v-icon&gt;</span>
-      <span class="nt">&lt;/v-btn&gt;</span>
-
-      <span class="nt">&lt;v-btn</span> <span class="na">icon</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;v-icon&gt;</span>mdi-heart<span class="nt">&lt;/v-icon&gt;</span>
-      <span class="nt">&lt;/v-btn&gt;</span>
-
-      <span class="nt">&lt;v-btn</span> <span class="na">icon</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;v-icon&gt;</span>mdi-dots-vertical<span class="nt">&lt;/v-icon&gt;</span>
-      <span class="nt">&lt;/v-btn&gt;</span>
-    <span class="nt">&lt;/v-app-bar&gt;</span>
-
-    <span class="nt">&lt;v-main&gt;</span>
-      <span class="nt">&lt;router-view&gt;&lt;/router-view&gt;</span>
-    <span class="nt">&lt;/v-main&gt;</span>
-  <span class="nt">&lt;/v-app&gt;</span>
-<span class="nt">&lt;/template&gt;</span>
-
-<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">({</span>
-    <span class="na">drawer</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="na">items</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Todo</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">icon</span><span class="p">:</span> <span class="dl">"</span><span class="s2">mdi-checkbox-marked-circle-plus-outline</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">to</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">,</span>
-      <span class="p">},</span>
-      <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">About</span><span class="dl">"</span><span class="p">,</span> <span class="na">icon</span><span class="p">:</span> <span class="dl">"</span><span class="s2">mdi-help-box</span><span class="dl">"</span><span class="p">,</span> <span class="na">to</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/about</span><span class="dl">"</span> <span class="p">},</span>
-    <span class="p">],</span>
-    <span class="na">right</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="p">}),</span>
-<span class="p">};</span>
-<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
-</code></pre></div></div>
-
-<h3 id="todovue-코드">todo.vue 코드</h3>
-<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"home"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;v-text-field</span>
-      <span class="na">outlined</span>
-      <span class="na">label=</span><span class="s">"해야할일 추가"</span>
-      <span class="na">append-icon=</span><span class="s">"mdi-plus-box-multiple-outline"</span>
-      <span class="na">class=</span><span class="s">"pa-3"</span>
-      <span class="na">hide-details</span>
-      <span class="na">clearable</span>
-      <span class="na">v-model=</span><span class="s">"newTaskTitle"</span>
-      <span class="err">@</span><span class="na">click:append=</span><span class="s">"addTask"</span>
-      <span class="err">@</span><span class="na">keyup.enter=</span><span class="s">"addTask"</span>
-    <span class="nt">&gt;</span>
-    <span class="nt">&lt;/v-text-field&gt;</span>
-
-    <span class="nt">&lt;div&gt;</span>
-      <span class="nt">&lt;v-list</span> <span class="na">class=</span><span class="s">"pa-0"</span> <span class="na">flat</span> <span class="na">v-if=</span><span class="s">"tasks.length"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">v-for=</span><span class="s">"(할일, idx) in tasks"</span> <span class="na">:key=</span><span class="s">"idx"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;v-list-item</span>
-            <span class="err">@</span><span class="na">click=</span><span class="s">"doneTask(할일.id)"</span>
-            <span class="na">:class=</span><span class="s">"</span>{ 'blue lighten-5': 할일.done }"
-          &gt;
-            <span class="nt">&lt;template&gt;</span>
-              <span class="nt">&lt;v-list-item-action&gt;</span>
-                <span class="nt">&lt;v-checkbox</span> <span class="na">:input-value=</span><span class="s">"할일.done"</span> <span class="na">color=</span><span class="s">"primary"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;/v-checkbox&gt;</span>
-              <span class="nt">&lt;/v-list-item-action&gt;</span>
-
-              <span class="nt">&lt;v-list-item-content&gt;</span>
-                <span class="nt">&lt;v-list-item-title</span>
-                  <span class="na">:class=</span><span class="s">"</span>{ 'text-decoration-line-through': 할일.done }"
-                &gt;
-                  
-                <span class="nt">&lt;/v-list-item-title&gt;</span>
-              <span class="nt">&lt;/v-list-item-content&gt;</span>
-              <span class="nt">&lt;v-btn</span> <span class="na">icon</span> <span class="err">@</span><span class="na">click.stop=</span><span class="s">"deleteTask(할일.id)"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;v-icon</span> <span class="na">color=</span><span class="s">"primary lighten-1"</span><span class="nt">&gt;</span>mdi-delete<span class="nt">&lt;/v-icon&gt;</span>
-              <span class="nt">&lt;/v-btn&gt;</span>
-            <span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;/v-list-item&gt;</span>
-          <span class="nt">&lt;v-divider&gt;&lt;/v-divider&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;/v-list&gt;</span>
-
-      <span class="nt">&lt;div</span> <span class="na">v-else</span> <span class="na">class=</span><span class="s">"no-tasks"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;v-icon</span> <span class="na">size=</span><span class="s">"100"</span> <span class="na">color=</span><span class="s">"primary"</span><span class="nt">&gt;</span> mdi-check <span class="nt">&lt;/v-icon&gt;&lt;br</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-h5 primary--text"</span><span class="nt">&gt;</span>할일 없냐?<span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/template&gt;</span>
-
-<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
-  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ToDo</span><span class="dl">"</span><span class="p">,</span>
-  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">{</span>
-      <span class="na">tasks</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">학교 가기</span><span class="dl">"</span><span class="p">,</span> <span class="na">done</span><span class="p">:</span> <span class="kc">false</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">학식 먹기</span><span class="dl">"</span><span class="p">,</span> <span class="na">done</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">과제 하기</span><span class="dl">"</span><span class="p">,</span> <span class="na">done</span><span class="p">:</span> <span class="kc">false</span> <span class="p">},</span>
-      <span class="p">],</span>
-      <span class="na">newTaskTitle</span><span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
-    <span class="p">};</span>
-  <span class="p">},</span>
-  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nx">addTask</span><span class="p">()</span> <span class="p">{</span>
-      <span class="kd">let</span> <span class="nx">newTask</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="na">id</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
-        <span class="na">title</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">newTaskTitle</span><span class="p">,</span>
-        <span class="na">done</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-      <span class="p">};</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">tasks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">newTask</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">newTaskTitle</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
-    <span class="p">},</span>
-    <span class="nx">doneTask</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kd">let</span> <span class="nx">할일</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">tasks</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">할일</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">할일</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">id</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
-      <span class="nx">할일</span><span class="p">.</span><span class="nx">done</span> <span class="o">=</span> <span class="o">!</span><span class="nx">할일</span><span class="p">.</span><span class="nx">done</span><span class="p">;</span>
-    <span class="p">},</span>
-    <span class="nx">deleteTask</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">tasks</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">tasks</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">할일</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">할일</span><span class="p">.</span><span class="nx">id</span> <span class="o">!==</span> <span class="nx">id</span><span class="p">);</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tasks</span><span class="p">);</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-<span class="p">};</span>
-<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
-
-<span class="nt">&lt;</span><span class="k">style</span> <span class="na">lang=</span><span class="s">"sass"</span><span class="nt">&gt;</span>
-<span class="nc">.no-tasks</span>
-  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span>
-  <span class="nl">left</span><span class="p">:</span><span class="m">50%</span>
-  <span class="nl">top</span><span class="p">:</span><span class="m">50%</span>
-  <span class="nl">transform</span><span class="p">:</span> <span class="nf">translate</span><span class="p">(</span><span class="m">-50%</span><span class="o">,-</span><span class="m">50%</span><span class="p">)</span>
-  <span class="nl">opacity</span><span class="p">:</span><span class="m">0</span><span class="mi">.6</span>
-<span class="nt">&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
-</code></pre></div></div>
-
-<h3 id="indexjs-코드">index.js 코드</h3>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Vue</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">vue</span><span class="dl">"</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">VueRouter</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">vue-router</span><span class="dl">"</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">Todo</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">../views/ToDo.vue</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="nx">Vue</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">VueRouter</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">routes</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="p">{</span>
-    <span class="na">path</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Todo</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">component</span><span class="p">:</span> <span class="nx">Todo</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="p">{</span>
-    <span class="na">path</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/about</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">About</span><span class="dl">"</span><span class="p">,</span>
-    <span class="c1">// route level code-splitting</span>
-    <span class="c1">// this generates a separate chunk (about.[hash].js) for this route</span>
-    <span class="c1">// which is lazy-loaded when the route is visited.</span>
-    <span class="na">component</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span>
-      <span class="k">import</span><span class="p">(</span><span class="cm">/* webpackChunkName: "about" */</span> <span class="dl">"</span><span class="s2">../views/AboutView.vue</span><span class="dl">"</span><span class="p">),</span>
-  <span class="p">},</span>
-<span class="p">];</span>
-
-<span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
-  <span class="nx">routes</span><span class="p">,</span>
-<span class="p">});</span>
-
-<span class="k">export</span> <span class="k">default</span> <span class="nx">router</span><span class="p">;</span>
-</code></pre></div></div>]]></content><author><name>Ino</name></author><category term="web" /><category term="vue" /><category term="web" /><summary type="html"><![CDATA[set-ExecutionPolicy -ExecutionPolicy Unrestricted : 권한오류 npm install -g @vue/cli : vue를 전역에 설치 vue create project01 : vue 디렉토리 생성 vue add router : router 추가 / 처음 vue 만들때 router 옵션 체크]]></summary></entry></feed>
+</ul>]]></content><author><name>Ino</name></author><category term="System" /><category term="linux" /><summary type="html"><![CDATA[링크란 무엇인가? 특정 파일 또는 디렉토리에 접근을 쉽게 할 수 있도록 하는 방법 파일 시스템이 물리적인 장치인 하드 디스크 상에 저장되어 있는 특정 파일의 위치를 가리키는 것]]></summary></entry></feed>
