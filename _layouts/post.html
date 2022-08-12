@@ -6,7 +6,11 @@ hidden: []
 sidebar:
   - article-menu
 ---
-
+<style>
+  .post-comments{
+    max-width: 100% !important;
+  }
+</style>
 <div class="post">
   <section>
 
@@ -59,6 +63,13 @@ sidebar:
     {%- assign result = hidden | where_exp: "item", "item == 'comments'" -%}
     {%- if result.size == 0 -%}
     <div class="post-comments">
+      <script src="https://utteranc.es/client.js"
+        repo="alphateaminho/comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+      </script>
       {%- if page.comments != false -%}
 
       {%- if site.disqus.shortname -%}
