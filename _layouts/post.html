@@ -58,10 +58,6 @@ sidebar:
         {%- endfor -%}
       </ul>
     </div>
-    {%- endif -%}
-
-    {%- assign result = hidden | where_exp: "item", "item == 'comments'" -%}
-    {%- if result.size == 0 -%}
     <div class="post-comments">
       <script src="https://utteranc.es/client.js"
         repo="alphateaminho/comments"
@@ -70,6 +66,10 @@ sidebar:
         crossorigin="anonymous"
         async>
       </script>
+    <!-- {%- endif -%}
+
+    {%- assign result = hidden | where_exp: "item", "item == 'comments'" -%}
+    {%- if result.size == 0 -%}
       {%- if page.comments != false -%}
 
       {%- if site.disqus.shortname -%}
@@ -80,7 +80,7 @@ sidebar:
       {%- include extensions/comments/gitment.html -%}
       {%- endif -%}
 
-      {%- endif -%}
+      {%- endif -%} -->
     </div>
     {%- endif -%}
 
