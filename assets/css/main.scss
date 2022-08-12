@@ -1,6 +1,11 @@
 ---
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
+// Comment size width
+.utterances-frame {
+  max-width:100%
+};
+
 
 // Default theme colors
 $theme-colors: (
