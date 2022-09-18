@@ -20,6 +20,7 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="시를 좋아하는 프로그래머">
+<meta name="google-site-verification" content="p512jSguWG2fS0RhsEYL5oBEW8BDHDRWOpY96CvJmHU">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"AlphateamInho"},"description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"시를 좋아하는 프로그래머","name":"시를 좋아하는 프로그래머","url":"http://localhost:4000/"}</script>
 <!-- End Jekyll SEO tag -->
@@ -606,7 +607,7 @@ function googleTranslateElementInit() {
               시를 좋아하는 프로그래머
             </h1>
             <h2 class="page-banner-subheading">
-              #Web #HTML #CSS #Javascript #Vue #React #C #Java #DB #Git
+              #Web #Vue #C #DB #Algorithm
             </h2>
           </div></div>
     </div>
@@ -858,13 +859,105 @@ function googleTranslateElementInit() {
 
 
 <h2 class="post-title">
+        <a class="post-link" href="/c/2022/09/18/%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98%EC%99%80-id.html">
+          c언어 write 함수
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Sep 18, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
+      </div>
+      <a class="post-excerpt" href="/c/2022/09/18/%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98%EC%99%80-id.html">
+        <p>
+        unistd.h 가 뭔데?
+POSIX 운영체제 API에 대한 엑세스를 제공하는 헤더파일이다.   
+보통 Unix 에 쓰이는 표준 심볼들과 상수들을 정의해 놓은 것이기 때문에 unistd.h에 포함되어 있는 내용은 대부분 유닉스환경에서만 쓸 수 있다.
+
+write 함수를 어디에 쓰는건데?
+
+#include &lt;unistd.h&gt;
+ssize_t write(int fd, void* buf, size_t nbytes);
+
+
+보통 오픈한 파일에 데이터를 쓸 때 사용하는 함수이다.  
+return value : 성공 시 기록된 바이트수, 에러시 -1을 return 한다.
+
+그런데,해당 함수를  에 있는 printf()... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#c">#c</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
         <a class="post-link" href="/c/2022/08/12/c%EC%96%B8%EC%96%B4%ED%8F%AC%EC%9D%B8%ED%84%B0.html">
-          C언어 포인터 동적메모리
+          C언어 포인터와 동적메모리
         </a>
       </h2>
       <div class="post-meta">
         <span class="post-date"><i class="fa fa-calendar"></i> Aug 12, 2022</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
       </div>
       <a class="post-excerpt" href="/c/2022/08/12/c%EC%96%B8%EC%96%B4%ED%8F%AC%EC%9D%B8%ED%84%B0.html">
         <p>
@@ -885,14 +978,13 @@ function googleTranslateElementInit() {
     힙 영역
 힙영역은 동적 메모리를 할당하는 영역입니다. 
 C언어로 코드를 작성할 때 직접 메모리를 할당할 때가 있습니다.  
-이 때 메모리를 할당하는 영역이 바로 힙 영역입니다.
-  
-  
-    스택 영역  
-스택 영역은 지역 변수와 매개변수를 저... <span class="read_more">Read More</span>
+이 때 메모리를 할당하는 영역이 바로 힙 영역입니다.  
+힙에 저장된 메모리는 함수호출이 종료되어도 사라지지 않기 때문에, ... <span class="read_more">Read More</span>
         </p>
       </a>
-      <div class="post-tags"><a class="post-tag" href="/tags.html#C">#C</a></div>
+      <div class="post-tags">
+<a class="post-tag" href="/tags.html#C">#C</a><a class="post-tag" href="/tags.html#%EB%8F%99%EC%A0%81%ED%95%A0%EB%8B%B9">#동적할당</a><a class="post-tag" href="/tags.html#%EB%A9%94%EB%AA%A8%EB%A6%AC">#메모리</a>
+</div>
     </li>
 <li>
       
@@ -3902,7 +3994,7 @@ Regardless of whether it is non-profit or profitable, anyone is actively encoura
   <ul>
     <li>
       <a href="/index.html">
-        All<span>32</span>
+        All<span>33</span>
       </a>
     </li>
 
@@ -3933,7 +4025,7 @@ Regardless of whether it is non-profit or profitable, anyone is actively encoura
     
       <li>
         <a href="/categories.html#h-c">
-          c <span>1</span>
+          c <span>2</span>
         </a>
       </li>
     

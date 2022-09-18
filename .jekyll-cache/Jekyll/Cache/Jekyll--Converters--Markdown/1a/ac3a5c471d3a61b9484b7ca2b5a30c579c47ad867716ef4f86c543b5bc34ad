@@ -1,0 +1,59 @@
+I"�<h2 id="unistdh-가-뭔데">unistd.h 가 뭔데?</h2>
+<p>POSIX 운영체제 API에 대한 엑세스를 제공하는 헤더파일이다.   <br />
+보통 Unix 에 쓰이는 표준 심볼들과 상수들을 정의해 놓은 것이기 때문에 unistd.h에 포함되어 있는 내용은 대부분 유닉스환경에서만 쓸 수 있다.</p>
+
+<h2 id="write-함수를-어디에-쓰는건데">write 함수를 어디에 쓰는건데?</h2>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="kt">ssize_t</span> <span class="nf">write</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">nbytes</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>보통 오픈한 파일에 데이터를 쓸 때 사용하는 함수이다.  <br />
+return value : 성공 시 기록된 바이트수, 에러시 -1을 return 한다.</p>
+
+<p>그런데,해당 함수를 <stdio.h> 에 있는 printf() 대용으로 사용하는 경우도 있는데 이런경우 어떤식으로 사용하는지에 대해 간단하게 설명하고자 한다.</stdio.h></p>
+
+<p>일단 함수를 사용하면 파라미터에 어떤 value를 넣는지에 대해 알아야한다.</p>
+<ul>
+  <li>해당 포스트는 write함수를 모니터에 버퍼출력용으로 사용하는 방법에 대해 알아보는 것이기 때문에,
+일반적으올 사용하는 방법 및 개념과는 많이 다를 수 있음</li>
+</ul>
+
+<h2 id="첫번째-파라미터-파일디스크립터">첫번째 파라미터 파일디스크립터</h2>
+<p>파일 디스크립터(File Descriptor)란 리눅스 혹은 유닉스 계열의 시스템에서 프로세스(process)가 파일(file)을 다룰 때 사용하는 개념으로, 프로세스에서 특정 파일에 접근할 때 사용하는 추상적인 값이다. 파일 디스크럽터는 일반적으로 0이 아닌 정수값을 갖는다.</p>
+
+<p>흔히 유닉스 시스템에서 모든 것을 파일이라고 한다. <br />
+유닉스 시스템에서 프로세스가 이 파일들을 접근할 때 파일 디스크립터라는 개념을 이용한다. 프로세스가 열려있는 파일에 시스템 콜을 이용해서 접근할 때, 파일 디스크립터(FD)값을 이용해서 파일을 지칭할 수 있다.</p>
+
+<p>프로그램이 프로세스로 메모리에서 실행될 때, 기본적으로 할당되는 파일디스크립터는 표준입력(Standard Input), 표준 출력(Standard Output), 표준에러(Standard Error)이며 이들에게 각각 0, 1, 2라는 정수가 할당된다.</p>
+
+<p>즉, 첫번째 파라미터인 int fd에는 0,1,2의 값이 들어갈 수 있다.</p>
+
+<p>그 중에 우리는 표준출력만을 사용하므로 printf 대용으로 일반적인 값을 출력할 떈 1 로 고정해서 써도 무방하다.</p>
+
+<h2 id="두번째-파라미터-버퍼">두번째 파라미터 버퍼</h2>
+<p>출력할 내용을 적으면 된다.
+유의해야할 점은 버퍼가 char 형태로 받아지기 때문에 int형을 write 하고싶다면, itoa 등의 함수를 사용하거나 아스키값을 char 형태만큼 적당히(?) 조절해서 써줘야한다.</p>
+
+<h2 id="세번째-파라미터-nbytes">세번째 파라미터 nbytes</h2>
+<p>그냥 출력해야 할 버퍼가 몇 바이트인지 맞춰서 쓰면 된다.</p>
+
+<h2 id="종합하자면">종합하자면,</h2>
+<h3 id="buf로부터-filedes로-nbytes만큼의-데이터를-쓴다">buf로부터 filedes로 nbytes만큼의 데이터를 쓴다.</h3>
+
+<p>Hello World 를 출력하고싶다면,</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Hello World"</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
+
+<span class="kt">char</span> <span class="o">*</span><span class="n">a</span><span class="p">;</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Hello World"</span><span class="p">;</span>
+<span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>이런식으로 출력을 원하는 리터럴문자를 직접 큰따옴표로 묶어서 넣어주거나, 변수의 주소값을 넣어주면 출력가능하다.</p>
+
+<p>int 형태는 char 형태로 출력가능하다고 했었는데,</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"0123456789"</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+</code></pre></div></div>
+<p>이런식의 출력은 결국 숫자가 들어간 문자열이기 때문에 출력가능하다.</p>
+:ET
