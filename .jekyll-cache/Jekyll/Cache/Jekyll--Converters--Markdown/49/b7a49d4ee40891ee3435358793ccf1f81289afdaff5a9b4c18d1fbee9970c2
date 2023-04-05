@@ -1,0 +1,43 @@
+I"S
+<h2 id="퍼셉트론과-신경망">퍼셉트론과 신경망</h2>
+<hr />
+
+<p>퍼셉트론은 신경망의 기본 구성요소입니다.  <br />
+신경망(Neural Net)의 기본 구조를 보면 보통 아래와 같이 그립니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/229966707-cea3fd99-1930-406b-b8a8-70a33e52b74f.png" width="800px" />
+이 중 파란색으로 동그라미 친 부분, 신경망의 구성요소를 퍼셉트론이라고 합니다.</p>
+<blockquote>
+  <p>다른 말로는 Dense(밀집) 혹은 노드(Node) 라고도 부릅니다.</p>
+</blockquote>
+
+<h2 id="퍼셉트론의-구성요소">퍼셉트론의 구성요소</h2>
+<hr />
+<p>위 그림의 신경망에서 하나의 퍼셉트론을 확대해서 보면,</p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/229966745-2b1c6bbe-0a89-4718-a437-9ce6c2d56d7c.png" width="800px" /></p>
+
+<p>그림과 같이 퍼셉트론은 입력(inputs), 가중치(Connection Weight), 바이어스(bias), 합 연산(Sum), 활성 함수(Activation Function)로 구성되어 있습니다. <br />
+오느날 인공신경망에서 이용하는 퍼셉트론은 선형 분류기로 이는 입력과 가중치들의 곱을 모두 더한 뒤 활성 함수를 적용해서 그 값이 0보다 크면 1, 0보다 작으면 -1을 출력하는 구조이다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/176060497-7cb6bb9e-1493-4ac0-8209-48fb38ade3da.png" width="800px" /></p>
+
+<ul>
+  <li>그래서 입력을 넣고 입력에 대한 결과를 출력하였을때 원하는 값이 나오도록 가중치를 조절한다.  <br />
+학습이라는게 결국 그 가중치값을 가장 많은 입력에 대해 가장 근접한 가중치를 찾는 과정이라고 볼 수 있다.</li>
+</ul>
+
+<h2 id="신경망으로-풀-수-있는-문제들">신경망으로 풀 수 있는 문제들</h2>
+<hr />
+<p>활성화 함수, 네트워크 구조 변경을 통해 문제를 풀 수 있습니다. <br />
+대표적인 문제로는 분류(Classification)와 회귀(Regression)로 나눌 수 있습니다.</p>
+
+<h3 id="분류classification">분류(Classification)</h3>
+<p>실생활에서 AI가 적용되는 많은 분야는 분류문제를 해결한 것이 많습니다. <br />
+그 예로는 개와 고양이를 분류하는 문제 또는 물체를 Detection 하였을 때, 어떤 물체인 지 분류하는 문제 등  <br />
+실생활에서 많은 부분에 사용되고 있습니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/229966775-a3bc8443-2914-4fab-87a6-bc04c0f34589.png" width="800px" /></p>
+
+<p>위 사진과 같이 분</p>
+:ET

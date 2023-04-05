@@ -1,4 +1,243 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-18T17:31:36+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">c언어 write 함수</title><link href="http://localhost:4000/c/2022/09/18/%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98%EC%99%80-id.html" rel="alternate" type="text/html" title="c언어 write 함수" /><published>2022-09-18T00:00:00+09:00</published><updated>2022-09-18T00:00:00+09:00</updated><id>http://localhost:4000/c/2022/09/18/%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98%EC%99%80%20id</id><content type="html" xml:base="http://localhost:4000/c/2022/09/18/%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98%EC%99%80-id.html"><![CDATA[<h2 id="unistdh-가-뭔데">unistd.h 가 뭔데?</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-04-05T12:19:18+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>AlphateamInho</name></author><entry><title type="html">인공신경망과 퍼셉트론</title><link href="http://localhost:4000/ai/2023/04/05/perceptron.html" rel="alternate" type="text/html" title="인공신경망과 퍼셉트론" /><published>2023-04-05T00:00:00+09:00</published><updated>2023-04-05T00:00:00+09:00</updated><id>http://localhost:4000/ai/2023/04/05/perceptron</id><content type="html" xml:base="http://localhost:4000/ai/2023/04/05/perceptron.html"><![CDATA[<h2 id="퍼셉트론과-신경망">퍼셉트론과 신경망</h2>
+<hr />
+
+<p>퍼셉트론은 신경망의 기본 구성요소입니다.  <br />
+신경망(Neural Net)의 기본 구조를 보면 보통 아래와 같이 그립니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/229966707-cea3fd99-1930-406b-b8a8-70a33e52b74f.png" width="800px" />
+이 중 파란색으로 동그라미 친 부분, 신경망의 구성요소를 퍼셉트론이라고 합니다.</p>
+<blockquote>
+  <p>다른 말로는 Dense(밀집) 혹은 노드(Node) 라고도 부릅니다.</p>
+</blockquote>
+
+<h2 id="퍼셉트론의-구성요소">퍼셉트론의 구성요소</h2>
+<hr />
+<p>위 그림의 신경망에서 하나의 퍼셉트론을 확대해서 보면,</p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/229966745-2b1c6bbe-0a89-4718-a437-9ce6c2d56d7c.png" width="800px" /></p>
+
+<p>그림과 같이 퍼셉트론은 입력(inputs), 가중치(Connection Weight), 바이어스(bias), 합 연산(Sum), 활성 함수(Activation Function)로 구성되어 있습니다. <br />
+오느날 인공신경망에서 이용하는 퍼셉트론은 선형 분류기로 이는 입력과 가중치들의 곱을 모두 더한 뒤 활성 함수를 적용해서 그 값이 0보다 크면 1, 0보다 작으면 -1을 출력하는 구조이다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/176060497-7cb6bb9e-1493-4ac0-8209-48fb38ade3da.png" width="800px" /></p>
+
+<ul>
+  <li>그래서 입력을 넣고 입력에 대한 결과를 출력하였을때 원하는 값이 나오도록 가중치를 조절한다.  <br />
+학습이라는게 결국 그 가중치값을 가장 많은 입력에 대해 가장 근접한 가중치를 찾는 과정이라고 볼 수 있다.</li>
+</ul>
+
+<h2 id="신경망으로-풀-수-있는-문제들">신경망으로 풀 수 있는 문제들</h2>
+<hr />
+<p>활성화 함수, 네트워크 구조 변경을 통해 문제를 풀 수 있습니다. <br />
+대표적인 문제로는 분류(Classification)와 회귀(Regression)로 나눌 수 있습니다.</p>
+
+<h3 id="분류classification">분류(Classification)</h3>
+<p>실생활에서 AI가 적용되는 많은 분야는 분류문제를 해결한 것이 많습니다. <br />
+그 예로는 개와 고양이를 분류하는 문제 또는 물체를 Detection 하였을 때, 어떤 물체인 지 분류하는 문제 등  <br />
+실생활에서 많은 부분에 사용되고 있습니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/229966775-a3bc8443-2914-4fab-87a6-bc04c0f34589.png" width="800px" /></p>
+
+<p>위 사진과 같이 분류해야 하는 class의 갯수 만큼 Output layer의 퍼셉트론 개수가 정해지게 된다.</p>
+
+<h3 id="회귀regression">회귀(Regression)</h3>
+<p>분류를 제외한 다른 문제는 회귀(Regression)문제에 해당합니다.  <br />
+공부한 시간(x)을 가지고 합격확률(y)를 예측하거나, 키(x)를 가지고 몸무게(y)를 예측하는 등 분류하는 것이 아니라 확률 또는 값과 같은 숫자를 맞추는 문제라고 생각하면 됩니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/95608811/229966792-2ed7e419-001b-47a1-8ace-602987da7dbc.png" width="800px" /></p>
+
+<p>위와 같은 간단한 예시에서는 보통 Output layer의 퍼셉트론 개수를 하나로 두는 경우가 많습니다.  <br />
+이런 문제에 대해서 마지막 퍼셉트론의 활성화 함수를 정할 때, 활성함수를 문제에 맞게끔 설정해야 합니다. <br />
+0~1 사이의 확률을 가리키는 문제에서는 시그모이어함수, 다채로운 값을 가질 수 있을땐 ReLU 등  <br />
+활성함수에 대해서는 다음 포스팅에서 다루겠습니다.</p>]]></content><author><name>Ino</name></author><category term="ai" /><category term="ai" /><summary type="html"><![CDATA[퍼셉트론과 신경망]]></summary></entry><entry><title type="html">SOLID - 객체 지향 설계의 5가지 원칙</title><link href="http://localhost:4000/spring,/java/2022/10/10/SOLID.html" rel="alternate" type="text/html" title="SOLID - 객체 지향 설계의 5가지 원칙" /><published>2022-10-10T00:00:00+09:00</published><updated>2022-10-10T00:00:00+09:00</updated><id>http://localhost:4000/spring,/java/2022/10/10/SOLID</id><content type="html" xml:base="http://localhost:4000/spring,/java/2022/10/10/SOLID.html"><![CDATA[<h1 id="solid">SOLID</h1>
+<h3 id="클린코드로-유명한-로버트-마틴의-객체-지향-설계의-5가지-원칙">클린코드로 유명한 로버트 마틴의 객체 지향 설계의 5가지 원칙</h3>
+
+<p>SOLID란 객체 지향 프로그래밍을 하면서 지켜야하는 5대 원칙으로 각각 SRP(단일 책임 원칙), OCP(개방-폐쇄 원칙), LSP(리스코프 치환 원칙), DIP(의존 역전 원칙), ISP(인터페이스 분리 원칙)의 앞글자를 따서 만들어졌다. SOLID 원칙을 철저히 지키면 시간이 지나도 변경이 용이하고, 유지보수와 확장이 쉬운 소프트웨어를 개발하는데 도움이 되는 것으로 알려져있다.</p>
+
+<h3 id="srp--단일-책임-원칙-single-responsibility-principle">SRP : 단일 책임 원칙 (single responsibility principle)</h3>
+
+<ul>
+  <li>한 클래스는 하나의 책임만 가져야 한다.</li>
+  <li>하나의 책임이라는 것은 모호하다 (문맥과 상황에 따라 다르다.)</li>
+  <li>중요한 기준은 변경이다. 변경이 있을 때 파급효과가 적으면 단일 책임 원칙을 잘 따른 것
+    <blockquote>
+      <p>ex) 객체 생성과 사용을 분리, 디스플레이에 띄우는 부분과 핵심로직은 분리</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h3 id="ocp--개방-폐쇄-원칙-openclosed-principle">OCP : 개방-폐쇄 원칙 (Open/Closed principle)</h3>
+
+<ul>
+  <li>소프트웨어 요소는 확장에는 열려있으나, 변경에는 닫혀있어야한다.</li>
+  <li>확장에 대해 열려 있다: 요구사항이 변경될 때 새로운 동작을 추가하여 애플리케이션의 기능을 확장할 수 있다.</li>
+  <li>
+    <p>수정에 대해 닫혀 있다: 기존의 코드를 수정하지 않고 애플리케이션의 동작을 추가하거나 변경할 수 있다.</p>
+  </li>
+  <li>
+    <p>개방 폐쇄 원칙을 지키기 위해서는 추상화에 의존해야 한다. 추상화란 핵심적인 부분만 남기고, 불필요한 부분은 제거함으로써 복잡한 것을 간단히 하는 것이고, 추상화를 통해 변하지 않는 부분만 남김으로써 기능을 구체화하고 확장할 수 있다. 변하지 않는 부분은 고정하고 변하는 부분을 생략하여 추상화함으로써 변경이 필요한 경우에 생략된 부분을 수정하여 개방-폐쇄의 원칙을 지킬 수 있다.</p>
+  </li>
+  <li>다형성을 위한 추상화를 활용해서 인터페이스를 구현한 새로운 클래스를 하나 만들어서 새로운 기능을 구현한다.</li>
+</ul>
+
+<h3 id="lsp--리스코프-치환-원칙-liskov-substitution-principle">LSP : 리스코프 치환 원칙 (Liskov substitution principle)</h3>
+<ul>
+  <li>프로그램의 객체는 프로그램의 정확성을 깨뜨리지 않으면서 하위 타입의 인터페이스로 바꿀 수 있어야 한다.</li>
+  <li>다형성에서 하위 클래스는 인터페이스 규약을 다 지켜야 한다는것, 다형성을 지원하기 위한 원칙, 인터페이스를 구현한 구현체를 믿고 사용하려면, 이 원칙이 필요하다.</li>
+  <li>단순히 컴파일에 성공하는 것을 넘어서는 이야기로 상식적으로 해당 객체의 생성 목적대로 사용하면 된다.</li>
+</ul>
+
+<h3 id="isp--인터페이스-분리-원칙-interface-segregation-principle">ISP : 인터페이스 분리 원칙 (Interface segregation principle)</h3>
+<ul>
+  <li>특정 클라이언트를 위한 인터페이스 여러 개가 범용 인터페이스 하나보다 낫다.</li>
+  <li>자동차 인터페이스 -&gt; 운전 인터페이스, 정비 인터페이스로 분리</li>
+  <li>사용자 클라이언트 -&gt; 운전자 클라이언트, 정비사 클라이언트로 분리</li>
+  <li>분리하면 정비 인터페이스 자체가 변해도 운전자 클라이언트에 영향을 주지 않음</li>
+  <li>인터페이스가 명확해지고, 대체 가능성이 높아진다.</li>
+</ul>
+
+<h3 id="dip--의존관계-역전-원칙-dependency-inversion-principle">DIP : 의존관계 역전 원칙 (Dependency inversion principle)</h3>
+<ul>
+  <li>프로그래머는 “추상화에 의존해야지, 구체화에 의존하면 안된다.” 의존성 주입은 이 원칙을 따르는 방법 중 하나이다.</li>
+  <li>쉽게 말해서 구현 클래스에 의존하지말고, 인터페이스에 의존하라는 뜻이다.</li>
+  <li>앞에서 이야기한 역할(Role)에 의존하게 해야 한다는 것과 같다.  <br />
+객체 세상도 클라이언트가 인터페이스에 의존해야 유연하게 구현체를 변경할 수 있다.  <br />
+구현체에 의존하게 되면 수정이 어려워지게 된다.</li>
+</ul>
+
+<h2 id="정리하자면">정리하자면,</h2>
+<p>객체지향의 핵심은 다형성인데, 다형성 만으로는 OCP랑 DIP를 지킬 수가 없다.</p>
+
+<p>끝.</p>
+
+<h2 id="이-아니라-스프링은-didependency-injection으로-다형성--ocp-dip를-가능하게-지원한다">이 아니라 스프링은 DI(Dependency Injection)으로 다형성 + OCP, DIP를 가능하게 지원한다.</h2>
+
+<p>그래서, 스프링을 쓰자.</p>]]></content><author><name>Ino</name></author><category term="spring," /><category term="java" /><category term="java" /><category term="spring" /><summary type="html"><![CDATA[SOLID 클린코드로 유명한 로버트 마틴의 객체 지향 설계의 5가지 원칙]]></summary></entry><entry><title type="html">JAVA Spring 시작하기</title><link href="http://localhost:4000/spring/2022/09/20/sprig%EC%8B%9C%EC%9E%91.html" rel="alternate" type="text/html" title="JAVA Spring 시작하기" /><published>2022-09-20T00:00:00+09:00</published><updated>2022-09-20T00:00:00+09:00</updated><id>http://localhost:4000/spring/2022/09/20/sprig%EC%8B%9C%EC%9E%91</id><content type="html" xml:base="http://localhost:4000/spring/2022/09/20/sprig%EC%8B%9C%EC%9E%91.html"><![CDATA[<h2 id="spring-라이브러리">Spring 라이브러리</h2>
+
+<h3 id="spring-boot-library">Spring Boot Library</h3>
+<ul>
+  <li>spring-boot-starter-web</li>
+  <li>
+    <ul>
+      <li>spring-boot-starter-tomcat : 톰캣(웹서버)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>spring-webmvc : 스프링 웹 MVC</li>
+    </ul>
+  </li>
+  <li>spring-boot-starter-thymeleaf : 타입리프 템플릿 엔진(View)</li>
+  <li>spring-boot-starter(공통) : 스프링부트 + 스프링코어 + 로깅</li>
+  <li>
+    <ul>
+      <li>spring-boot</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>
+        <ul>
+          <li>spring-core</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>spring-boot-starter-logging</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>
+        <ul>
+          <li>logback, slf4j</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="test-library">Test Library</h3>
+<ul>
+  <li>junit : 테스트 프레임워크</li>
+  <li>mockito : 목라이브러리</li>
+  <li>assertj : 테스트코드를 좀 더 편하게 작성하게 도와주는 라이브러리</li>
+  <li>spring-test : 스프링 통합 테스트 지원</li>
+</ul>
+
+<h2 id="controller">Controller</h2>
+
+<p><code class="language-plaintext highlighter-rouge">src/main/java/packageName/HelloController.java</code> 에서 아래처럼 코딩후</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloController</span> <span class="o">{</span>
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"hello"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">hello</span><span class="o">(</span><span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"data"</span><span class="o">,</span><span class="s">"hello!!"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"hello"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">resources/templates</code> 에서 <code class="language-plaintext highlighter-rouge">hello.html</code> 을 만든후</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">xmlns:th=</span><span class="s">"http://www.thymeleaf.org"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Document<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">th:text=</span><span class="s">"'안녕하세요.'  + ${data}"</span><span class="nt">&gt;</span>안녕하세요 고객님 <span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+<p>위와같이 입력하면, <code class="language-plaintext highlighter-rouge">${data}</code> 위치에 <code class="language-plaintext highlighter-rouge">hello!!</code> 가 치환되어서 들어가게된다. <br />
+이는,   <br />
+<code class="language-plaintext highlighter-rouge">thymeleaf</code> 템플릿엔진에서 WebBrower 가 local:8080/hello 를 spring boot 에 있는 내장 Tomcat server에 보내고 Tomcat server가  스프링컨테이너에서 hello Controller의 return이 문자(hello) 로 반환되어 있어 View Resolver가 화면을 찾아서 처리해준 결과이다. <br />
+나는 <code class="language-plaintext highlighter-rouge">thymeleaf</code> 템플릿엔진이 addAttribute 의 첫번재 인자를 두번째 인자로 데이터바인딩 해주었다고 이해하고 넘어갔다.</p>
+
+<h2 id="빌드하고-실행하기">빌드하고 실행하기</h2>
+<p>쉘에서 해당 폴더에 들어간 후 <code class="language-plaintext highlighter-rouge">./gradlew build </code> 를 통해 바로 실행시켜준다.  <br />
+그럼 <code class="language-plaintext highlighter-rouge">build</code> 디렉토리가 생긴다. <br />
+<code class="language-plaintext highlighter-rouge">build</code>디렉토리에 있는 <code class="language-plaintext highlighter-rouge">libs</code>에 들어가서 <code class="language-plaintext highlighter-rouge">java -jar hello-0.0.1-SNAPSHOT.jar</code> 로 .jar 파일을 바로 실행할 수 있다.
+<code class="language-plaintext highlighter-rouge">.jar</code> 파일을 실행하면 Eclipse 또는 intellij 내에서 Run을 시키지 않아도 바로 서버를 구동시킬 수 있다.</p>]]></content><author><name>Ino</name></author><category term="spring" /><category term="java" /><category term="spring" /><summary type="html"><![CDATA[Spring 라이브러리]]></summary></entry><entry><title type="html">C언어 Makefile 이해하기</title><link href="http://localhost:4000/c/2022/09/19/Makefile.html" rel="alternate" type="text/html" title="C언어 Makefile 이해하기" /><published>2022-09-19T00:00:00+09:00</published><updated>2022-09-19T00:00:00+09:00</updated><id>http://localhost:4000/c/2022/09/19/Makefile</id><content type="html" xml:base="http://localhost:4000/c/2022/09/19/Makefile.html"><![CDATA[<h2 id="makefile-왜-쓰는데">Makefile 왜 쓰는데?</h2>
+<p>간단한 소스코드 파일 한두개라면 몰라도 컴파일 해야할 코드 갯수가 굉장히 많아지면 gcc 방식으로 하나하나 컴파일 하는것은 시간도 오래걸리고 굉장히 귀찮은 일이된다.  <br />
+그래서 반복적인 작업을 피하기 위해서 쓰는것이 make 유틸리티이다.</p>
+
+<h2 id="make--makefile">make / Makefile</h2>
+<p>make는 유틸리티 이름이다. <br />
+make 유틸리티는 Makefile이라는 파일의 내용을 읽어서 목표 파일(target)을 만듭니다.</p>
+
+<h2 id="컴파일과정">컴파일과정</h2>
+<ol>
+  <li>c파일에서 object 파일 생성하기 <br />
+ex) <code class="language-plaintext highlighter-rouge">gcc -c -o ft_strlen.o ft_strlen.c</code>
+    <ul>
+      <li>-c 옵션은 해당 c파일을 .o(오브젝트)파일로 만들어준다.</li>
+      <li>-o 옵션은 생성될 파일의 이름을 지정해준다.
+        <blockquote>
+          <p>지금처럼 -c 옵션을 쓸 때는 -o 옵션으로 output name을 지정해주지 않아도 자동으로 .c의 이름의 .o 파일로
+만들어진다.
+하지만  실행 파일 생성시 -o 옵션을 넣지 않으면 모든 파일이 a.out 이라는 이름을 가지게 되므로 여러 개의 실행 파일을 생성해야 할 때 -o 옵션을 넣어서 이름을 명시적으로 붙여주는 것이 좋다.</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>각 object파일을 link해서 컴파일을 통해 exe 실행파일 생성하기 <br />
+<code class="language-plaintext highlighter-rouge">gcc -o strlen.exe main.o ft_strlen.o</code>  <br />
+Object 파일의 순서들은 상관이 없고 해당 내용처럼 써주면 main.o 와 ft_strlen을 링크해서 strlen.exe 를 생성한다.</p>
+  </li>
+  <li>실행하기 <br />
+<code class="language-plaintext highlighter-rouge">./strlen.exe</code> 이런식으로 실행을 하면 해당 파일이 실행된다. <br />
+추가로, main 에 argc, argv[] 인자를 실행시 넣고 싶으면, <code class="language-plaintext highlighter-rouge">./strlen.exe [argv[0]][argv[1]]</code>
+```c
+// 2022.09.20 편집중//</li>
+</ol>]]></content><author><name>Ino</name></author><category term="c" /><category term="c" /><summary type="html"><![CDATA[Makefile 왜 쓰는데? 간단한 소스코드 파일 한두개라면 몰라도 컴파일 해야할 코드 갯수가 굉장히 많아지면 gcc 방식으로 하나하나 컴파일 하는것은 시간도 오래걸리고 굉장히 귀찮은 일이된다. 그래서 반복적인 작업을 피하기 위해서 쓰는것이 make 유틸리티이다.]]></summary></entry><entry><title type="html">C언어 write 함수</title><link href="http://localhost:4000/c/2022/09/18/%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98%EC%99%80-id.html" rel="alternate" type="text/html" title="C언어 write 함수" /><published>2022-09-18T00:00:00+09:00</published><updated>2022-09-18T00:00:00+09:00</updated><id>http://localhost:4000/c/2022/09/18/%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98%EC%99%80%20id</id><content type="html" xml:base="http://localhost:4000/c/2022/09/18/%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98%EC%99%80-id.html"><![CDATA[<h2 id="unistdh-가-뭔데">unistd.h 가 뭔데?</h2>
 <p>POSIX 운영체제 API에 대한 엑세스를 제공하는 헤더파일이다.   <br />
 보통 Unix 에 쓰이는 표준 심볼들과 상수들을 정의해 놓은 것이기 때문에 unistd.h에 포함되어 있는 내용은 대부분 유닉스환경에서만 쓸 수 있다.</p>
 
@@ -232,32 +471,7 @@ for i in range(n+m+1):
 </code></pre>
 
 <h4 id="설명">설명</h4>
-<p>n+m+3 의 갯수만큼 cnt의 리스트를 만들어서 0으로 초기화 시켜준다.</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">k번째 큰 수 for Python</title><link href="http://localhost:4000/algorithm/2022/08/07/k%EB%B2%88%EC%A7%B8%ED%81%B0%EC%88%98.html" rel="alternate" type="text/html" title="k번째 큰 수 for Python" /><published>2022-08-07T00:00:00+09:00</published><updated>2022-08-07T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/08/07/k%EB%B2%88%EC%A7%B8%ED%81%B0%EC%88%98</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/08/07/k%EB%B2%88%EC%A7%B8%ED%81%B0%EC%88%98.html"><![CDATA[<blockquote>
-  <p>문제는 너무 자세하게 기술하지 않음
-출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
-</blockquote>
-
-<h2 id="문제">문제</h2>
-<p>현수는 1부터 100사이의 자연수가 적힌 N장의 카드를 가지고 있습니다. 같은 숫자의 카드가 여러장 있을 수 있습니다. 현수는 이 중 3장을 뽑아 각 카드에 적힌 수를 합한 값을 기록하려 고 합니다. 3장을 뽑을 수 있는 모든 경우를 기록합니다. 기록한 값 중 K번째로 큰 수를 출력 하는 프로그램을 작성하세요.
-만약 큰 수부터 만들어진 수가 25 25 23 23 22 20 19……이고 K값이 3이라면 K번째 큰 값 은 22입니다.</p>
-
-<h4 id="입력">입력</h4>
-<p>첫 줄에 자연수 N(3&lt;=N&lt;=100)과 K(1&lt;=K&lt;=50) 입력되고, 그 다음 줄에 N개의 카드값이 입력 된다.</p>
-
-<h4 id="출력">출력</h4>
-<p>첫 줄에 K번째 수를 출력합니다. K번째 수는 반드시 존재합니다.</p>
-
-<pre><code class="language-Python">n,k = map(int,input('n과 k를 입력하시오').split())
-a = list(map(int, input().split()))
-res = set() # 중복을 제거하는 set() 자료구조 list자료구조에서 중복을 제거하는것보다, 처음부터 set 쓰는게 나음
-for i in range(n):
-  for j in range(i+1, n): # i 뒤부터 반복문을 돌려서 서로 다른 수를 뽑게 하기 위해 설정
-    for m in range(j+1, n): # m은 j 뒤부터 반복문을 돌림 -&gt; 서로 다른 수
-      res.add(a[i] + a[j] + a[m]) # list자료형은 append 함수를 쓰지만 set자료형은 add함수를 씀
-res = list(res)
-res.sort(reverse=True) # sort에 파라미터값을 안주면, 오름차순이라 내림차순 정렬하기위헤 reverse 인자를줌
-print(res[k-1])
-</code></pre>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">자릿수의합 for Python</title><link href="http://localhost:4000/algorithm/2022/08/07/%EC%9E%90%EB%A6%BF%EC%88%98%EC%9D%98%ED%95%A9.html" rel="alternate" type="text/html" title="자릿수의합 for Python" /><published>2022-08-07T00:00:00+09:00</published><updated>2022-08-07T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/08/07/%EC%9E%90%EB%A6%BF%EC%88%98%EC%9D%98%ED%95%A9</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/08/07/%EC%9E%90%EB%A6%BF%EC%88%98%EC%9D%98%ED%95%A9.html"><![CDATA[<blockquote>
+<p>n+m+3 의 갯수만큼 cnt의 리스트를 만들어서 0으로 초기화 시켜준다.</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">자릿수의합 for Python</title><link href="http://localhost:4000/algorithm/2022/08/07/%EC%9E%90%EB%A6%BF%EC%88%98%EC%9D%98%ED%95%A9.html" rel="alternate" type="text/html" title="자릿수의합 for Python" /><published>2022-08-07T00:00:00+09:00</published><updated>2022-08-07T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/08/07/%EC%9E%90%EB%A6%BF%EC%88%98%EC%9D%98%ED%95%A9</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/08/07/%EC%9E%90%EB%A6%BF%EC%88%98%EC%9D%98%ED%95%A9.html"><![CDATA[<blockquote>
   <p>문제는 너무 자세하게 기술하지 않음
 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
 </blockquote>
@@ -291,6 +505,31 @@ for x in a:
 
 print(res)
 
+</code></pre>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">k번째 큰 수 for Python</title><link href="http://localhost:4000/algorithm/2022/08/07/k%EB%B2%88%EC%A7%B8%ED%81%B0%EC%88%98.html" rel="alternate" type="text/html" title="k번째 큰 수 for Python" /><published>2022-08-07T00:00:00+09:00</published><updated>2022-08-07T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/08/07/k%EB%B2%88%EC%A7%B8%ED%81%B0%EC%88%98</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/08/07/k%EB%B2%88%EC%A7%B8%ED%81%B0%EC%88%98.html"><![CDATA[<blockquote>
+  <p>문제는 너무 자세하게 기술하지 않음
+출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
+</blockquote>
+
+<h2 id="문제">문제</h2>
+<p>현수는 1부터 100사이의 자연수가 적힌 N장의 카드를 가지고 있습니다. 같은 숫자의 카드가 여러장 있을 수 있습니다. 현수는 이 중 3장을 뽑아 각 카드에 적힌 수를 합한 값을 기록하려 고 합니다. 3장을 뽑을 수 있는 모든 경우를 기록합니다. 기록한 값 중 K번째로 큰 수를 출력 하는 프로그램을 작성하세요.
+만약 큰 수부터 만들어진 수가 25 25 23 23 22 20 19……이고 K값이 3이라면 K번째 큰 값 은 22입니다.</p>
+
+<h4 id="입력">입력</h4>
+<p>첫 줄에 자연수 N(3&lt;=N&lt;=100)과 K(1&lt;=K&lt;=50) 입력되고, 그 다음 줄에 N개의 카드값이 입력 된다.</p>
+
+<h4 id="출력">출력</h4>
+<p>첫 줄에 K번째 수를 출력합니다. K번째 수는 반드시 존재합니다.</p>
+
+<pre><code class="language-Python">n,k = map(int,input('n과 k를 입력하시오').split())
+a = list(map(int, input().split()))
+res = set() # 중복을 제거하는 set() 자료구조 list자료구조에서 중복을 제거하는것보다, 처음부터 set 쓰는게 나음
+for i in range(n):
+  for j in range(i+1, n): # i 뒤부터 반복문을 돌려서 서로 다른 수를 뽑게 하기 위해 설정
+    for m in range(j+1, n): # m은 j 뒤부터 반복문을 돌림 -&gt; 서로 다른 수
+      res.add(a[i] + a[j] + a[m]) # list자료형은 append 함수를 쓰지만 set자료형은 add함수를 씀
+res = list(res)
+res.sort(reverse=True) # sort에 파라미터값을 안주면, 오름차순이라 내림차순 정렬하기위헤 reverse 인자를줌
+print(res[k-1])
 </code></pre>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">대표값 for Python</title><link href="http://localhost:4000/algorithm/2022/07/30/%EB%8C%80%ED%91%9C%EA%B0%92.html" rel="alternate" type="text/html" title="대표값 for Python" /><published>2022-07-30T00:00:00+09:00</published><updated>2022-07-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/07/30/%EB%8C%80%ED%91%9C%EA%B0%92</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/07/30/%EB%8C%80%ED%91%9C%EA%B0%92.html"><![CDATA[<blockquote>
   <p>문제는 너무 자세하게 기술하지 않음
 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
@@ -335,176 +574,4 @@ print(ave, res)
 <code class="language-plaintext highlighter-rouge">enumerate는 "열거하다"라는 뜻이다. 이 함수는 순서가 있는 자료형(리스트, 튜플, 문자열)을 입력으로 받아 인덱스 값을 포함하는 enumerate 객체를 돌려준다.</code>
 tmp에는 각각의 학생들 평균인 x값에서 평균을 뺀 값을 절댓값으로 만들어서 넣는다.  <br />
 tmp가 기존 min 보다 작으면, 해당tmp으로 min을 대체한다. <br />
-그렇게 min을 대체하게 된 성적점수와 index를 각각의 변수에 넣는다.</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">k번째약수 for Python</title><link href="http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%95%BD%EC%88%98.html" rel="alternate" type="text/html" title="k번째약수 for Python" /><published>2022-07-30T00:00:00+09:00</published><updated>2022-07-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%95%BD%EC%88%98</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%95%BD%EC%88%98.html"><![CDATA[<blockquote>
-  <p>문제는 너무 자세하게 기술하지 않음
-출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
-</blockquote>
-
-<h2 id="문제">문제</h2>
-<p>두 개의 자연수 N과 K가 주어졌을 때, N의 약수들 중 K번째로 작은 수를 출력하는 프로그램을 작성하시오.</p>
-
-<h4 id="입력">입력</h4>
-<p>첫째 줄에 N과 K가 빈칸을 사이에 두고 주어진다. N은 1 이상 10,000 이하이다. K는 1 이상 N 이하이다.</p>
-
-<h4 id="출력">출력</h4>
-<p>첫째 줄에 N의 약수들 중 K번째로 작은 수를 출력한다. 만일 N의 약수의 개수가 K개보다 적어서 K번째 약수가 존재하지 않을 경우에는 -1을 출력하시오.</p>
-
-<pre><code class="language-Python">N,K = map(int, input().split()) # 이런식의 입력은 그냥 외워서 써야한다.
-# 잘 이해가 안되면, 각 내장함수의 인자를 확인해야 한다.
-# N과 K를 각각 input 한번에 받을건데, split함수를 이용해서 띄워쓰기로 구분해서 넣어주고 int형태로 바꿔준다.
-print("단, N은 1이상 10000이하, K는 1이상 N 이하")
-cnt = 0                # 약수의 개수를 출력할 count(cnt)를 0으로 초기화 해준다.
-for i in range(1,N+1): # i를 1부터 N까지 반복한다.
-  if N % i == 0:       # 만약 N이 i로 나누어 떨어지면, i가 N의 약수이므로
-    cnt+=1             # cnt변수를 1 더한다.
-  if cnt == K:         # 만약 cnt가 K면,
-    print(i)           # i를 출력하고,
-    break              # for문을 break 한다.
-else:                  # 파이썬엔 for-else 문이 있다. for문을 다 돌아았는데
-# 중간에 break 가 안되면, else문을 실행시킨다. 
-# (for문을 다 돌았는데 break 가 안되면, 약수가 존재하지 않는다.)
-  print(-1)
-</code></pre>
-
-<h4 id="설명">설명</h4>
-<p>n과 k를 각각 입력받아서 변수에 저장하고, N을 i로 나눠서 나누어 떨어지면 약수이므로, <br />
-cnt를 하나씩 더해가면서 반복문을 돌린다.  <br />
-그렇게 cnt가 K가 되면 i가 K번째로 작은수 이므로 i를 출력하고 break 한다.</p>
-
-<p>반복문을 N번 돌릴때 까지 break가 발생하지 않고 정상적으로 반복문이 끝나면,  <br />
-for - else문에서 else 구문을 실행한다.</p>
-
-<p>print(-1) 을 출력하고 프로그램이 종료된다.</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">k번째수 for Python (feat.sort() vs sorted())</title><link href="http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%88%98.html" rel="alternate" type="text/html" title="k번째수 for Python (feat.sort() vs sorted())" /><published>2022-07-30T00:00:00+09:00</published><updated>2022-07-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%88%98</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%88%98.html"><![CDATA[<blockquote>
-  <p>문제는 너무 자세하게 기술하지 않음
-출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님</p>
-</blockquote>
-
-<h2 id="문제">문제</h2>
-<p>N개의 숫자로 이루어진 숫자열이 주어지면 해당 숫자열중에서 s번째부터 e번째 까지의 수를 오름 차순 정렬했을 때 k번째로 나타나는 숫자를 출력하는 프로그램을 작성하세요.</p>
-
-<h4 id="입력">입력</h4>
-<p>첫 번째 줄에 테스트 케이스 T(1&lt;=T&lt;=10)이 주어집니다.
-각 케이스별
-첫 번째 줄은 자연수 N(5&lt;=N&lt;=500), s, e, k가 차례로 주어진다. 두 번째 줄에 N개의 숫자가 차례로 주어진다.</p>
-
-<h4 id="출력">출력</h4>
-<p>각 케이스별 k번째 수를 아래 출력예제와 같이 출력하세요.</p>
-
-<pre><code class="language-Python">t = int(input())
-for i in range(t): # t의 수만큼 반복한다.
-  n,s,e,k = map(int,input().split())
-  a = list(map(int, input().split())) # 띄어쓰기로 구분된 입력을 리스트형으로 a에 저장한다.
-  b = a[s-1:e] # a의 s번째에서 e까지 슬라이싱 한 부분을 b에 저장한다.
-  b = sorted(b) # b를 sorted 함수를 통해 오름차순 정렬한다.
-  print(b[k-1]) # b의 k번째 리스트를 출력한다.
-</code></pre>
-
-<h4 id="설명">설명</h4>
-<p>첫줄에 test case인 t를 int형으로 입력받는다.  <br />
-두번째줄에 n,s,e,k 를 띄워쓰기로 구분하여 각각 입력받는다.  <br />
-세번째줄에 a를 띄어쓰기로 구분하여 list로 입력받는다. <br />
-b를 a[s-1:e] 슬라이싱해서 a의 s번째부터 e번째까지 슬라이싱하여 넣는다.  <br />
-b를 sorted() 함수를 써서 오름차순 정렬한다.</p>
-
-<h4 id="sort함수와-sorted-함수에-대해-추가설명">sort함수와 sorted 함수에 대해 추가설명</h4>
-<p>sort() 리스트함수는 새로운 정렬된리스트로 바꿔버린다. <br />
-sorted() 내장함수는 리스트를 정렬시킨값을 반환시킨다.</p>
-
-<p>그러므로 리스트 자체를 바꾸고싶은게 아니라면 sorted 함수를 써서 반환된 값을 변수에 담아서 사용하는것이 바람직하다.</p>
-
-<p>또한 sort함수는 리스트에서만 사용가능하지만, sorted 함수는 딕셔너리,튜플,문자열과 같은 형태에서도 범용적으로 사용할 수 있다.</p>
-
-<p>마지막으로 내림차순 정렬할땐 sort와 sorted 모두 파라미터로 reverse 매개변수를 받는데,   <br />
-b = sorted(a,reverse=True)  <br />
-a.sort(reverse=True)</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry><entry><title type="html">권한의 이해와 설정</title><link href="http://localhost:4000/system/2022/07/13/permission.html" rel="alternate" type="text/html" title="권한의 이해와 설정" /><published>2022-07-13T00:00:00+09:00</published><updated>2022-07-13T00:00:00+09:00</updated><id>http://localhost:4000/system/2022/07/13/permission</id><content type="html" xml:base="http://localhost:4000/system/2022/07/13/permission.html"><![CDATA[<h2 id="권한이란">권한이란?</h2>
-<p>리눅스의 모든 파일과 디렉토리는 권한(permission)을 가지고 있다.       <br />
-리눅스의 파일시스템 상에 권한에 대한 정보를 저장하는 부분이 있다.       <br />
-퍼미션들은 시스템 상에 존재하는 파일들에 대한 읽기,쓰기,실행에 대한 접근 여부를 결정한다.       <br />
-ls -l 명령어로 확인 가능 (첫번째 필드, -rwxr-wr–)      <br />
-이러한 퍼미션은 다중 사용자 환경을 제공하는 리눅스 환경에서는 가장 기초적인 접근 통제 방법</p>
-
-<p><img src="https://user-images.githubusercontent.com/95608811/178721039-e1d58298-5f8b-4631-9855-2d9f8a9ab85e.png" width="800px" /></p>
-
-<h3 id="권한-설정-방법">권한 설정 방법</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">chmod [권한] [파일 또는 디렉토리 이름]</code></li>
-  <li><code class="language-plaintext highlighter-rouge">[권한]</code> : 권한을 입력할 때는 심볼릭 모드와 옥텟(8진수) 모드 2가지 방식을 이용하여 입력 가능하다.</li>
-  <li><code class="language-plaintext highlighter-rouge">[파일 또는 디렉토리 이름]</code> : 파일, 디렉토리를 지정할 때는 절대 경로 또는 상대 경로 모두 가능하다.</li>
-</ul>
-
-<h4 id="간단한-문자로-설정하는-심볼릭-모드">간단한 문자로 설정하는 심볼릭 모드</h4>
-
-<p><img src="https://user-images.githubusercontent.com/95608811/178722799-93b80ea6-da07-454b-8348-6bc80a13dce4.png" width="800px" /></p>
-
-<h4 id="07까지의-숫자를-이용하는-옥텟-모드">0~7까지의 숫자를 이용하는 옥텟 모드</h4>
-<p><img src="https://user-images.githubusercontent.com/95608811/178723045-a3e07723-7860-4028-aec4-bf861bea8b42.png" width="800px" /></p>
-
-<blockquote>
-  <p>읽기 쓰기 실행 순서로 각각 4,2,1 이고, 읽기와 쓰기만 있으면 4+2인 6 쓰기와 실행만 있으면 2+1 인 3
-이런식으로 옥텟모드를 사용한다.</p>
-</blockquote>
-
-<h3 id="파일-또는-디렉토리를-생성할-때-권한값을-결정하는-umask">파일 또는 디렉토리를 생성할 때 권한값을 결정하는 umask</h3>
-<p><img src="https://user-images.githubusercontent.com/95608811/178723739-7380eb92-d892-49e7-b496-f97123799e5d.png" width="800px" /></p>
-
-<ul>
-  <li>umask 값은 리눅스를 처음 설치할때 022이 기본값으로 세팅되어 있는데, directory는 777, file은 666이
-기본 값이라 각자의 권한값에서 umask 값을 뺀(and 연산) 한 값이 각자의 권한값 (옥텟)이 된다.</li>
-</ul>]]></content><author><name>Ino</name></author><category term="System" /><category term="linux" /><summary type="html"><![CDATA[권한이란? 리눅스의 모든 파일과 디렉토리는 권한(permission)을 가지고 있다. 리눅스의 파일시스템 상에 권한에 대한 정보를 저장하는 부분이 있다. 퍼미션들은 시스템 상에 존재하는 파일들에 대한 읽기,쓰기,실행에 대한 접근 여부를 결정한다. ls -l 명령어로 확인 가능 (첫번째 필드, -rwxr-wr–) 이러한 퍼미션은 다중 사용자 환경을 제공하는 리눅스 환경에서는 가장 기초적인 접근 통제 방법]]></summary></entry><entry><title type="html">파일 및 디렉토리 검색 - grep/find</title><link href="http://localhost:4000/system/2022/07/13/grep.html" rel="alternate" type="text/html" title="파일 및 디렉토리 검색 - grep/find" /><published>2022-07-13T00:00:00+09:00</published><updated>2022-07-13T00:00:00+09:00</updated><id>http://localhost:4000/system/2022/07/13/grep</id><content type="html" xml:base="http://localhost:4000/system/2022/07/13/grep.html"><![CDATA[<h2 id="파일-내용에서-검색-grep">파일 내용에서 검색 grep</h2>
-<ul>
-  <li>파일 내용에서 특정 내용만 찾을때 사용</li>
-  <li>grep [옵션] [패턴] [파일이름]</li>
-  <li>[옵션] : 좀 더 디테일한 조건으로 찾을 때 사용</li>
-  <li>[패턴] : 찾고 싶은 내용을 입력, 일치하는 내용을 출력. 정규표현식 사용 가능</li>
-  <li>[파일 이름] : grep 명령어로 특정 내용을 검색할 파일을 지정한다.     <br />
-<code class="language-plaintext highlighter-rouge">ex ) grep -i root/ect/id</code></li>
-</ul>
-
-<h3 id="옵션">옵션</h3>
-
-<p><code class="language-plaintext highlighter-rouge">-i</code> : 대소문자 무시 (word와 WoRD 를 구분하지 않는다.)  <br />
-<code class="language-plaintext highlighter-rouge">-n</code> : 줄 번호 표시 (line 넘버를 표시한다.) <br />
-<code class="language-plaintext highlighter-rouge">-v</code> : 패턴을 제외한 내용만 출력  <br />
-<code class="language-plaintext highlighter-rouge">-w</code> : 단어 단위로 검색 (ro 를 검색하면 root 는 찾지않는다.)  <br />
-<code class="language-plaintext highlighter-rouge">-c</code> : 매칭되는 줄 수 표시  <br />
-<code class="language-plaintext highlighter-rouge">-ㅣ</code> : 매칭되는 패턴이 있는 파일 이름 출력</p>
-
-<h3 id="패턴">패턴</h3>
-<p>정규표현식 : 어떤 문자를 표현할 때 다양한 특수문자를 이용해 표현하는 방식     <br />
-<code class="language-plaintext highlighter-rouge">^</code> : 줄의 시작을 지정 (해당 패턴이 줄의 시작인 경우 캡쳐) <code class="language-plaintext highlighter-rouge">ex)^root</code> <br />
-<code class="language-plaintext highlighter-rouge">$</code> : 줄의 마지막 지정  <code class="language-plaintext highlighter-rouge">ex)root$</code>  <br />
-<code class="language-plaintext highlighter-rouge">.</code> : 한 문자 대치 <code class="language-plaintext highlighter-rouge">ex)r..t</code>  <br />
-<code class="language-plaintext highlighter-rouge">*</code> : 여러 문제 대치 <code class="language-plaintext highlighter-rouge">ex)r*</code>  <br />
-<code class="language-plaintext highlighter-rouge">[]</code> : 패턴 중 한 문자 일치 <code class="language-plaintext highlighter-rouge">ex)[rR]oot</code> <br />
-<code class="language-plaintext highlighter-rouge">[^]</code> : 패턴 중 제외할 문자 지정 <code class="language-plaintext highlighter-rouge">ex)[^T]oot :: T를 제외한 oot 부분 출력</code></p>
-
-<h3 id="특수문자들을-단순한-문자로만-인식-fgrep">특수문자들을 단순한 문자로만 인식 fgrep</h3>
-<p><code class="language-plaintext highlighter-rouge">fgrep [옵션] [패턴] [파일이름]</code>  <br />
-만약 문서에 특수문자가 포함된 경우 여러 특수문자들은 정규표현식으로 인식되기 때문에   <br />
-해당 정규표현식의 기능으로 검색이 될 수 있다.   <br />
-이런 경우 fgrep은 여러 특수문자들(*,$,. 등)을 단순한 문자로 인식해서
-문서 내에서 해당 특수문자를 찾을 때 사용할 수 있다.</p>
-
-<h2 id="디렉토리-내에서-검색-명령어-find">디렉토리 내에서 검색 명령어 find</h2>
-<p><code class="language-plaintext highlighter-rouge">find [경로] [조건] [아규먼트] [행동]</code>  <br />
-<code class="language-plaintext highlighter-rouge">[경로]</code> : 어디를 기준으로 검색할 것인지 입력한다.  하위 디렉토리까지 검색  <br />
-<code class="language-plaintext highlighter-rouge">[조건]</code> : 어떤 조건으로 검색할 것인지 입력한다.  <br />
-<code class="language-plaintext highlighter-rouge">[아규먼트]</code> : 조건에 맞는 값을 입력해준다.   <br />
-<code class="language-plaintext highlighter-rouge">[행동]</code> : 검색 결과를 어떻게 처리할 것인지 입력한다.   <br />
-<code class="language-plaintext highlighter-rouge">ex) find /-name file -exec rm -rf {}￦;</code> <br />
-만약 행동은 빈칸으로 처리한다면 print 가 default로 입력된다.</p>
-
-<h3 id="조건">조건</h3>
-<p><code class="language-plaintext highlighter-rouge">name</code> : 이름으로 검색
-<code class="language-plaintext highlighter-rouge">type</code> : 파일의 타입으로 검색, 디렉토리는 d,파일은 f  <br />
-<code class="language-plaintext highlighter-rouge">perm</code> : 권한으로 검색  <br />
-<code class="language-plaintext highlighter-rouge">user</code> : 소유자로 검색  <br />
-<code class="language-plaintext highlighter-rouge">size</code> : 파일 크기로 검색, +는 이상, -는 이하, 단위는 512바이트   <br />
-c 바이트, k 키로바이트, M 메가바이트, G 기가바이트    <br />
-<code class="language-plaintext highlighter-rouge">atime</code> : 파일의 마지막 접근 시간으로 검색  <br />
-<code class="language-plaintext highlighter-rouge">mtime</code> : 파일의 마지막 수정 시간으로 검색</p>
-
-<h3 id="행동">행동</h3>
-<p><code class="language-plaintext highlighter-rouge">ls</code> : 자세한 결과 출력 <br />
-<code class="language-plaintext highlighter-rouge">exec [명령어] {} ￦;</code> : 검색한 파일을 특정 명령어로 실행  <br />
-<code class="language-plaintext highlighter-rouge">ex ) -exec rm -rf {} ￦;</code> 제거하기</p>]]></content><author><name>Ino</name></author><category term="System" /><category term="linux" /><summary type="html"><![CDATA[파일 내용에서 검색 grep 파일 내용에서 특정 내용만 찾을때 사용 grep [옵션] [패턴] [파일이름] [옵션] : 좀 더 디테일한 조건으로 찾을 때 사용 [패턴] : 찾고 싶은 내용을 입력, 일치하는 내용을 출력. 정규표현식 사용 가능 [파일 이름] : grep 명령어로 특정 내용을 검색할 파일을 지정한다. ex ) grep -i root/ect/id]]></summary></entry></feed>
+그렇게 min을 대체하게 된 성적점수와 index를 각각의 변수에 넣는다.</p>]]></content><author><name>Ino</name></author><category term="algorithm" /><category term="Python" /><category term="algorithm" /><summary type="html"><![CDATA[문제는 너무 자세하게 기술하지 않음 출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님]]></summary></entry></feed>
