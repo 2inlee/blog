@@ -1,0 +1,110 @@
+I"�<h2 id="구조체를-이용한-파일처리">구조체를 이용한 파일처리</h2>
+<p>프로그래밍에 필요한 데이터가 파일로 제공되는 경우 각 파일에는 필요한 필드로 구성된
+레코드를 저장하는 경우가 많다. 이렇게 저장된 파일의 데이터를 프로그램에서 사용하려면
+구조체를 활용해야한다.</p>
+<ul>
+  <li>구조체는 서로 형이 다를 수 있는 여러 변수들의 모임을 하나의 이름으로 가지고 있는 자
+료구조이다. <br />
+구조체는 그 목적에 따라 필요한 구성요소를 정하여 다음과 같이 선언할 수 있다.
+    <pre><code class="language-C">struct employee { char name[20]; long id; int depend; float salary;
+};
+struct employee e1;
+</code></pre>
+  </li>
+</ul>
+
+<pre><code class="language-C">strcpy(e1.name, “HongGilDong");
+e1.id = 20071357;
+e1.depend = 3;
+e1.salary = 345.716;
+</code></pre>
+
+<p>이와 같은 선언에 의하여 struct employee라는 데이터 형이 생기게 되는 것이다. <br />
+이때 아래와 같이 선언된 변수 e1은 각각 name, id, depend, salary 4개의 변수에 값을 가질 수 있
+다.</p>
+
+<h2 id="typedef정의문으로-활용하기">typedef(정의문)으로 활용하기</h2>
+<pre><code class="language-C">typedef struct { char name[20]; int age; float salary;
+} human_being;
+</code></pre>
+
+<p>이런식으로 정의문으로 구조체를 선언하고, 구조체 별칭으로 human_being 으로 만들면,</p>
+
+<p>이후</p>
+
+<pre><code class="language-C">human_being person1, person2;
+stycpy(person1.name, "Rhee Hyun-Sook");
+peson1.age = 34;
+person1.salary = 1575.100;
+</code></pre>
+
+<p>이런식으로, 구조체를 활용해 구조체 별칭 human_being 으로 person1, person2 변수를 만들 수 있다.</p>
+
+<blockquote>
+  <p>~ 객체지향언어를 공부한 독자라면, 일종의 객체라고 생각해도 이해하는 데는 무방하다.   ~</p>
+</blockquote>
+
+<h2 id="구조체를-이용한-파일처리의-예시">구조체를 이용한 파일처리의 예시</h2>
+
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#define MAX_CNUM 50
+
+typedef struct course { 
+  char courseid[10];
+  char tname[20];
+  unsigned snum; 
+  unsigned roomnum;
+} cinform;
+main(int argc, char *argv[])
+{
+  int i=0, dnum;
+  char sprof[20];
+  unsigned sroomnum;
+  cinform cdb[MAX_CNUM];
+  FILE *coursedb;
+  if ((coursedb = fopen(argv[1], "r")) == NULL) {
+printf("데이터 파일을 열 수 없습니다 \n");
+exit(1); 
+}
+while (fscanf(coursedb, "%s %s %u %u", cdb[i].courseid,
+  cdb[i].tname, &amp;(cdb[i].snum), &amp;(cdb[i].roomnum)) != EOF)
+  i++; 
+  dnum = i;
+  printf("수강인원이 40명 이상인 강좌 코드 번호를 출력하시오.\n");
+  for (i=0; i &lt; dnum; i++) 
+    if (cdb[i].snum &gt;= 40) 
+      printf("%s\n", cdb[i].courseid);
+    printf("검색하고자 하는 교수이름 입력 : ");
+    scanf("%s", sprof);
+    printf("%s 교수가 강의하는 강좌코드와 강의실 번호를 출력하시오.\n",sprof); 
+    for (i=0; i &lt; dnum; i++)
+      if (!strcmp(cdb[i].tname, sprof))
+      printf("%s\t%u\n", cdb[i].courseid, cdb[i].roomnum);
+    printf("검색하고자 하는 강의실 번호 입력 : ");
+    scanf("%u", &amp;sroomnum);
+    printf("%u 강의실에서 수업하는 강좌코드와 담당교수를 출력하시오.\n", sroomnum);
+    for (i=0; i &lt; dnum; i++)
+      if (cdb[i].roomnum == sroomnum) 
+        printf("%s\t%s\n", cdb[i].courseid, cdb[i].tname);
+}
+</code></pre>
+
+<p>위와 같이 구조체를 이용해 여러 학생들의 정보를 FILE 로 가져와서 정보를 검색,수정,삭제할 수 있다.</p>
+
+<h2 id="자기참조-구조체를-이용한-연결리스트의-구현">자기참조 구조체를 이용한 연결리스트의 구현</h2>
+
+<p>여러 데이터를 저장할 때 주로 사용하는 배열은 연속된 메모리를 차지하게 되고 최대크기
+를 컴파일 시간에 미리 확보하고 있어야 하는 단점이 있다.</p>
+
+<p>연결리스트를 구성하는 하나의 정보 단위를 노드라고 하는 데 각 노드는 저장하려는 데이터
+와 다음 노드를 가리키는 포인터 정보를 포함하게 된다.</p>
+
+<p>이를 위하여 구조체의 정의 안에 자신과 같은 구조체로의 포인터 정보
+를 포함하는 자기참조 구조체로 표현해야 한다. 자기참조 구조체 형태의 연결리스트의 노드 구조의 간단한 예를 다음과 같이 표현할 수 있다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">one_node</span> <span class="p">{</span> <span class="kt">char</span> <span class="n">data</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span> <span class="k">struct</span> <span class="n">one_node</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+:ET

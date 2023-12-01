@@ -859,6 +859,101 @@ function googleTranslateElementInit() {
 
 
 <h2 class="post-title">
+        <a class="post-link" href="/spring/2023/12/01/DI%EC%99%80IOC.html">
+          Spring DI와 IoC 컨테이너에 대해서
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Dec 01, 2023</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
+      </div>
+      <a class="post-excerpt" href="/spring/2023/12/01/DI%EC%99%80IOC.html">
+        <p>
+        DI(의존관계 주입) / 스프링 컨테이너
+
+DI(의존관계 주입)는 애플리케이션 실행 시점에 외부에서 실제 구현 객체를 생성하고 클라이언트에 전달하는 과정을 의미합니다. 이를 통해 클라이언트와 서버의 실제 의존관계가 연결됩니다.
+
+IoC 컨테이너, DI 컨테이너
+
+IoC(Inversion of Control) 컨테이너는 객체의 생성과 관리를 담당합니다. AppConfig와 같은 클래스가 이 역할을 수행합니다.
+
+@Bean 어노테이션
+
+@Bean 어노테이션은 스프링 컨테이너에 의해 관리될 객체를 선언할 때 사용됩니다. 예를 들어:
+
+@Configuration
+public class AppConfig {
+    @Bea... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/tags.html#java">#java</a><a class="post-tag" href="/tags.html#spring">#spring</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
         <a class="post-link" href="/ai/2023/04/05/perceptron.html">
           인공신경망과 퍼셉트론
         </a>
@@ -1438,575 +1533,6 @@ C언어로 코드를 작성할 때 직접 메모리를 할당할 때가 있습�
 
 
 <h2 class="post-title">
-        <a class="post-link" href="/algorithm/2022/08/07/%EC%A0%95%EB%8B%A4%EB%A9%B4%EC%B2%B4.html">
-          정다면체 for Python
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Aug 07, 2022</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <a class="post-excerpt" href="/algorithm/2022/08/07/%EC%A0%95%EB%8B%A4%EB%A9%B4%EC%B2%B4.html">
-        <p>
-        
-  문제는 너무 자세하게 기술하지 않음
-출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님
-
-
-문제
-두 개의 정 N면체와 정 M면체의 두 개의 주사위를 던져서 나올 수 있는 눈의 합 중 가장 확 률이 높은 숫자를 출력하는 프로그램을 작성하세요.
-정답이 여러 개일 경우 오름차순으로 출력합니다.
-
-입력
-첫 번째 줄에는 자연수 N과 M이 주어집니다. N과 M은 4, 6, 8, 12, 20 중의 하나입니다.
-
-출력
-첫 번째 줄에 답을 출력합니다.
-
-n ,m= map(int,input('n과 m을 입력하시오').split())
-cnt=[0]*(n+m+3)
-max=0
-for i in rang... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags">
-<a class="post-tag" href="/tags.html#Python">#Python</a><a class="post-tag" href="/tags.html#algorithm">#algorithm</a>
-</div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/algorithm/2022/08/07/%EC%9E%90%EB%A6%BF%EC%88%98%EC%9D%98%ED%95%A9.html">
-          자릿수의합 for Python
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Aug 07, 2022</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <a class="post-excerpt" href="/algorithm/2022/08/07/%EC%9E%90%EB%A6%BF%EC%88%98%EC%9D%98%ED%95%A9.html">
-        <p>
-        
-  문제는 너무 자세하게 기술하지 않음
-출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님
-
-
-문제
-N개의 자연수가 입력되면 각 자연수의 자릿수의 합을 구하고, 그 합이 최대인 자연수를 출력 하는 프로그램을 작성하세요. 각 자연수의 자릿수의 합을 구하는 함수를 def digit_sum(x)를 꼭 작성해서 프로그래밍 하세요.
-
-입력
-첫 줄에 자연수의 개수 N(3&lt;=N&lt;=100)이 주어지고, 그 다음 줄에 N개의 자연수가 주어진다. 각 자연수의 크기는 10,000,000를 넘지 않는다.
-
-출력
-자릿수의 합이 최대인 자연수를 출력한다. 자릿수의 합이 같을 경우 입력순으로 먼저... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags">
-<a class="post-tag" href="/tags.html#Python">#Python</a><a class="post-tag" href="/tags.html#algorithm">#algorithm</a>
-</div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/algorithm/2022/08/07/k%EB%B2%88%EC%A7%B8%ED%81%B0%EC%88%98.html">
-          k번째 큰 수 for Python
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Aug 07, 2022</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <a class="post-excerpt" href="/algorithm/2022/08/07/k%EB%B2%88%EC%A7%B8%ED%81%B0%EC%88%98.html">
-        <p>
-        
-  문제는 너무 자세하게 기술하지 않음
-출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님
-
-
-문제
-현수는 1부터 100사이의 자연수가 적힌 N장의 카드를 가지고 있습니다. 같은 숫자의 카드가 여러장 있을 수 있습니다. 현수는 이 중 3장을 뽑아 각 카드에 적힌 수를 합한 값을 기록하려 고 합니다. 3장을 뽑을 수 있는 모든 경우를 기록합니다. 기록한 값 중 K번째로 큰 수를 출력 하는 프로그램을 작성하세요.
-만약 큰 수부터 만들어진 수가 25 25 23 23 22 20 19……이고 K값이 3이라면 K번째 큰 값 은 22입니다.
-
-입력
-첫 줄에 자연수 N(3&lt;=N&lt;=10... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags">
-<a class="post-tag" href="/tags.html#Python">#Python</a><a class="post-tag" href="/tags.html#algorithm">#algorithm</a>
-</div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/algorithm/2022/07/30/%EB%8C%80%ED%91%9C%EA%B0%92.html">
-          대표값 for Python
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Jul 30, 2022</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <a class="post-excerpt" href="/algorithm/2022/07/30/%EB%8C%80%ED%91%9C%EA%B0%92.html">
-        <p>
-        
-  문제는 너무 자세하게 기술하지 않음
-출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님
-
-
-문제
-N명의 학생의 수학점수가 주어집니다. N명의 학생들의 평균(소수 첫째자리 반올림)을 구하고,     N명의 학생 중 평균에 가장 가까운 학생은 몇 번째 학생인지 출력하는 프로그램을 작성하세요.
-
-입력
-첫줄에 자연수 N(5&lt;=N&lt;=100)이 주어지고, 두 번째 줄에는 각 학생의 수학점수인 N개의 자연 수가 주어집니다.    학생의 번호는 앞에서부터 1로 시작해서 N까지이다.
-
-출력
-첫줄에 평균과 평균에 가장 가까운 학생의 번호를 출력한다.  
-평균은 소수 첫째 자리에서 반올... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags">
-<a class="post-tag" href="/tags.html#Python">#Python</a><a class="post-tag" href="/tags.html#algorithm">#algorithm</a>
-</div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%95%BD%EC%88%98.html">
-          k번째약수 for Python
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Jul 30, 2022</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <a class="post-excerpt" href="/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%95%BD%EC%88%98.html">
-        <p>
-        
-  문제는 너무 자세하게 기술하지 않음
-출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님
-
-
-문제
-두 개의 자연수 N과 K가 주어졌을 때, N의 약수들 중 K번째로 작은 수를 출력하는 프로그램을 작성하시오.
-
-입력
-첫째 줄에 N과 K가 빈칸을 사이에 두고 주어진다. N은 1 이상 10,000 이하이다. K는 1 이상 N 이하이다.
-
-출력
-첫째 줄에 N의 약수들 중 K번째로 작은 수를 출력한다. 만일 N의 약수의 개수가 K개보다 적어서 K번째 약수가 존재하지 않을 경우에는 -1을 출력하시오.
-
-N,K = map(int, input().split()) # 이런식의 입력은 그냥 외워서... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags">
-<a class="post-tag" href="/tags.html#Python">#Python</a><a class="post-tag" href="/tags.html#algorithm">#algorithm</a>
-</div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%88%98.html">
-          k번째수 for Python (feat.sort() vs sorted())
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Jul 30, 2022</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <a class="post-excerpt" href="/algorithm/2022/07/30/K%EB%B2%88%EC%A7%B8%EC%88%98.html">
-        <p>
-        
-  문제는 너무 자세하게 기술하지 않음
-출처 : 인프런 - 파이썬 알고리즘 문제풀이 (코딩테스트 대비) by 김태원 강사님
-
-
-문제
-N개의 숫자로 이루어진 숫자열이 주어지면 해당 숫자열중에서 s번째부터 e번째 까지의 수를 오름 차순 정렬했을 때 k번째로 나타나는 숫자를 출력하는 프로그램을 작성하세요.
-
-입력
-첫 번째 줄에 테스트 케이스 T(1&lt;=T&lt;=10)이 주어집니다.
-각 케이스별
-첫 번째 줄은 자연수 N(5&lt;=N&lt;=500), s, e, k가 차례로 주어진다. 두 번째 줄에 N개의 숫자가 차례로 주어진다.
-
-출력
-각 케이스별 k번째 수를 아래 출력예제와 같이 출력하세요.
-
-t = int(i... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags">
-<a class="post-tag" href="/tags.html#Python">#Python</a><a class="post-tag" href="/tags.html#algorithm">#algorithm</a>
-</div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
         <a class="post-link" href="/system/2022/07/13/permission.html">
           권한의 이해와 설정
         </a>
@@ -2291,107 +1817,6 @@ ex ) grep -i root/ect/id
 
 
 <h2 class="post-title">
-        <a class="post-link" href="/ai/2022/06/27/AI_1.html">
-          병렬처리와 수학적 행렬
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Jun 27, 2022</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <a class="post-excerpt" href="/ai/2022/06/27/AI_1.html">
-        <p>
-        파이썬은 다수의 개발자들이 공동으로 개발하는 오픈소스 프로젝트가 많고 라이브러리들이 매우 빈번하게 업데이트가 되기 때문에 라이브러리들 간의 의존성이 매우 복잡하여 기존에 완성되어 잘 돌아가는 코드가 오류를 발생시킬 수 있다.  
-이 때문에 아나콘다를 이용하여 라이브러리 버전들을 유지하며 개발할 수 있도록 가상환경을 구성하는것이 좋다.
-
-Data 생성
-
-1차원
-np.random.randint(s1,s2,(c,))
-
-
-  s1 ~ s2 사이의 정수 c개 생성
-
-
-np.random.randn(r)
-
-
-  0~1 사이의 숫자 r개 생성
-  단 평균은0, 표준편차는 1인 분포
-
-
-np.random.rand(r)
-
-
-  0~... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags"><a class="post-tag" href="/tags.html#ai">#ai</a></div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
         <a class="post-link" href="/java/2022/06/18/JavaEvent.html">
           Java GUI and EventListener
         </a>
@@ -2426,193 +1851,6 @@ String parent = f.getParent(); 	// "c:\\windows"
       </a>
       <div class="post-tags">
 <a class="post-tag" href="/tags.html#java">#java</a><a class="post-tag" href="/tags.html#gui">#gui</a>
-</div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/web/2022/06/16/VueTodo.html">
-          TodoList for Vue.js
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Jun 16, 2022</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 6 mins</span>
-      </div>
-      <a class="post-excerpt" href="/web/2022/06/16/VueTodo.html">
-        <p>
-        set-ExecutionPolicy -ExecutionPolicy Unrestricted : 권한오류    
-npm install -g @vue/cli : vue를 전역에 설치   
-vue create project01 : vue 디렉토리 생성    
-vue add router : router 추가 / 처음 vue 만들때 router 옵션 체크
-
-npm run lint : 린트 에러 해결   
-vue add vuetify : vuetify 설치    
-npm run serve : 실시간 미리보기
-
-
-  material designIcon : 아이콘 퍼오기
-
-https://materialdesignicons.com/... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags">
-<a class="post-tag" href="/tags.html#vue">#vue</a><a class="post-tag" href="/tags.html#web">#web</a>
-</div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/algorithm/2022/06/14/SearchTreeForC.html">
-          Search Tree(트리탐색)for C
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Jun 14, 2022</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <a class="post-excerpt" href="/algorithm/2022/06/14/SearchTreeForC.html">
-        <p>
-        트리검색
-탐색을 하기에 가장 적합하고 많이 사용하는 구조가 트리구조이다. 특히 프로그램의 논리는 if 조건문의 참이나 거짓 두 갈래의 선택이 있는 이진구조이므로 이를 반영하여 문제 분석과 설계 단계에서 자연스럽게 이진트리가 자주 사용된다.
-
-이진탐색트리는 공백이 가능한 이진 트리로 공백이 아니면 다음의 성질을 만족한다.
-
-
-  모든 원소는 key를 갖는다.
-  공백이 아닌 왼쪽 서브트리의 key들은 그의 루트의 key보다 작아야한다.
-  공백이 아닌 오른쪽 서브트리의 key들은 그의 루트의 key보다 커야한다.
-  왼쪽과 오른쪽 서브트리도 또한 이진 탐색 트리이다 (재귀적정의)
-
-
-``
- <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags">
-<a class="post-tag" href="/tags.html#C">#C</a><a class="post-tag" href="/tags.html#algorithm">#algorithm</a>
 </div>
     </li>
 <li>
@@ -3598,101 +2836,6 @@ ex) ls -al, ifconfig -a, netstat ... <span class="read_more">Read More</span>
 
 
 <h2 class="post-title">
-        <a class="post-link" href="/web/2022/05/30/Server%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-          서버에 대해서
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> May 30, 2022</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <a class="post-excerpt" href="/web/2022/05/30/Server%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-        <p>
-        1.서버가 뭔데?
-국밥집 이모다.
-우리가 순댓국집 가서 “이모~ 국밥하나 갖다주세요 “ 하면 이모가 국밥하나 갖다준다.
-서버도 똑같다.
-국밥집이모나 서버나 우리가 요청한걸 갖다주는 것 뿐이다. 
-즉, 서버는 요청을 받으면 요청한 내용을 보내주는 프로그램인데,
-HTTP요청에는 크게 4가지가 있는데, 읽기 쓰기 수정 삭제이다.
-
-
-2.읽기 (GET)
-특정 페이지를 get하면, 특정페이지를 서버에서 보내주는 형식이다.
-우리가 네이버에서 네이버웹툰,네이버메일등에 들어가는 버튼을 누르면 지정사이트로 이동하는 것들이 모두 GET요청 하는 것이다.
-
-3.쓰기 (POST)
-댓글을 작성하거나, 글을 쓸 때 우리가 게시하는 것들을 ... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags">
-<a class="post-tag" href="/tags.html#web">#web</a><a class="post-tag" href="/tags.html#javascript">#javascript</a>
-</div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
         <a class="post-link" href="/web/2022/05/29/Javascrpt%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
           자바스크립트에 대해서
         </a>
@@ -3783,7 +2926,7 @@ HTTP요청에는 크게 4가지가 있는데, 읽기 쓰기 수정 삭제이다.
 
 <h2 class="post-title">
         <a class="post-link" href="/web/2022/05/28/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C.html">
-          프로그래밍이란?
+          프로그래밍이란? for JS
         </a>
       </h2>
       <div class="post-meta">
@@ -3794,7 +2937,7 @@ HTTP요청에는 크게 4가지가 있는데, 읽기 쓰기 수정 삭제이다.
         <p>
         1.본격적으로 JS(자바스크립트)를 설명하기전에, 프로그래밍이란 ?
 
-  앞서 설명했던 html과 css와는 다르게 JS(자바스크린트를 편의상 JS라고 하겠다.) 는 프로그래밍언어이기 때문에 프로그래밍에 대해서 간략하게 설명하고 넘어가겠다.
+  앞서 설명했던 html과 css와는 다르게 JS(자바스크립트를 편의상 JS라고 하겠다.) 는 프로그래밍언어이기 때문에 프로그래밍에 대해서 간략하게 설명하고 넘어가겠다.
 
 
 프로그래밍 이란 컴퓨터에게 실행을 요구하는 일종의 커뮤니케이션이다. 
@@ -4082,184 +3225,6 @@ HTML (HyperText Markup Language)은 웹페이지를 기술하기 위한 마크�
 <a class="post-tag" href="/tags.html#web">#web</a><a class="post-tag" href="/tags.html#html">#html</a>
 </div>
     </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/markdown/2022/05/06/test-markdown.html">
-          An exhibit of Markdown
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> May 06, 2022</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
-      </div>
-      <a class="post-excerpt" href="/markdown/2022/05/06/test-markdown.html">
-        <p>
-        This note demonstrates some of what Markdown is capable of doing.
-
-An exhibit of Markdown
-
-Note: Feel free to play with this page. Unlike regular notes, this doesn’t automatically save itself.
-
-Basic formatting
-
-Paragraphs can be written like so. A paragraph is the basic block of Markdown. A paragraph is what text will turn into when there is no... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags">
-<a class="post-tag" href="/tags.html#example">#example</a><a class="post-tag" href="/tags.html#markdown">#markdown</a>
-</div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/jekyll/2022/05/05/Children's-Day-FirstPost.html">
-          Welcome to InoBlog
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> May 05, 2022</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <a class="post-excerpt" href="/jekyll/2022/05/05/Children's-Day-FirstPost.html">
-        <p>
-        Thank you for visit my Blog
-
-First Post in my blog
-
-posts is are posted whenever I want
-
-The post is for the record, but I’ll leave an additional explanation for someone who’s worried about the same problem
-
-Every post is meant to be a scrap
-
-Regardless of whether it is non-profit or profitable, anyone is actively encouraged to scrap unauthorize... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags"><a class="post-tag" href="/tags.html#blog">#blog</a></div>
-    </li>
 </ul>
 
   <!-- Pagination links -->
@@ -4294,7 +3259,7 @@ Regardless of whether it is non-profit or profitable, anyone is actively encoura
   <ul>
     <li>
       <a href="/index.html">
-        All<span>36</span>
+        All<span>25</span>
       </a>
     </li>
 
@@ -4313,13 +3278,13 @@ Regardless of whether it is non-profit or profitable, anyone is actively encoura
     
       <li>
         <a href="/categories.html#h-ai">
-          ai <span>2</span>
+          ai <span>1</span>
         </a>
       </li>
     
       <li>
         <a href="/categories.html#h-algorithm">
-          algorithm <span>10</span>
+          algorithm <span>3</span>
         </a>
       </li>
     
@@ -4342,20 +3307,8 @@ Regardless of whether it is non-profit or profitable, anyone is actively encoura
       </li>
     
       <li>
-        <a href="/categories.html#h-jekyll">
-          jekyll <span>1</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/categories.html#h-markdown">
-          markdown <span>1</span>
-        </a>
-      </li>
-    
-      <li>
         <a href="/categories.html#h-spring">
-          spring <span>1</span>
+          spring <span>2</span>
         </a>
       </li>
     
@@ -4367,7 +3320,7 @@ Regardless of whether it is non-profit or profitable, anyone is actively encoura
     
       <li>
         <a href="/categories.html#h-web">
-          web <span>7</span>
+          web <span>5</span>
         </a>
       </li>
     
