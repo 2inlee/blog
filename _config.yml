@@ -28,9 +28,9 @@ futrue: true
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: 시를 좋아하는 프로그래머
+title: Inlee's Blog
 email: kbs@kakao.com
-author: AlphateamInho
+author: inlee
 
 # Copyright setting
 # You can use any html code, currently below placeholders are available:
@@ -44,7 +44,7 @@ author: AlphateamInho
 #   "Copyright (c) 2017-{currentYear} <a href="https://example.com">{author}</a>"
 #   "Copyright © 2017-2021 Foobar"
 #
-copyright: "Copyright 2022. AlphateamInho All pictures can be copied without permission.  2022-{currentYear} {author}"
+copyright: "Copyright 2022. inlee All pictures can be copied without permission.  2022-{currentYear} {author}"
 
 description: >- # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
@@ -52,7 +52,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Google search results) and in your feed.xml site description.
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://alphateaminho.github.io/" # the base hostname & protocol for your site, e.g. https://example.com
+url: "https://2inlee.github.io/" # the base hostname & protocol for your site, e.g. https://example.com
 favicon: "favicon.ico" # the favicon for your site
 
 # Yat date format
@@ -160,8 +160,8 @@ google_analytics: [G-BS686XJ0FL]
 # Page default value
 defaults:
   home:
-    heading: "시를 좋아하는 프로그래머"
-    subheading: "#Web #Vue #C #DB #Algorithm"
+    heading: "Inlee's Blog"
+    subheading: "문제를 만들고 문제를 풀어요"
     banner: "https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png"
 
 # Banner default settings
