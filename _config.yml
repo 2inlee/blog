@@ -47,12 +47,10 @@ author: inlee
 copyright: "Copyright 2022. inlee All pictures can be copied without permission.  2022-{currentYear} {author}"
 
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  All of Code
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://2inlee.github.io/" # the base hostname & protocol for your site, e.g. https://example.com
+url: "https://blog.inlee.kr" # the base hostname & protocol for your site, e.g. https://example.com
 favicon: "favicon.ico" # the favicon for your site
 
 # Yat date format
