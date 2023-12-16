@@ -160,7 +160,7 @@ defaults:
   home:
     heading: "Inlee's Blog"
     subheading: "Spring, JPA, Nest.JS, Docker, LLM etc.."
-    banner: "https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png"
+    banner: "https://private-user-images.githubusercontent.com/95608811/290892781-ffd79cc9-e51c-40d7-b20a-5f9cbc6eb33c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MDI2NjExMTksIm5iZiI6MTcwMjY2MDgxOSwicGF0aCI6Ii85NTYwODgxMS8yOTA4OTI3ODEtZmZkNzljYzktZTUxYy00MGQ3LWIyMGEtNWY5Y2JjNmViMzNjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzEyMTUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMjE1VDE3MjAxOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWYzZDExYWY0YzNmNmYyMjViOTFlMTE1MWIwMjc2YWMzMTY3NWUzNmI3OWQyN2E0NGIzY2Y5MzkyODI3YmU2MmYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.4FqhP9iJ66EZtTKHr9d-wPNv8NXa7CBnmQAIZ7nf_lU"
 
 # Banner default settings
 # These banner settings are for global banner default, but you can also
