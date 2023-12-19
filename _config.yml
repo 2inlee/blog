@@ -2,21 +2,7 @@ futrue: true
 # git에 push해도 실제페이지에선 반영되지 않던문제를 google검색 해서 찾아봤더니,
 # 이렇게 해결했다는 사람이 있어서 이거 바꾸고 다시 push 해봤더니 고쳐졌다 !
 
-# Welcome to Jekyll!
-#
-# About Theme
-#
-# Yet another theme for elegant writers with modern flat style and beautiful
-# night/dark mode.
-#
 # Website: https://github.com/jeffreytse/jekyll-theme-yat
-#
-# You can do anything you want, including projects for your clients, as long
-# as you mention an attribution back (credit links in footer or project).
-# See the LICENCE file.
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that.
 #
 # For technical reasons, this file is *NOT* reloaded automatically when you
 # use 'bundle exec jekyll serve'. If you change this file, please restart
@@ -32,18 +18,6 @@ title: Inlee's Blog
 email: kbs@kakao.com
 author: inlee
 
-# Copyright setting
-# You can use any html code, currently below placeholders are available:
-# * current year: {currentYear}
-# * author: {author} (Value is the same as site.author)
-# * copyright: (c) - ©
-# * copyleft: (cleft)
-# * sound recording copyright: (p) - ℗
-#
-# For example:
-#   "Copyright (c) 2017-{currentYear} <a href="https://example.com">{author}</a>"
-#   "Copyright © 2017-2021 Foobar"
-#
 copyright: "Copyright 2022. inlee All pictures can be copied without permission.  2022-{currentYear} {author}"
 
 description: >- # this means to ignore newlines until "baseurl:"
@@ -51,7 +25,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://blog.inlee.kr" # the base hostname & protocol for your site, e.g. https://example.com
-favicon: "favicon.ico" # the favicon for your site
+favicon: "favicon.png" # the favicon for your site
 
 # Yat date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
@@ -71,7 +45,7 @@ yat:
 google_analytics: [G-BS686XJ0FL]
 
 # If you want to generate website sitemap, you can set true
-# sitemap: false
+sitemap: true
 
 # If you want to change site language, you can set lang option
 # lang: "en"  # default lang is en
