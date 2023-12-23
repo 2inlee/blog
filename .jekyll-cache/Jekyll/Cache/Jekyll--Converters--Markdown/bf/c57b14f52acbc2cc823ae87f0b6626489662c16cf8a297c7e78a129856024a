@@ -1,0 +1,201 @@
+I"�/<h4 id="들어가기-전에">들어가기 전에</h4>
+
+<p><a href="https://blog.inlee.kr/spring/2023/12/02/%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8.html">이전글</a> 영속성 컨텍스트 포스트를 보고 오면 좋습니다.</p>
+
+<h2 id="연관관계-매핑-기초">연관관계 매핑 기초</h2>
+
+<p>ORM을 사용하는 데 있어서 가장 중요한 개념 중 하나는 객체와 테이블의 차이를 이해하는 것이라고 생각한다.  <br />
+사실 DB만 잘 배우는 것도 쉽지 않은데, 안타깝게도 ORM을 사용하려면 기본적인 DB 지식이 있어야 한다.</p>
+
+<ul>
+  <li>방향(Direction): 단방향, 양방향</li>
+  <li>다중성(Multiplicity): 다대일(N:1), 일대다(1:N), 일대일(1:1), 다대다(N:M) 이해</li>
+  <li>연관관계의 주인(Owner): 객체 양방향 연관관계는 관리주인이 필요</li>
+</ul>
+
+<h3 id="1-단방향-연관관계-n1">1. 단방향 연관관계 (N:1)</h3>
+<p>예를 들어, 주문(Order)이 고객(Customer)에게 속하는 경우를 생각해볼 수 있습니다. 여기서 Order 클래스는 Customer 클래스를 참조합니다.</p>
+
+<p>Customer 클래스</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="c1">// 기타 필드 및 메서드</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>Order 클래스</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Order</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@ManyToOne</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"customer_id"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Customer</span> <span class="n">customer</span><span class="o">;</span>
+    <span class="c1">// 기타 필드 및 메서드</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p>@ManyToOne 애노테이션은 Order 클래스가 Customer에 대해 다대일(N:1) 관계임을 나타냅니다. <br />
+@JoinColumn은 실제 데이터베이스의 외래 키 이름을 지정합니다.</p>
+
+<h3 id="2-양방향-연관관계-1n">2. 양방향 연관관계 (1:N)</h3>
+
+<p>양방향 연관관계에서는 Customer 클래스도 Order를 참조할 수 있습니다. 이 경우, 연관관계의 주인은 Order 클래스입니다.</p>
+
+<p>Customer 클래스</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="c1">// mappedBy를 넣어줘야 된다. JoinColumn만 해서는 안된다.</span>
+    <span class="nd">@OneToMany</span><span class="o">(</span><span class="n">mappedBy</span> <span class="o">=</span> <span class="s">"customer"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Order</span><span class="o">&gt;</span> <span class="n">orders</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    <span class="c1">// 기타 필드 및 메서드</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h4 id="2-1-연관관계의-주인과-mappedby">2-1 연관관계의 주인과 mappedBy</h4>
+
+<p>@OneToMany 애노테이션에서 mappedBy 속성은 연관관계의 주인을 지정합니다.   <br />
+여기서 “customer”는 Order 클래스에서 Customer를 참조하는 필드 이름입니다.</p>
+
+<p>DB 테이블에서는 연관관계 주인 개념이 필요가 없다.</p>
+<blockquote>
+  <p>외래키만 넣어두면 양방향으로 다 조회가 가능하기 때문에</p>
+</blockquote>
+
+<p>객체는 양방향 연관관계가 아니라, 사실 단방향 연관관계 2개이다.</p>
+
+<ul>
+  <li>객체 연관관계 = 2개</li>
+  <li>고객 -&gt; 주문 연관관계 1개(단방향)</li>
+  <li>
+    <p>주문 -&gt; 고객 연관관계 1개(단방향)</p>
+  </li>
+  <li>테이블 연관관계 = 1개</li>
+  <li>고객 &lt;-&gt; 주문 연관관계 1개(양방향)</li>
+</ul>
+
+<p>근데 객체는 mappedBy를 넣어서 주인을 설정해줘야 한다.</p>
+<blockquote>
+  <p>해당 속성은 비주인쪽에서 작성되어야 한다.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>연관관계의 주인(Owner)
+양방향 매핑 규칙</p>
+  </li>
+  <li>객체의 두 관계중 하나를 연관관계의 주인으로 지정</li>
+  <li>연관관계의 주인만이 외래 키를 관리(등록, 수정) 가능</li>
+  <li>주인이 아닌쪽은 읽기만 가능</li>
+  <li>주인은 maappedBy 속성 사용 X</li>
+  <li>
+    <p>주인이 아니면 mappedBy 속성으로 주인 지정</p>
+  </li>
+  <li>
+    <p>누구를 주인으로 잡아야 하는가?</p>
+  </li>
+  <li>외래 키가 있는 곳을 주인으로 정해야 한다.</li>
+  <li>여기서는 Order.customer 가 연관관계의 주인이 된다.</li>
+  <li>비즈니스 로직을 기준으로 연관관계의 주인을 설정하면 안된다.</li>
+</ul>
+
+<h3 id="3-일대일-연관관계-11">3. 일대일 연관관계 (1:1)</h3>
+<p>각 사용자(User)가 사용자 프로필(UserProfile)을 가지는 경우를 예로 들 수 있습니다.</p>
+
+<p>User 클래스</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">username</span><span class="o">;</span>
+
+    <span class="nd">@OneToOne</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"profile_id"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">UserProfile</span> <span class="n">profile</span><span class="o">;</span>
+    <span class="c1">// 기타 필드 및 메서드</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p>UserProfile 클래스</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserProfile</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">phone</span><span class="o">;</span>
+    <span class="c1">// 기타 필드 및 메서드</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p>@OneToOne 애노테이션은 일대일 관계를 나타냅니다. 여기서도 @JoinColumn을 사용하여 외래 키를 지정합니다.</p>
+
+<h3 id="4-다대다-연관관계-nm">4. 다대다 연관관계 (N:M)</h3>
+
+<p>다대다 관계는 실제로 사용될 때 중간 엔티티(Join Table)를 통해 구현되곤 합니다. 예를 들어, 학생(Student)과 과목(Course) 간의 관계를 생각해 볼 수 있습니다.</p>
+
+<p>Student 클래스</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@ManyToMany</span>
+    <span class="nd">@JoinTable</span><span class="o">(</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="s">"student_course"</span><span class="o">,</span>
+      <span class="n">joinColumns</span> <span class="o">=</span> <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"student_id"</span><span class="o">),</span>
+      <span class="n">inverseJoinColumns</span> <span class="o">=</span> <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"course_id"</span><span class="o">)</span>
+    <span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Course</span><span class="o">&gt;</span> <span class="n">courses</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    <span class="c1">// 기타 필드 및 메서드</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Course 클래스</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Course</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">courseName</span><span class="o">;</span>
+
+    <span class="nd">@ManyToMany</span><span class="o">(</span><span class="n">mappedBy</span> <span class="o">=</span> <span class="s">"courses"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">students</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    <span class="c1">// 기타 필드 및 메서드</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p>@ManyToMany 애노테이션을 사용하고, @JoinTable을 통해 중간 테이블을 지정합니다. 이 중간 테이블은 두 엔티티 간의 연관관계를 관리합니다.</p>
+
+<h2 id="양방향-매핑-정리">양방향 매핑 정리</h2>
+<ul>
+  <li>단방향 매핑만으로도 이미 연관관계 매핑은 완료</li>
+  <li>양방향 매핑은 반대 방향으로 조회 (객체 그래프 탐색) 기능이 추가된 것 뿐</li>
+  <li>JPQL에서 역방향으로 탐색할 일이 많음</li>
+  <li>단방향 매핑을 잘 하고 양방향은 필요할 때 추가해도 됨 (테이블 영향을 주지 않음)</li>
+</ul>
+:ET

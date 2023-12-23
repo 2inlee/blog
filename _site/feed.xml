@@ -1,4 +1,610 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-12-02T02:20:36+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">시를 좋아하는 프로그래머</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>inlee</name></author><entry><title type="html">Spring DI와 IoC 컨테이너에 대해서</title><link href="http://localhost:4000/spring/2023/12/01/DI%EC%99%80IOC.html" rel="alternate" type="text/html" title="Spring DI와 IoC 컨테이너에 대해서" /><published>2023-12-01T00:00:00+09:00</published><updated>2023-12-01T00:00:00+09:00</updated><id>http://localhost:4000/spring/2023/12/01/DI%EC%99%80IOC</id><content type="html" xml:base="http://localhost:4000/spring/2023/12/01/DI%EC%99%80IOC.html"><![CDATA[<h1 id="di의존관계-주입--스프링-컨테이너">DI(의존관계 주입) / 스프링 컨테이너</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-12-24T01:45:58+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Inlee’s Blog</title><subtitle>All of Code</subtitle><author><name>inlee</name></author><entry><title type="html">(JPA-4)MappedSuperclass 공통매핑정보의 재사용</title><link href="http://localhost:4000/spring/2023/12/24/Superclass.html" rel="alternate" type="text/html" title="(JPA-4)MappedSuperclass 공통매핑정보의 재사용" /><published>2023-12-24T00:00:00+09:00</published><updated>2023-12-24T00:00:00+09:00</updated><id>http://localhost:4000/spring/2023/12/24/Superclass</id><content type="html" xml:base="http://localhost:4000/spring/2023/12/24/Superclass.html"><![CDATA[<h2 id="mappedsuperclass-공통-매핑-정보의-재사용">MappedSuperclass: 공통 매핑 정보의 재사용</h2>
+
+<h3 id="개요">개요</h3>
+
+<p><code class="language-plaintext highlighter-rouge">MappedSuperclass</code>는 JPA에서 상속 관계 매핑이 아닌 공통 매핑 정보의 재사용을 위해 사용됩니다. <br />
+이 방법은 데이터베이스 설계와 객체지향 설계의 불일치 문제를 해결하는 데 도움을 줍니다.</p>
+
+<h3 id="주요-특징">주요 특징</h3>
+<ul>
+  <li>
+    <p>공통 매핑 정보 제공: @MappedSuperclass로 지정된 클래스는 데이터베이스 테이블로 직접 매핑되지 않습니다.
+대신, 이 클래스에 정의된 매핑 정보(필드, 관계, 메서드 등)는 상속받는 자식 클래스에게 상속됩니다.</p>
+  </li>
+  <li>
+    <p>엔티티가 아님: @MappedSuperclass로 지정된 클래스는 엔티티가 아닙니다. 즉, EntityManager를 통해 직접 쿼리하거나 데이터베이스 작업을 할 수 없습니다.</p>
+  </li>
+  <li>
+    <p>상속받는 자식 클래스들의 매핑 정보: 자식 클래스들은 @MappedSuperclass에서 정의된 필드나 메서드를 상속받아 사용할 수 있으며, 각각 독립적인 테이블로 매핑됩니다.</p>
+  </li>
+  <li>
+    <p>재사용성과 유지보수성 향상: 공통적인 매핑 정보를 @MappedSuperclass에 정의함으로써, 코드의 재사용성과 유지보수성이 향상됩니다.</p>
+  </li>
+</ul>
+
+<h3 id="사용-예시">사용 예시</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@MappedSuperclass</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">BaseEntity</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+    <span class="c1">// 공통으로 사용되는 필드 및 메서드</span>
+    <span class="c1">// getters and setters</span>
+<span class="o">}</span>
+
+<span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="kd">extends</span> <span class="nc">BaseEntity</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">username</span><span class="o">;</span>
+    <span class="c1">// 추가적인 필드 및 메서드</span>
+    <span class="c1">// getters and setters</span>
+<span class="o">}</span>
+
+<span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Product</span> <span class="kd">extends</span> <span class="nc">BaseEntity</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">productName</span><span class="o">;</span>
+    <span class="c1">// 추가적인 필드 및 메서드</span>
+    <span class="c1">// getters and setters</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p>이 예시에서 BaseEntity 클래스는 @MappedSuperclass로 지정되어 있으며, User와 Product 엔티티가 이를 상속받습니다.   <br />
+BaseEntity의 id 필드와 관련 메서드는 User와 Product 엔티티에 모두 상속되며, 각각의 엔티티는 자신만의 테이블로 매핑됩니다.</p>
+
+<h2 id="일반적인-jpa에서의-extend--상속을-쓰는-경우">일반적인 JPA에서의 extend : 상속을 쓰는 경우</h2>
+
+<h3 id="entity-상속">Entity 상속</h3>
+<p>한 엔티티 클래스가 다른 엔티티 클래스를 상속할 때 사용합니다.   <br />
+상속받는 클래스는 @Entity 어노테이션으로 표시되며, 데이터베이스 테이블과 매핑됩니다.   <br />
+사용되는 상속 전략에는 단일 테이블 상속(SINGLE_TABLE), 조인 테이블 상속(JOINED), 테이블 당 클래스 상속(TABLE_PER_CLASS) 등이 있습니다.</p>
+
+<h3 id="mappedsuperclass-상속">MappedSuperclass 상속</h3>
+<p>@MappedSuperclass 어노테이션이 적용된 클래스를 상속받을 때 사용됩니다.  <br />
+여러 엔티티 클래스에서 공통으로 사용되는 매핑 정보(필드, 메서드 등)를 정의하는 데 사용됩니다.   <br />
+상속받는 엔티티들은 @MappedSuperclass에서 정의된 정보를 재사용할 수 있으며, 각각 독립적인 테이블로 매핑됩니다.</p>
+
+<h2 id="결론">결론</h2>
+<p>MappedSuperclass는 JPA에서 매핑 정보의 중복을 줄이고, 코드의 재사용성 및 유지보수성을 향상시키는 유용한 방법입니다. <br />
+하지만, 이는 엔티티가 아니므로 데이터베이스와의 직접적인 상호작용은 할 수 없습니다.   <br />
+따라서, 이를 사용할 때는 엔티티와의 차이점을 명확히 이해하고 적절히 활용해야 합니다.</p>]]></content><author><name>Ino</name></author><category term="spring" /><category term="java" /><category term="spring" /><summary type="html"><![CDATA[MappedSuperclass: 공통 매핑 정보의 재사용]]></summary></entry><entry><title type="html">(JPA-3)고급매핑 상속관계매핑</title><link href="http://localhost:4000/spring/2023/12/23/%EC%83%81%EC%86%8D%EA%B4%80%EA%B3%84.html" rel="alternate" type="text/html" title="(JPA-3)고급매핑 상속관계매핑" /><published>2023-12-23T00:00:00+09:00</published><updated>2023-12-23T00:00:00+09:00</updated><id>http://localhost:4000/spring/2023/12/23/%EC%83%81%EC%86%8D%EA%B4%80%EA%B3%84</id><content type="html" xml:base="http://localhost:4000/spring/2023/12/23/%EC%83%81%EC%86%8D%EA%B4%80%EA%B3%84.html"><![CDATA[<h4 id="들어가기-전에">들어가기 전에</h4>
+
+<p><a href="https://blog.inlee.kr/spring/2023/12/09/%EC%97%B0%EA%B4%80%EA%B4%B8%EA%B3%84%EB%A7%A4%ED%95%91.html">이전글</a> 연관관계 매핑 포스트를 보고 오면 좋습니다.</p>
+
+<h2 id="고급-매핑-상속관계-매핑">고급 매핑: 상속관계 매핑</h2>
+
+<p>객체지향 프로그래밍에서 상속은 중요한 개념입니다.   <br />
+이를 데이터베이스와 연동할 때, 어떻게 효과적으로 구현할 수 있을까요?  <br />
+JPA(Java Persistence API)를 사용하면, 슈퍼타입과 서브타입 관계를 물리 모델로 효율적으로 변환할 수 있습니다.   <br />
+이를 위한 세 가지 전략이 있습니다:</p>
+
+<p>각각의 테이블로 변환 (조인 전략)  <br />
+통합 테이블로 변환 (단일 테이블 전략) <br />
+서브타입 테이블로 전환 (구현 클래스마다 테이블 전략)  <br />
+주요 어노테이션 <br />
+이러한 전략을 구현하기 위해 JPA에서는 다음과 같은 어노테이션을 제공합니다:</p>
+
+<p>@Inheritance(strategy=InheritanceType.XXX):</p>
+
+<p>JOINED: 조인 전략 <br />
+SINGLE_TABLE: 단일 테이블 전략  <br />
+TABLE_PER_CLASS: 구현 클래스마다 테이블 전략  <br />
+@DiscriminatorColumn(name=”DTYPE”): 주로 부모 클래스에서 지정</p>
+
+<p>@DiscriminatorValue(“XXX”): 주로 자식 클래스에서 지정</p>
+
+<p>예를 들어, Animal이라는 부모 클래스와 Cat, Dog라는 자식 클래스가 있다고 가정해 봅시다.  <br />
+이 경우, Animal 클래스에는 @DiscriminatorColumn을 설정하고, Cat과 Dog 클래스에는 각각 다른 @DiscriminatorValue를 설정합니다.  <br />
+이렇게 하면 JPA는 Animal 테이블의 각 행이 Cat인지 Dog인지를 구별할 수 있습니다.</p>
+
+<p>예시: Animal, Cat, Dog 클래스</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nd">@Entity</span>
+<span class="nd">@Inheritance</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">InheritanceType</span><span class="o">.</span><span class="na">JOINED</span><span class="o">)</span>
+<span class="nd">@DiscriminatorColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"ANIMAL_TYPE"</span><span class="o">,</span> <span class="n">discriminatorType</span> <span class="o">=</span> <span class="nc">DiscriminatorType</span><span class="o">.</span><span class="na">STRING</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="c1">// getters and setters</span>
+<span class="o">}</span>
+
+<span class="nd">@Entity</span>
+<span class="nd">@DiscriminatorValue</span><span class="o">(</span><span class="s">"CAT"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cat</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">likesMilk</span><span class="o">;</span>
+    <span class="c1">// getters and setters</span>
+<span class="o">}</span>
+
+<span class="nd">@Entity</span>
+<span class="nd">@DiscriminatorValue</span><span class="o">(</span><span class="s">"DOG"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dog</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">breed</span><span class="o">;</span>
+    <span class="c1">// getters and setters</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>Cat 클래스와 Dog 클래스는 각각 Animal 클래스를 상속받으며, @DiscriminatorValue를 사용해 구별자 값을 설정합니다. <br />
+이 구조를 사용하면, 각 자식 엔티티는 자신의 테이블을 가지며, 부모 테이블(Animal)과 조인됩니다.  <br />
+@DiscriminatorColumn은 각 엔티티 인스턴스의 타입을 식별하는 데 사용됩니다.</p>
+
+<h3 id="전략별-특징과-사용-시-고려사항">전략별 특징과 사용 시 고려사항</h3>
+<ul>
+  <li>
+    <p>조인 전략(JOINED):  <br />
+각 클래스의 데이터를 별도의 테이블에 분리하여 저장합니다. <br />
+데이터 모델의 정규화를 유지할 수 있으나, 조인을 필요로 하여 조회 성능에 영향을 줄 수 있습니다.</p>
+  </li>
+  <li>
+    <p>단일 테이블 전략(SINGLE_TABLE): <br />
+모든 엔티티가 하나의 테이블에 저장됩니다. <br />
+조회 성능은 빠르나, 테이블이 커질 수 있으며 null 제약조건 관리에 주의가 필요합니다.</p>
+  </li>
+  <li>
+    <p>구현 클래스마다 테이블 전략(TABLE_PER_CLASS): <br />
+각 구현 클래스마다 별도의 테이블을 가집니다.  <br />
+서브 타입을 명확하게 구분할 수 있지만, 여러 테이블을 함께 조회할 때 성능 저하가 발생할 수 있습니다.</p>
+  </li>
+</ul>
+
+<h3 id="결론">결론</h3>
+<p>상속 관계 매핑은 JPA를 사용하여 객체지향 모델을 데이터베이스 설계에 효과적으로 통합할 수 있는 방법을 제공합니다.  <br />
+실제 비즈니스적으로 중요하고 복잡할수록 조인 전략을 많이 사용한다고 합니다. <br />
+각 전략은 특정 상황에 적합한 장단점을 가지고 있으므로, 상황에 따라 적절한 전략을 선택하는 것이 중요합니다.</p>]]></content><author><name>Ino</name></author><category term="spring" /><category term="java" /><category term="spring" /><summary type="html"><![CDATA[들어가기 전에]]></summary></entry><entry><title type="html">(JPA-2)JPA 연관관계 매핑과 연관관계의 주인</title><link href="http://localhost:4000/spring/2023/12/09/%EC%97%B0%EA%B4%80%EA%B4%B8%EA%B3%84%EB%A7%A4%ED%95%91.html" rel="alternate" type="text/html" title="(JPA-2)JPA 연관관계 매핑과 연관관계의 주인" /><published>2023-12-09T00:00:00+09:00</published><updated>2023-12-09T00:00:00+09:00</updated><id>http://localhost:4000/spring/2023/12/09/%EC%97%B0%EA%B4%80%EA%B4%B8%EA%B3%84%EB%A7%A4%ED%95%91</id><content type="html" xml:base="http://localhost:4000/spring/2023/12/09/%EC%97%B0%EA%B4%80%EA%B4%B8%EA%B3%84%EB%A7%A4%ED%95%91.html"><![CDATA[<h4 id="들어가기-전에">들어가기 전에</h4>
+
+<p><a href="https://blog.inlee.kr/spring/2023/12/02/%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8.html">이전글</a> 영속성 컨텍스트 포스트를 보고 오면 좋습니다.</p>
+
+<h2 id="연관관계-매핑-기초">연관관계 매핑 기초</h2>
+
+<p>ORM을 사용하는 데 있어서 가장 중요한 개념 중 하나는 객체와 테이블의 차이를 이해하는 것이라고 생각한다.  <br />
+사실 DB만 잘 배우는 것도 쉽지 않은데, 안타깝게도 ORM을 사용하려면 기본적인 DB 지식이 있어야 한다.</p>
+
+<ul>
+  <li>방향(Direction): 단방향, 양방향</li>
+  <li>다중성(Multiplicity): 다대일(N:1), 일대다(1:N), 일대일(1:1), 다대다(N:M) 이해</li>
+  <li>연관관계의 주인(Owner): 객체 양방향 연관관계는 관리주인이 필요</li>
+</ul>
+
+<h3 id="1-단방향-연관관계-n1">1. 단방향 연관관계 (N:1)</h3>
+<p>예를 들어, 주문(Order)이 고객(Customer)에게 속하는 경우를 생각해볼 수 있습니다. 여기서 Order 클래스는 Customer 클래스를 참조합니다.</p>
+
+<p>Customer 클래스</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="c1">// 기타 필드 및 메서드</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>Order 클래스</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Order</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@ManyToOne</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"customer_id"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Customer</span> <span class="n">customer</span><span class="o">;</span>
+    <span class="c1">// 기타 필드 및 메서드</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p>@ManyToOne 애노테이션은 Order 클래스가 Customer에 대해 다대일(N:1) 관계임을 나타냅니다. <br />
+@JoinColumn은 실제 데이터베이스의 외래 키 이름을 지정합니다.</p>
+
+<h3 id="2-양방향-연관관계-1n">2. 양방향 연관관계 (1:N)</h3>
+
+<p>양방향 연관관계에서는 Customer 클래스도 Order를 참조할 수 있습니다. 이 경우, 연관관계의 주인은 Order 클래스입니다.</p>
+
+<p>Customer 클래스</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="c1">// mappedBy를 넣어줘야 된다. JoinColumn만 해서는 안된다.</span>
+    <span class="nd">@OneToMany</span><span class="o">(</span><span class="n">mappedBy</span> <span class="o">=</span> <span class="s">"customer"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Order</span><span class="o">&gt;</span> <span class="n">orders</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    <span class="c1">// 기타 필드 및 메서드</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h4 id="2-1-연관관계의-주인과-mappedby">2-1 연관관계의 주인과 mappedBy</h4>
+
+<p>@OneToMany 애노테이션에서 mappedBy 속성은 연관관계의 주인을 지정합니다.   <br />
+여기서 “customer”는 Order 클래스에서 Customer를 참조하는 필드 이름입니다.</p>
+
+<p>DB 테이블에서는 연관관계 주인 개념이 필요가 없다.</p>
+<blockquote>
+  <p>외래키만 넣어두면 양방향으로 다 조회가 가능하기 때문에</p>
+</blockquote>
+
+<p>객체는 양방향 연관관계가 아니라, 사실 단방향 연관관계 2개이다.</p>
+
+<ul>
+  <li>객체 연관관계 = 2개</li>
+  <li>고객 -&gt; 주문 연관관계 1개(단방향)</li>
+  <li>
+    <p>주문 -&gt; 고객 연관관계 1개(단방향)</p>
+  </li>
+  <li>테이블 연관관계 = 1개</li>
+  <li>고객 &lt;-&gt; 주문 연관관계 1개(양방향)</li>
+</ul>
+
+<p>근데 객체는 mappedBy를 넣어서 주인을 설정해줘야 한다.</p>
+<blockquote>
+  <p>해당 속성은 비주인쪽에서 작성되어야 한다.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>연관관계의 주인(Owner)
+양방향 매핑 규칙</p>
+  </li>
+  <li>객체의 두 관계중 하나를 연관관계의 주인으로 지정</li>
+  <li>연관관계의 주인만이 외래 키를 관리(등록, 수정) 가능</li>
+  <li>주인이 아닌쪽은 읽기만 가능</li>
+  <li>주인은 maappedBy 속성 사용 X</li>
+  <li>
+    <p>주인이 아니면 mappedBy 속성으로 주인 지정</p>
+  </li>
+  <li>
+    <p>누구를 주인으로 잡아야 하는가?</p>
+  </li>
+  <li>외래 키가 있는 곳을 주인으로 정해야 한다.</li>
+  <li>여기서는 Order.customer 가 연관관계의 주인이 된다.</li>
+  <li>비즈니스 로직을 기준으로 연관관계의 주인을 설정하면 안된다.</li>
+</ul>
+
+<h3 id="3-일대일-연관관계-11">3. 일대일 연관관계 (1:1)</h3>
+<p>각 사용자(User)가 사용자 프로필(UserProfile)을 가지는 경우를 예로 들 수 있습니다.</p>
+
+<p>User 클래스</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">username</span><span class="o">;</span>
+
+    <span class="nd">@OneToOne</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"profile_id"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">UserProfile</span> <span class="n">profile</span><span class="o">;</span>
+    <span class="c1">// 기타 필드 및 메서드</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p>UserProfile 클래스</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserProfile</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">phone</span><span class="o">;</span>
+    <span class="c1">// 기타 필드 및 메서드</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p>@OneToOne 애노테이션은 일대일 관계를 나타냅니다. 여기서도 @JoinColumn을 사용하여 외래 키를 지정합니다.</p>
+
+<h3 id="4-다대다-연관관계-nm">4. 다대다 연관관계 (N:M)</h3>
+
+<p>다대다 관계는 실제로 사용될 때 중간 엔티티(Join Table)를 통해 구현되곤 합니다. 예를 들어, 학생(Student)과 과목(Course) 간의 관계를 생각해 볼 수 있습니다.</p>
+
+<p>Student 클래스</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@ManyToMany</span>
+    <span class="nd">@JoinTable</span><span class="o">(</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="s">"student_course"</span><span class="o">,</span>
+      <span class="n">joinColumns</span> <span class="o">=</span> <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"student_id"</span><span class="o">),</span>
+      <span class="n">inverseJoinColumns</span> <span class="o">=</span> <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"course_id"</span><span class="o">)</span>
+    <span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Course</span><span class="o">&gt;</span> <span class="n">courses</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    <span class="c1">// 기타 필드 및 메서드</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Course 클래스</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Course</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">courseName</span><span class="o">;</span>
+
+    <span class="nd">@ManyToMany</span><span class="o">(</span><span class="n">mappedBy</span> <span class="o">=</span> <span class="s">"courses"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">students</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    <span class="c1">// 기타 필드 및 메서드</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p>@ManyToMany 애노테이션을 사용하고, @JoinTable을 통해 중간 테이블을 지정합니다. 이 중간 테이블은 두 엔티티 간의 연관관계를 관리합니다.</p>
+
+<h2 id="양방향-매핑-정리">양방향 매핑 정리</h2>
+<ul>
+  <li>단방향 매핑만으로도 이미 연관관계 매핑은 완료</li>
+  <li>양방향 매핑은 반대 방향으로 조회 (객체 그래프 탐색) 기능이 추가된 것 뿐</li>
+  <li>JPQL에서 역방향으로 탐색할 일이 많음</li>
+  <li>단방향 매핑을 잘 하고 양방향은 필요할 때 추가해도 됨 (테이블 영향을 주지 않음)</li>
+</ul>]]></content><author><name>Ino</name></author><category term="spring" /><category term="java" /><category term="spring" /><summary type="html"><![CDATA[들어가기 전에]]></summary></entry><entry><title type="html">(JPA-1)JPA와 영속성 컨텍스트</title><link href="http://localhost:4000/spring/2023/12/02/%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8.html" rel="alternate" type="text/html" title="(JPA-1)JPA와 영속성 컨텍스트" /><published>2023-12-02T00:00:00+09:00</published><updated>2023-12-02T00:00:00+09:00</updated><id>http://localhost:4000/spring/2023/12/02/%EC%98%81%EC%86%8D%EC%84%B1%20%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8</id><content type="html" xml:base="http://localhost:4000/spring/2023/12/02/%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8.html"><![CDATA[<h4 id="들어가기-전에">들어가기 전에</h4>
+
+<p>사실 스프링 공부를 여러번 시도 했었다.  <br />
+HTTP, WAS, DB 등 백앤드에 관련된 지식이 없을 때 무작정 인프런에서 유명하다는 강사님의 인강을 보면서 따라 쳤는데
+강의 내용의 반의 반도 습득하지 못했었다.  <br />
+그렇게 두 번, 세 번 전체강의를 돌려보았고 결국 완벽한 이해는 못한 채 다른 프로젝트들을 시작했다.  <br />
+Flask, Nest.js 등의 다른 프레임워크를 사용하다가 현업에서 가장 많이 쓰고 강력한 무기인 Spring을 다 씹어먹지 못한 게 너무 한이되어 다시 처음부터 개념을 씹어먹을거라는 각오로 블로그 글을 작성하면서 다시 공부하기로 했다. <br />
+그래서, Code-based인 다른 포스트랑은 다르게 Spring은 내가 이해하고 추가적으로 궁금했었던 개념들을 위주로 글을 써내려가려고 한다.</p>
+
+<p>추가로, 제목 앞에 붙는 넘버링은 Spring 공부 순서에 따라 정리하는 순으로 정리되며, 객관적으로 중요한 내용이더라도
+필자가 기존에 제대로 이해하고 있었고 다시 공부하면서 배운 점이 없다면 굳이 포스팅으로 남기지 않으려고 한다.</p>
+
+<h2 id="jpa는-왜-써야할까">JPA는 왜 써야할까?</h2>
+
+<p>실제 프로젝트를 하다보면 DB Table들이 계속 많아지고 OOP를 준수하면서 코딩을 할 수록 매핑작업이 끝없이 늘어나게 된다.  <br />
+그래서 ORM (Object Relational Mapping) 기술을 활용하여 코딩을 하면 조금 더 개발자답게(?) 코딩할 수 있게 된다.</p>
+
+<p>레거시하게 JDBC에서 유저를 조회하는 쿼리문을 작성하는 예시를 보면 아래와 같다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LegacyJdbcExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">User</span> <span class="nf">getUserById</span><span class="o">(</span><span class="kt">long</span> <span class="n">userId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">User</span> <span class="n">user</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">Connection</span> <span class="n">connection</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">PreparedStatement</span> <span class="n">preparedStatement</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">ResultSet</span> <span class="n">resultSet</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"jdbc:mysql://localhost:3306/database_name"</span><span class="o">;</span>
+            <span class="nc">String</span> <span class="n">username</span> <span class="o">=</span> <span class="s">"username"</span><span class="o">;</span>
+            <span class="nc">String</span> <span class="n">password</span> <span class="o">=</span> <span class="s">"password"</span><span class="o">;</span>
+
+            <span class="n">connection</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">username</span><span class="o">,</span> <span class="n">password</span><span class="o">);</span>
+            <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"SELECT * FROM users WHERE id = ?"</span><span class="o">;</span>
+            <span class="n">preparedStatement</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+            <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setLong</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">userId</span><span class="o">);</span>
+
+            <span class="n">resultSet</span> <span class="o">=</span> <span class="n">preparedStatement</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">resultSet</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">User</span><span class="o">();</span>
+                <span class="n">user</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">resultSet</span><span class="o">.</span><span class="na">getLong</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
+                <span class="n">user</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">resultSet</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>
+                <span class="c1">// ... set other fields</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">resultSet</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">resultSet</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">preparedStatement</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">preparedStatement</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">connection</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">connection</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">user</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>반면에 JPA로 같은 기능을 하는 코드를 작성하면,</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JpaExample</span> <span class="o">{</span>
+    
+    <span class="nd">@PersistenceContext</span>
+    <span class="kd">private</span> <span class="nc">EntityManager</span> <span class="n">entityManager</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nc">User</span> <span class="nf">getUserById</span><span class="o">(</span><span class="kt">long</span> <span class="n">userId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">entityManager</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="nc">User</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">userId</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이런식으로 Spring에서 제공해주는 EntityManager를 사용해 빠른 개발을 할 수 있다.</p>
+
+<p>JPA는 Java애플리케이션과 JDBC 사이에서 동작하며, 이를 정확히 이해하려면 엔티티 매니저와 영속성 컨텍스트를 이해해야 한다.</p>
+
+<h2 id="엔티티-매니저-팩토리와-엔티티-매니저">엔티티 매니저 팩토리와 엔티티 매니저</h2>
+
+<p>사용자가 요청을 보낼 때 마다 EntityManagerFactory가 EntityManager 객체를 생성한다.  <br />
+그렇게 생성된 EntityManager 객체는 ConnectionPool을 통해 DB에 저장, 조회된다.</p>
+
+<h3 id="영속성-컨텍스트">영속성 컨텍스트</h3>
+
+<p>엔티티 매니저를 통해서 영속성 컨텍스트에 접근할 수 있다.  <br />
+Spring과 같은 프레임워크에서는 엔티티 매니저와 영속성 컨텍스트가 N:1 관계로,  <br />
+각각의 EntityManager들이 하나의 PersistenceContext와 매핑되어 있는 구조이다.</p>
+
+<p>엔티티의 생명주기에는 아래와 같은 상태가 존재한다.</p>
+
+<ul>
+  <li>
+    <dl>
+      <dt>비영속 (new/transient)</dt>
+      <dd>영속성 컨텍스트와 전혀 관계가 없는 새로운 상태</dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt>영속 (managed)</dt>
+      <dd>영속성 컨텍스트에 관리되는 상태</dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt>준영속 (detached)</dt>
+      <dd>영속성 컨텍스트에 저장되었다가 분리된 상태</dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt>삭제 (removed)</dt>
+      <dd>삭제된 상태</dd>
+    </dl>
+  </li>
+</ul>
+
+<h4 id="비영속">비영속</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 단순히 객체를 생성하기만 한 상태</span>
+<span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">();</span>
+<span class="n">member</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="s">"member1"</span><span class="o">);</span>
+<span class="n">member</span><span class="o">.</span><span class="na">setUsername</span><span class="o">(</span><span class="s">"회원1"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h4 id="영속">영속</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">();</span>
+<span class="n">member</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="s">"member1"</span><span class="o">);</span>
+<span class="n">member</span><span class="o">.</span><span class="na">setUsername</span><span class="o">(</span><span class="s">"회원1"</span><span class="o">);</span>
+
+<span class="nc">EntitiyManager</span> <span class="n">em</span> <span class="o">=</span> <span class="n">emf</span><span class="o">.</span><span class="na">createEntityManager</span><span class="o">();</span>
+<span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">begin</span><span class="o">();</span>
+
+<span class="c1">// 객체를 저장한 상태 (영속)</span>
+<span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h4 id="준영속-삭제">준영속, 삭제</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 영속성 컨텍스트에서 분리 (준영속)</span>
+<span class="n">em</span><span class="o">.</span><span class="na">detach</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 객체를 삭제한 상태 (삭제)</span>
+<span class="n">em</span><span class="o">.</span><span class="na">detach</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>결국 영속성 컨텍스트가 프레임워크 내에서 객체를 관리해주는 역할을 한다.</p>
+
+<h3 id="영속성-컨텍스트의-이점">영속성 컨텍스트의 이점</h3>
+
+<ul>
+  <li>1차 캐시</li>
+  <li>동일성 보장</li>
+  <li>트랜잭션을 지원하는 쓰기 지연</li>
+  <li>변경 감지(Dirty Checking)</li>
+  <li>지연로딩(Lazy Loading)</li>
+</ul>
+
+<h4 id="1차-캐시">1차 캐시</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1차 캐시에 저장됨</span>
+<span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+<span class="c1">// 1차 캐시에서 조회</span>
+<span class="nc">Member</span> <span class="n">findMember</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="nc">Member</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"member1"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>이런식으로 사용했을 때 DB에서 find 하는 게 아니라, 1차 캐시에서 조회하기 때문에 빠른 응답을 제공할 수 있다.</p>
+
+<p>만약 1차 캐시에 없다면, 이후 DB에서 조회를 하고 1차 캐시에 저장 후 반환하게 된다.</p>
+
+<p>처음 공부할 때 Spring이 알아서 한번 조회했던 객체를 entityManager 내에 1차 캐시에 저장하면,   <br />
+Redis (REmote Dictionary Server)는 Spring을 쓰면서 MSA로 구성할 때 메인노드로 쓸 때를 제외하면 굳이 Spring과 레디스를
+같이 쓸 필요는 없겠네..? 라는 생각을 했었다.</p>
+
+<p>그리고 의문이 1분만에 풀리는데, entityManager는 보통 한번 사용되고 바로 close 되는데, close되면서 1차 캐시에 있던 key-value가
+날라가는 것이다.</p>
+
+<p>그러니까 객체가 호출되면서 잠깐만 존재했다가 사라지는 존재였던 것이다.</p>
+
+<h4 id="동일성-보장">동일성 보장</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Member</span> <span class="n">a</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="nc">Member</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"member1"</span><span class="o">);</span>
+<span class="nc">Member</span> <span class="n">b</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="nc">Member</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"member1"</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="o">);</span> 
+<span class="c1">// 동일성 비교 true</span>
+</code></pre></div></div>
+
+<p>실제로 여러 번의 조회를 하더라도 트랜잭션 격리 수준을 DB가 아닌 Java 애플리케이션 차원에서 제공하기 때문에 동일성을 보장 받는다.</p>
+
+<h4 id="트랜잭션을-지원하는-쓰기-지연">트랜잭션을 지원하는 쓰기 지연</h4>
+
+<p>엔티티 등록 : 트랜잭션을 지원하는 쓰기 지연</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">EntityManager</span> <span class="n">em</span> <span class="o">=</span> <span class="n">emf</span><span class="o">.</span><span class="na">createEntityManager</span><span class="o">();</span>
+<span class="nc">EntityTransaction</span> <span class="n">transaction</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">();</span>
+<span class="c1">// 엔티티 매니저는 데이터 변경시 트랜잭션을 시작해야 한다.</span>
+<span class="n">transaction</span><span class="o">.</span><span class="na">begin</span><span class="o">();</span> <span class="c1">// [트랜잭션] 시작</span>
+<span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">memberA</span><span class="o">);</span>
+<span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">memberB</span><span class="o">);</span>
+<span class="c1">// 여기까지 INSERT SQL을 데이터베이스에 보내지 않는다.</span>
+<span class="c1">// 커밋하는 순간 데이터베이스에 INSERT SQL을 보낸다.</span>
+<span class="n">transaction</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span> <span class="c1">// [트랜잭션] 커밋</span>
+</code></pre></div></div>
+
+<p>트랜잭션이 커밋되기 전까지는 SQL을 보내지 않음으로 한번에 모아서 SQL을 호출해서 성능적인 부분에서 이점을 챙길 수 있다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">memberA</span><span class="o">);</span>
+<span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">memberB</span><span class="o">);</span>
+<span class="c1">// 이때까지는 영속성 컨텍스트 내에 있는 1차 캐시에 저장만 하고 있다.</span>
+</code></pre></div></div>
+
+<p>추가로 commit()을 하더라도 영속 컨텍스트에 있는 1차 캐시가 날라가지는 않고, <code class="language-plaintext highlighter-rouge">em.close</code>를 해서 entityManager를 삭제해야 캐시가 날라간다.</p>
+
+<h4 id="변경-감지dirty-checking">변경 감지(Dirty Checking)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">EntityManager</span> <span class="n">em</span> <span class="o">=</span> <span class="n">emf</span><span class="o">.</span><span class="na">createEntityManager</span><span class="o">();</span>
+<span class="nc">EntityTransaction</span> <span class="n">transaction</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">();</span>
+<span class="n">transaction</span><span class="o">.</span><span class="na">begin</span><span class="o">();</span> <span class="c1">// [트랜잭션] 시작</span>
+<span class="c1">// 영속 엔티티 조회</span>
+<span class="nc">Member</span> <span class="n">memberA</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="nc">Member</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"memberA"</span><span class="o">);</span>
+<span class="c1">// 영속 엔티티 데이터 수정</span>
+<span class="n">memberA</span><span class="o">.</span><span class="na">setUsername</span><span class="o">(</span><span class="s">"hi"</span><span class="o">);</span>
+<span class="n">memberA</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+<span class="c1">//em.update(member) 이런 코드가 있어야 하지 않을까?</span>
+<span class="n">transaction</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span> <span class="c1">// [트랜잭션] 커밋</span>
+</code></pre></div></div>
+
+<p>1차 캐시에 있는 member Entity와 스냅샷을 비교하여 UPDATE SQL을 쓰기지연 SQL 저장소에서 생성하기 때문에 UPDATE문이 필요가 없다.</p>
+
+<h3 id="플러시-flush">플러시 Flush</h3>
+
+<ul>
+  <li>영속성 컨텍스트의 변경내용을 데이터베이스에 동기화</li>
+</ul>
+
+<h4 id="영속성-컨텍스트를-플러시하는-방법">영속성 컨텍스트를 플러시하는 방법</h4>
+
+<ul>
+  <li>em.flush() - 직접 호출</li>
+  <li>트랜잭션 커밋 - 플러시 자동 호출</li>
+  <li>JPQL 쿼리 실행 - 플러시 자동 호출</li>
+</ul>
+
+<h4 id="플러시-특성">플러시 특성</h4>
+
+<ul>
+  <li>영속성 컨텍스트를 비우지 않음</li>
+  <li>영속성 컨텍스트의 변경내용을 데이터베이스에 동기화</li>
+  <li>트랜잭션이라는 작업 단위가 중요 -&gt; 커밋 직전에만 동기화 하면 됨</li>
+</ul>
+
+<p>플러시 모드 옵션은 Default 상태에서 크게 건들 일이 없다.</p>]]></content><author><name>Ino</name></author><category term="spring" /><category term="java" /><category term="spring" /><summary type="html"><![CDATA[들어가기 전에]]></summary></entry><entry><title type="html">Spring DI와 IoC 컨테이너에 대해서</title><link href="http://localhost:4000/spring/2023/12/01/DI%EC%99%80IOC.html" rel="alternate" type="text/html" title="Spring DI와 IoC 컨테이너에 대해서" /><published>2023-12-01T00:00:00+09:00</published><updated>2023-12-01T00:00:00+09:00</updated><id>http://localhost:4000/spring/2023/12/01/DI%EC%99%80IOC</id><content type="html" xml:base="http://localhost:4000/spring/2023/12/01/DI%EC%99%80IOC.html"><![CDATA[<h1 id="di의존관계-주입--스프링-컨테이너">DI(의존관계 주입) / 스프링 컨테이너</h1>
 
 <p>DI(의존관계 주입)는 애플리케이션 실행 시점에 외부에서 실제 구현 객체를 생성하고 클라이언트에 전달하는 과정을 의미합니다. 이를 통해 클라이언트와 서버의 실제 의존관계가 연결됩니다.</p>
 
@@ -136,7 +742,7 @@
 
 <ul>
   <li>한 클래스는 하나의 책임만 가져야 한다.</li>
-  <li>하나의 책임이라는 것은 모호하다 (문맥과 상황에 따라 다르다.)</li>
+  <li>하나의 책임이라는 것은 모호하다 ( 문맥과 상황에 따라 다르다. )</li>
   <li>중요한 기준은 변경이다. 변경이 있을 때 파급효과가 적으면 단일 책임 원칙을 잘 따른 것
     <blockquote>
       <p>ex) 객체 생성과 사용을 분리, 디스플레이에 띄우는 부분과 핵심로직은 분리</p>
@@ -372,261 +978,4 @@ return value : 성공 시 기록된 바이트수, 에러시 -1을 return 한다.
 <p>int 형태는 char 형태로 출력가능하다고 했었는데,</p>
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"0123456789"</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 </code></pre></div></div>
-<p>이런식의 출력은 결국 숫자가 들어간 문자열이기 때문에 출력가능하다.</p>]]></content><author><name>Ino</name></author><category term="c" /><category term="c" /><summary type="html"><![CDATA[unistd.h 가 뭔데? POSIX 운영체제 API에 대한 엑세스를 제공하는 헤더파일이다. 보통 Unix 에 쓰이는 표준 심볼들과 상수들을 정의해 놓은 것이기 때문에 unistd.h에 포함되어 있는 내용은 대부분 유닉스환경에서만 쓸 수 있다.]]></summary></entry><entry><title type="html">C언어 포인터와 동적메모리</title><link href="http://localhost:4000/c/2022/08/12/c%EC%96%B8%EC%96%B4%ED%8F%AC%EC%9D%B8%ED%84%B0.html" rel="alternate" type="text/html" title="C언어 포인터와 동적메모리" /><published>2022-08-12T00:00:00+09:00</published><updated>2022-08-12T00:00:00+09:00</updated><id>http://localhost:4000/c/2022/08/12/c%EC%96%B8%EC%96%B4%ED%8F%AC%EC%9D%B8%ED%84%B0</id><content type="html" xml:base="http://localhost:4000/c/2022/08/12/c%EC%96%B8%EC%96%B4%ED%8F%AC%EC%9D%B8%ED%84%B0.html"><![CDATA[<h2 id="메모리-영역">메모리 영역</h2>
-
-<ol>
-  <li>
-    <p>코드 영역  <br />
-코드 영역은 이름 처럼 작성한 코드를 저장하는 영역입니다.​</p>
-  </li>
-  <li>
-    <p>데이터 영역  <br />
-데이터 영역은 전역 변수와 정적 변수를 저장하는 영역입니다.  <br />
-전역 변수는 프로그램이 시작되면서 초기화됩니다. <br />
-그러므로 데이터 영역은 프로그램 시작시에 이미 메모리가 확보되어 크기가 변하지 않음을 알 수 있습니다.</p>
-  </li>
-  <li>
-    <p>힙 영역
-힙영역은 동적 메모리를 할당하는 영역입니다. <br />
-C언어로 코드를 작성할 때 직접 메모리를 할당할 때가 있습니다.  <br />
-이 때 메모리를 할당하는 영역이 바로 힙 영역입니다.  <br />
-힙에 저장된 메모리는 함수호출이 종료되어도 사라지지 않기 때문에, 개발자가 free()함수를 통해 명시적으로 해제하거나 프로그램이 종료되어야 사라진다.   <br />
-프로그램은 메모리 주소에 따라 힙 데이터에 접근한다.   <br />
-힙 공간은 스택영역과 달리 크기에 제약이 없기때문에 메모리만 충분하다면 필요한만큼 확장할 수 있다.</p>
-  </li>
-  <li>
-    <p>스택 영역  <br />
-스택 영역은 지역 변수와 매개변수를 저장하는 영역입니다. <br />
-지역 변수와 매개 변수 특성 상 해당 함수의 호출과 실행이 완료되면 사라집니다.  <br />
-그러므로 데이터가 저장되었다가 지워지기를 반복하는 영역임을 알 수 있습니다. <br />
-(자료구조에서의 스택을 알고 있으면 이해하기 편할 것이다.)</p>
-  </li>
-</ol>
-
-<hr />
-
-<h2 id="메모리할당-함수-malloccallocrealloc">메모리할당 함수 (malloc,calloc,realloc)</h2>
-<blockquote>
-  <p>메모리 관련함수는 헤더파일 <code class="language-plaintext highlighter-rouge">&lt;stdlib.h&gt;</code> 또는 <code class="language-plaintext highlighter-rouge">&lt;malloc.h&gt;</code>에 있다.   <br />
-실제값 : *(p + i) == p[i];    <br />
-주소 : p + i == &amp;p[i];</p>
-</blockquote>
-
-<p><code class="language-plaintext highlighter-rouge">malloc</code> : 동적 메모리 함수</p>
-<ul>
-  <li>메모리를 미리 일정량 만큼 잡아두지 않고, 필요할때마다 동적으로 할당한다.</li>
-  <li>필요할 때마다 동적으로 할당해서 메모리낭비를 줄여준다.</li>
-  <li>형식 : 포인터변수 = (포인터변수의 데이터형 *)malloc(포인터변수의 데이터형 크기 * 필요한크기);</li>
-</ul>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
-</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-  <span class="kt">int</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
-  <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">);</span> <span class="c1">// int형은 4바이트니깐, 총 40바이트를 할당한 상태이다.</span>
-  <span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>
-<ul>
-  <li>크기는 바이트형이고, malloc을 이용해 필요한만큼 동적할당을 해준다.</li>
-  <li>사용후 free() 함수를 통해 할당된 공간을 반납해준다.</li>
-</ul>
-
-<hr />
-
-<p><code class="language-plaintext highlighter-rouge">calloc</code> 함수</p>
-<ul>
-  <li>요청한 메모리공간을 0으로 초기화하여 할당함.</li>
-  <li>형식 : 포인터변수 = (포인터변수의 데이터형 *)calloc(포인터변수의 데이터형 크기 * 필요한크기);</li>
-  <li>malloc함수로 공간을 할당하면, 가비지값(쓰레기값)들이 들어가는데, calloc()함수를 이용해 할당하면,  <br />
-원하는만큼 공간을 할당후 메모리공간도 0으로 초기화 해준다.</li>
-</ul>
-
-<hr />
-
-<p><code class="language-plaintext highlighter-rouge">realloc</code> 함수</p>
-<ul>
-  <li>새로 동적메모리를 할당받고, 이전에 할당받은 메모리값을 복사하는 함수</li>
-  <li>단독으로 사용이 불가능하며 이전에 malloc또는 calloc으로 할당받았던 경험이 있어야함.</li>
-  <li>형식 : 포인터변수 = (포인터변수 *)realloc(기본포인터, 포인터변수의 데이터형 크기 * 필요한크기);</li>
-</ul>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
-</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-  <span class="kt">int</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
-  <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
-  <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">realloc</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">))</span> <span class="c1">// 이전라인에서의 p의값을 복사해서 넣는다.</span>
-  <span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<hr />
-<h2 id="메모리문제">메모리문제</h2>
-<h3 id="메모리-릭memory-leak">메모리 릭(Memory Leak)</h3>
-
-<p>메모리 릭은 프로그램이 불필요한 메모리를 계속 점유하는 현상이다.  <br />
-malloc() 또는 calloc() 등으로 동적메모리를 힙에 할당해놓고, free()를 통해 명시적으로 메모리를 해제 하지 않으면 프로그램이 작동하는동안 지속적으로 불필요한 메모리를 점유하게 된다.</p>
-<blockquote>
-  <p>나중에 언급하겠지만, 이러한 이유로 동적할당과 할당해제는 같은 코드블럭내에 위치하는 것이 유리하다.</p>
-</blockquote>
-
-<h3 id="댕글링-포인터dangling-pointer">댕글링 포인터(Dangling Pointer)</h3>
-
-<p>댕글링 포인터(또는 허상 포인터)는 이미 해제된 메모리를 가르키는 포인터를 뜻한다.  <br />
-동적할당된 곳을 포인터가 가리키고 있는 상태에서 해당 동적할당을 해제하게 되면, 해당 공간을 가리키고 있던 포인터에 있는 주소 공간은 아무런 의미가 없게된다.  <br />
-이 때 포인터에 저장된 주소공간에서 데이터를 가져오거나 어떤 동작을 수행하면 문제가 될 수 있다.</p>
-<blockquote>
-  <p>차라리 아무것도 가져오지 않으면 괜찮은데, 가비지값을 가져오면서 정상동작 하는것 처럼 보이다가 예상치 못한 오류가 뜰 수도 있다.</p>
-</blockquote>
-
-<h3 id="버퍼-오버플로우-buffer-overflow">버퍼 오버플로우 (Buffer Overflow)</h3>
-<p>버퍼 오버플로우는 배열 혹은 동적으로 할당된 메모리 영역을 벗어나서 쓰기 작업을 수행하는 것이다.</p>
-
-<h3 id="널포인터-익셉션null-pointer-exception">널포인터 익셉션(Null Pointer Exception)</h3>
-<p>Null로 초기화한 메모리 영역에 접근하면 발생하는 에러이다.</p>
-
-<hr />
-
-<h3 id="메모리-릭을-줄이는-방법">메모리 릭을 줄이는 방법</h3>
-
-<h5 id="malloc과-free를-한-블록에서-하기">malloc과 free를 한 블록에서 하기</h5>
-<p>메모리 할당과 해제는 한블록 내에서 한번씩만 한다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
-</span>
-<span class="k">struct</span> <span class="n">Example</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
-    <span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kt">void</span> <span class="nf">init_example</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">Example</span> <span class="o">*</span><span class="n">example</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">example</span><span class="p">));</span> <span class="c1">// 메모리 할당</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">example</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-    <span class="n">example</span><span class="o">-&gt;</span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="n">example</span><span class="o">-&gt;</span><span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="n">example</span><span class="o">-&gt;</span><span class="n">c</span> <span class="o">=</span> <span class="sc">'c'</span><span class="p">;</span>
-    <span class="n">free</span><span class="p">(</span><span class="n">example</span><span class="p">);</span> <span class="c1">// 해제</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">init_example</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div></div>
-<blockquote>
-  <p>출처 : 커널패닉</p>
-</blockquote>
-
-<p>위코드에서 init_example 코드블럭 내에 malloc 동적할당과 free 메모리해제를 같은 블럭내에서 한번씩 해줬기 때문에 위코드에서는 메모리릭이 발생하지 않는다.</p>]]></content><author><name>Ino</name></author><category term="c" /><category term="C" /><category term="동적할당" /><category term="메모리" /><summary type="html"><![CDATA[메모리 영역]]></summary></entry><entry><title type="html">권한의 이해와 설정</title><link href="http://localhost:4000/system/2022/07/13/permission.html" rel="alternate" type="text/html" title="권한의 이해와 설정" /><published>2022-07-13T00:00:00+09:00</published><updated>2022-07-13T00:00:00+09:00</updated><id>http://localhost:4000/system/2022/07/13/permission</id><content type="html" xml:base="http://localhost:4000/system/2022/07/13/permission.html"><![CDATA[<h2 id="권한이란">권한이란?</h2>
-<p>리눅스의 모든 파일과 디렉토리는 권한(permission)을 가지고 있다.       <br />
-리눅스의 파일시스템 상에 권한에 대한 정보를 저장하는 부분이 있다.       <br />
-퍼미션들은 시스템 상에 존재하는 파일들에 대한 읽기,쓰기,실행에 대한 접근 여부를 결정한다.       <br />
-ls -l 명령어로 확인 가능 (첫번째 필드, -rwxr-wr–)      <br />
-이러한 퍼미션은 다중 사용자 환경을 제공하는 리눅스 환경에서는 가장 기초적인 접근 통제 방법</p>
-
-<p><img src="https://user-images.githubusercontent.com/95608811/178721039-e1d58298-5f8b-4631-9855-2d9f8a9ab85e.png" width="800px" /></p>
-
-<h3 id="권한-설정-방법">권한 설정 방법</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">chmod [권한] [파일 또는 디렉토리 이름]</code></li>
-  <li><code class="language-plaintext highlighter-rouge">[권한]</code> : 권한을 입력할 때는 심볼릭 모드와 옥텟(8진수) 모드 2가지 방식을 이용하여 입력 가능하다.</li>
-  <li><code class="language-plaintext highlighter-rouge">[파일 또는 디렉토리 이름]</code> : 파일, 디렉토리를 지정할 때는 절대 경로 또는 상대 경로 모두 가능하다.</li>
-</ul>
-
-<h4 id="간단한-문자로-설정하는-심볼릭-모드">간단한 문자로 설정하는 심볼릭 모드</h4>
-
-<p><img src="https://user-images.githubusercontent.com/95608811/178722799-93b80ea6-da07-454b-8348-6bc80a13dce4.png" width="800px" /></p>
-
-<h4 id="07까지의-숫자를-이용하는-옥텟-모드">0~7까지의 숫자를 이용하는 옥텟 모드</h4>
-<p><img src="https://user-images.githubusercontent.com/95608811/178723045-a3e07723-7860-4028-aec4-bf861bea8b42.png" width="800px" /></p>
-
-<blockquote>
-  <p>읽기 쓰기 실행 순서로 각각 4,2,1 이고, 읽기와 쓰기만 있으면 4+2인 6 쓰기와 실행만 있으면 2+1 인 3
-이런식으로 옥텟모드를 사용한다.</p>
-</blockquote>
-
-<h3 id="파일-또는-디렉토리를-생성할-때-권한값을-결정하는-umask">파일 또는 디렉토리를 생성할 때 권한값을 결정하는 umask</h3>
-<p><img src="https://user-images.githubusercontent.com/95608811/178723739-7380eb92-d892-49e7-b496-f97123799e5d.png" width="800px" /></p>
-
-<ul>
-  <li>umask 값은 리눅스를 처음 설치할때 022이 기본값으로 세팅되어 있는데, directory는 777, file은 666이
-기본 값이라 각자의 권한값에서 umask 값을 뺀(and 연산) 한 값이 각자의 권한값 (옥텟)이 된다.</li>
-</ul>]]></content><author><name>Ino</name></author><category term="System" /><category term="linux" /><summary type="html"><![CDATA[권한이란? 리눅스의 모든 파일과 디렉토리는 권한(permission)을 가지고 있다. 리눅스의 파일시스템 상에 권한에 대한 정보를 저장하는 부분이 있다. 퍼미션들은 시스템 상에 존재하는 파일들에 대한 읽기,쓰기,실행에 대한 접근 여부를 결정한다. ls -l 명령어로 확인 가능 (첫번째 필드, -rwxr-wr–) 이러한 퍼미션은 다중 사용자 환경을 제공하는 리눅스 환경에서는 가장 기초적인 접근 통제 방법]]></summary></entry><entry><title type="html">하드링크와 심볼릭 링크</title><link href="http://localhost:4000/system/2022/07/13/hardlink.html" rel="alternate" type="text/html" title="하드링크와 심볼릭 링크" /><published>2022-07-13T00:00:00+09:00</published><updated>2022-07-13T00:00:00+09:00</updated><id>http://localhost:4000/system/2022/07/13/hardlink</id><content type="html" xml:base="http://localhost:4000/system/2022/07/13/hardlink.html"><![CDATA[<h2 id="링크란-무엇인가">링크란 무엇인가?</h2>
-<ul>
-  <li>특정 파일 또는 디렉토리에 접근을 쉽게 할 수 있도록 하는 방법</li>
-  <li>파일 시스템이 물리적인 장치인 하드 디스크 상에 저장되어 있는 특정 파일의 위치를 가리키는 것</li>
-</ul>
-
-<h3 id="하드링크">하드링크</h3>
-<ul>
-  <li>특정 파일 또는 디렉토리에 접근을 쉽게 할 수 있도록 하는 방법</li>
-  <li>파일 시스템이 물리적인 장치인 하드 디스크 상에 저장되어 있는 특정 파일의 위치를 가리키는 것</li>
-</ul>
-
-<h3 id="심볼릭링크">심볼릭링크</h3>
-<ul>
-  <li>윈도우의 바로가기 개념과 슷하며 실질적인 디스크 상의 파일을 가리키는 것이 아니라 파일 시스템 상의 특정 파일을 가리키는 것</li>
-</ul>
-
-<h3 id="링크-생성-명령어">링크 생성 명령어</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">ln [옵션] [원본] [링크]</code></li>
-  <li>옵션을 지정하지 않고 링크 파일을 생성하면 하드 링크를 생성할 수 있다.</li>
-  <li>옵션으로 -s 를 지정하고 링크 파일을 생성하면 심볼릭 링크를 생성할 수 있다.</li>
-</ul>]]></content><author><name>Ino</name></author><category term="System" /><category term="linux" /><summary type="html"><![CDATA[링크란 무엇인가? 특정 파일 또는 디렉토리에 접근을 쉽게 할 수 있도록 하는 방법 파일 시스템이 물리적인 장치인 하드 디스크 상에 저장되어 있는 특정 파일의 위치를 가리키는 것]]></summary></entry><entry><title type="html">파일 및 디렉토리 검색 - grep/find</title><link href="http://localhost:4000/system/2022/07/13/grep.html" rel="alternate" type="text/html" title="파일 및 디렉토리 검색 - grep/find" /><published>2022-07-13T00:00:00+09:00</published><updated>2022-07-13T00:00:00+09:00</updated><id>http://localhost:4000/system/2022/07/13/grep</id><content type="html" xml:base="http://localhost:4000/system/2022/07/13/grep.html"><![CDATA[<h2 id="파일-내용에서-검색-grep">파일 내용에서 검색 grep</h2>
-<ul>
-  <li>파일 내용에서 특정 내용만 찾을때 사용</li>
-  <li>grep [옵션] [패턴] [파일이름]</li>
-  <li>[옵션] : 좀 더 디테일한 조건으로 찾을 때 사용</li>
-  <li>[패턴] : 찾고 싶은 내용을 입력, 일치하는 내용을 출력. 정규표현식 사용 가능</li>
-  <li>[파일 이름] : grep 명령어로 특정 내용을 검색할 파일을 지정한다.     <br />
-<code class="language-plaintext highlighter-rouge">ex ) grep -i root/ect/id</code></li>
-</ul>
-
-<h3 id="옵션">옵션</h3>
-
-<p><code class="language-plaintext highlighter-rouge">-i</code> : 대소문자 무시 (word와 WoRD 를 구분하지 않는다.)  <br />
-<code class="language-plaintext highlighter-rouge">-n</code> : 줄 번호 표시 (line 넘버를 표시한다.) <br />
-<code class="language-plaintext highlighter-rouge">-v</code> : 패턴을 제외한 내용만 출력  <br />
-<code class="language-plaintext highlighter-rouge">-w</code> : 단어 단위로 검색 (ro 를 검색하면 root 는 찾지않는다.)  <br />
-<code class="language-plaintext highlighter-rouge">-c</code> : 매칭되는 줄 수 표시  <br />
-<code class="language-plaintext highlighter-rouge">-ㅣ</code> : 매칭되는 패턴이 있는 파일 이름 출력</p>
-
-<h3 id="패턴">패턴</h3>
-<p>정규표현식 : 어떤 문자를 표현할 때 다양한 특수문자를 이용해 표현하는 방식     <br />
-<code class="language-plaintext highlighter-rouge">^</code> : 줄의 시작을 지정 (해당 패턴이 줄의 시작인 경우 캡쳐) <code class="language-plaintext highlighter-rouge">ex)^root</code> <br />
-<code class="language-plaintext highlighter-rouge">$</code> : 줄의 마지막 지정  <code class="language-plaintext highlighter-rouge">ex)root$</code>  <br />
-<code class="language-plaintext highlighter-rouge">.</code> : 한 문자 대치 <code class="language-plaintext highlighter-rouge">ex)r..t</code>  <br />
-<code class="language-plaintext highlighter-rouge">*</code> : 여러 문제 대치 <code class="language-plaintext highlighter-rouge">ex)r*</code>  <br />
-<code class="language-plaintext highlighter-rouge">[]</code> : 패턴 중 한 문자 일치 <code class="language-plaintext highlighter-rouge">ex)[rR]oot</code> <br />
-<code class="language-plaintext highlighter-rouge">[^]</code> : 패턴 중 제외할 문자 지정 <code class="language-plaintext highlighter-rouge">ex)[^T]oot :: T를 제외한 oot 부분 출력</code></p>
-
-<h3 id="특수문자들을-단순한-문자로만-인식-fgrep">특수문자들을 단순한 문자로만 인식 fgrep</h3>
-<p><code class="language-plaintext highlighter-rouge">fgrep [옵션] [패턴] [파일이름]</code>  <br />
-만약 문서에 특수문자가 포함된 경우 여러 특수문자들은 정규표현식으로 인식되기 때문에   <br />
-해당 정규표현식의 기능으로 검색이 될 수 있다.   <br />
-이런 경우 fgrep은 여러 특수문자들(*,$,. 등)을 단순한 문자로 인식해서
-문서 내에서 해당 특수문자를 찾을 때 사용할 수 있다.</p>
-
-<h2 id="디렉토리-내에서-검색-명령어-find">디렉토리 내에서 검색 명령어 find</h2>
-<p><code class="language-plaintext highlighter-rouge">find [경로] [조건] [아규먼트] [행동]</code>  <br />
-<code class="language-plaintext highlighter-rouge">[경로]</code> : 어디를 기준으로 검색할 것인지 입력한다.  하위 디렉토리까지 검색  <br />
-<code class="language-plaintext highlighter-rouge">[조건]</code> : 어떤 조건으로 검색할 것인지 입력한다.  <br />
-<code class="language-plaintext highlighter-rouge">[아규먼트]</code> : 조건에 맞는 값을 입력해준다.   <br />
-<code class="language-plaintext highlighter-rouge">[행동]</code> : 검색 결과를 어떻게 처리할 것인지 입력한다.   <br />
-<code class="language-plaintext highlighter-rouge">ex) find /-name file -exec rm -rf {}￦;</code> <br />
-만약 행동은 빈칸으로 처리한다면 print 가 default로 입력된다.</p>
-
-<h3 id="조건">조건</h3>
-<p><code class="language-plaintext highlighter-rouge">name</code> : 이름으로 검색
-<code class="language-plaintext highlighter-rouge">type</code> : 파일의 타입으로 검색, 디렉토리는 d,파일은 f  <br />
-<code class="language-plaintext highlighter-rouge">perm</code> : 권한으로 검색  <br />
-<code class="language-plaintext highlighter-rouge">user</code> : 소유자로 검색  <br />
-<code class="language-plaintext highlighter-rouge">size</code> : 파일 크기로 검색, +는 이상, -는 이하, 단위는 512바이트   <br />
-c 바이트, k 키로바이트, M 메가바이트, G 기가바이트    <br />
-<code class="language-plaintext highlighter-rouge">atime</code> : 파일의 마지막 접근 시간으로 검색  <br />
-<code class="language-plaintext highlighter-rouge">mtime</code> : 파일의 마지막 수정 시간으로 검색</p>
-
-<h3 id="행동">행동</h3>
-<p><code class="language-plaintext highlighter-rouge">ls</code> : 자세한 결과 출력 <br />
-<code class="language-plaintext highlighter-rouge">exec [명령어] {} ￦;</code> : 검색한 파일을 특정 명령어로 실행  <br />
-<code class="language-plaintext highlighter-rouge">ex ) -exec rm -rf {} ￦;</code> 제거하기</p>]]></content><author><name>Ino</name></author><category term="System" /><category term="linux" /><summary type="html"><![CDATA[파일 내용에서 검색 grep 파일 내용에서 특정 내용만 찾을때 사용 grep [옵션] [패턴] [파일이름] [옵션] : 좀 더 디테일한 조건으로 찾을 때 사용 [패턴] : 찾고 싶은 내용을 입력, 일치하는 내용을 출력. 정규표현식 사용 가능 [파일 이름] : grep 명령어로 특정 내용을 검색할 파일을 지정한다. ex ) grep -i root/ect/id]]></summary></entry></feed>
+<p>이런식의 출력은 결국 숫자가 들어간 문자열이기 때문에 출력가능하다.</p>]]></content><author><name>Ino</name></author><category term="c" /><category term="c" /><summary type="html"><![CDATA[unistd.h 가 뭔데? POSIX 운영체제 API에 대한 엑세스를 제공하는 헤더파일이다. 보통 Unix 에 쓰이는 표준 심볼들과 상수들을 정의해 놓은 것이기 때문에 unistd.h에 포함되어 있는 내용은 대부분 유닉스환경에서만 쓸 수 있다.]]></summary></entry></feed>
