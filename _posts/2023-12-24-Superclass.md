@@ -1,6 +1,6 @@
 ---
 layout: post
-title: (JPA-4) MappedSuperclass 공통 매핑 정보의 재사용
+title: (JPA-4)MappedSuperclass 공통매핑정보의 재사용
 subtitle: feat.Spring
 author: Ino
 categories: spring
