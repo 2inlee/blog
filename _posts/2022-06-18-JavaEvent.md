@@ -6,7 +6,7 @@ author: Ino
 categories: java
 banner:
   # video: https://vjs.zencdn.net/v/oceans.mp4
-  image: "https://user-images.githubusercontent.com/95608811/169932444-32124c9a-4013-4864-acf7-59a3db654886.png"
+  image: "https://shorturl.at/oBCQR"
   opacity: 0.618
   background: "#000"
   height: "100vh"
