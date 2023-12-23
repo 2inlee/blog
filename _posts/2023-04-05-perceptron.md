@@ -5,7 +5,7 @@ subtitle: feat.분류/회귀
 author: Ino
 categories: ai
 banner:
-  image: "https://shorturl.at/oBCQR"
+  image: "https://user-images.githubusercontent.com/95608811/291508517-1966009e-4c10-4089-a793-f3f778f31809.png"
   opacity: 0.618
   background: "#000"
   height: "100vh"
